@@ -10,4 +10,5 @@ public class GiftHubApplication {
 		SpringApplication.run(GiftHubApplication.class, args);
 	}
 
+	
 }
