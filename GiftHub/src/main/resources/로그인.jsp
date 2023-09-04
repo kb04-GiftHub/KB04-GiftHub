@@ -8,9 +8,9 @@
 </head>
 <body>
 		<h1>로그인</h1> <br>
-		ID:	 <input type="text" id="id" value="aaa"><br>
+		ID:	 <input type="text" id="id" value="abc123"><br>
 		Password:	 <input type="password" name="pwd" value="1234"><br>
-		<input type="checkbox" name="아이디 저장" value="ID"> 아이디 저장 <br>
+		<input type="checkbox" name="cb" value="abc123"> 아이디 저장 <br>
 		<button>고객 로그인</button>
 		 <button>가맹점주 로그인</button><br>
    		 <button>아이디 찾기</button>
