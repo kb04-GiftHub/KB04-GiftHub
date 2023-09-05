@@ -57,10 +57,11 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav mx-auto py-0">
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
-                        <a href="about.html" class="nav-item nav-link">이용안내</a>
-                        <a href="service.html" class="nav-item nav-link">커뮤니티</a>
-                        <a href="project.html" class="nav-item nav-link">가맹점찾기</a>
+                        <a href="index" class="nav-item nav-link active">Home</a>
+                        <a href="about" class="nav-item nav-link">이용안내</a>
+                        <a href="service" class="nav-item nav-link">커뮤니티</a>
+<!-- <a href="project" class="nav-item nav-link">가맹점찾기</a>  -->                        
+                        <a href="project" class="nav-item nav-link">가맹점찾기</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
