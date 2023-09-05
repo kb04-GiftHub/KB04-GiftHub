@@ -3,11 +3,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
-
-<<<<<<< HEAD
+<c:set var="path" value="${pageContext.request.contextPath}" /> 
+<!DOCTYPE html>
+<html>
 <head>
     <meta charset="utf-8">
-    <title>DGital - Digital Agency HTML Template</title>
+    <title>GiftHub</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -59,33 +60,18 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav mx-auto py-0">
-                        <a href="index" class="nav-item nav-link active">Home</a>
-                        <a href="about" class="nav-item nav-link">이용안내</a>
-                        <a href="service" class="nav-item nav-link">커뮤니티</a>
-<!-- <a href="project" class="nav-item nav-link">가맹점찾기</a>  -->                        
-                        <a href="project" class="nav-item nav-link">가맹점찾기</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu m-0">
-                                <a href="team.html" class="dropdown-item">Our Team</a>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                <a href="404.html" class="dropdown-item">404 Page</a>
-                            </div>
-                        </div>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        
                     </div>
                     <a href="" class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Get Started</a>
                 </div>
             </nav>
 
-            <div class="container-xxl bg-primary hero-header">
-=======
-<c:import url="top.jsp" />
+        <!-- Navbar & Hero End -->
  <div class="container-xxl bg-primary hero-header" >
->>>>>>> 701bb6ad02d9b8ac516c1d8770dc92ac8d4e302f
                 <div class="container px-lg-5">
                     <div class="row g-5 align-items-end">
                         <div class="col-lg-6 text-center text-lg-start">
+                        <h1>${path }</h1>
                             <h1 class="text-white mb-4 animated slideInDown">A Digital Agency Of Inteligents & Creative People</h1>
                             <p class="text-white pb-3 animated slideInDown">Tempor rebum no at dolore lorem clita rebum rebum ipsum rebum stet dolor sed justo kasd. Ut dolor sed magna dolor sea diam. Sit diam sit justo amet ipsum vero ipsum clita lorem</p>
                             <a href="" class="btn btn-secondary py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft">Read More</a>
