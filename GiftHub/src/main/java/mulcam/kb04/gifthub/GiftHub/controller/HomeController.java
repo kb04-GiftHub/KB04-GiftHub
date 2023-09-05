@@ -1,4 +1,4 @@
-package mulcam.kb04.gifthub.GiftHub;
+package mulcam.kb04.gifthub.GiftHub.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

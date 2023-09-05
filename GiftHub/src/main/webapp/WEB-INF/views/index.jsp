@@ -5,7 +5,7 @@
 <html lang="en">
 
 <c:import url="top.jsp" />
- <div class="container-xxl bg-primary hero-header">
+ <div class="container-xxl bg-primary hero-header" >
                 <div class="container px-lg-5">
                     <div class="row g-5 align-items-end">
                         <div class="col-lg-6 text-center text-lg-start">
