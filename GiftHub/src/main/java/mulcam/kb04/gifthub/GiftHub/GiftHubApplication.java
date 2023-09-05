@@ -10,5 +10,5 @@ public class GiftHubApplication {
 		SpringApplication.run(GiftHubApplication.class, args);
 	}
 
-	// hurdong test
+	// hurdong test 2
 }
