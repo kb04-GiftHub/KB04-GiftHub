@@ -1,10 +1,12 @@
 /********** Template CSS **********/
 :root {
-    --primary: #6222CC;
+    --primary: #0058C6;
     --secondary: #FBA504;
     --light: #F6F4F9;
     --dark: #04000B;
+    
 }
+.bg-primary{background-color:#0058C6 !important}
 
 
 /*** Spinner ***/
@@ -435,7 +437,7 @@ h6,
     height: 100%;
     top: 0;
     left: 0;
-    background: rgba(98, 34, 204, .9);
+    background: rgba(98, 34, 4, .9);
     transition: .5s;
     opacity: 0;
 }
