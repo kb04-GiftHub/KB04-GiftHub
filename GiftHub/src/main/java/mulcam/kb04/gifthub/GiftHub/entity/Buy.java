@@ -2,6 +2,14 @@ package mulcam.kb04.gifthub.GiftHub.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,77 +17,29 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table(name="BUY")
 public class Buy {
-	private int buyNo, buyPrice, productNo;
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "BUY_SEQ")
+    @SequenceGenerator(sequenceName = "BUY_SEQ", allocationSize = 1, name = "BUY_SEQ")
+	@Column(name="buyNo")
+	private int buyNo;
+	
+	@Column(name="buyPrice")
+	private int buyPrice;
+	
+	@Column(name="productNo")
+	private int productNo;
+	
+	@Column(name="buyDate")
 	private Date buyDate;
-	private String storeId, buyerId;
+	
+	@Column(name="storeId")
+	private String storeId;
+	
+	@Column(name="buyerId")
+	private String buyerId;
 
-	public Buy() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public Buy(int buyNo, int buyPrice, int productNo, Date buyDate, String storeId, String buyerId) {
-		super();
-		this.buyNo = buyNo;
-		this.buyPrice = buyPrice;
-		this.productNo = productNo;
-		this.buyDate = buyDate;
-		this.storeId = storeId;
-		this.buyerId = buyerId;
-	}
-
-	public int getBuyNo() {
-		return buyNo;
-	}
-
-	public void setBuyNo(int buyNo) {
-		this.buyNo = buyNo;
-	}
-
-	public int getBuyPrice() {
-		return buyPrice;
-	}
-
-	public void setBuyPrice(int buyPrice) {
-		this.buyPrice = buyPrice;
-	}
-
-	public int getProductNo() {
-		return productNo;
-	}
-
-	public void setProductNo(int productNo) {
-		this.productNo = productNo;
-	}
-
-	public Date getBuyDate() {
-		return buyDate;
-	}
-
-	public void setBuyDate(Date buyDate) {
-		this.buyDate = buyDate;
-	}
-
-	public String getStoreId() {
-		return storeId;
-	}
-
-	public void setStoreId(String storeId) {
-		this.storeId = storeId;
-	}
-
-	public String getBuyerId() {
-		return buyerId;
-	}
-
-	public void setBuyerId(String buyerId) {
-		this.buyerId = buyerId;
-	}
-
-	@Override
-	public String toString() {
-		return "Buy [buyNo=" + buyNo + ", buyPrice=" + buyPrice + ", productNo=" + productNo + ", buyDate=" + buyDate
-				+ ", storeId=" + storeId + ", buyerId=" + buyerId + "]";
-	}
-
+	
 }
