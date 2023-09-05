@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class GifticonController {
 	
 	
-	@GetMapping("/project")
+	@GetMapping("/about")
 	public String gifticon_add() {
 		//model.addAttribute("msg", msg);
 		
