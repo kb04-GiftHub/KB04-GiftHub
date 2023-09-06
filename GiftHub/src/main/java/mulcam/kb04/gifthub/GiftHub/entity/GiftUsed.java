@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
@@ -28,7 +29,9 @@ public class GiftUsed {
 	@JoinColumn(name = "giftNo")
 	private Gift giftNo;
 
-	private String usedId;
+	@ManyToOne
+	@JoinColumn(name = "customerId")
+	private Customer customerId;
 
 	private Date usedDate;
 
