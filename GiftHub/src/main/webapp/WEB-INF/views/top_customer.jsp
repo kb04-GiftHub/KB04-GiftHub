@@ -18,7 +18,9 @@
 <!-- Google Web Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Jost:wght@500;600;700&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Jost:wght@500;600;700&display=swap"
+	rel="stylesheet">
 
 <!-- Icon Font Stylesheet -->
 <link
@@ -44,24 +46,20 @@
 <body>
 	<div class="container-xxl bg-white p-0">
 		<!-- Spinner Start -->
-		<!-- <div id="spinner"
+		<div id="spinner"
 			class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
 			<div class="spinner-grow text-primary"
 				style="width: 3rem; height: 3rem;" role="status">
 				<span class="sr-only">Loading...</span>
 			</div>
-		</div> -->
-
-
+		</div>
 		<!-- Spinner End -->
 
-	
-          
 		<!-- Navbar & Hero Start -->
 		<div class="container-xxl position-relative p-0">
 			<nav
 				class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-				<a href="/" class="navbar-brand p-0">
+				<a href="" class="navbar-brand p-0">
 					<h1 class="m-0">
 						<img src="/img/icon.png" alt="Logo"> GiftHub
 					</h1>
@@ -73,7 +71,7 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarCollapse">
 					<div class="navbar-nav mx-auto py-0">
-						<a href="/" class="nav-item nav-link active">Home</a> 
+						<a href="index" class="nav-item nav-link active">Home</a> 
 						<div class="nav-item dropdown">
 							<a href="about" class="nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">기프티콘 관리</a>
@@ -82,23 +80,18 @@
 									href="calculate" class="dropdown-item">기프티콘 사용</a>
 							</div>
 						</div>
-						<div class="nav-item dropdown">
-							<a href="service" class="nav-link dropdown-toggle"
-								data-bs-toggle="dropdown">커뮤니티 관리</a>
-							<div class="dropdown-menu m-0">
-								<a href="sale" class="dropdown-item">게시글 등록</a> 
-								<a href="calculate" class="dropdown-item">게시글 조회</a>
-							</div>
-						</div>
+						 <a href="service"
+							class="nav-item nav-link">커뮤니티</a> <a href="list"
+							class="nav-item nav-link">내역</a>
 						<div class="nav-item dropdown">
 							<a href="list" class="nav-link dropdown-toggle"
-								data-bs-toggle="dropdown">내역 관리</a>
+								data-bs-toggle="dropdown">내역</a>
 							<div class="dropdown-menu m-0">
 								<a href="sale" class="dropdown-item">판매 내역</a> <a
 									href="calculate" class="dropdown-item">정산 내역</a>
 							</div>
 						</div>
-						<a href="/contact/contact" class="nav-item nav-link">문의하기</a>
+						<a href="contact" class="nav-item nav-link">Contact</a>
 					</div>
 					<a href=""
 						class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Get
