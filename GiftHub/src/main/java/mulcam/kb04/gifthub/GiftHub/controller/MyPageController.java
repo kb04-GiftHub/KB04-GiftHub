@@ -1,7 +1,5 @@
 package mulcam.kb04.gifthub.GiftHub.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +23,7 @@ public class MyPageController {
 	
 	@PostMapping("/mypage/check_action")
 	public String check_action(@RequestParam String pwd, @RequestParam String pwd_chk, Model model) {
-		Store store = repository.findByStoreId("store");
+		Store store = repository.findByStoreId("store1234");
 		if(pwd.equals(pwd_chk)) {
 			if(store.getStorePwd().equals(pwd)) {
 				model.addAttribute("msg", "본인인증 성공");
