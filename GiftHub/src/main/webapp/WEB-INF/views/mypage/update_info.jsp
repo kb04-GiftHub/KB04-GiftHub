@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>회원가입폼가져올거임</h1>
+	<h1>${msg}</h1>
 </body>
 </html>
