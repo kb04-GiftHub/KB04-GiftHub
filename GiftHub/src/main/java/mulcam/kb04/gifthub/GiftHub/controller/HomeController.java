@@ -1,18 +1,23 @@
 package mulcam.kb04.gifthub.GiftHub.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HomeController {
 //	@Autowired
 //	private PromotionMapper promotionMapper;
-	
+
 	@GetMapping("/promotion_insert_form")
 	public String promotion_insert_form() {
 		return "promotion_insert_form";//게시글 등록
 	}
-//	
+	
 //	@GetMapping("/promotion_detail")
 //	public String promotion_detail(
 //			@RequestParam("promotionNo") int promotionNo, Model model

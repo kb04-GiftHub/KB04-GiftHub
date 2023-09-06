@@ -116,12 +116,12 @@
                                 <div class="row g-3">
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            제목 <input type="text" class="form-control" id="title" placeholder="제목을 작성해주세요"><br>
+                                         	제목<input type="text" class="form-control" id="title" placeholder="제목을 작성해주세요">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            내용<textarea class="form-control" placeholder="내용을 작성해주세요" id="content" style="height: 150px"></textarea><br>
+                                        	내용<textarea class="form-control" placeholder="내용을 작성해주세요" id="content" style="height: 150px"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -131,7 +131,9 @@
                                     </div>
 
                                     <div class="col-12">
-                                        <button class="btn btn-primary w-100 py-3" type="cancel">취소하기</button><br>
+                                        <button class="btn btn-primary w-100 py-3" type="submit">취소하기</button>
+                                    </div>
+                                    <div class="col-12">
                                         <button class="btn btn-primary w-100 py-3" type="submit">등록하기</button>
                                     </div>
                                 </div>
