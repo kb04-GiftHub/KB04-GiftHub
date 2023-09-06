@@ -31,6 +31,6 @@ public class Review {
 	
 	@ManyToOne
 	@JoinColumn(name = "giftNo")
-	private Gift gift;
+	private Gift giftNo;
 
 }

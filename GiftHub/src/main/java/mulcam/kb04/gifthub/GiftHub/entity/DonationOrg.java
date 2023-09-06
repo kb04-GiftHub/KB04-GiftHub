@@ -1,5 +1,6 @@
 package mulcam.kb04.gifthub.GiftHub.entity;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
 public class DonationOrg {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "DONATION_ORG_SEQ")
