@@ -9,33 +9,19 @@
 </head>
 <body>
 	<c:import url="../top.jsp" />
-	<div class="container-xxl py-5 bg-primary hero-header">
-		<div class="container my-5 py-5 px-lg-5">
-
-
-			<div class="wow fadeInUp" data-wow-delay="0.1s">
-				<p class="section-title text-secondary justify-content-center">
-					<span></span>상품등록<span></span>
-				</p>
-				<h1 class="text-center mb-5" style="color: white;">기프티콘 등록</h1>
-			</div>
-
-		</div>
-	</div>
-	<!-- Contact Start -->
-	<div class="container-xxl py-5">
-		<div class="container py-5 px-lg-5">
-
-			<div class="row justify-content-center mb-5">
-				<div class="col-lg-7 text-center">
-					<div class="wow fadeInUp" data-wow-delay="0.3s">
-						<form method="post" enctype="multipart/form-data">
-							<div class="button"></div>
-							<input type="file" id="chooseFile" name="chooseFile"
-								accept="image/*" onchange="previewImage(this)"> <img
-								id="preview" src="#" alt="Image Preview"
-								style="display: none; max-width: 100%; height: auto;">
-						</form>
+	<div class="container-xxl bg-primary hero-header">
+		<!-- Contact Start -->
+		<div class="container-xxl py-5">
+			<div class="container py-5 px-lg-5">
+				<div class="wow fadeInUp" data-wow-delay="0.1s">
+					<p class="section-title text-secondary justify-content-center">
+						<span></span>상품등록<span></span>
+					</p>
+					<h1 class="text-center mb-5">기프티콘 등록</h1>
+				</div>
+				<form method="post" enctype="multipart/form-data">
+					<div class="button">
+						<label for="chooseFile"> 👉 CLICK HERE! 👈 </label>
 					</div>
 					<input type="file" id="chooseFile" name="chooseFile"
 						accept="image/*" onchange="loadFile(this)">
