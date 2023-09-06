@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 public class Donation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "DONATION_SEQ")
-	@SequenceGenerator(sequenceName = "DONATAION_SEQ", allocationSize = 1, name = "DONTAION_SEQ")
+	@SequenceGenerator(sequenceName = "DONATION_SEQ", allocationSize = 1, name = "DONATION_SEQ")
 	private int donationNo;
 
 	private int donationAmount;
