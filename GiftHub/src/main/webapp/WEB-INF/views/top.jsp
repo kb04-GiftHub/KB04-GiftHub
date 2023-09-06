@@ -55,14 +55,7 @@
 		</div>
 		<!-- Spinner End -->
 
-		<!-- Navbar & Hero Start -->
-		<div class="container-xxl position-relative p-0">
-			<nav
-				class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-				<a href="" class="navbar-brand p-0">
-					<h1 class="m-0">
-						<img src="/img/icon.png" alt="Logo"> GiftHub
-					</h1>
+	
           
 		<!-- Navbar & Hero Start -->
 		<div class="container-xxl position-relative p-0">
