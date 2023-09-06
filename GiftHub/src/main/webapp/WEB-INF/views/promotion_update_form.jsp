@@ -1,9 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
     <!DOCTYPE html>
 <html lang="en">
 
@@ -111,7 +107,6 @@
                     <div class="col-lg-7">
                         <div class="wow fadeInUp" data-wow-delay="0.3s">
                             <h1>게시물 수정</h1>
-							<a href="promotionlist">게시물 목록</a> <br>
 							<form action="promotion_update_action" method="post">
 							<fieldset>
 								<input type="hidden" name="no" value="${dto.promotionNo}">
@@ -119,12 +114,13 @@
 								게시물 작성자 : <input type="text" name="writer" value="${dto.storeId}"> <br>
 								게시물 내 용 : <br>
 								<textarea rows="3" cols="55" name="content">${dto.promotionContent}</textarea>
-								<br>
-								<input type="submit" value="게시물 수정 완료">
-							</fieldset>
-							</form>                                  
+										</fieldset>
+							</form>
+									<div class="col-12">
+                                        <button class="btn btn-primary w-100 py-3" type="submit">수정하기</button>
+                                    </div>                                  
                                     <div class="col-12">
-                                    	<a href="promotion?command=list">목록으로 이동</a>
+                                    	<a href="/promotion_list">게시물 목록으로 이동</a>
                                     </div>
                                 </div>
                             </form>

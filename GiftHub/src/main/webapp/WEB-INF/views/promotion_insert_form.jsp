@@ -79,15 +79,8 @@
                 <div class="container my-5 py-5 px-lg-5">
                     <div class="row g-5 py-5">
                         <div class="col-12 text-center">
-                            <h1 class="text-white animated slideInDown">Contact</h1>
+                            <h1 class="text-white animated slideInDown">커뮤니티</h1>
                             <hr class="bg-white mx-auto mt-0" style="width: 90px;">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb justify-content-center">
-                                    <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-                                    <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
-                                    <li class="breadcrumb-item text-white active" aria-current="page">Contact</li>
-                                </ol>
-                            </nav>
                         </div>
                     </div>
                 </div>
@@ -108,30 +101,30 @@
                         <div class="wow fadeInUp" data-wow-delay="0.3s">
                             <p class="text-center mb-4">가게 홍보 및 이벤트 게시물을 작성해주세요.</p>
                             <form>
-                            	<label for="promotion-type">게시글 종류</label>
-    								<select id="promotion-type" name="promotion-type">
+                            	<label>게시글 종류</label>
+    								<select id="promotionType" name="promotionType">
         								<option value="adv">홍보</option>
         								<option value="event">이벤트</option>
     								</select>
                                 <div class="row g-3">
-                                    <div class="col-md-6">
+                                    <div class="col-12">
                                         <div class="form-floating">
-                                         	제목<input type="text" class="form-control" id="title" placeholder="제목을 작성해주세요">
+                                            제목<input type="text" class="form-control" id="promotionTitle" placeholder="Subject">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            내용<textarea class="form-control" placeholder="Leave a message here" id="promotionContent" style="height: 150px"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                        	내용<textarea class="form-control" placeholder="내용을 작성해주세요" id="content" style="height: 150px"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
-                                            이미지 첨부<input type="file" id="image-upload" name="image" accept="image/*"><br>
+                                            이미지 첨부<input type="file" id="promotionImage" name="promotionImage" accept="image/*"><br>
                                         </div>
                                     </div>
 
                                     <div class="col-12">
-                                        <button class="btn btn-primary w-100 py-3" type="submit">취소하기</button>
+                                        <button class="btn btn-primary w-100 py-3" type="reset">취소하기</button>
                                     </div>
                                     <div class="col-12">
                                         <button class="btn btn-primary w-100 py-3" type="submit">등록하기</button>

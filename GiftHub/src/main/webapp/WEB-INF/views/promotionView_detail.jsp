@@ -101,42 +101,34 @@
             <div class="container py-5 px-lg-5">
                 <div class="wow fadeInUp" data-wow-delay="0.1s">
                     <p class="section-title text-secondary justify-content-center"><span></span>커뮤니티<span></span></p>
-                    <h1 class="text-center mb-5">게시물 상세보기</h1>
+                    <h1 class="text-center mb-5">게시물 관리</h1>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-lg-7">
                         <div class="wow fadeInUp" data-wow-delay="0.3s">
-                            <p class="text-center mb-4">게시물 상세보기</p>
-                            <form>
-                            	
-                                <div class="row g-3">
-                                    <h1>상세보기</h1>
-									<table>
+                            <h1>게시물 상세 보기</h1>
+                            
+							<table>
 										<tr>
-											<th>게시물 번호</th><td>${pmt.promotionNo}</td>
+											<th>번호</th>
+											<th>종류</th>
+											<th>제목</th>
+											<th>내용</th>
+											<th>이미지</th>
 										</tr>
+										<c:forEach items="${promotion_view_detail}" var="pm">
 										<tr>
-											<th>게시물 종류</th><td>${pmt.promotionType}</td>
+											<td>${pm.promotionNo}</td>
+											<td><a href="promotion_detail?no=${pm.promotionNo}">${pm.promotionType}</a></td>
+											<td><a href="promotion_detail?no=${pm.promotionNo}">${pm.promotionTitle}</a></td>
+											<td><a href="promotion_detail?no=${pm.promotionNo}">${pm.promotionContent}</a></td>
+											<td><a href="promotion_detail?no=${pm.promotionNo}">${pm.promotionImage}</a></td>
 										</tr>
-										<tr>
-											<th>게시물 제목</th><td>${pmt.promotionTitle}</td>
-										</tr>
-										<tr>
-											<th>게시물 작성일</th><td>${pmt.promotionDate}</td>
-										</tr>
-										<tr>
-											<th>게시물 내용</th>
-										</tr>
-										<tr>
-											<td colspan="2"><textarea rows="3" cols="60">${pmt.promotionContent}</textarea></td>
-										</tr>
-										</table>    
-										<div class="col-12">
-                                        	<button class="btn btn-primary w-100 py-3" type="submit"><a href="promotion_update_form">삭제하기</a></button>
-                                        	<button class="btn btn-primary w-100 py-3" type="submit"><a href="promotion_update_form">수정하기</a></button>
-                                    	</div>                              
+										</c:forEach>
+									</table>
+									                                  
                                     <div class="col-12">
-                                        <button class="btn btn-primary w-100 py-3" type="submit"><a href="promotion_list">게시물 목록으로 이동</a></button>
+                                    	<a href="/promotion_list">게시물 목록으로 이동</a>
                                     </div>
                                 </div>
                             </form>
@@ -249,4 +241,3 @@
     <script src="js/main.js"></script>
 </body>
 </html>
-

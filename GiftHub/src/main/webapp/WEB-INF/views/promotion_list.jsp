@@ -69,7 +69,7 @@
                                 <a href="404.html" class="dropdown-item">404 Page</a>
                             </div>
                         </div>
-                        <a href="contact.html" class="nav-item nav-link active">Contact</a>
+                        <a href="contact.html" class="nav-item nav-link active">커뮤니티</a>
                     </div>
                     <a href="" class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Get Started</a>
                 </div>
@@ -79,15 +79,8 @@
                 <div class="container my-5 py-5 px-lg-5">
                     <div class="row g-5 py-5">
                         <div class="col-12 text-center">
-                            <h1 class="text-white animated slideInDown">Contact</h1>
+                            <h1 class="text-white animated slideInDown">커뮤니티</h1>
                             <hr class="bg-white mx-auto mt-0" style="width: 90px;">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb justify-content-center">
-                                    <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-                                    <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
-                                    <li class="breadcrumb-item text-white active" aria-current="page">Contact</li>
-                                </ol>
-                            </nav>
                         </div>
                     </div>
                 </div>
@@ -114,22 +107,16 @@
 										<tr>
 											<th>번호</th>
 											<th>제목</th>
-											<th>작성자</th>
 										</tr>
-										<c:forEach items="${promotion_list}" var="pm">
+										<c:forEach items="${promotion_list}" var="pmt">
 										<tr>
-											<td>${pm.promotionNo}</td>
-											<td><a href="promotion_detail?no=${pm.promotionNo}">${pm.promotionTitle}</a></td>
-											<td>${pm.storeId}</td>
+											<td>${pmt.promotionNo}</td>
+											<td><a href="promotion_detail?no=${pmt.promotionNo}">${pmt.promotionTitle}</a></td>
 										</tr>
 										</c:forEach>
 									</table>
-                                    
-
                                     <div class="col-12">
-                                        <button class="btn btn-primary w-100 py-3" type="submit"><a href="promotion_detail">상세보기</a></button>
-                                        <button class="btn btn-primary w-100 py-3" type="submit"><a href="promotion_update_form">삭제하기</a></button>
-                                        <button class="btn btn-primary w-100 py-3" type="submit"><a href="promotion_update_form">수정하기</a></button>
+                                        	<button class="btn btn-primary w-100 py-3" type="submit"><a href="promotion_detail">상세보기</a></button>                                    	
                                     </div>
                                 </div>
                             </form>
