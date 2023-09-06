@@ -30,13 +30,13 @@
                                 <div class="row g-3">
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <input type="password" class="form-control" id="pwd" placeholder="비밀번호">
+                                            <input type="password" class="form-control" id="pwd" name="pwd" placeholder="비밀번호" required>
                                             <label for="pwd">비밀번호</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <input type="password" class="form-control" id="pwd_chk" placeholder="비밀번호확인">
+                                            <input type="password" class="form-control" id="pwd_chk" name="pwd_chk" placeholder="비밀번호확인" required>
                                             <label for="pwd_chk">비밀번호확인</label>
                                         </div>
                                     </div>
