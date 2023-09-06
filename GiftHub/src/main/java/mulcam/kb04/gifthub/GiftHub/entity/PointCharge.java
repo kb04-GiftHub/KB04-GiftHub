@@ -26,6 +26,6 @@ public class PointCharge {
 	
 	@ManyToOne
 	@JoinColumn(name = "customerId")
-	private Customer customer;
+	private Customer customerId;
 
 }

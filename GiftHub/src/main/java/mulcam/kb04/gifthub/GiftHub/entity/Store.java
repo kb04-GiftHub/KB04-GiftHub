@@ -14,15 +14,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Store {
-	
+
 	@Id
 	private String storeId;
-	
+
 	private String storePwd, storeName, storeEmail, storeTel, storeAdd1, storeAdd2, storeAdd3;
-	private int storeStatus, categoryNo;
-	
+	private int storeStatus;
+
 	@ManyToOne
 	@JoinColumn(name = "categoryNo")
-	private Category category;
-	
+	private Category categoryNo;
+
 }

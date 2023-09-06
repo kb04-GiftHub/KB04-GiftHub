@@ -1,5 +1,6 @@
 package mulcam.kb04.gifthub.GiftHub.entity;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
 
 import lombok.AllArgsConstructor;
@@ -9,6 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
 public class Customer {
 	@Id
 	private String customerId;
