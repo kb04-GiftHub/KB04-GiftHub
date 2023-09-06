@@ -7,7 +7,9 @@
     
 }
 .bg-primary{background-color:#0058C6 !important}
-
+.btn-primary{background-color:#0058C6 !important}
+.form-control:focus{color:#726D7B;background-color:#fff;border-color:#0058C6;outline:0;box-shadow:0 0 0 .25rem rgba(173, 210, 255, 1)}
+.btn-primary:focus{color:#fff;background-color:#0058C6;border-color:#0058C6;box-shadow:0 0 0 .25rem rgba(173, 210, 255, 1) !important}
 
 /*** Spinner ***/
 #spinner {

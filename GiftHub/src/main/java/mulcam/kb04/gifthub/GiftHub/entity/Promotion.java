@@ -2,6 +2,13 @@ package mulcam.kb04.gifthub.GiftHub.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,78 +16,28 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name="PROMOTION")
 public class Promotion {
-	private String promotionTitle, promotionContent, storeId;
-	private int promotionNo, promotionType;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PROMOTION_SEQ")
+    @SequenceGenerator(sequenceName = "PROMOTION_SEQ", allocationSize = 1, name = "PROMOTION_SEQ")
+	@Column(name="promotionNo")
+	private int promotionNo;
+	
+	@Column(name="promotionTitle")
+	private String promotionTitle;
+	
+	@Column(name="promotionContent")
+	private String promotionContent;
+	
+	@Column(name="storeId")
+	private String storeId;
+	
+	@Column(name="promotionDate")
 	private Date promotionDate;
+	
+	@Column(name="promotionType")
+	private int promotionType;
 
-	public Promotion() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public Promotion(String promotionTitle, String promotionContent, String storeId, int promotionNo, int promotionType,
-			Date promotionDate) {
-		super();
-		this.promotionTitle = promotionTitle;
-		this.promotionContent = promotionContent;
-		this.storeId = storeId;
-		this.promotionNo = promotionNo;
-		this.promotionType = promotionType;
-		this.promotionDate = promotionDate;
-	}
-
-	public String getPromotionTitle() {
-		return promotionTitle;
-	}
-
-	public void setPromotionTitle(String promotionTitle) {
-		this.promotionTitle = promotionTitle;
-	}
-
-	public String getPromotionContent() {
-		return promotionContent;
-	}
-
-	public void setPromotionContent(String promotionContent) {
-		this.promotionContent = promotionContent;
-	}
-
-	public String getStoreId() {
-		return storeId;
-	}
-
-	public void setStoreId(String storeId) {
-		this.storeId = storeId;
-	}
-
-	public int getPromotionNo() {
-		return promotionNo;
-	}
-
-	public void setPromotionNo(int promotionNo) {
-		this.promotionNo = promotionNo;
-	}
-
-	public int getPromotionType() {
-		return promotionType;
-	}
-
-	public void setPromotionType(int promotionType) {
-		this.promotionType = promotionType;
-	}
-
-	public Date getPromotionDate() {
-		return promotionDate;
-	}
-
-	public void setPromotionDate(Date promotionDate) {
-		this.promotionDate = promotionDate;
-	}
-
-	@Override
-	public String toString() {
-		return "Promotion [promotionTitle=" + promotionTitle + ", promotionContent=" + promotionContent + ", storeId="
-				+ storeId + ", promotionNo=" + promotionNo + ", promotionType=" + promotionType + ", promotionDate="
-				+ promotionDate + "]";
-	}
 }
