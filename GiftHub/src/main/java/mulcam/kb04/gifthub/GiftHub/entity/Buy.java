@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 import lombok.AllArgsConstructor;
@@ -32,10 +33,12 @@ public class Buy {
 	private Product productNo;
 
 	private Date buyDate;
-
+	
+	@OneToOne
 	@JoinColumn(name = "storeId")
 	private Store storeId;
 
-	@Column(name = "buyerId")
-	private Buy buyerId;
+	@OneToOne
+	@JoinColumn(name = "buyerId", referencedColumnName = "customerId")
+	private Customer buyerId;
 }

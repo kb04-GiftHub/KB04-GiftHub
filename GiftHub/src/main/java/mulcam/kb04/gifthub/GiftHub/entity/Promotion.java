@@ -31,6 +31,6 @@ public class Promotion {
 	
 	@ManyToOne
 	@JoinColumn(name = "storeId")
-	private Store store;
+	private Store storeId;
 
 }
