@@ -1,6 +1,5 @@
 package mulcam.kb04.gifthub.GiftHub.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,27 +13,27 @@ import mulcam.kb04.gifthub.GiftHub.repository.PromotionRepository;
 
 @Controller
 public class HomeController {
-
+	
+	//게시물 등록하기 
 	@GetMapping("/promotion_insert_form")
     public String promotionInsertForm(Model model) {
         model.addAttribute("promotion", new Promotion());
         return "promotion_insert_form";
     }
 
-	@GetMapping("/promotion_list")
-    public String promotionList(Model model) {
-        // Promotion 데이터를 가정하여 리스트 생성
-        List<Promotion> promotionList = new ArrayList<>();
-        promotionList.add(new Promotion(1, "바삭바삭 소금빵","2000원 할인",2023-08-11,1,"스타벅스1"));
-        promotionList.add(new Promotion(2, "달달한 초코칩"));
+	@Autowired
+    private PromotionRepository promotionRepository;
 
-        model.addAttribute("promotion_list", promotionList);
+    @GetMapping("/promotion_list")
+    public String promotionList(Model model) {
+        // Promotion 테이블에서 데이터를 가져와서 promotionList 생성
+        List<Promotion> promotionList = promotionRepository.findAll();
+       model.addAttribute("promotion_list", promotionList);
         return "promotion_list";
     }
-
 	
 	  @GetMapping("/promotion_detail")
-	    public String promotionDetail(@RequestParam("no") int promotionNo, Model model) {
+	    public String promotionDetail(@RequestParam("PromotionNo") int PromotionNo, Model model) {
 	        // Promotion 데이터를 가정하여 Promotion 객체 생성
 	        Promotion promotion = new Promotion();
 
@@ -44,12 +43,12 @@ public class HomeController {
 	
 	@GetMapping("/promotion_delete_form")
 	public String promotion_delete_form() {
-		return "promotion_delete_form";//게시글 목록 => 삭제 페이지로 이동
+		return "promotion_delete_form";//게시글 목록에서 이동한 삭제 페이지
 	}
 	
 	@GetMapping("/promotion_update_form")
 	public String promotion_update_form() {
-		return "promotion_update_form";//게시글 목록 => 수정 페이지로 이동
+		return "promotion_update_form";//게시글 목록에서 이동한 수정 페이지
 }
 	@GetMapping("/promotionView")
 	public String promotionView() {
@@ -57,6 +56,6 @@ public class HomeController {
 }
 	@GetMapping("/promotionView_detail")
 	public String promotionView_detail() {
-		return "promotionView_detail";//사용자 게시글 상세 보기
+		return "promotionView_detail";//사용자 게시글 목록에서 이동한 사용자 게시글 상세 보기
 }
 }

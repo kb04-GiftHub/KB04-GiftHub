@@ -107,16 +107,18 @@
 										<tr>
 											<th>번호</th>
 											<th>제목</th>
+											<th>상세보기</th>
 										</tr>
 										<c:forEach items="${promotion_list}" var="pmt">
 										<tr>
 											<td>${pmt.promotionNo}</td>
-											<td><a href="promotion_detail?no=${pmt.promotionNo}">${pmt.promotionTitle}</a></td>
+                							<td>${pmt.promotionTitle}</td>
+                							<td><a href="promotion_detail?no=${pmt.promotionNo}">상세보기</a></td>
 										</tr>
 										</c:forEach>
 									</table>
                                     <div class="col-12">
-                                        	<button class="btn btn-primary w-100 py-3" type="submit"><a href="promotion_detail">상세보기</a></button>                                    	
+                                        <a href="promotion_insert_form">게시글 등록하기</a>                                  	
                                     </div>
                                 </div>
                             </form>

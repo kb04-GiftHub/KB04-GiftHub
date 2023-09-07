@@ -115,6 +115,9 @@
 								게시물 내 용 : <br>
 								<textarea rows="3" cols="55" name="content">${dto.promotionContent}</textarea>
 										</fieldset>
+								<div class="form-floating">
+                                        이미지 첨부<input type="file" id="promotionImage" name="promotionImage" accept="image/*"><br>
+                                </div>
 							</form>
 									<div class="col-12">
                                         <button class="btn btn-primary w-100 py-3" type="submit">수정하기</button>
