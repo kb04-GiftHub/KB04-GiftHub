@@ -33,6 +33,7 @@ public class GiftUsed {
 	@JoinColumn(name = "customerId")
 	private Customer customerId;
 
+	
 	private Date usedDate;
 
 }

@@ -6,13 +6,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import mulcam.kb04.gifthub.GiftHub.dto.StoreDto;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Store {
 
 	@Id
@@ -24,5 +27,22 @@ public class Store {
 	@ManyToOne
 	@JoinColumn(name = "categoryNo")
 	private Category categoryNo;
-
+	
+	public static Store dtoToEntity(StoreDto dto) {
+		Category category = new Category();
+		category.setCategoryNo(dto.getCategoryNo());
+		
+		return Store.builder()
+				.storeId(dto.getStoreId())
+				.storePwd(dto.getStorePwd())
+				.storeName(dto.getStoreName())
+				.storeEmail(dto.getStoreEmail())
+				.storeTel(dto.getStoreTel())
+				.storeAdd1(dto.getStoreAdd1())
+				.storeAdd2(dto.getStoreAdd2())
+				.storeAdd3(dto.getStoreAdd3())
+				.storeStatus(dto.getStoreStatus())
+				.categoryNo(category)
+				.build();
+	}
 }
