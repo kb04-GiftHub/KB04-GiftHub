@@ -7,9 +7,10 @@ import org.springframework.stereotype.Repository;
 
 
 import mulcam.kb04.gifthub.GiftHub.entity.Promotion;
+import mulcam.kb04.gifthub.GiftHub.entity.Store;
 
 @Repository
 public interface PromotionRepository extends JpaRepository<Promotion, Integer> {
 	Promotion findByPromotionNo(Integer promotionNo);
-	List<Promotion> findByStoreId(String storeId);
+	List<Promotion> findByStoreId(Store storeId);
 }
