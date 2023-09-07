@@ -18,40 +18,42 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- CheckPwd Start -->
-        <div class="container-xxl py-5">
-            <div class="container py-5 px-lg-5">
-                <div class="row justify-content-center">
-                    <div class="col-lg-7">
-                        <div class="wow fadeInUp" data-wow-delay="0.3s">
-                            <p class="text-center mb-4">회원정보 열람 및 수정을 위해 본인확인을 진행합니다.</p>
-                            <form action="check_action" method="post">
-                                <div class="row g-3">
-                                    <div class="col-12">
-                                        <div class="form-floating">
-                                            <input type="password" class="form-control" id="pwd" name="pwd" placeholder="비밀번호" required>
-                                            <label for="pwd">비밀번호</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-floating">
-                                            <input type="password" class="form-control" id="pwd_chk" name="pwd_chk" placeholder="비밀번호확인" required>
-                                            <label for="pwd_chk">비밀번호확인</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <button class="btn btn-primary w-100 py-3" type="submit">본인확인</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- CheckPwd End -->
-	
+	<div class="container-xxl py-5">
+		<div class="container py-5 px-lg-5">
+			<div class="row justify-content-center">
+				<div class="col-lg-7">
+					<div class="wow fadeInUp" data-wow-delay="0.3s">
+						<p class="text-center mb-4">회원정보 열람 및 수정을 위해 본인확인을 진행합니다.</p>
+						<form action="check_action" method="post">
+							<div class="row g-3">
+								<div class="col-12">
+									<div class="form-floating">
+										<input type="password" class="form-control" id="pwd"
+											name="pwd" placeholder="비밀번호" required>
+											<label for="pwd">비밀번호</label>
+									</div>
+								</div>
+								<div class="col-12">
+									<div class="form-floating">
+										<input type="password" class="form-control" id="pwd_chk"
+											name="pwd_chk" placeholder="비밀번호확인" required>
+											<label for="pwd_chk">비밀번호확인</label>
+									</div>
+								</div>
+								<div class="col-12">
+									<button class="btn btn-primary w-100 py-3" type="submit">본인확인</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- CheckPwd End -->
+
 	<c:import url="../footer.jsp" />
 
 	<!-- Back to Top -->
