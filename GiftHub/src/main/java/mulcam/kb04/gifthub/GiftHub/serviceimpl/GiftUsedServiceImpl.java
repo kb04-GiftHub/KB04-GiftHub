@@ -1,8 +1,5 @@
 package mulcam.kb04.gifthub.GiftHub.serviceimpl;
 
-import java.util.Calendar;
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +12,7 @@ public class GiftUsedServiceImpl implements GiftUsedService {
 	private GiftUsedRepository giftUsedRepository;
 
 	@Override
-	public Long getCountByMonth(int month) {
+	public long getCountByMonth(int month) {
 		return giftUsedRepository.countByMonth(month);
 	}
 }

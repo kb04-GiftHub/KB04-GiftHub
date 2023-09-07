@@ -5,8 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <meta charset="UTF-8">
 <title>Line Chart Example</title>
@@ -41,18 +41,22 @@
 	<canvas id="myChart" width="400" height="200"></canvas>
 
 	<script>
-    function updateChart(month) {
+	let myChart = null; // 그래프 객체를 저장할 전역 변수
+    function updateChart(month)	 {
         const selectedMonth = parseInt(month);
         const lastDay = new Date(2023, selectedMonth, 0).getDate();
-
-        fetch(`/getCountByMonth?month=${selectedMonth}`)
+        // 이전 그래프 삭제
+        if (myChart !== null) {
+            myChart.destroy();
+        }
+        fetch(`/getCountByMonth?month=`+selectedMonth)
             .then(response => response.json())
             .then(data => {
                 const ctx = document.getElementById('myChart').getContext('2d');
-                const myChart = new Chart(ctx, {
+                myChart = new Chart(ctx, {
                     type: 'line',
                     data: {
-                        labels: [`${selectedMonth}월 1일`, `${selectedMonth}월 ${lastDay}일`],
+                        labels: [selectedMonth+`월 1일`, selectedMonth+`월`+ lastDay+`일`],
                         datasets: [{
                             label: 'Gift Used Count',
                             data: [0, data.count], 

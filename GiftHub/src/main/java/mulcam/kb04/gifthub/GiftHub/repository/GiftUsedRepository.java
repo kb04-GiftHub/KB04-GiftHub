@@ -10,5 +10,5 @@ import mulcam.kb04.gifthub.GiftHub.entity.GiftUsed;
 public interface GiftUsedRepository extends JpaRepository<GiftUsed, Integer> {
     
     @Query("SELECT COUNT(g) FROM GiftUsed g WHERE FUNCTION('MONTH', g.usedDate) = :month")
-    Long countByMonth(@Param("month") int month);
+    long countByMonth(@Param("month") int month);
 }
