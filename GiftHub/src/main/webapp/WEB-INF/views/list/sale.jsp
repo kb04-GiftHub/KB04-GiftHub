@@ -90,10 +90,12 @@
                 });
             });
     }
+   
 
     window.onload = function() {
         updateChart();
     };
+
 </script>
 	<div class="container mt-5">
 		<table class="table table-striped">
@@ -122,10 +124,29 @@
 					<td>30000</td>
 					<td>2023-08-02</td>
 				</tr>
-				<!-- ... -->
 			</tbody>
 		</table>
+		<nav aria-label="Page navigation example">
+			<ul class="pagination pagination-primary">
+				<li class="page-item disabled"><a class="page-link" href="#"
+					tabindex="-1" aria-disabled="true">Previous</a></li>
+				<li class="page-item"><a class="page-link" href="#">1</a></li>
+				<li class="page-item"><a class="page-link" href="#">2</a></li>
+				<li class="page-item"><a class="page-link" href="#">3</a></li>
+				<li class="page-item"><a class="page-link" href="#">Next</a></li>
+			</ul>
+		</nav>
 	</div>
+	<style>
+.pagination .page-link {
+	color: blue; /* 텍스트 색을 파란색으로 변경 */
+}
+
+.pagination .page-item.active .page-link {
+	background-color: blue; /* 활성 페이지의 배경색을 파란색으로 변경 */
+	border-color: blue; /* 활성 페이지의 테두리 색을 파란색으로 변경 */
+}
+</style>
 	<script
 		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 	<script
