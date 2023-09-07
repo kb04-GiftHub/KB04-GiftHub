@@ -1,6 +1,7 @@
 package mulcam.kb04.gifthub.GiftHub.controller;
 
 import java.io.File;
+import java.util.Date;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
@@ -13,25 +14,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import mulcam.kb04.gifthub.GiftHub.dto.ProductDto;
+
 
 @Controller
 public class GifticonController {
 	
 	
-	@GetMapping("/about")
-	public String gifticon_add() {
-		//model.addAttribute("msg", msg);
-		
-		//return "project";
-		return "gifticon/add_form";
-	}
-	
-	@PostMapping("/gifticon/insert_action")
-	public String gifticon_insert_action() {
-		
-		return "redirect:/sale";
-	}
-	
+//	@GetMapping("/about")
+//	public String gifticon_add() {
+//		//model.addAttribute("msg", msg);
+//		
+//		//return "project";
+//		return "gifticon/add_form";
+//	}
 	
 	@GetMapping("/gifticon/use")
 	public String gifticon_use() {

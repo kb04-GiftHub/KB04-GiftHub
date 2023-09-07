@@ -23,78 +23,84 @@
 		</div>
 	</div>
 	<!-- Contact Start -->
-    <div class="container-xxl py-5">
-        <div class="container py-5 px-lg-5">
-            <div class="row justify-content-center mb-5">
-                <div class="col-lg-7 text-center">
-                    <div class="wow fadeInUp" data-wow-delay="0.3s">
-                        <form method="post" enctype="multipart/form-data">
-                            <div class="button"></div>
-                            <input type="file" id="chooseFile" name="chooseFile" accept="image/*"
-                                onchange="previewImage(this)"> <img id="preview" src="#" alt="Image Preview"
-                                style="display: none; max-width: 100%; height: auto;">
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-7">
-                    <div class="wow fadeInUp" data-wow-delay="0.3s">
-                        <form action="gifticon/insert_action" method="POST" enctype="multipart/form-data">
-                            <div class="row g-3">
-                                <div class="col-md-12">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="name" name="name"
-                                            placeholder="Your Name"> <label for="name">메뉴명</label>
-                                    </div>
-                                </div>
+	<div class="container-xxl py-5">
+		<div class="container py-5 px-lg-5">
+			<div class="row justify-content-center mb-5">
+				<div class="col-lg-7 text-center">
+					<div class="wow fadeInUp" data-wow-delay="0.3s">
+						<form method="post" enctype="multipart/form-data">
+							
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-lg-7">
+					<div class="wow fadeInUp" data-wow-delay="0.3s">
+						<form action="gifticon/insert_action" method="POST"
+							enctype="multipart/form-data">
+							<div class="button"></div>
+							<input type="file" id="chooseFile" name="chooseFile"> 
+							<img
+								id="preview" src="#" alt="Image Preview"
+								style="display: none; max-width: 100%; height: auto;">
+							<div class="row g-3">
+								<div class="col-md-12">
+									<div class="form-floating">
+										<input type="text" class="form-control" id="name" name="name"
+											placeholder="Your Name"> <label for="name">메뉴명</label>
+									</div>
+								</div>
 
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="costPrice" name="costPrice"
-                                            placeholder="Subject"> <label for="costPrice">원가</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="sellingPrice"
-                                            name="sellingPrice" placeholder="Subject"> <label for="sellingPrice">판매금액</label>
-                                    </div>
-                                </div>
+								<!-- <div class="col-12">
+									<div class="form-floating">
+										<input type="text" class="form-control" id="costPrice"
+											name="costPrice" placeholder="Subject"> <label
+											for="costPrice">원가</label>
+									</div>
+								</div> -->
+								<div class="col-12">
+									<div class="form-floating">
+										<input type="text" class="form-control" id="sellingPrice"
+											name="sellingPrice" placeholder="Subject"> <label
+											for="sellingPrice">판매금액</label>
+									</div>
+								</div>
 
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Leave a message here"
-                                            id="productDescription" name="productDescription"
-                                            style="height: 150px"></textarea>
-                                        <label for="productDescription">상품설명</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-floating">
-                                        <div>
-                                            <label>유효 기간:</label> <input type="radio" id="expiry30" name="expiry"
-                                                value="30" required> <label for="expiry30">30일</label> <input
-                                                type="radio" id="expiry60" name="expiry" value="60"> <label for="expiry60">60일</label>
-                                            <input type="radio" id="expiry90" name="expiry" value="90"> <label
-                                                for="expiry90">90일</label>
-                                        </div>
-                                    </div>
-                                </div>
+								<div class="col-12">
+									<div class="form-floating">
+										<textarea class="form-control"
+											placeholder="Leave a message here" id="productDescription"
+											name="productDescription" style="height: 150px"></textarea>
+										<label for="productDescription">상품설명</label>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-floating">
+										<div>
+											<label>유효 기간:</label> <input type="radio" id="expiry30"
+												name="expiry" value="30" required> <label
+												for="expiry30">30일</label> <input type="radio" id="expiry60"
+												name="expiry" value="60"> <label for="expiry60">60일</label>
+											<input type="radio" id="expiry90" name="expiry" value="90">
+											<label for="expiry90">90일</label>
+										</div>
+									</div>
+								</div>
 
-                                <div class="col-6">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">취소하기</button>
-                                </div>
-                                <div class="col-6">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">등록하기</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+								<div class="col-6">
+									<a href="/" class="btn btn-primary w-100 py-3">취소하기</a>
+								</div>
+								<div class="col-6">
+									<button class="btn btn-primary w-100 py-3" type="submit">등록하기</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- Contact End -->
 
 

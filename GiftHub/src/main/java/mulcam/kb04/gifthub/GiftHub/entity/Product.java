@@ -27,7 +27,7 @@ public class Product {
 	
 	private int productPrice;
 	private String productName, productMemo, productImage;
-	private Date productExp;
+	private int productExp;
 
 	@ManyToOne
 	@JoinColumn(name = "storeId")
