@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>판매 내역</title>
-<!-- <link href="/img/icon.png" rel="icon">
 </head>
 <body> -->
 	<c:import url="../top.jsp" />
@@ -35,7 +34,10 @@
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <button class="btn btn-primary w-100 py-3" type="submit">전송</button>
+                                        <button class="btn btn-primary w-100 py-3" type="submit">사진저장</button>
+                                    </div>
+                                    <div class="col-12">
+                                        <a href="barcode_generate?userId=123123123" class="btn btn-primary w-100 py-3">바코드</a>
                                     </div>
                                 </div>
                             </form>
