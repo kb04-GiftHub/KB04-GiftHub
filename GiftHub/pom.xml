@@ -60,6 +60,17 @@
 			<artifactId>tomcat-embed-jasper</artifactId>
 		</dependency>
 		
+		<dependency>
+		    <groupId>com.google.zxing</groupId>
+		    <artifactId>core</artifactId>
+		    <version>3.4.1</version> <!-- 현재 사용 가능한 최신 버전으로 업데이트 가능 -->
+		</dependency>
+		<dependency>
+		    <groupId>com.google.zxing</groupId>
+		    <artifactId>javase</artifactId>
+		    <version>3.4.1</version> <!-- 현재 사용 가능한 최신 버전으로 업데이트 가능 -->
+		</dependency>
+		
 	</dependencies>
 
 	<build>
