@@ -118,7 +118,7 @@
 										</c:forEach>
 									</table>
                                     <div class="col-12">
-                                        <a href="promotion_insert_form">게시글 등록하기</a>                                  	
+                                        <a href="promotion_insert_form">게시글 새로 등록하기</a>                                  	
                                     </div>
                                 </div>
                             </form>

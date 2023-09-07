@@ -33,8 +33,8 @@ public class PromotionHomController {
 //	    return "promotion_list";
 //	}
 	@GetMapping("/promotion_list")
-	public String promotionList(HttpSession session, Model model) {
-	    String storeId = (String) session.getAttribute("storeId");
+	public String promotionList(int promotionNo, Model model) {
+	    String storeId = "store1234";
 	    
 	    if (storeId != null) {
 	        List<Promotion> promotionList = promotionRepository.findByStoreId(storeId);
