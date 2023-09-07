@@ -26,6 +26,13 @@ public class GifticonController {
 		return "gifticon/add_form";
 	}
 	
+	@PostMapping("/gifticon/insert_action")
+	public String gifticon_insert_action() {
+		
+		return "redirect:/sale";
+	}
+	
+	
 	@GetMapping("/gifticon/use")
 	public String gifticon_use() {
 		return "gifticon/use";
