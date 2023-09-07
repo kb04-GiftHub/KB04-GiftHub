@@ -14,7 +14,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="/img/icon.png" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -62,7 +62,7 @@
                     <div class="navbar-nav mx-auto py-0">
                         
                     </div>
-                    <a href="" class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Get Started</a>
+                    <a href="" class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block">회원가입</a>
                 </div>
             </nav>
 
@@ -74,8 +74,9 @@
                         <h1>${path }</h1>
                             <h1 class="text-white mb-4 animated slideInDown">A Digital Agency Of Inteligents & Creative People</h1>
                             <p class="text-white pb-3 animated slideInDown">Tempor rebum no at dolore lorem clita rebum rebum ipsum rebum stet dolor sed justo kasd. Ut dolor sed magna dolor sea diam. Sit diam sit justo amet ipsum vero ipsum clita lorem</p>
-                            <a href="login" class="btn btn-secondary py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft">로 그 인</a>
-                            <a href="register" class="btn btn-light py-sm-3 px-sm-5 rounded-pill animated slideInRight">회 원 가 입</a>
+                            <a href="" class="btn btn-secondary py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft">가맹점 로그인</a>
+                            <a href="" class="btn btn-light py-sm-3 px-sm-5 rounded-pill animated slideInRight">회원 로그인</a>
+
                         </div>
                         <div class="col-lg-6 text-center text-lg-start">
                             <img class="img-fluid animated zoomIn" src="img/hero.png" alt="">
