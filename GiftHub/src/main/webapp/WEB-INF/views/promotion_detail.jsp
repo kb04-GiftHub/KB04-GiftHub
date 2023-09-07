@@ -108,32 +108,31 @@
                         <div class="wow fadeInUp" data-wow-delay="0.3s">
                             <p class="text-center mb-4">게시물 상세보기</p>
                             <form>
-                            	
                                 <div class="row g-3">
                                     <h1>상세보기</h1>
 									<table>
 										<tr>
-											<th>게시물 번호</th><td>${pmt.promotionNo}</td>
+											<th>게시물 번호</th><td>${promotion.promotionNo}</td>
 										</tr>
 										<tr>
-											<th>게시물 종류</th><td>${pmt.promotionType}</td>
+											<th>게시물 종류</th><td>${promotion.promotionType}</td>
 										</tr>
 										<tr>
-											<th>게시물 제목</th><td>${pmt.promotionTitle}</td>
+											<th>게시물 제목</th><td>${promotion.promotionTitle}</td>
 										</tr>
 										<tr>
-											<th>게시물 작성일</th><td>${pmt.promotionDate}</td>
+											<th>게시물 작성일</th><td>${promotion.promotionDate}</td>
 										</tr>
 										<tr>
 											<th>게시물 내용</th>
 										</tr>
 										<tr>
-											<td colspan="2"><textarea rows="3" cols="60">${pmt.promotionContent}</textarea></td>
+											<td colspan="2"><textarea rows="3" cols="60">${promotion.promotionContent}</textarea></td>
 										</tr>
 										</table>    
 										<div class="col-12">
-                                        	<button class="btn btn-primary w-100 py-3" type="submit"><a href="promotion_update_form">삭제하기</a></button>
-                                        	<button class="btn btn-primary w-100 py-3" type="submit"><a href="promotion_update_form">수정하기</a></button>
+                                        	<button class="btn btn-primary w-100 py-3" type="submit"><a href="promotion_delete_form?promotionNo=${promotion.promotionNo}&promotionTitle=${promotion.promotionTitle}">삭제하기</a></button>
+                                        	<button class="btn btn-primary w-100 py-3" type="submit"><a class="btn btn-primary w-100 py-3" href="promotion_update_form?promotionNo=${promotion.promotionNo}&promotionTitle=${promotion.promotionTitle}&storeId=${promotion.storeId}&promotionContent=${promotion.promotionContent}">수정하기</a></button>
                                     	</div>                              
                                     <div class="col-12">
                                         <button class="btn btn-primary w-100 py-3" type="submit"><a href="promotion_list">게시물 목록으로 이동</a></button>

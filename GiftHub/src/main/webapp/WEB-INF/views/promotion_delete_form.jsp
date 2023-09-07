@@ -107,15 +107,17 @@
                     <div class="col-lg-7">
                         <div class="wow fadeInUp" data-wow-delay="0.3s">
                             <table>
-								<tr>
-									<th>번호</th><td>${pmt.promotionNo }</td>
-								</tr>
-								<tr>
-									<th>제목</th><td>${pmt.promotionTitle}</td>
-								</tr>
-							</table>
+            					<tr>
+                					<th>게시물 번호</th>
+                					<td>${param.promotionNo}</td>
+            					</tr>
+            					<tr>
+                					<th>게시물 제목</th>
+                					<td>${param.promotionTitle}</td>
+            					</tr>
+        					</table>
 									<div class="col-12">
-                                        <button class="btn btn-primary w-100 py-3" type="submit">삭제하기</button>
+                                        <button class="btn btn-primary w-100 py-3" type="submit"  formaction="delete_promotion?promotionNo=${param.promotionNo}">삭제하기</button>
                                     </div>
 							<a href="promotion?command=list">목록으로 이동</a>
                         </div>

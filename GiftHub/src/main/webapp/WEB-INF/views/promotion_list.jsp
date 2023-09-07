@@ -109,11 +109,11 @@
 											<th>제목</th>
 											<th>상세보기</th>
 										</tr>
-										<c:forEach items="${promotion_list}" var="pmt">
+										<c:forEach items="${promotion_list}" var="promotion">
 										<tr>
-											<td>${pmt.promotionNo}</td>
-                							<td>${pmt.promotionTitle}</td>
-                							<td><a href="promotion_detail?no=${pmt.promotionNo}">상세보기</a></td>
+											<td>${promotion.promotionNo}</td>
+                							<td>${promotion.promotionTitle}</td>
+                							<td><a href="promotion_detail?no=${promotion.promotionNo}">상세보기</a></td>
 										</tr>
 										</c:forEach>
 									</table>

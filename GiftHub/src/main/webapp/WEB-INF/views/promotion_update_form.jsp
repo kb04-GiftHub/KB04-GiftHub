@@ -107,13 +107,13 @@
                     <div class="col-lg-7">
                         <div class="wow fadeInUp" data-wow-delay="0.3s">
                             <h1>게시물 수정</h1>
-							<form action="promotion_update_action" method="post">
+							<form>
 							<fieldset>
-								<input type="hidden" name="no" value="${dto.promotionNo}">
-								게시물 제목 : <input type="text" name="title" value="${dto.promotionTitle}"> <br>
-								게시물 작성자 : <input type="text" name="writer" value="${dto.storeId}"> <br>
+								<input type="hidden" name="no" value="${param.promotionNo}">
+								게시물 제목 : <input type="text" name="title" value="${param.promotionTitle}"> <br>
+								게시물 작성자 : <input type="text" name="writer" value="${param.storeId}"> <br>
 								게시물 내 용 : <br>
-								<textarea rows="3" cols="55" name="content">${dto.promotionContent}</textarea>
+								<textarea rows="3" cols="55" name="content">${param.promotionContent}</textarea>
 										</fieldset>
 								<div class="form-floating">
                                         이미지 첨부<input type="file" id="promotionImage" name="promotionImage" accept="image/*"><br>
@@ -126,7 +126,7 @@
                                     	<a href="/promotion_list">게시물 목록으로 이동</a>
                                     </div>
                                 </div>
-                            </form>
+                            
                         </div>
                     </div>
                 </div>
