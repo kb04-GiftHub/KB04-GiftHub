@@ -19,7 +19,7 @@
 		</div>
 	</div>
 	
-	<!-- Contact Start -->
+	<!-- CheckPwd Start -->
         <div class="container-xxl py-5">
             <div class="container py-5 px-lg-5">
                 <div class="row justify-content-center">
@@ -50,7 +50,7 @@
                 </div>
             </div>
         </div>
-        <!-- Contact End -->
+        <!-- CheckPwd End -->
 	
 	<c:import url="../footer.jsp" />
 
@@ -69,6 +69,15 @@
 	<script src="/lib/owlcarousel/owl.carousel.min.js"></script>
 	<script src="/lib/isotope/isotope.pkgd.min.js"></script>
 	<script src="/lib/lightbox/js/lightbox.min.js"></script>
+	
+	<!-- CheckPwd JavaScript -->
+	<script>
+		window.onload = function(){
+			if('${msg}' != '') {
+				alert('${msg}')
+			}
+		}
+	</script>
 
 	<!-- Template Javascript -->
 	<script src="/js/main.js"></script>
