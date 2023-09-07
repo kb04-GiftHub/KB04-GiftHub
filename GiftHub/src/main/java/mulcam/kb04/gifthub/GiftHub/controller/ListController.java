@@ -13,12 +13,11 @@ import mulcam.kb04.gifthub.GiftHub.service.GiftUsedService;
 public class ListController {
 
 	@Autowired
-	private GiftUsedService giftUsedService;
+	private GiftUsedService giftUsedService;	
 
 	@GetMapping("/getMonthlyCount")
 	public ResponseEntity<Map<Integer, Long>> getMonthlyCount() {
 		Map<Integer, Long> counts = giftUsedService.getCountByMonth();
-		System.out.println(counts);
 		return ResponseEntity.ok(counts);
 	}
 }

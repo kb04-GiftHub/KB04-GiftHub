@@ -10,6 +10,9 @@
 <meta charset="UTF-8">
 <title>Line Chart Example</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 </head>
 <body>
 	<c:import url="../top.jsp" />
@@ -22,20 +25,20 @@
 			</div>
 		</div>
 	</div>
-	<select id="monthSelector">
-		<option value="1">1월</option>
-		<option value="2">2월</option>
-		<option value="3">3월</option>
-		<option value="4">4월</option>
-		<option value="5">5월</option>
-		<option value="6">6월</option>
-		<option value="7">7월</option>
-		<option value="8">8월</option>
-		<option value="9">9월</option>
-		<option value="10">10월</option>
-		<option value="11">11월</option>
-		<option value="12">12월</option>
-	</select>
+	<div class="dropdown">
+		<button class="btn btn-primary dropdown-toggle" type="button"
+			id="dropdownMenuButton1" data-bs-toggle="dropdown"
+			aria-expanded="false">2023년</button>
+		<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+			<li><a class="dropdown-item" href="#">2023년</a></li>
+			<li><a class="dropdown-item" href="#">2024년</a></li>
+			<li><a class="dropdown-item" href="#">2025년</a></li>
+			<li><a class="dropdown-item" href="#">2026년</a></li>
+			<li><a class="dropdown-item" href="#">2027년</a></li>
+			<li><a class="dropdown-item" href="#">2028년</a></li>
+		</ul>
+	</div>
+
 
 	<canvas id="myChart" width="400" height="200"></canvas>
 
@@ -57,7 +60,7 @@
                     data: {
                         labels: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
                         datasets: [{
-                            label: 'Gift Used Count',
+                            label: '월별 판매 수',
                             data: Object.values(data), // 서버에서 반환된 월별 카운트 배열
                             borderColor: 'rgba(75, 192, 192, 1)',
                             borderWidth: 1
@@ -68,13 +71,18 @@
                             x: {
                                 title: {
                                     display: true,
-                                    text: 'Month'
+                                    text: '월'
                                 }
                             },
                             y: {
+                            	min: 0, // y축의 최소값 설정
+                                max: 10, // y축의 최대값 설정
+                                ticks: {
+                                    stepSize: 1, // 눈금 간격 설정
+                                },
                                 title: {
                                     display: true,
-                                    text: 'Count'
+                                    text: '판매 수'
                                 }
                             }
                         }
@@ -87,8 +95,41 @@
         updateChart();
     };
 </script>
-
-
-
+	<div class="container mt-5">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">순번</th>
+					<th scope="col">상품명</th>
+					<th scope="col">쿠폰번호</th>
+					<th scope="col">금액</th>
+					<th scope="col">사용일자</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- 서버에서 받은 데이터를 여기에 채워넣으세요. 예시로 몇 개의 행을 추가했습니다. -->
+				<tr>
+					<th scope="row">1</th>
+					<td>상품1</td>
+					<td>12345</td>
+					<td>50000</td>
+					<td>2023-08-01</td>
+				</tr>
+				<tr>
+					<th scope="row">2</th>
+					<td>상품2</td>
+					<td>67890</td>
+					<td>30000</td>
+					<td>2023-08-02</td>
+				</tr>
+				<!-- ... -->
+			</tbody>
+		</table>
+	</div>
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+	<c:import url="../footer.jsp" />
 </body>
 </html>
