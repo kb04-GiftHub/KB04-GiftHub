@@ -1,13 +1,8 @@
 package mulcam.kb04.gifthub.GiftHub.controller;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
-import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
@@ -18,14 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.EncodeHintType;
-import com.google.zxing.MultiFormatWriter;
-import com.google.zxing.WriterException;
-import com.google.zxing.common.BitMatrix;
-
 import mulcam.kb04.gifthub.GiftHub.project.GiftoconGenerator;
-import mulcam.kb04.gifthub.GiftHub.project.UniqueCode;
 
 
 @Controller
@@ -37,6 +25,12 @@ public class GifticonController {
 		
 		//return "project";
 		return "gifticon/add_form";
+	}
+	
+	@PostMapping("/gifticon/insert_action")
+	public String gifticon_insert_action() {
+		
+		return "redirect:/sale";
 	}
 	
 	@GetMapping("/gifticon/use")
