@@ -30,6 +30,7 @@ public class GiftUsed {
 
 	private String usedId;
 
+	
 	private Date usedDate;
 
 }
