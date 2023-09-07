@@ -1,5 +1,8 @@
 package mulcam.kb04.gifthub.GiftHub.service;
 
+import java.util.Map;
+
 public interface GiftUsedService {
-	long getCountByMonth(int month);
+    Map<Integer, Long> getCountByMonth();
 }
+

@@ -5,9 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+<!-- <script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 <meta charset="UTF-8">
 <title>Line Chart Example</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -41,25 +40,25 @@
 	<canvas id="myChart" width="400" height="200"></canvas>
 
 	<script>
-	let myChart = null; // 그래프 객체를 저장할 전역 변수
-    function updateChart(month)	 {
-        const selectedMonth = parseInt(month);
-        const lastDay = new Date(2023, selectedMonth, 0).getDate();
+    let myChart = null; // 그래프 객체를 저장할 전역 변수
+
+    function updateChart() {
         // 이전 그래프 삭제
         if (myChart !== null) {
             myChart.destroy();
         }
-        fetch(`/getCountByMonth?month=`+selectedMonth)
+
+        fetch(`/getMonthlyCount`)
             .then(response => response.json())
             .then(data => {
                 const ctx = document.getElementById('myChart').getContext('2d');
                 myChart = new Chart(ctx, {
                     type: 'line',
                     data: {
-                        labels: [selectedMonth+`월 1일`, selectedMonth+`월`+ lastDay+`일`],
+                        labels: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
                         datasets: [{
                             label: 'Gift Used Count',
-                            data: [0, data.count], 
+                            data: Object.values(data), // 서버에서 반환된 월별 카운트 배열
                             borderColor: 'rgba(75, 192, 192, 1)',
                             borderWidth: 1
                         }]
@@ -69,7 +68,7 @@
                             x: {
                                 title: {
                                     display: true,
-                                    text: 'Date'
+                                    text: 'Month'
                                 }
                             },
                             y: {
@@ -84,14 +83,8 @@
             });
     }
 
-    document.getElementById('monthSelector').addEventListener('change', function() {
-        updateChart(this.value);
-    });
-
     window.onload = function() {
-        const currentMonth = new Date().getMonth() + 1;
-        document.getElementById('monthSelector').value = currentMonth;
-        updateChart(currentMonth);
+        updateChart();
     };
 </script>
 

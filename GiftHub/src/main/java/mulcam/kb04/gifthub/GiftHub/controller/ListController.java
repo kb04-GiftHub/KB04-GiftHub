@@ -1,26 +1,24 @@
 package mulcam.kb04.gifthub.GiftHub.controller;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import mulcam.kb04.gifthub.GiftHub.service.GiftUsedService;
 
-@Controller
+@RestController
 public class ListController {
+
 	@Autowired
 	private GiftUsedService giftUsedService;
 
-	@RequestMapping(value = "/getCountByMonth", produces = "application/json")
-	public Map<String, Long> getCountByMonth(@RequestParam(name = "month") int month, Model model) {
-		Long count = giftUsedService.getCountByMonth(month);
-		Map<String, Long> response = new HashMap<>();
-		response.put("count", count);
-		return response;
+	@GetMapping("/getMonthlyCount")
+	public ResponseEntity<Map<Integer, Long>> getMonthlyCount() {
+		Map<Integer, Long> counts = giftUsedService.getCountByMonth();
+		System.out.println(counts);
+		return ResponseEntity.ok(counts);
 	}
 }
