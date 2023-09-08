@@ -1,5 +1,7 @@
 package mulcam.kb04.gifthub.GiftHub.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,17 +25,16 @@ public class MyPageController {
 	}
 	
 	@PostMapping("/mypage/check_action")
-	public String check_action(@RequestParam String pwd, @RequestParam String pwd_chk,
-			Model model, RedirectAttributes redirect) {
-		StoreDto storeDto = myPageService.findByStoreId("cikin");
-		if(pwd.equals(pwd_chk)) {
-			if(storeDto.getStorePwd().equals(pwd)) {
-				model.addAttribute("storeDto", storeDto);
-				return "mypage/my_info";
-			}
+	public String check_action(@RequestParam String password,
+			Model model, RedirectAttributes redirect, HttpSession session) {
+		String loggedId = (String)session.getAttribute("loggedId");
+		StoreDto storeDto = myPageService.findByStoreId(loggedId);
+		if(storeDto.getStorePwd().equals(password)) {
+			model.addAttribute("storeDto", storeDto);
+			return "mypage/my_info";
 		}
 		
-		redirect.addFlashAttribute("msg", "비밀번호가 일치하지 않습니다.");
+		redirect.addFlashAttribute("msg", " ✖️ 비밀번호가 일치하지 않습니다.");
 		return "redirect:/mypage/check_pwd";
 	}
 	

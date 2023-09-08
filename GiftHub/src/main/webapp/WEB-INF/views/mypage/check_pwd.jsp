@@ -2,22 +2,23 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>본인확인</title>
+<title>마이페이지</title>
 </head>
 <body>
 	<c:import url="../top.jsp" />
-	<div class="container-xxl py-5 bg-primary hero-header">
-		<div class="container my-5 py-5 px-lg-5">
-			<div class="row g-5 py-5">
-				<div class="col-12 text-center">
-					<h1 class="text-white animated slideInDown">마이페이지</h1>
-				</div>
-			</div>
-		</div>
-	</div>
+        <div class="container-xxl py-5 bg-primary hero-header">
+            <div class="container my-5 py-5 px-lg-5">
+                <div class="row g-5 py-5">
+                    <div class="col-12 text-center">
+                        <h1 class="text-white animated slideInDown">마이페이지</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 	<!-- CheckPwd Start -->
 	<div class="container-xxl py-5">
@@ -33,20 +34,21 @@
 							<div class="row g-3">
 								<div class="col-12">
 									<div class="form-floating">
-										<input type="password" class="form-control" id="pwd"
-											name="pwd" placeholder="비밀번호" required>
-											<label for="pwd">비밀번호</label>
+										<input type="password" class="form-control" id="password" name="password" placeholder="비밀번호">
+										<label for="password">비밀번호</label>
 									</div>
 								</div>
 								<div class="col-12">
 									<div class="form-floating">
-										<input type="password" class="form-control" id="pwd_chk"
-											name="pwd_chk" placeholder="비밀번호확인" required>
-											<label for="pwd_chk">비밀번호확인</label>
+										<input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="비밀번호">
+										<label for="confirmPassword">비밀번호 확인</label>
 									</div>
 								</div>
 								<div class="col-12">
-									<button class="btn btn-primary w-100 py-3" type="submit">본인확인</button>
+									<p id="pwdCheckMsg" style="margin: 0;"></p>
+								</div>
+								<div class="col-12">
+									<button class="btn btn-primary w-100 py-3" id="submitBtn" type="submit">본인확인</button>
 								</div>
 							</div>
 						</form>
@@ -75,13 +77,61 @@
 	<script src="/lib/isotope/isotope.pkgd.min.js"></script>
 	<script src="/lib/lightbox/js/lightbox.min.js"></script>
 	
-	<!-- CheckPwd JavaScript -->
 	<script>
-		window.onload = function(){
-			if('${msg}' != '') {
-				alert('${msg}')
-			}
-		}
+	    $(function() {
+	    	if('${msg}' !== '') {
+	    		$("#pwdCheckMsg").text('${msg}');
+	    	}
+	    	
+	    	// 비밀번호 일치 확인
+	    	$("#password, #confirmPassword").keyup(function () {
+	            var password = $("#password").val();
+	            var confirmPassword = $("#confirmPassword").val();
+	            var pwdCheckMsg = $("#pwdCheckMsg");
+
+	            if (password === confirmPassword) {
+	            	if(password === "" || confirmPassword === "") {
+	            		pwdCheckMsg.text(" ✖️ 비밀번호를 입력해주세요.");
+	            	} else {
+	            		pwdCheckMsg.text(" ✔️ 비밀번호가 일치합니다.");
+	            	}
+	            } else {
+	                pwdCheckMsg.text(" ✖️ 비밀번호가 일치하지 않습니다.");
+	            }
+	        });
+	    	
+	    	$("#submitBtn").prop("disabled", true);
+	    	
+	    	// 모든 필수 입력 필드 유효성 검사
+	        function validateFields() {
+	            var password = $("#password").val();
+	            var confirmPassword = $("#confirmPassword").val();
+
+	            // 필드에 값이 없는 경우 유효하지 않음
+	            if (
+	                password.trim() === "" ||
+	                confirmPassword.trim() === ""
+	            ) {
+	                return false;
+	            }
+
+	            if (password !== confirmPassword) {
+	                return false;
+	            }
+
+	            // 모든 필드가 유효한 경우 true 반환
+	            return true;
+	        }
+	    	
+	     	// 필드 값이 변경될 때마다 유효성 검사 수행
+	        $("input").on("input", function() {
+	            if (validateFields()) {
+	                $("#submitBtn").prop("disabled", false);
+	            } else {
+	                $("#submitBtn").prop("disabled", true);
+	            }
+	        });
+	    });
 	</script>
 
 	<!-- Template Javascript -->

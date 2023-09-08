@@ -5,7 +5,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>Login</title>
+<title>로그인</title>
 </head>
 <body>
 	<c:import url="../top.jsp" />
@@ -110,15 +110,6 @@
 	<script src="lib/owlcarousel/owl.carousel.min.js"></script>
 	<script src="lib/isotope/isotope.pkgd.min.js"></script>
 	<script src="lib/lightbox/js/lightbox.min.js"></script>
-	
-	<!-- Check JavaScript -->
-	<script>
-		window.onload = function(){
-			if('${msg}' != '') {
-				alert('${msg}')
-			}
-		}
-	</script>
 
 	<!-- Template Javascript -->
 	<script src="js/main.js"></script>

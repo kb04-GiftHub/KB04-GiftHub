@@ -20,8 +20,8 @@ public class LoginController {
 	LoginService loginService;
 	
 	@GetMapping("/login")
-	public String login(HttpSession ses) {
-		if(ses.getAttribute("loggedId") == null) {
+	public String login(HttpSession session) {
+		if(session.getAttribute("loggedId") != null) {
 			return "index";
 		}
 		return "login/login";
@@ -35,7 +35,7 @@ public class LoginController {
 			StoreDto storeDto = loginService.findByStoreId(id);
 			
 			if(storeDto.getStorePwd().equals(pwd)) {
-				session.setAttribute("loggedId", storeDto);
+				session.setAttribute("loggedId", storeDto.getStoreId());
 				return "login/login_complete";
 			} else {
 				redirect.addFlashAttribute("msg", "비밀번호가 일치하지 않습니다.");

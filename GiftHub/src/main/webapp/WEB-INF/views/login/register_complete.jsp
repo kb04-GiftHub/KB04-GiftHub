@@ -5,7 +5,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>Register</title>
+<title>회원가입</title>
 </head>
 <body>
 	<c:import url="../top.jsp" />

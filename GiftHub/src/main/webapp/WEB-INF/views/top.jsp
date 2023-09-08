@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<% String loggedId = (String)session.getAttribute("loggedId"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,6 +40,16 @@
 
 <!-- Template Stylesheet -->
 <link href="/css/style.css" rel="stylesheet">
+
+<!-- CheckPwd JavaScript -->
+<script>
+	window.onload = function() {
+		if ('${loggedId}'.trim() != '') {
+			document.getElementById('logout').style.visibility = 'visible';
+		}
+	}
+</script>
+
 </head>
 
 <body>
@@ -100,9 +111,8 @@
 						</div>
 						<a href="/contact/contact" class="nav-item nav-link">문의하기</a>
 					</div>
-					<a href=""
-						class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Get
-						Started</a>
+					<a href="/logout"
+						class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block" id="logout" style="visibility: hidden;">LOGOUT</a>
 				</div>
 			</nav>
 

@@ -5,7 +5,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>Mypage</title>
+<title>마이페이지</title>
 </head>
 <body>
 	<c:import url="../top.jsp" />
