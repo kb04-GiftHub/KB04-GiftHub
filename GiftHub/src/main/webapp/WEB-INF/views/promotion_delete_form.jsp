@@ -69,16 +69,23 @@
                 					<th>게시물 제목</th>
                 					<td>${param.promotionTitle}</td>
             					</tr>
-            						
-        					</table>
+            					
+						        <!-- Hidden input for passing promotion number to the server -->
+						        <input type="hidden" name="promotionNo" value="${param.promotionNo}">
+						        <input type="hidden" name="promotionTitle" value="${param.promotionTitle}">
+
+						    </table>
+						
+						    <!-- Moved the submit button inside the form -->
+						    <div class="col-12">
+							    <button class="btn btn-primary w-100 py-3" type="submit">삭제하기</button> 
+							</div>
+						
+							<div class="col-12">
+							     <!-- This link is outside of the form and won't affect its submission -->
+							     <a href="/promotion_list">게시물 목록으로 이동</a>
+							</div>
         					</form>
-									<div class="col-12">
-								        <button class="btn btn-primary w-100 py-3" type="submit">삭제하기</button>
-								    </div>
-									<div class="col-12">
-                                 <a href="/promotion_list">게시물 목록으로 이동</a>
-                            </div>
-							
                         </div>
                     </div>
                 </div>

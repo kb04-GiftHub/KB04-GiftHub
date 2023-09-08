@@ -60,26 +60,37 @@
                     <div class="col-lg-7">
                         <div class="wow fadeInUp" data-wow-delay="0.3s">
                             <h1>게시물 수정</h1>
-							<form action="/promotion_update" method="post">
-							<fieldset>
-								<input type="hidden" name="no" value="${param.promotionNo}">
-								게시물 제목 : <input type="text" name="title" value="${param.promotionTitle}"> <br>
-								게시물 작성자 : <input type="text" name="writer" value="${param.storeId}"> <br>
-								게시물 내 용 : <br>
-								<textarea rows="3" cols="55" name="content">${param.promotionContent}</textarea>
-										</fieldset>
+							<form action="/update_promotion_submit" method="post" enctype="multipart/form-data">
+							  <input type="hidden" name="promotionNo" value="${promotion.promotionNo}">
+							  
+							  <label for="promotionType">게시물 종류</label><br>
+								<select id="promotionType" name="promotionType">
+								  <option value="1" ${promotion.promotionType == '1' ? 'selected' : ''}>홍보</option>
+								  <option value="2" ${promotion.promotionType == '2' ? 'selected' : ''}>이벤트</option>
+								</select><br>
+
+							  게시물 제목<br>
+							  <input type="text" id="promotionTitle" name="promotionTitle" value="${promotion.promotionTitle}"><br>
+							  
+							  <label for="promotionContent">게시물 내용</label><br>
+							  <textarea id="promotionContent" name="promotionContent" rows="10" cols="50">${promotion.promotionContent}</textarea><br>
+
 								<div class="form-floating">
-                                        이미지 첨부<input type="file" id="promotionImage" name="promotionImage" accept="image/*"><br>
-                                </div> 
-							</form>
-									<div class="col-12">
-								        <button class="btn btn-primary w-100 py-3" type="submit">수정완료</button>
-								    </div>                                 
-                                    <div class="col-12">
-                                    	<a href="/promotion_list">게시물 목록으로 이동</a>
-                                    </div>
+							        <img id="currentImage"
+							             src="${pageContext.request.contextPath}/images/promotion/${promotion.promotionImage}"
+							             alt="기존 이미지"
+							             onclick="window.open(this.src)"><br>
+							        이미지 첨부<input type="file"
+							                       id="promotionImage"
+							                       name="promotionImage"
+							                       accept=".jpg,.jpeg,.png"><br>
+							    </div> 
+                                <input class="btn btn-primary w-100 py-3"  type="submit" value="수정완료">                            
+                                <div class="col-12">
+                                 	<a href="/promotion_list">게시물 목록으로 이동</a>
                                 </div>
-                            
+							</form>	
+                                </div>
                         </div>
                     </div>
                 </div>

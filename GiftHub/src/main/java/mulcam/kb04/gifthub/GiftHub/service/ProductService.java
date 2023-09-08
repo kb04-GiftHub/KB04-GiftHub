@@ -13,5 +13,5 @@ public interface ProductService {
 
 //	public ProductDto insertProduct(MultipartFile file, String productName, int productPrice, String productMemo, String productExp);
 	
-	public ProductDto insertProduct(Product product);
+	public Product save(ProductDto product);
 }
