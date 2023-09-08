@@ -9,6 +9,7 @@ import java.util.stream.IntStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import mulcam.kb04.gifthub.GiftHub.dto.GiftDto;
 import mulcam.kb04.gifthub.GiftHub.repository.GiftUsedRepository;
 import mulcam.kb04.gifthub.GiftHub.service.GiftUsedService;
 
@@ -32,4 +33,5 @@ public class GiftUsedServiceImpl implements GiftUsedService {
 		}
 		return countMap;
 	}
+
 }

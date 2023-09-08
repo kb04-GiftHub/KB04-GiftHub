@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class HomeController {
-	
+
 	@GetMapping("/index")
 	public String index() {
 		return "index";
@@ -21,13 +21,14 @@ public class HomeController {
 
 		return "store/home";
 	}
-	
+
 	@GetMapping("/manual")
 	public String manual() {
 		return "manual";
 	}
-	
+
 	@GetMapping("/login")
 	public String login() {
 		return "login/login";
 	}
+}

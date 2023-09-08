@@ -20,11 +20,6 @@ public class StoreHomeController {
 	@Autowired
 	private GiftUsedService giftUsedService;
 
-	@GetMapping("/sale")
-	public String sale() {
-		return "list/sale";
-	}
-
 	@GetMapping("/calculate")
 	public String calculate() {
 		return "list/calculate";

@@ -13,6 +13,16 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
+<style>
+.pagination .page-link {
+	color: blue; /* 텍스트 색을 파란색으로 변경 */
+}
+
+.pagination .page-item.active .page-link {
+	background-color: blue; /* 활성 페이지의 배경색을 파란색으로 변경 */
+	border-color: blue; /* 활성 페이지의 테두리 색을 파란색으로 변경 */
+}
+</style>
 </head>
 <body>
 	<c:import url="../top.jsp" />
@@ -109,23 +119,18 @@
 				</tr>
 			</thead>
 			<tbody>
-				<!-- 서버에서 받은 데이터를 여기에 채워넣으세요. 예시로 몇 개의 행을 추가했습니다. -->
-				<tr>
-					<th scope="row">1</th>
-					<td>상품1</td>
-					<td>12345</td>
-					<td>50000</td>
-					<td>2023-08-01</td>
-				</tr>
-				<tr>
-					<th scope="row">2</th>
-					<td>상품2</td>
-					<td>67890</td>
-					<td>30000</td>
-					<td>2023-08-02</td>
-				</tr>
-			</tbody>
+            <c:forEach var="data" items="${combinedViewData}" varStatus="iterStat">
+                <tr>
+                    <th scope="row">${iterStat.index + 1}</th>
+                    <td>${data.productname}</td>
+                    <td>${data.giftno}</td>
+                    <td>${data.buyprice}</td>
+                    <td>${data.useddate}</td>
+                </tr>
+            </c:forEach>
+        </tbody>
 		</table>
+
 		<nav aria-label="Page navigation example">
 			<ul class="pagination pagination-primary">
 				<li class="page-item disabled"><a class="page-link" href="#"
@@ -137,16 +142,6 @@
 			</ul>
 		</nav>
 	</div>
-	<style>
-.pagination .page-link {
-	color: blue; /* 텍스트 색을 파란색으로 변경 */
-}
-
-.pagination .page-item.active .page-link {
-	background-color: blue; /* 활성 페이지의 배경색을 파란색으로 변경 */
-	border-color: blue; /* 활성 페이지의 테두리 색을 파란색으로 변경 */
-}
-</style>
 	<script
 		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 	<script
