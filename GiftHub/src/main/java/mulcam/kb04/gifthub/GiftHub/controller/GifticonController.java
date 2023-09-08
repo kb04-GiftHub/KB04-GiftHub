@@ -1,8 +1,13 @@
 package mulcam.kb04.gifthub.GiftHub.controller;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.util.UUID;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
+import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
@@ -13,37 +18,34 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.DecodeHintType;
+import com.google.zxing.MultiFormatReader;
+import com.google.zxing.NotFoundException;
+import com.google.zxing.Result;
+import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
+import com.google.zxing.common.HybridBinarizer;
+
 import mulcam.kb04.gifthub.GiftHub.project.GiftoconGenerator;
 
 
 @Controller
 public class GifticonController {
 	
-	@GetMapping("/about")
-	public String gifticon_add() {
-		//model.addAttribute("msg", msg);
-		
-		//return "project";
-		return "gifticon/add_form";
-	}
-	
-	@PostMapping("/gifticon/insert_action")
-	public String gifticon_insert_action() {
-		
-		return "redirect:/sale";
-	}
-	
 	@GetMapping("/gifticon/use")
 	public String gifticon_use() {
 		return "gifticon/use";
 	}
+	
 	
 	@PostMapping("/gifticon/use_action")
 	public String gifticon_use_action(
 			@RequestParam("image") MultipartFile file, 
 			HttpSession ses, Model m) {
 		ServletContext app=ses.getServletContext();
-		String upDir=app.getRealPath("/resources/User_Image");
+//		String upDir=app.getRealPath("/resources/User_Image");
+		String upDir=System.getProperty("user.dir"); // 프로젝트 루트 디렉토리
+		upDir+="/src/main/resources/static/upload_images/gifticon";
 		File dir=new File(upDir);
 		if(!dir.exists()){
 			dir.mkdirs();
@@ -51,8 +53,9 @@ public class GifticonController {
 		if(file != null) {
 			
 			String originFname=file.getOriginalFilename();
-			UUID uuid=UUID.randomUUID();
-			String newfilename=uuid.toString()+"_"+originFname;
+//			UUID uuid=UUID.randomUUID();
+//			String newfilename=uuid.toString()+"_"+originFname;
+			String newfilename="123.png";
 			
 			//새로운 이미지 업로드
 			try {
@@ -60,8 +63,31 @@ public class GifticonController {
 			}catch(Exception e) {
 			}
 		}
-		String rootDirectory = System.getProperty("user.dir"); // 프로젝트 루트 디렉토리
-		System.out.println(rootDirectory);
+		
+		return "redirect:/gifticon/use";
+	}
+	
+	@PostMapping("/gifticon/image_use")
+	public String image_use(@RequestParam MultipartFile image, Model model, HttpSession ses) throws IOException, NotFoundException {
+		
+		Map<DecodeHintType, Object> hints = new HashMap<>();
+        hints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
+        
+        byte[] bytes = image.getBytes();
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes);
+        BufferedImage image1 = ImageIO.read(byteArrayInputStream);
+        
+        BinaryBitmap binaryBitmap = new BinaryBitmap(new HybridBinarizer(new BufferedImageLuminanceSource(image1)));
+        Result result = new MultiFormatReader().decode(binaryBitmap, hints);
+		
+        System.out.println(result.getText());
+        
+		return "redirect:/gifticon/use";
+	}
+	
+	@PostMapping("/gifticon/code_use")
+	public String code_use(@RequestParam int gifticonNo, Model model, HttpSession ses) {
+		System.out.println(gifticonNo);
 		return "redirect:/gifticon/use";
 	}
 	
