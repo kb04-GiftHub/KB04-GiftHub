@@ -8,16 +8,15 @@ import mulcam.kb04.gifthub.GiftHub.entity.Store;
 import mulcam.kb04.gifthub.GiftHub.repository.StoreRepository;
 
 @Component
-public class LoginServiceImpl implements LoginService {
+public class RegisterServiceImpl implements RegisterService {
 
 	@Autowired
 	private StoreRepository repository;
 	
 	@Override
-	public StoreDto findByStoreId(String id) {
-		Store store = repository.findByStoreId(id);
-		StoreDto storeDto = StoreDto.entityToDto(store);
-		return storeDto;
+	public void save(StoreDto storeDto) {
+		Store store = Store.dtoToEntity(storeDto);
+		repository.save(store);
 	}
 
 	@Override
@@ -25,7 +24,5 @@ public class LoginServiceImpl implements LoginService {
 		int cnt = repository.countByStoreId(id);
 		return cnt;
 	}
-
-	
 
 }
