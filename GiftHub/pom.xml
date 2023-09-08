@@ -13,7 +13,9 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>GiftHub</name>
 	<description>kb04 group 3</description>
-	
+	<properties>
+		<java.version>1.8</java.version>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -57,6 +59,17 @@
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
+		</dependency>
+		
+		<dependency>
+		    <groupId>com.google.zxing</groupId>
+		    <artifactId>core</artifactId>
+		    <version>3.4.1</version> <!-- 현재 사용 가능한 최신 버전으로 업데이트 가능 -->
+		</dependency>
+		<dependency>
+		    <groupId>com.google.zxing</groupId>
+		    <artifactId>javase</artifactId>
+		    <version>3.4.1</version> <!-- 현재 사용 가능한 최신 버전으로 업데이트 가능 -->
 		</dependency>
 		
 	</dependencies>

@@ -7,4 +7,5 @@ import mulcam.kb04.gifthub.GiftHub.entity.Product;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
+	
 }
