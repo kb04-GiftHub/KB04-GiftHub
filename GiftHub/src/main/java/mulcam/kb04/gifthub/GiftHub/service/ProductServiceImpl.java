@@ -15,12 +15,22 @@ public class ProductServiceImpl implements ProductService {
 	private ProductRepository repository;
 
 	@Override
-	public Product save(ProductDto productDto) {
+	public ProductDto save(ProductDto productDto) {
 		Product product = Product.dtoToEntity(productDto);
-		repository.save(product);
-		
-		return null;
-	} 
+		Product pro = repository.save(product);
+		ProductDto dto = ProductDto.entityToDto(pro);
+		return dto;
+	}
+
+//	@Override
+//	public Product getProductById(int productId) {
+//		return repository.findById(productId).orElse(null);
+//	}
+
+//	@Override
+//	public Product saveProduct(Product product) {
+//		return repository.save(product);
+//	} 
 
 //	@Override
 //	public ProductDto insertProduct(MultipartFile file, String productName, int productPrice, String productMemo,

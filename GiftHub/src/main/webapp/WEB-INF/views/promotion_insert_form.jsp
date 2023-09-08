@@ -59,12 +59,12 @@
                     <div class="col-lg-7">
                         <div class="wow fadeInUp" data-wow-delay="0.3s">
                             <p class="text-center mb-4">가게 홍보 및 이벤트 게시물을 작성해주세요.</p>
-                            <form action="/promotion_insert" method="post">
-                            	<label>게시글 종류</label>
-    								<select id="promotionType" name="promotionType">
-        								<option value="adv">홍보</option>
-        								<option value="event">이벤트</option>
-    								</select>
+                           <form action="/promotion_insert" method="post" modelAttribute="promotionDto" enctype="multipart/form-data">
+							    <label>게시글 종류</label>
+							    <select id="promotionType" name="promotionType">
+							        <option value="1">홍보</option>
+							        <option value="2">이벤트</option>
+							    </select>
                                 <div class="row g-3">
                                     <div class="col-12">
                                         <div class="form-floating">

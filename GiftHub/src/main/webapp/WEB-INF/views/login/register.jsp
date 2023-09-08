@@ -23,6 +23,9 @@
 	<!-- 회원가입 폼 Start -->
 	<div class="container-xxl py-5">
 		<div class="container py-5 px-lg-5">
+			<div class="wow fadeInUp" data-wow-delay="0.1s">
+				<h1 class="text-center mb-5">ENTER YOUR INFO</h1>
+			</div>
 			<div class="row justify-content-center">
 				<div class="col-lg-7">
 					<div class="wow fadeInUp" data-wow-delay="0.3s">
@@ -31,58 +34,53 @@
 							<div class="row g-3">
 								<div class="col-12">
 									<div class="form-floating">
-										<input type="text" class="form-control" id="name"
-											name="name" placeholder="이름">
-											<label for="name">이름</label>
+										<input type="text" class="form-control" id="name" name="name" placeholder="이름">
+										<label for="name">가게이름</label>
 									</div>
 								</div>
 								<div class="col-6">
 									<div class="form-floating">
-										<input type="text" class="form-control" id="username"
-											name="username" placeholder="아이디">
-											<label for="username">아이디</label>
+										<input type="text" class="form-control" id="username" name="username" placeholder="아이디">
+										<label for="username">아이디</label>
 									</div>
 								</div>
 								<div class="col-6">
 									<button class="btn btn-primary w-100 py-3" id="check_id">중복확인</button>
 								</div>
 								<div class="col-12">
+									<p id="idCheckMsg" style="margin: 0;"></p>
+								</div>
+								<div class="col-12">
 									<div class="form-floating">
-										<input type="password" class="form-control" id="password"
-											name="password" placeholder="비밀번호">
-											<label for="password">비밀번호</label>
+										<input type="password" class="form-control" id="password" name="password" placeholder="비밀번호">
+										<label for="password">비밀번호</label>
 									</div>
 								</div>
 								<div class="col-12">
 									<div class="form-floating">
-										<input type="password" class="form-control" id="confirmPassword"
-											name="confirmPassword" placeholder="비밀번호">
-											<label for="confirmPassword">비밀번호 확인</label>
+										<input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="비밀번호">
+										<label for="confirmPassword">비밀번호 확인</label>
 									</div>
 								</div>
 								<div class="col-12">
 									<p id="pwdCheckMsg" style="margin: 0;"></p>
-									<hr>
 								</div>
 								<div class="col-12">
 									<div class="form-floating">
-										<input type="tel" class="form-control" id="phone"
-											name="phone" placeholder="휴대폰번호">
-											<label for="phone">휴대폰번호</label>
+										<input type="tel" class="form-control" id="phone" name="phone" placeholder="휴대폰번호">
+										<label for="phone">휴대폰번호</label>
 									</div>
 								</div>
 								<div class="col-12">
 									<div class="form-floating">
-										<input type="email" class="form-control" id="email"
-											name="email" placeholder="이메일">
-											<label for="email">이메일</label>
+										<input type="email" class="form-control" id="email" name="email" placeholder="이메일">
+										<label for="email">이메일</label>
 									</div>
 								</div>
 								<div class="col-6">
 									<div class="form-floating">
-										<input type="text" class="form-control postcodify_postcode5" id="address1"
-											name="address1" placeholder="우편번호" readonly>
-											<label for="address1">우편번호</label>
+										<input type="text" class="form-control postcodify_postcode5" id="address1" name="address1" placeholder="우편번호" readonly>
+										<label for="address1">우편번호</label>
 									</div>
 								</div>
 								<div class="col-6">
@@ -90,16 +88,25 @@
 								</div>
 								<div class="col-12">
 									<div class="form-floating">
-										<input type="text" class="form-control postcodify_address" id="address2"
-											name="address2" placeholder="도로명주소" readonly>
-											<label for="address2">도로명주소</label>
+										<input type="text" class="form-control postcodify_address" id="address2" name="address2" placeholder="도로명주소" readonly>
+										<label for="address2">도로명주소</label>
 									</div>
 								</div>
 								<div class="col-12">
 									<div class="form-floating">
-										<input type="text" class="form-control" id="address3"
-											name="address3" placeholder="상세주소">
-											<label for="address3">상세주소</label>
+										<input type="text" class="form-control" id="address3" name="address3" placeholder="상세주소">
+										<label for="address3">상세주소</label>
+									</div>
+								</div>
+								<div class="col-12">
+									<div class="form-floating">
+										<select name="category" id="category" class="form-control">
+											<option>업종을 선택하세요.</option>
+										    <option value="1">Groceries</option>
+										    <option value="2">Electronics</option>
+										    <option value="3">Fashion</option>
+									  	</select>
+									  	<label for="category">업종</label>
 									</div>
 								</div>
 								<div class="col-12">
@@ -141,11 +148,10 @@
 회원은 언제든지 개인정보 수집 및 이용에 대한 동의를 철회할 수 있으며, 이 경우 회원 가입 탈퇴가 이루어질 수 있습니다.
 
 본인은 위에서 설명한 개인정보 수집 및 이용에 대해 동의합니다.</textarea>
-                                        </div>
                                     </div>
-								<div class="col-12">
-									<button class="btn btn-primary w-100 py-3" type="submit">동의하고 회원가입</button>
-									<input type="hidden" value="1" name="category">
+                                </div>    
+                                <div class="col-12">
+									<button class="btn btn-primary w-100 py-3" id="submitBtn" type="submit">동의하고 회원가입</button>
 									<input type="hidden" value="1" name="status">
 								</div>
 							</div>
@@ -158,11 +164,6 @@
 	<!-- 회원가입 폼 End -->
 
 	<!-- 소셜 가입 버튼 Start -->
-	<style>
-		.btn-social {
-			margin-right: 10px; /* 오른쪽 간격 조정 */
-		}
-	</style>
 	<div class="container-xxl p-0">
 		<div class="wow fadeInUp" data-wow-delay="0.1s">
 			<div class="d-flex pt-3 justify-content-center">
@@ -209,30 +210,136 @@
 	
 	<script>
 	    $(function() {
-	    	$('#check_id').click(function() {
-                // 폼의 action 속성 변경
-                $('#myForm').attr('action', 'check_id');
-            });
-	    	
 	    	$('#postcodify_search_button').click(function(e) {
-                e.preventDefault(); // 폼 제출을 중지
+                e.preventDefault();
             });
 	    	
-	    	$("#address1").postcodifyPopUp();
-    		$("#address2").postcodifyPopUp();
-    		$("#postcodify_search_button").postcodifyPopUp();
-    		
-    		if($("#password").val() != $("#confirmPassword").val()) {
-    			$("#pwdCheckMsg").html("비밀번호가 일치하지 않습니다.");
-    		}
+	    	$("#postcodify_search_button").postcodifyPopUp();
+	    	
+	    	// 비밀번호 일치 확인
+	    	$("#password, #confirmPassword").keyup(function () {
+	            var password = $("#password").val();
+	            var confirmPassword = $("#confirmPassword").val();
+	            var pwdCheckMsg = $("#pwdCheckMsg");
+
+	            if (password === confirmPassword) {
+	            	if(password === "" || confirmPassword === "") {
+	            		pwdCheckMsg.text(" ✖️ 비밀번호를 입력해주세요.");
+	            	} else {
+	            		pwdCheckMsg.text(" ✔️ 비밀번호가 일치합니다.");
+	            	}
+	            } else {
+	                pwdCheckMsg.text(" ✖️ 비밀번호가 일치하지 않습니다.");
+	            }
+	        });
+	    	
+	    	// id 중복 확인
+	    	$("#check_id").click(function (e) {
+	            e.preventDefault();
+
+	            var username = $("#username").val();
+	            var idCheckMsg = $("#idCheckMsg");
+
+	            if (username.trim() !== "") {
+	                // Ajax를 사용하여 서버에 중복 확인 요청
+	                $.ajax({
+	                    url: "id_check_action",
+	                    method: "POST",
+	                    data: { username: username },
+	                    success: function (response) {
+	                        if (response === "available") {
+	                            idCheckMsg.text(" ✔️ 사용 가능한 아이디입니다.");
+	                        } else {
+	                            idCheckMsg.text(" ✖️ 이미 사용 중인 아이디입니다.");
+	                        }
+	                    },
+	                    error: function () {
+	                        idCheckMsg.text(" ❗ 서버 오류가 발생했습니다.");
+	                    }
+	                });
+	            } else {
+	                idCheckMsg.text(" ✖️ 아이디를 입력해주세요.");
+	            }
+	        });
+	    	
+	        $("#submitBtn").prop("disabled", true);
+
+	        // 모든 필수 입력 필드 유효성 검사
+	        function validateFields() {
+	            var name = $("#name").val();
+	            var username = $("#username").val();
+	            var password = $("#password").val();
+	            var confirmPassword = $("#confirmPassword").val();
+	            var phone = $("#phone").val();
+	            var email = $("#email").val();
+	            var address1 = $("#address1").val();
+	            var address2 = $("#address2").val();
+	            var address3 = $("#address3").val();
+	            var category = $("#category").val();
+	            var idCheckMsg = $("#idCheckMsg").text();
+
+	            // 필드에 값이 없는 경우 유효하지 않음
+	            if (
+	                name.trim() === "" ||
+	                username.trim() === "" ||
+	                password.trim() === "" ||
+	                confirmPassword.trim() === "" ||
+	                phone.trim() === "" ||
+	                email.trim() === "" ||
+	                address1.trim() === "" ||
+	                address2.trim() === "" ||
+	                address3.trim() === "" ||
+	                category.trim() === ""
+	            ) {
+	                return false;
+	            }
+
+	            if (password !== confirmPassword) {
+	                return false;
+	            }
+	            
+	            if (category === "업종을 선택하세요.") {
+	                return false;
+	            }
+	            
+	            if (
+	            	idCheckMsg.trim() === "✖️이미사용중인아이디입니다." ||
+	            	idCheckMsg.trim() === "✖️아이디를입력해주세요." ||
+	            	idCheckMsg.trim() === ""
+	            ) {
+	                return false;
+	            }
+
+	            // 모든 필드가 유효한 경우 true 반환
+	            return true;
+	        }
+
+	        // 필드 값이 변경될 때마다 유효성 검사 수행
+	        $("select").on("input", function() {
+	            if (validateFields()) {
+	                $("#submitBtn").prop("disabled", false);
+	            } else {
+	                $("#submitBtn").prop("disabled", true);
+	            }
+	        });
+	        
+	        $("input").on("input", function() {
+	            if (validateFields()) {
+	                $("#submitBtn").prop("disabled", false);
+	            } else {
+	                $("#submitBtn").prop("disabled", true);
+	            }
+	        });
+	        
+	        $("p").on("input", function() {
+	            if (validateFields()) {
+	                $("#submitBtn").prop("disabled", false);
+	            } else {
+	                $("#submitBtn").prop("disabled", true);
+	            }
+	        });
+	    	
 	    });
-	
-	    // 주소 선택 후 처리할 함수
-	    function handleSelectedAddress(result) {
-	        // 주소 선택 시 입력 필드에 주소를 설정합니다.
-	        $("#address1").val(result.full); // full 속성은 선택한 주소의 전체 주소입니다.
-	        $("#address2").val(result.full); // full 속성은 선택한 주소의 전체 주소입니다.
-	    }
 	</script>
 
 	<!-- Template Javascript -->

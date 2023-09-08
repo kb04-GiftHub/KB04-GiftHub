@@ -82,8 +82,8 @@
 										</tr>
 										</table>    
 										<div class="col-12">
-											    <button class="btn btn-primary w-100 py-3" type="button"><a href="/promotion_delete_form?promotionNo=${promotion.promotionNo}">삭제하기</a></button>
-											    <button class="btn btn-primary w-100 py-3" type="button"><a href="/promotion_update_form?promotionNo=${promotion.promotionNo}">수정하기</a></button>
+											    <a class="btn btn-primary w-100 py-3" href="/promotion_delete_form?promotionNo=${promotion.promotionNo}&promotionTitle=${promotion.promotionTitle}">삭제하기</a>
+											    <a class="btn btn-primary w-100 py-3" href="/promotion_update_form?promotionNo=${promotion.promotionNo}">수정하기</a>
 										</div>                             
                                     <div class="col-12">
                                         <a href="/promotion_list">게시물 목록으로 이동</a>
