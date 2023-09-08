@@ -25,16 +25,39 @@ public class MyPageController {
 	@PostMapping("/mypage/check_action")
 	public String check_action(@RequestParam String pwd, @RequestParam String pwd_chk,
 			Model model, RedirectAttributes redirect) {
-		StoreDto storeDto = myPageService.findByStoreId("store1234");
+		StoreDto storeDto = myPageService.findByStoreId("cikin");
 		if(pwd.equals(pwd_chk)) {
 			if(storeDto.getStorePwd().equals(pwd)) {
-				model.addAttribute("msg", "본인인증 성공");
-				return "mypage/update_info";
+				model.addAttribute("storeDto", storeDto);
+				return "mypage/my_info";
 			}
 		}
 		
 		redirect.addFlashAttribute("msg", "비밀번호가 일치하지 않습니다.");
 		return "redirect:/mypage/check_pwd";
 	}
+	
+	@PostMapping("/mypage/update_action")
+	public String update_action(@RequestParam("name") String name,
+			@RequestParam("username") String id, @RequestParam("phone") String phone,
+			@RequestParam("email") String email, @RequestParam("address1") String add1,
+			@RequestParam("address2") String add2, @RequestParam("address3") String add3,
+			@RequestParam("category") int cate) {
+		
+		StoreDto storeDto = myPageService.findByStoreId(id);
+
+		storeDto.setStoreName(name);
+		storeDto.setStoreTel(phone);
+		storeDto.setStoreEmail(email);
+		storeDto.setStoreAdd1(add1);
+		storeDto.setStoreAdd2(add2);
+		storeDto.setStoreAdd3(add3);
+		storeDto.setCategoryNo(cate);
+		
+		myPageService.save(storeDto);
+		
+		return "mypage/update_complete";
+	}
+	
 	
 }

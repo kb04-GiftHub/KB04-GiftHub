@@ -9,5 +9,6 @@ import mulcam.kb04.gifthub.GiftHub.entity.Store;
 public interface StoreRepository extends JpaRepository<Store, String> {
 
 	Store findByStoreId(String id);
+	int countByStoreId(String id);
 	
 }
