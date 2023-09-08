@@ -78,7 +78,7 @@
 							<a href="about" class="nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">기프티콘 관리</a>
 							<div class="dropdown-menu m-0">
-								<a href="about" class="dropdown-item">상품등록</a> <a
+								<a href="/product" class="dropdown-item">상품등록</a> <a
 									href="calculate" class="dropdown-item">기프티콘 사용</a>
 							</div>
 						</div>

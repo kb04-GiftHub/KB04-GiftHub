@@ -14,11 +14,18 @@ public class LoginServiceImpl implements LoginService {
 	private StoreRepository repository;
 	
 	@Override
-	public Store save(StoreDto storeDto) {
-		Store store = Store.dtoToEntity(storeDto);
-		repository.save(store);
-		
-		return null;
+	public StoreDto findByStoreId(String id) {
+		Store store = repository.findByStoreId(id);
+		StoreDto storeDto = StoreDto.entityToDto(store);
+		return storeDto;
 	}
+
+	@Override
+	public int countByStoreId(String id) {
+		int cnt = repository.countByStoreId(id);
+		return cnt;
+	}
+
+	
 
 }

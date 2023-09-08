@@ -28,27 +28,39 @@
 			<div class="row justify-content-center mb-5">
 				<div class="col-lg-7 text-center">
 					<div class="wow fadeInUp" data-wow-delay="0.3s">
-						<form method="post" enctype="multipart/form-data">
-							
-						</form>
+						<form method="post" enctype="multipart/form-data"></form>
 					</div>
 				</div>
 			</div>
 			<div class="row justify-content-center">
-				<div class="col-lg-7" >
+				<div class="col-lg-7">
 					<div class="wow fadeInUp" data-wow-delay="0.3s">
 						<form action="product/insert_action" method="POST"
 							enctype="multipart/form-data">
 							<div class="button"></div>
-							<img id="preview" src="#" alt="Image Preview"
+							<!-- <img id="preview" src="#" alt="Image Preview"
 								style="display: none; max-width: 100%; height: auto;">
 							<input type="file" id="chooseFile" name="chooseFile" onchange="previewImage()"> 
+							 -->
+							<div class="row justify-content-center align-items-center mt-5">
+								<div class="col-md-6 text-center">
+									<div class="mb-3 text-center" style="margin-bottom: 10px;">
+										<img id="preview" src="#" alt="Image Preview"
+											style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+									</div>
+									<div class="mb-3">
+										<input type="file" class="form-control" id="chooseFile" name="chooseFile"
+											onchange="previewImage()">
+									</div>
+								</div>
+							</div>
+
 							<div class="row g-3">
-							<div class="col-md-12" style="margin-top: 10px;"></div>
+								<div class="col-md-12" style="margin-top: 10px;"></div>
 								<div class="col-md-12">
 									<div class="form-floating">
 										<input type="text" class="form-control" id="name" name="name"
-											placeholder="Your Name"> <label for="name">메뉴명</label>
+											placeholder="Your Name"> <label for="name">상품명</label>
 									</div>
 								</div>
 
@@ -59,8 +71,8 @@
 											for="costPrice">원가</label>
 									</div>
 								</div> -->
-						
-								
+
+
 								<div class="col-12">
 									<div class="form-floating">
 										<input type="text" class="form-control" id="sellingPrice"
@@ -132,7 +144,7 @@
 
 	<!-- Template Javascript -->
 	<script src="/js/main.js"></script>
-	
+
 	<!-- 선택한 이미지 보여주기 -->
 	<script>
     function previewImage() {
@@ -151,6 +163,6 @@
         }
     }
 </script>
-	
+
 </body>
 </html>

@@ -21,10 +21,5 @@ public class HomeController {
 	public String manual() {
 		return "manual";
 	}
-
-	@GetMapping("/login")
-	public String login() {
-		return "login/login";
-	}
-
+	
 }
