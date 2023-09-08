@@ -21,7 +21,6 @@ public class CombinedViewServiceImpl implements CombinedViewService {
 
 	@Override
 	public long getCountByStoreId(String storeId) {
-		System.out.println("====================");
 		return repository.countByStoreId(storeId);
 	}
 }
