@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import mulcam.kb04.gifthub.GiftHub.dto.StoreDto;
 
 @Service
-public interface LoginService {
-	public StoreDto findByStoreId(String id);
+public interface RegisterService {
+	public void save(StoreDto storeDto);
 	public int countByStoreId(String id);
 }
