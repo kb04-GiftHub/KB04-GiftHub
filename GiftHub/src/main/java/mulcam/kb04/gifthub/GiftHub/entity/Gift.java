@@ -23,20 +23,20 @@ public class Gift {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GIFT_SEQ")
 	@SequenceGenerator(sequenceName = "GIFT_SEQ", allocationSize = 1, name = "GIFT_SEQ")
-	private int giftNo;
+	private int giftNo;		// 기프티콘 번호(pk)
 
-	private int giftStatus;
+	private int giftStatus; // 사용여부
 
 	@OneToOne
 	@JoinColumn(name = "buyNo")
-	private Buy buyNo;
+	private Buy buyNo;		// 구매번호
 
-	private String giftBarcode;
+	private String giftBarcode;	// 바코드
 
 	@ManyToOne
-	@JoinColumn(name = "customerId")
-	private Customer customerId;
+	@JoinColumn(name = "customerId")	
+	private Customer customerId;	// 사용자 ID
 
-	private Date giftExp;
+	private Date giftExp;	// 유효기간
 
 }

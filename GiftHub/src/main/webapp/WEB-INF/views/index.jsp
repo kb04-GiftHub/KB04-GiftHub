@@ -4,8 +4,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <c:set var="path" value="${pageContext.request.contextPath}" /> 
-<!DOCTYPE html>
-<html>
 <head>
     <meta charset="utf-8">
     <title>GiftHub</title>
