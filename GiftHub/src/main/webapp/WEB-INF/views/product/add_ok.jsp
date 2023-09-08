@@ -38,7 +38,7 @@
 			<div class="col-lg-7">
 				<div class="wow fadeInUp" data-wow-delay="0.3s">
 					<!-- start -->
-					<div class="button"></div>
+					
 					<div class="row justify-content-center align-items-center mt-5">
 						<div class="col-md-6 text-center">
 							<!-- 이미지 -->
