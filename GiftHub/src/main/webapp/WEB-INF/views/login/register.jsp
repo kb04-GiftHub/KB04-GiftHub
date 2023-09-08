@@ -7,6 +7,23 @@
 <meta charset="UTF-8">
 <title>Register</title>
 </head>
+<script>
+	function check_pw(){
+		var pw = document.getElementById('pw').value;
+		var check_SC = 0;
+		
+		if(document.getElementById('password').value != '' && document.getElementById('confirmPassword').value != ''){
+			if(document.getElementById('password').value == document.getElementById('confirmPassword').value){
+				document.getElementById('pwdCheckMsg').innerHTML='비밀번호가 일치합니다.'
+				document.getElementById('pwdCheckMsg').style.color='blue';
+			}
+                else{
+                    document.getElementById('check').innerHTML='비밀번호가 일치하지 않습니다.';
+                    document.getElementById('check').style.color='red';
+                }
+            }
+        }
+    </script>
 <body>
 	<c:import url="../top.jsp" />
         <div class="container-xxl py-5 bg-primary hero-header">
@@ -218,21 +235,20 @@
                 e.preventDefault(); // 폼 제출을 중지
             });
 	    	
+	    	$("#postcodify_search_button").postcodifyPopUp();
 	    	$("#address1").postcodifyPopUp();
-    		$("#address2").postcodifyPopUp();
-    		$("#postcodify_search_button").postcodifyPopUp();
-    		
-    		if($("#password").val() != $("#confirmPassword").val()) {
-    			$("#pwdCheckMsg").html("비밀번호가 일치하지 않습니다.");
-    		}
+	    	$("#address2").postcodifyPopUp();
+	    	
+	    	
+	    	/* $("#address1").click(function() {
+		    	if($("#address1").val() != '') {
+		        	$("#address1").attr("disabled", true);
+		        	$("#address2").attr("disabled", true);
+		        	console.log($("#address1").val());
+		        }
+		    }); */
+	    	
 	    });
-	
-	    // 주소 선택 후 처리할 함수
-	    function handleSelectedAddress(result) {
-	        // 주소 선택 시 입력 필드에 주소를 설정합니다.
-	        $("#address1").val(result.full); // full 속성은 선택한 주소의 전체 주소입니다.
-	        $("#address2").val(result.full); // full 속성은 선택한 주소의 전체 주소입니다.
-	    }
 	</script>
 
 	<!-- Template Javascript -->
