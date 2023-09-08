@@ -149,32 +149,6 @@
 				</li>
 			</ul>
 		</nav>
-		<%-- <nav aria-label="Page navigation example">
-			<ul class="pagination pagination-primary">
-				<li class="page-item ${currentPage == 1 ? 'disabled' : ''}"><a
-					class="page-link" href="?page=1&storeId=${storeId}"><<</a></li>
-				<li class="page-item ${currentPage == 1 ? 'disabled' : ''}"><a
-					class="page-link"
-					href="?page=${currentPage - 1}&storeId=${storeId}"><</a></li>
-
-				<c:forEach var="i" begin="${(currentGroup - 1) * pagesPerGroup + 1}"
-					end="${Math.min(currentGroup * pagesPerGroup, totalPages)}">
-					<li class="page-item ${i == currentPage ? 'active' : ''}"><a
-						class="page-link" href="?page=${i}&storeId=${storeId}">${i}</a></li>
-				</c:forEach>
-
-				<li class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
-					<a class="page-link"
-					href="?page=${currentPage + 1}&storeId=${storeId}">></a>
-				</li>
-				<li class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
-					<a class="page-link" href="?page=${totalPages}&storeId=${storeId}">>></a>
-				</li>
-			</ul>
-		</nav> --%>
-
-
-
 	</div>
 	<script
 		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
