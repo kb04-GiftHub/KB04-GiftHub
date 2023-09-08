@@ -99,7 +99,7 @@
     };
 
 </script>
-	<div class="container mt-5">
+	<div class="container mt-5" id="tableSection">
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -137,9 +137,9 @@
 					value="${currentGroup * pagesPerGroup > totalPages ? totalPages : currentGroup * pagesPerGroup}" />
 				<c:forEach var="i" begin="${startPage}" end="${endPage}">
 					<li class="page-item ${i == currentPage ? 'active' : ''}"><a
-						class="page-link" href="?page=${i}&storeId=${storeId}">${i}</a></li>
+						class="page-link"
+						href="?page=${i}&storeId=${storeId}#tableSection">${i}</a></li>
 				</c:forEach>
-
 				<li class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
 					<a class="page-link"
 					href="?page=${currentPage + 1}&storeId=${storeId}">></a>
