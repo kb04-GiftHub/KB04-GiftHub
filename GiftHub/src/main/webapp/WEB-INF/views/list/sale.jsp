@@ -8,7 +8,7 @@
 <!-- <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 <meta charset="UTF-8">
-<title>Line Chart Example</title>
+<title>판매 내역</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
