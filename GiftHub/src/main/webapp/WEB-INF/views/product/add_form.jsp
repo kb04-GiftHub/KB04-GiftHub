@@ -44,9 +44,9 @@
 							 -->
 							<div class="row justify-content-center align-items-center mt-5">
 								<div class="col-md-6 text-center">
-									<div class="mb-3" style="margin-bottom: 10px;">
+									<div class="mb-3 text-center" style="margin-bottom: 10px;">
 										<img id="preview" src="#" alt="Image Preview"
-											style="max-width: 100%; height: auto;">
+											style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
 									</div>
 									<div class="mb-3">
 										<input type="file" class="form-control" id="chooseFile" name="chooseFile"
