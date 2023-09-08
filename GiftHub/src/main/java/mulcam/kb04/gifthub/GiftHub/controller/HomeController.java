@@ -22,9 +22,4 @@ public class HomeController {
 		return "manual";
 	}
 	
-	@GetMapping("/login")
-	public String login() {
-		return "login/login";
-	}
-	
 }

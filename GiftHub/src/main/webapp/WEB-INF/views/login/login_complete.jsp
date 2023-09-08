@@ -14,6 +14,7 @@
 			<div class="row g-5 py-5">
 				<div class="col-12 text-center">
 					<h1 class="text-white animated slideInDown">로그인</h1>
+					<h1>${loggedId.storeId }</h1>
 				</div>
 			</div>
 		</div>
