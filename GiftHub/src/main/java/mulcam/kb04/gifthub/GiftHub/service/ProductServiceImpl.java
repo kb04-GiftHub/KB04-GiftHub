@@ -15,9 +15,10 @@ public class ProductServiceImpl implements ProductService {
 	private ProductRepository repository;
 
 	@Override
-	public ProductDto insertProduct(Product product) {
-
+	public Product save(ProductDto productDto) {
+		Product product = Product.dtoToEntity(productDto);
 		repository.save(product);
+		
 		return null;
 	} 
 

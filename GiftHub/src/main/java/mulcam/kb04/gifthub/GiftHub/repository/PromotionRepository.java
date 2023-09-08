@@ -12,4 +12,5 @@ import mulcam.kb04.gifthub.GiftHub.entity.Store;
 public interface PromotionRepository extends JpaRepository<Promotion, Integer> {
 	Promotion findByPromotionNo(Integer promotionNo);
 	List<Promotion> findByStoreId(Store storeId);
+	
 }

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>판매 내역</title>
+<title>상품 등록</title>
 </head>
 <body>
 	<c:import url="../top.jsp" />
@@ -35,16 +35,16 @@
 				</div>
 			</div>
 			<div class="row justify-content-center">
-				<div class="col-lg-7">
+				<div class="col-lg-7" >
 					<div class="wow fadeInUp" data-wow-delay="0.3s">
-						<form action="gifticon/insert_action" method="POST"
+						<form action="product/insert_action" method="POST"
 							enctype="multipart/form-data">
 							<div class="button"></div>
-							<input type="file" id="chooseFile" name="chooseFile"> 
-							<img
-								id="preview" src="#" alt="Image Preview"
+							<img id="preview" src="#" alt="Image Preview"
 								style="display: none; max-width: 100%; height: auto;">
+							<input type="file" id="chooseFile" name="chooseFile" onchange="previewImage()"> 
 							<div class="row g-3">
+							<div class="col-md-12" style="margin-top: 10px;"></div>
 								<div class="col-md-12">
 									<div class="form-floating">
 										<input type="text" class="form-control" id="name" name="name"
@@ -59,6 +59,8 @@
 											for="costPrice">원가</label>
 									</div>
 								</div> -->
+						
+								
 								<div class="col-12">
 									<div class="form-floating">
 										<input type="text" class="form-control" id="sellingPrice"
@@ -130,5 +132,25 @@
 
 	<!-- Template Javascript -->
 	<script src="/js/main.js"></script>
+	
+	<!-- 선택한 이미지 보여주기 -->
+	<script>
+    function previewImage() {
+        var input = document.getElementById('chooseFile');
+        var preview = document.getElementById('preview');
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+	
 </body>
 </html>

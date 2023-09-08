@@ -1,6 +1,10 @@
 package mulcam.kb04.gifthub.GiftHub.controller;
 
 import java.io.File;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
@@ -21,16 +25,16 @@ import mulcam.kb04.gifthub.GiftHub.repository.ProductRepository;
 public class ProductController {
 	
 	@Autowired
-	//private ProductService productService;
-	private ProductRepository repository;
+	ProductService productService;
+//	private ProductRepository repository;
 
 	@GetMapping("/about")
 	public String gifticon_add() {
 		
-		return "gifticon/add_form";
+		return "product/add_form";
 	}
 
-	@PostMapping("/gifticon/insert_action")
+	@PostMapping("/product/insert_action")
 	public String gifticon_insert_action(
 			@RequestParam("chooseFile") MultipartFile file,
 			@RequestParam("name") String productName, 
@@ -40,7 +44,7 @@ public class ProductController {
 			HttpSession ses){
 		
 
-		// 이미지 저장
+		// [1] 이미지 저장
 		ServletContext app=ses.getServletContext();
 		String upDir=app.getRealPath("/resources/products");
 		File dir=new File(upDir);
@@ -64,36 +68,34 @@ public class ProductController {
 		}
 		
 		
-		Product product = new Product();
-		Store store = new Store();
-		store.setStoreId("store01");
-		product.setProductImage(newfilename);
-		product.setProductExp(Integer.parseInt(productExp.substring(0,2)));
-		product.setProductName(productName);
-		product.setProductPrice(productPrice);
-		product.setProductMemo(productMemo);
-		product.setStoreId(store);
+		// [2] 유효기간 설정
+		// '일'을 추출하고 숫자로 파싱
+	    String daysSubstring = productExp.replaceAll("[^0-9]", "");
+	    int daysToAdd = Integer.parseInt(daysSubstring);
+	    // 현재 날짜 가져오기
+	    Calendar calendar = Calendar.getInstance();
+	    Date currentDate = calendar.getTime();
+	    // 날짜 더하기
+	    calendar.setTime(currentDate);
+	    calendar.add(Calendar.DATE, daysToAdd);
+	    // 결과 날짜
+	    Date expiryDate = calendar.getTime();
+	   
+ 
+		// [3] dto 생성
+		ProductDto productDto = new ProductDto();
 		
-		repository.save(product);
+		productDto.setProductPrice(productPrice);
+		productDto.setProductName(productName);
+		productDto.setProductMemo(productMemo);
+		productDto.setProductExp(expiryDate);
+		productDto.setProductImage(newfilename);
+		productDto.setStoreId("store01");
 		
+		productService.save(productDto);
+		System.out.println("등록완료");
 		
-//		product.setProductExp(produectExp);
-		
-		
-		
-//		// dto 생성
-//		ProductDto productDto = new ProductDto();
-//		productDto.setProductName(productName);
-//		productDto.setProductPrice(productPrice);
-//		productDto.setProductMemo(productMemo);
-//		//productDto.setProductExp(productExp);
-//		productDto.setProductImage(newfilename);
-//		
-//		
-//		
-//		productService.insertProduct(productDto);
-		
-		return "gifticon/add_ok";
+		return "product/add_ok";
 	} 
 
 }
