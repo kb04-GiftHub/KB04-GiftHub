@@ -41,41 +41,59 @@ public class PromotionHomController {
         model.addAttribute("promotion", new Promotion());
         return "promotion_insert_form";
     }
-//	//게시물 등록 처리
-//	@PostMapping("/promotion_insert")
-//	  public String insertPromotion(@ModelAttribute PromotionDto dto, HttpSession ses) {
-//		String storeIdString = "store1234";
-//		String str = (String)ses.getAttribute("storeId");
-//		
-//		System.out.println(str);
-//		dto.setStoreId(str);
-//	      // Dto에서 Entity로 변환 후 저장 
-//		Promotion entity = Promotion.dtoToEntity(dto);
-//        entity.setPromotionDate(new Date()); // 현재 시간으로 설정
-//	      
-//	      String upDir=System.getProperty("user.dir"); // 프로젝트 루트 디렉토리
-		//upDir+="/src/main/resources/static/upload_images/promotion";
-		//File dir=new File(upDir);
-		//if(!dir.exists()){
-		//	dir.mkdirs();
-		//}
-		//String newfilename ="";
-		//if(promotionImage != null) {
-		//	String originFname=promotionImage.getOriginalFilename();
-		//	UUID uuid=UUID.randomUUID();
-		//	newfilename=uuid.toString()+"_"+originFname;
-		//	
-			//새로운 이미지 업로드
-		//	try {
-		//		promotionImage.transferTo(new File(upDir,newfilename));
-		//	}catch(Exception e) {
-		//		
-		//	}
-		//}
-//	      
-//	     promotionRepository.save(entity);
-//	     return "redirect:/promotion_list";
-//	   }
+	
+      //게시물 등록 처리 
+	@PostMapping("/promotion_insert")
+	  public String insertPromotion(@ModelAttribute PromotionDto dto, HttpSession ses, @RequestParam("promotionImage") MultipartFile promotionImage) {
+		String storeIdString = "store1234";
+		String str = (String)ses.getAttribute("storeId");
+		
+		System.out.println(str);
+		dto.setStoreId(str);
+
+		
+		Promotion entity = Promotion.dtoToEntity(dto);
+        entity.setPromotionDate(new Date()); // 현재 시간으로 설정
+        int promotionType = dto.getPromotionType();
+        String promotionTitle = dto.getPromotionTitle();
+        String promotionContent = dto.getPromotionContent();
+        
+	    
+     // 이미지 업로드 및 저장
+        String upDir = System.getProperty("user.dir"); 
+        upDir += "/src/main/resources/static/upload_images/promotion";
+        
+        File dir = new File(upDir);
+        
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+        
+        String newfilename = "";
+        
+        if (promotionImage != null && !promotionImage.isEmpty()) {
+            String originFname = promotionImage.getOriginalFilename();
+            UUID uuid = UUID.randomUUID();
+            newfilename = uuid.toString() + "_" + originFname;
+            
+            try {
+                promotionImage.transferTo(new File(upDir, newfilename));
+                dto.setPromotionImage(newfilename);  // Set the filename to the DTO
+            } catch (IOException e) {
+                e.printStackTrace(); 
+                // Add error handling here
+            }
+            
+            
+         }
+
+         dto.setPromotionContent(promotionContent);
+		 dto.setPromotionType(promotionType);
+		 dto.setPromotionTitle(promotionTitle);
+	     dto = promotionService.save(dto);
+        
+	     return "redirect:/promotion_list";
+	   }
 	
 	
 	//게시물 목록 

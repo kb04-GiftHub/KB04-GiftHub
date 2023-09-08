@@ -19,7 +19,7 @@ public class PromotionDto {
 	private String promotionTitle, promotionContent;
 	private String storeId;
 	private int promotionNo;
-	public int promotionType;
+	private int promotionType;
 	private Date promotionDate;
 	private String promotionImage;
 	

@@ -12,12 +12,11 @@ import mulcam.kb04.gifthub.GiftHub.entity.Store;
 @Service
 public interface PromotionService {
 	PromotionDto findByPromotionNo(int promotionNo);
-//    Promotion save(PromotionDto promotionDto);
-//    
+	
 	void deleteBypromotionNo(int promotionNo);
     List<PromotionDto> findByStoreId(String storeId);
-//    Optional<Promotion> findByPromotionNoAsEntity(int promotionNo);
-//    void deleteById(int promotionNo);
-//    Optional<Promotion> findById(int promotionNo);
+
     PromotionDto save(PromotionDto promotionDto);
+    
+    PromotionDto savePromotion(PromotionDto promotionDto);
 }
