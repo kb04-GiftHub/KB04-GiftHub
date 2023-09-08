@@ -1,8 +1,6 @@
 package mulcam.kb04.gifthub.GiftHub.controller;
 
 import java.io.File;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
@@ -13,16 +11,17 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import mulcam.kb04.gifthub.GiftHub.dto.ProductDto;
-import mulcam.kb04.gifthub.GiftHub.entity.Product;
-import mulcam.kb04.gifthub.GiftHub.entity.Store;
-import mulcam.kb04.gifthub.GiftHub.repository.ProductRepository;
 import mulcam.kb04.gifthub.GiftHub.service.ProductService;
+import mulcam.kb04.gifthub.GiftHub.service.ProductServiceImpl;
 
 @Controller
 public class ProductController {
@@ -31,7 +30,7 @@ public class ProductController {
 	ProductService productService;
 //	private ProductRepository repository;
 
-	@GetMapping("/about")
+	@GetMapping("/product")
 	public String gifticon_add() {
 		
 		return "product/add_form";
@@ -44,7 +43,7 @@ public class ProductController {
 			@RequestParam("sellingPrice") int productPrice, 
 			@RequestParam("productDescription") String productMemo,
 			@RequestParam("expiry") String productExp,
-			HttpSession ses){
+			HttpSession ses, Model model){
 		
 
 		// [1] 이미지 저장
@@ -93,12 +92,29 @@ public class ProductController {
 		productDto.setProductMemo(productMemo);
 		productDto.setProductExp(expiryDate);
 		productDto.setProductImage(newfilename);
-		productDto.setStoreId("store01");
+		productDto.setStoreId("store01");			// 수정할 부분
 		
-		productService.save(productDto);
+		ProductDto dto = productService.save(productDto);
 		System.out.println("등록완료");
 		
+		model.addAttribute("dto", dto);
+		
+		
+		System.out.println(productDto);
 		return "product/add_ok";
 	} 
+	
+//	@GetMapping("/product/add_ok")
+//	public String product_add_ok(@PathVariable int productId, Model model) {
+//		
+//		//Product product = productService.getProductById(productId);
+//		//System.out.println(product);
+//		//model.addAttribute("product", product);
+////		Product savedProduct = productService.saveProduct(product);
+////		
+////		model.addAttribute("savedProduct", savedProduct);
+//		
+//		return "product/add_ok";
+//	}
 
 }

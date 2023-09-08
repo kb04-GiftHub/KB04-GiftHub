@@ -78,7 +78,7 @@
 							<a href="about" class="nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">기프티콘 관리</a>
 							<div class="dropdown-menu m-0">
-								<a href="about" class="dropdown-item">상품등록</a> <a
+								<a href="/product" class="dropdown-item">상품등록</a> <a
 									href="calculate" class="dropdown-item">기프티콘 사용</a>
 							</div>
 						</div>
@@ -95,7 +95,7 @@
 								data-bs-toggle="dropdown">내역 관리</a>
 							<div class="dropdown-menu m-0">
 								<a href="sale" class="dropdown-item">판매 내역</a> <a
-									href="calculate" class="dropdown-item">정산 내역</a>
+									href="exchange" class="dropdown-item">정산 내역</a>
 							</div>
 						</div>
 						<a href="/contact/contact" class="nav-item nav-link">문의하기</a>
