@@ -22,6 +22,9 @@
 	<!-- CheckPwd Start -->
 	<div class="container-xxl py-5">
 		<div class="container py-5 px-lg-5">
+			<div class="wow fadeInUp" data-wow-delay="0.1s">
+				<h1 class="text-center mb-5">CHECK YOUR PASSWORD</h1>
+			</div>
 			<div class="row justify-content-center">
 				<div class="col-lg-7">
 					<div class="wow fadeInUp" data-wow-delay="0.3s">

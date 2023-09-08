@@ -19,5 +19,11 @@ public class MyPageServiceImpl implements MyPageService {
 		StoreDto storeDto = StoreDto.entityToDto(store);
 		return storeDto;
 	}
+
+	@Override
+	public void save(StoreDto storeDto) {
+		Store store = Store.dtoToEntity(storeDto);
+		repository.save(store);
+	}
 	
 }
