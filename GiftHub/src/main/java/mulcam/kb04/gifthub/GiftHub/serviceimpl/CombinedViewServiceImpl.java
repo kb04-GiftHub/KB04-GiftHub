@@ -18,4 +18,10 @@ public class CombinedViewServiceImpl implements CombinedViewService {
 	public List<CombinedView> findByStoreId(String storeId) {
 		return repository.findByStoreId(storeId);
 	}
+
+	@Override
+	public long getCountByStoreId(String storeId) {
+		System.out.println("====================");
+		return repository.countByStoreId(storeId);
+	}
 }

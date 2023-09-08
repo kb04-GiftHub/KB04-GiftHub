@@ -8,4 +8,6 @@ import mulcam.kb04.gifthub.GiftHub.entity.CombinedView;
 
 public interface CombinedViewRepository extends JpaRepository<CombinedView, Integer> {
 	List<CombinedView> findByStoreId(String storeId);
+
+	long countByStoreId(String storeId);
 }
