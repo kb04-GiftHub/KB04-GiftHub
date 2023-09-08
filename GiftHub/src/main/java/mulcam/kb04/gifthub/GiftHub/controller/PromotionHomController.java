@@ -1,14 +1,16 @@
 package mulcam.kb04.gifthub.GiftHub.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
+import java.util.UUID;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,62 +26,64 @@ import mulcam.kb04.gifthub.GiftHub.entity.Promotion;
 import mulcam.kb04.gifthub.GiftHub.entity.Store;
 import mulcam.kb04.gifthub.GiftHub.repository.PromotionRepository;
 import mulcam.kb04.gifthub.GiftHub.repository.StoreRepository;
+import mulcam.kb04.gifthub.GiftHub.service.PromotionService;
 
 @Controller
 public class PromotionHomController {
 
+	@Autowired
+	private PromotionService promotionService;
+	
 	//게시물 등록 폼  
 	@GetMapping("/promotion_insert_form")
-    public String promotionInsertForm(Model model) {
+    public String promotionInsertForm(Model model, HttpSession ses) {
+		ses.setAttribute("storeId", "store1234");
         model.addAttribute("promotion", new Promotion());
         return "promotion_insert_form";
     }
-	//게시물 등록 처리 
-	@PostMapping("/promotion_insert")
-	public String addPromotion(@ModelAttribute PromotionDto dto,
-	                           @RequestParam("promotionImage") MultipartFile file,
-	                           HttpServletRequest request) {
-	    if (!file.isEmpty()) {
-	        // 파일 처리 코드 (서버에 파일 저장 및 DB에 파일 경로 저장)
-	        try {
-	            byte[] bytes = file.getBytes();
-	            Path path = Paths.get(request.getServletContext().getRealPath("/images/") + file.getOriginalFilename());
-	            Files.write(path, bytes);
-	            dto.setPromotionImage("/images/" + file.getOriginalFilename());
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
-	    }
-
-	    String storeIdString = "store1234";
-		Store storeId = storeRepository.findById(storeIdString).orElse(null);
-		
-		Promotion promo = new Promotion();
-		promo.setPromotionTitle(dto.getPromotionTitle());
-		promo.setPromotionContent(dto.getPromotionContent());
-		promo.setStoreId(storeId);
-		promo.setPromotionType(dto.promotionType);
-		promo.setPromotionImage(dto.promotionImage); // 이미지 URL 세팅
-
-		Promotion savedPromo = PromotionRepository.save(promotion); 
-
-		return "redirect:/";
-	}
+//	//게시물 등록 처리
+//	@PostMapping("/promotion_insert")
+//	  public String insertPromotion(@ModelAttribute PromotionDto dto, HttpSession ses) {
+//		String storeIdString = "store1234";
+//		String str = (String)ses.getAttribute("storeId");
+//		
+//		System.out.println(str);
+//		dto.setStoreId(str);
+//	      // Dto에서 Entity로 변환 후 저장 
+//		Promotion entity = Promotion.dtoToEntity(dto);
+//        entity.setPromotionDate(new Date()); // 현재 시간으로 설정
+//	      
+//	      String upDir=System.getProperty("user.dir"); // 프로젝트 루트 디렉토리
+		//upDir+="/src/main/resources/static/upload_images/promotion";
+		//File dir=new File(upDir);
+		//if(!dir.exists()){
+		//	dir.mkdirs();
+		//}
+		//String newfilename ="";
+		//if(promotionImage != null) {
+		//	String originFname=promotionImage.getOriginalFilename();
+		//	UUID uuid=UUID.randomUUID();
+		//	newfilename=uuid.toString()+"_"+originFname;
+		//	
+			//새로운 이미지 업로드
+		//	try {
+		//		promotionImage.transferTo(new File(upDir,newfilename));
+		//	}catch(Exception e) {
+		//		
+		//	}
+		//}
+//	      
+//	     promotionRepository.save(entity);
+//	     return "redirect:/promotion_list";
+//	   }
+	
 	
 	//게시물 목록 
-	@Autowired
-    private PromotionRepository promotionRepository;
-	@Autowired
-	private StoreRepository storeRepository;
-
 	@GetMapping("/promotion_list")
 	public String promotionList(Model model) {
 	String storeIdString = "store1234";
-	Store storeId = storeRepository.findById(storeIdString).orElse(null);
-	if (storeId != null) {
-	    List<Promotion> promotionList = promotionRepository.findByStoreId(storeId);
-	    model.addAttribute("promotion_list", promotionList);
-	}
+	List<PromotionDto> promotionList = promotionService.findByStoreId(storeIdString);
+	model.addAttribute("promotion_list", promotionList);
 
 	return "promotion_list";
 	}
@@ -87,10 +91,10 @@ public class PromotionHomController {
 	//게시물 목록에서 이동한 상세 페이지
 	@GetMapping("/promotion_detail")
 	public String promotionDetail(@RequestParam("promotionNo") int promotionNo, Model model) {
-	    Optional<Promotion> promotion = Optional.of(promotionRepository.findByPromotionNo(promotionNo));
-	    promotion.ifPresent(value -> model.addAttribute("promotion", value));
-	    return "promotion_detail";
-	}
+        PromotionDto promotionDto = promotionService.findByPromotionNo(promotionNo);
+        model.addAttribute("promotion", promotionDto);
+        return "promotion_detail";
+    }
 
 	//게시글 상세페이지에서 이동한 삭제 폼
 	@GetMapping("/promotion_delete_form")
@@ -98,66 +102,70 @@ public class PromotionHomController {
 		return "promotion_delete_form";
 	}
 	 //게시글 삭제 처리
-	 @GetMapping("/promotion_delete")
-	 public String promotionDelete(@RequestParam("promotionNo") int promotionNo,@RequestParam("promotionTitle") String promotionTitle) {
-	        promotionRepository.deleteById(promotionNo);
-	        return "redirect:/promotion_list";
-	    }
+	@GetMapping("/promotion_delete")
+    public String promotionDelete(@RequestParam("promotionNo") int promotionNo, @RequestParam("promotionTitle") String promotionTitle) {
+        promotionService.deleteBypromotionNo(promotionNo);
+        return "redirect:/promotion_list";
+    }
+	 //게시물 수정 폼 
+	 @GetMapping("/promotion_update_form")
+	 public String promotionUpdateForm(@RequestParam("promotionNo") int promotionNo, Model model) {
+		 PromotionDto dto = promotionService.findByPromotionNo(promotionNo);
+     if (dto != null) {
+	         model.addAttribute("promotion", dto);
+	     }
+	     return "promotion_update_form";
+	 }
 	 
-	//게시글 상세페이지에서 이동한 수정 폼
-	@GetMapping("/promotion_update_form")
-	public String promotion_update_form() {
-		return "promotion_update_form";
-}
 	//게시글 수정 처리
-	    @PostMapping("/promotion_update")
-	    public String promotionUpdate(@RequestParam("promotionNo") int promotionNo, @RequestParam("promotionTitle") String promotionTitle, @RequestParam("storeId") Store storeId, @RequestParam("promotionContent") String promotionContent) {
-	        Promotion promotion = promotionRepository.findById(promotionNo).orElse(null);
-	        if (promotion != null) {
-	            promotion.setPromotionTitle(promotionTitle);
-	            promotion.setStoreId(storeId);
-	            promotion.setPromotionContent(promotionContent);
-	            promotionRepository.save(promotion);
-	        }
+	 @PostMapping("/update_promotion_submit")
+	    public String promotionUpdate(@RequestParam("promotionNo") int promotionNo,
+	    		@RequestParam("promotionType") int promotionType,
+	    		@RequestParam("promotionTitle") String promotionTitle, 
+	    		@RequestParam("promotionContent") String promotionContent,
+	    		@RequestParam("promotionImage") MultipartFile promotionImage,
+	    		Model model
+	    		) {
+		 
+			String upDir=System.getProperty("user.dir"); // 프로젝트 루트 디렉토리
+			upDir+="/src/main/resources/static/upload_images/promotion";
+			File dir=new File(upDir);
+			if(!dir.exists()){
+				dir.mkdirs();
+			}
+			String newfilename ="";
+			if(promotionImage != null) {
+				String originFname=promotionImage.getOriginalFilename();
+				UUID uuid=UUID.randomUUID();
+				newfilename=uuid.toString()+"_"+originFname;
+				
+				//새로운 이미지 업로드
+				try {
+					promotionImage.transferTo(new File(upDir,newfilename));
+				}catch(Exception e) {
+					
+				}
+			}
+		 
+		 PromotionDto dto = promotionService.findByPromotionNo(promotionNo);
+		 dto.setPromotionContent(promotionContent);
+		 dto.setPromotionType(promotionType);
+		 dto.setPromotionTitle(promotionTitle);
+		 dto.setPromotionImage(newfilename);
+	     dto = promotionService.save(dto);
 	        return "redirect:/promotion_list";
-	    }	
-	
-	//게시글 삭제 기능
-	@PostMapping("/delete_promotion")
-	public String deletePromotion(@RequestParam("promotionNo") Integer promotionNo) {
-	    promotionRepository.deleteById(promotionNo);
-	    return "redirect:/promotion_list";
-	}
-
-	//게시글 수정 기능
-	@PostMapping("/update_promotion")
-	public String updatePromotion(@ModelAttribute Promotion promotion) {
-	    if (Objects.nonNull(promotion.getPromotionNo())) {
-	        Optional<Promotion> existingPromo = promotionRepository.findById(promotion.getPromotionNo());
-	        if (existingPromo.isPresent()) {
-	            Promotion updatedPromo = existingPromo.get();
-	            updatedPromo.setStoreId(promotion.getStoreId());
-	            updatedPromo.setPromotionTitle(promotion.getPromotionTitle());
-	            updatedPromo.setPromotionContent(promotion.getPromotionContent());
-	            // 여기에 필요한 필드들이 더 있다면 추가하세요.
-	            promotionRepository.save(updatedPromo);
-	        }
-	    }
-	    
-	    return "redirect:/promo_list";
-	}
-	
-	
-	//사용자 커뮤니티 view
-	//사용자(가맹점주X) 게시글 목록 보기
-	@GetMapping("/promotionView")
-	public String promotionView() {
-		return "promotionView";
-}
-	//사용자(가맹점주X) 게시글 목록에서 이동한 사용자 게시글 상세 보기
-	@GetMapping("/promotionView_detail")
-	public String promotionView_detail() {
-		return "promotionView_detail";
-}
+	 }	
+	   
+//	//사용자 커뮤니티 view
+//	//사용자(가맹점주X) 게시글 목록 보기
+//	@GetMapping("/promotionView")
+//	public String promotionView() {
+//		return "promotionView";
+//}
+//	//사용자(가맹점주X) 게시글 목록에서 이동한 사용자 게시글 상세 보기
+//	@GetMapping("/promotionView_detail")
+//	public String promotionView_detail() {
+//		return "promotionView_detail";
+//}
 
 }
