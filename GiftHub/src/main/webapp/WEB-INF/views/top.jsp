@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<% String loggedId = (String)session.getAttribute("loggedId"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,7 +40,6 @@
 <!-- Template Stylesheet -->
 <link href="/css/style.css" rel="stylesheet">
 
-<!-- CheckPwd JavaScript -->
 <script>
 	window.onload = function() {
 		if ('${loggedId}'.trim() != '') {

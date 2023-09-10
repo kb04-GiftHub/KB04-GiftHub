@@ -20,7 +20,7 @@
         </div>
     </div>
 
-	<!-- 회원가입 폼 Start -->
+	<!-- 마이페이지 폼 Start -->
 	<div class="container-xxl py-5">
 		<div class="container py-5 px-lg-5">
 			<div class="wow fadeInUp" data-wow-delay="0.1s">
@@ -115,6 +115,15 @@
                                 <div class="col-12">
 									<button class="btn btn-primary w-100 py-3" id="submitBtn" type="submit">수정하기</button>
 								</div>
+								<div class="col-12">
+									<hr style="margin-top: 30px; margin-bottom: 0px;">
+								</div>
+								<div class="col-12">
+									<p style="margin: 0; text-align: center; margin-top: 30px;">수정할 정보가 없으신가요?</p>
+								</div>
+								<div class="col-12">
+									<button class="btn btn-primary w-100 py-3" id="idexBtn">메인페이지로 돌아가기</button>
+								</div>
 							</div>
 						</form>
 					</div>
@@ -122,7 +131,7 @@
 			</div>
 		</div>
 	</div>
-	<!-- 회원가입 폼 End -->
+	<!-- 마이페이지 폼 End -->
 
 	<c:import url="../footer.jsp" />
 
@@ -148,7 +157,8 @@
             });
 	    	
 	    	$("#postcodify_search_button").postcodifyPopUp();
-	    	
+	    	$("#submitBtn").prop("disabled", true);
+	    		    	
 	        // 모든 필수 입력 필드 유효성 검사
 	        function validateFields() {
 	            var name = $("#name").val();
@@ -159,6 +169,19 @@
 	            var address3 = $("#address3").val();
 	            var category = $("#category").val();
 
+	            // 필드에 값이 바뀌지 않은 경우 유효하지 않음
+	            if (
+	                name == '${storeDto.storeName}' &&
+	                phone == '${storeDto.storeTel}' &&
+	                email == '${storeDto.storeEmail}' &&
+	                address1 == '${storeDto.storeAdd1}' &&
+	                address2 == '${storeDto.storeAdd2}' &&
+	                address3 == '${storeDto.storeAdd3}' &&
+	                category == '${storeDto.categoryNo}'
+	            ) {
+	                return false;
+	            }
+	            
 	            // 필드에 값이 없는 경우 유효하지 않음
 	            if (
 	                name.trim() === "" ||
@@ -179,9 +202,92 @@
 	            // 모든 필드가 유효한 경우 true 반환
 	            return true;
 	        }
+	        
+	        function checkChange() {
+	            var name = $("#name").val();
+	            var phone = $("#phone").val();
+	            var email = $("#email").val();
+	            var address1 = $("#address1").val();
+	            var address2 = $("#address2").val();
+	            var address3 = $("#address3").val();
+	            var category = $("#category").val();
 
-	        // 필드 값이 변경될 때마다 유효성 검사 수행
+	            // 필드에 값이 바뀐 경우 표시
+	            if(name.trim() == '') {
+	            	$("#name").css("border-color", "#e00000");
+	            	$("#name").css("border-width", "3px");
+	            } else if (name != '${storeDto.storeName}') {
+	            	$("#name").css("border-color", "#0058C6");
+	            	$("#name").css("border-width", "3px");
+	            } else {
+	            	$("#name").css("border-color", "#ced4da");
+	            	$("#name").css("border-width", "1px");
+	            }
+	            
+	            if(phone.trim() == '') {
+	            	$("#phone").css("border-color", "#e00000");
+	            	$("#phone").css("border-width", "3px");
+	            } else if (phone != '${storeDto.storeTel}') {
+	            	$("#phone").css("border-color", "#0058C6");
+	            	$("#phone").css("border-width", "3px");
+	            } else {
+	            	$("#phone").css("border-color", "#ced4da");
+	            	$("#phone").css("border-width", "1px");
+	            }
+	            
+	            if(email.trim() == '') {
+	            	$("#email").css("border-color", "#e00000");
+	            	$("#email").css("border-width", "3px");
+	            } else if (email != '${storeDto.storeEmail}') {
+	            	$("#email").css("border-color", "#0058C6");
+	            	$("#email").css("border-width", "3px");
+	            } else {
+	            	$("#email").css("border-color", "#ced4da");
+	            	$("#email").css("border-width", "1px");
+	            }
+	            
+	            if (address1 != '${storeDto.storeAdd1}') {
+	            	$("#address1").css("border-color", "#0058C6");
+	            	$("#address1").css("border-width", "3px");
+	            } else {
+	            	$("#address1").css("border-color", "#ced4da");
+	            	$("#address1").css("border-width", "1px");
+	            }
+	            
+	            if (address2 != '${storeDto.storeAdd2}') {
+	            	$("#address2").css("border-color", "#0058C6");
+	            	$("#address2").css("border-width", "3px");
+	            } else {
+	            	$("#address2").css("border-color", "#ced4da");
+	            	$("#address2").css("border-width", "1px");
+	            }
+	            
+	            if(address3.trim() == '') {
+	            	$("#address3").css("border-color", "#e00000");
+	            	$("#address3").css("border-width", "3px");
+	            } else if (address3 != '${storeDto.storeAdd3}') {
+	            	$("#address3").css("border-color", "#0058C6");
+	            	$("#address3").css("border-width", "3px");
+	            } else {
+	            	$("#address3").css("border-color", "#ced4da");
+	            	$("#address3").css("border-width", "1px");
+	            }
+	            
+	            if(category === "업종을 선택하세요.") {
+	            	$("#category").css("border-color", "#e00000");
+	            	$("#category").css("border-width", "3px");
+	            } else if (category != '${storeDto.categoryNo}') {
+	            	$("#category").css("border-color", "#0058C6");
+	            	$("#category").css("border-width", "3px");
+	            } else {
+	            	$("#category").css("border-color", "#ced4da");
+	            	$("#category").css("border-width", "1px");
+	            }
+	        }
+
+	        // 필드 값이 변경될 때마다 실행
 	        $("select").on("input", function() {
+	        	checkChange();
 	            if (validateFields()) {
 	                $("#submitBtn").prop("disabled", false);
 	            } else {
@@ -190,13 +296,19 @@
 	        });
 	        
 	        $("input").on("input", function() {
+	        	checkChange();
 	            if (validateFields()) {
 	                $("#submitBtn").prop("disabled", false);
 	            } else {
 	                $("#submitBtn").prop("disabled", true);
 	            }
 	        });
-	    	
+	        
+	        $("#idexBtn").click(function(e) {
+	        	e.preventDefault();
+	            var url = "/";
+	            window.location.href = url;
+	        });
 	    });
 	</script>
 

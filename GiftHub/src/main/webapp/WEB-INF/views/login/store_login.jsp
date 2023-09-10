@@ -24,6 +24,7 @@
 	<div class="container-xxl py-5">
 		<div class="container py-5 px-lg-5">
 			<div class="wow fadeInUp" data-wow-delay="0.1s">
+			<p class="section-title text-secondary justify-content-center"><span></span>가맹점 로그인<span></span></p>
 				<h1 class="text-center mb-5">ENTER YOUR INFO</h1>
 			</div>
 			<div class="row justify-content-center">
@@ -43,7 +44,10 @@
 										<input type="password" class="form-control" id="password" name="password" placeholder="비밀번호">
 										<label for="password">비밀번호</label>
 									</div>
-								</div>  
+								</div> 
+								<div class="col-12">
+									<p id="checkMsg" style="margin: 0;"></p>
+								</div> 
                                 <div class="col-12">
 									<button class="btn btn-primary w-100 py-3" id="submitBtn" type="submit">로그인</button>
 								</div>
@@ -60,7 +64,7 @@
 									<p style="margin: 0; text-align: center; margin-top: 30px;">아직 GiftHub 회원이 아니신가요?</p>
 								</div>
 								<div class="col-12">
-									<button class="btn btn-primary w-100 py-3" id="registerBtn">회원가입</button>
+									<button class="btn btn-primary w-100 py-3" id="registerBtn" >회원가입</button>
 								</div>
 							</div>
 						</form>
@@ -110,6 +114,48 @@
 	<script src="lib/owlcarousel/owl.carousel.min.js"></script>
 	<script src="lib/isotope/isotope.pkgd.min.js"></script>
 	<script src="lib/lightbox/js/lightbox.min.js"></script>
+	
+	<script>
+    $(function() {
+    	if('${msg}' !== '') {
+    		$("#checkMsg").text('${msg}');
+    	}
+    	
+    	$("#submitBtn").prop("disabled", true);
+    	
+    	// 모든 필수 입력 필드 유효성 검사
+        function validateFields() {
+            var username = $("#username").val();
+            var password = $("#password").val();
+
+            // 필드에 값이 없는 경우 유효하지 않음
+            if (
+            	username.trim() === "" ||
+            	password.trim() === ""
+            ) {
+                return false;
+            }
+
+            // 모든 필드가 유효한 경우 true 반환
+            return true;
+        }
+    	
+     	// 필드 값이 변경될 때마다 유효성 검사 수행
+        $("input").on("input", function() {
+            if (validateFields()) {
+                $("#submitBtn").prop("disabled", false);
+            } else {
+                $("#submitBtn").prop("disabled", true);
+            }
+        });
+     	
+        $("#registerBtn").click(function(e) {
+        	e.preventDefault();
+            var url = "/register";
+            window.location.href = url;
+        });
+    });
+	</script>
 
 	<!-- Template Javascript -->
 	<script src="js/main.js"></script>
