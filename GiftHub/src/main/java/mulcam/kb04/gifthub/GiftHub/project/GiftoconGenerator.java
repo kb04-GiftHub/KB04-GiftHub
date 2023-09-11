@@ -28,7 +28,7 @@ public class GiftoconGenerator {
 		
         productImageFile = "2022-11-16.jpg";
         barcodeImageFile = "barcode.png";
-        productDescription = "이 기프티콘은 특별한 선물입니다.\n 맛있는 도넛을 친구나 가족처럼 \n 소중한 사람에게 선물하세요";
+        productDescription = "이 기프티콘은 특별한 선물입니다.ddddddddddd\n 맛있는 도넛을 친구나 가족처럼 \n 소중한 사람에게 선물하세요";//30번째 마다 한번씩 나누기 7번째줄까지
         expirationDate = "유효 기간: 2023-12-31 까지";
         String productTitle = " 맛있는 도넛";
         
