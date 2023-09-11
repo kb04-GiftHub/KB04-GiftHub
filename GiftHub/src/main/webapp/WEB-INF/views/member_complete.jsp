@@ -27,7 +27,7 @@
                         <img alt="가맹점 회원가입 완료" src="/img/check.png" style="width: 20%; margin-bottom: 20px;">
                         <h1 class="mb-4">${subTitle}</h1>
                         <p class="mb-4">${msg}</p>
-                        <a class="btn btn-primary rounded-pill py-3 px-5" href="/">Go To Home</a>
+                        <a class="btn btn-primary rounded-pill py-3 px-5" href="/member/main">Go To Home</a>
                     </div>
                 </div>
             </div>
