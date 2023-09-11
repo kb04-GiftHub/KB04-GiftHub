@@ -151,7 +151,7 @@
      	
         $("#registerBtn").click(function(e) {
         	e.preventDefault();
-            var url = "/register";
+            var url = "/member/register";
             window.location.href = url;
         });
     });
