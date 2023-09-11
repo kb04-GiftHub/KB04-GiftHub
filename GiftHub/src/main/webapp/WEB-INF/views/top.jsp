@@ -39,6 +39,15 @@
 
 <!-- Template Stylesheet -->
 <link href="/css/style.css" rel="stylesheet">
+
+<script>
+	window.onload = function() {
+		if ('${loggedId}'.trim() != '') {
+			document.getElementById('logout').style.visibility = 'visible';
+		}
+	}
+</script>
+
 </head>
 
 <body>
@@ -78,7 +87,7 @@
 							<a href="about" class="nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">기프티콘 관리</a>
 							<div class="dropdown-menu m-0">
-								<a href="about" class="dropdown-item">상품등록</a> <a
+								<a href="/product" class="dropdown-item">상품등록</a> <a
 									href="calculate" class="dropdown-item">기프티콘 사용</a>
 							</div>
 						</div>
@@ -100,9 +109,8 @@
 						</div>
 						<a href="/contact/contact" class="nav-item nav-link">문의하기</a>
 					</div>
-					<a href=""
-						class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Get
-						Started</a>
+					<a href="/logout"
+						class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block" id="logout" style="visibility: hidden;">LOGOUT</a>
 				</div>
 			</nav>
 

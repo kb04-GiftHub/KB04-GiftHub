@@ -32,4 +32,5 @@ public class GiftUsedServiceImpl implements GiftUsedService {
 		}
 		return countMap;
 	}
+
 }
