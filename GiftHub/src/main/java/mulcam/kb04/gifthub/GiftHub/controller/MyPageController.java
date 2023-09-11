@@ -65,7 +65,7 @@ public class MyPageController {
 		model.addAttribute("title", "마이페이지");
 		model.addAttribute("subTitle", "COMPLETE");
 		model.addAttribute("msg", "가맹점 정보가 수정되었습니다. 메인페이지로 이동하여 서비스를 이용하세요.");
-		return "complete";
+		return "store_complete";
 	}
 	
 	// 회원
@@ -116,6 +116,6 @@ public class MyPageController {
 		model.addAttribute("title", "마이페이지");
 		model.addAttribute("subTitle", "COMPLETE");
 		model.addAttribute("msg", "회원정보가 수정되었습니다. 메인페이지로 이동하여 서비스를 이용하세요.");
-		return "complete";
+		return "member_complete";
 	}
 }
