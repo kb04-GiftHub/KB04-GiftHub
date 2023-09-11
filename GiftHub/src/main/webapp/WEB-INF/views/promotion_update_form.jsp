@@ -34,7 +34,18 @@
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 </head>
+<style>
 
+/* 목록이동 버튼 스타일 */
+.list-button {
+    background-color: #ffc107; /* 배경색을 노란색으로 설정 */
+    color: white; /* 텍스트 색상을 하얀색으로 설정 */
+    padding: 10px 190px; /* 내부 여백 설정 (상하 10px, 좌우 20px) */
+    border: none; /* 테두리 없음 */
+    border-radius: 5px; /* 버튼 모서리를 둥글게 만듭니다. */
+    cursor: pointer; /* 커서 모양을 포인터로 변경하여 클릭 가능한 버튼임을 나타냅니다. */
+}
+</style>
 <body>
     <c:import url="top.jsp" />
 
@@ -47,7 +58,7 @@
 			</div>
 		</div>
 	</div>
-    
+   
 
         <!-- Contact Start -->
         <div class="container-xxl py-5">
@@ -76,19 +87,19 @@
 							  <textarea id="promotionContent" name="promotionContent" rows="10" cols="50">${promotion.promotionContent}</textarea><br>
 
 								<div class="form-floating">
-							        <img id="currentImage"
-							             src="${pageContext.request.contextPath}/images/promotion/${promotion.promotionImage}"
-							             alt="기존 이미지"
-							             onclick="window.open(this.src)"><br>
-							        이미지 첨부<input type="file"
-							                       id="promotionImage"
-							                       name="promotionImage"
-							                       accept=".jpg,.jpeg,.png"><br>
-							    </div> 
-                                <input class="btn btn-primary w-100 py-3"  type="submit" value="수정완료">                            
-                                <div class="col-12">
-                                 	<a href="/promotion_list">게시물 목록으로 이동</a>
-                                </div>
+                             	게시물 이미지<br>
+                             	<img id="promotionImage"
+                                  src="${pageContext.request.contextPath}/upload_images/promotion/${promotion.promotionImage}"
+                                  onclick="window.open(this.src)"><br>
+                             이미지 첨부<input type="file"
+                                            id="promotionImage"
+                                            name="promotionImage"
+                                            accept=".jpg,.jpeg,.png"><br>
+                         </div>
+                         <div class="col-12 text-center" >
+							    <button class="btn btn-primary " type="submit">수정 완료</button> 
+							    <a class="btn btn-primary" href="/promotion_list">수정 취소</a>
+							</div>
 							</form>	
                                 </div>
                         </div>
