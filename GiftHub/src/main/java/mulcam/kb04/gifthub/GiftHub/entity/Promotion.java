@@ -19,7 +19,7 @@ import mulcam.kb04.gifthub.GiftHub.dto.PromotionDto;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
+@AllArgsConstructor 
 @Builder
 public class Promotion {
 	@Id
@@ -27,7 +27,7 @@ public class Promotion {
     @SequenceGenerator(sequenceName = "PROMOTION_SEQ", allocationSize = 1, name = "PROMOTION_SEQ")
 	private int promotionNo;
 	private String promotionTitle, promotionContent;
-	private Date promotionDate;
+    private Date promotionDate; // SYSDATE를 디폴트값으로 설정
 	private int promotionType;
 	private String promotionImage;
 	@ManyToOne
@@ -45,7 +45,8 @@ public class Promotion {
 		.storeId(store)
 		.promotionNo(promo.getPromotionNo())
 		.promotionType(promo.getPromotionType())
-		.promotionDate(promo.getPromotionDate())
+		.promotionDate(new Date())
+		.promotionImage(promo.getPromotionImage())
 		.build();
 	}
 }

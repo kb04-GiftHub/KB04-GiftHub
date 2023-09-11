@@ -1,13 +1,10 @@
 package mulcam.kb04.gifthub.GiftHub.service;
 
-
-
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import mulcam.kb04.gifthub.GiftHub.dto.PromotionDto;
 import mulcam.kb04.gifthub.GiftHub.entity.Promotion;
 import mulcam.kb04.gifthub.GiftHub.entity.Store;
@@ -17,18 +14,13 @@ import mulcam.kb04.gifthub.GiftHub.repository.PromotionRepository;
 public class PromotionServiceImpl implements PromotionService {
 	@Autowired
 	private PromotionRepository promotionRepository;
-
+	
 	@Override
 	public PromotionDto findByPromotionNo(int promotionNo) {
 		Promotion promotion = promotionRepository.findByPromotionNo(promotionNo);
 		PromotionDto promotionDto = PromotionDto.entityToDto(promotion);
 		return promotionDto;
 	}
-//	@Override
-//	public Promotion save(PromotionDto promotionDto) {
-//		
-//		return null;
-//	}
 	
 	@Override
 	public List<PromotionDto> findByStoreId(String storeId) {
@@ -43,33 +35,33 @@ public class PromotionServiceImpl implements PromotionService {
 		}
 		return dtoList;
 	}
-//	@Override
-//	public Optional<Promotion> findByPromotionNoAsEntity(int promotionNo) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+
 	@Override
 	public void deleteBypromotionNo(int promotionNo) {
 		promotionRepository.deleteById(promotionNo);
 	}
-		
-//	}
-//	@Override
-//	public Optional<Promotion> findById(int promotionNo) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+	//update	
 	@Override
 	public PromotionDto save(PromotionDto promotionDto) {
 		Promotion pro=promotionRepository.save(Promotion.dtoToEntity(promotionDto));
 		promotionDto = PromotionDto.entityToDto(pro);
 		return promotionDto;
 	}
+
 //	@Override
-//	public List<PromotionDto> list() {
-//		
-//		return null;
+//	public PromotionDto insertPromotion(PromotionDto promotionDto) {
+//		Promotion promotion = Promotion.dtoToEntity(promotionDto);
+//		promotionRepository.insertPromotion(promotion);
+//		promotionDto = PromotionDto.entityToDto(promotion);
+//		return promotionDto;
 //	}
-	  
+	
+    @Override
+    public PromotionDto insertPromotion(PromotionDto promotionDto) {
+        Promotion promotion = Promotion.dtoToEntity(promotionDto);
+        promotion = promotionRepository.save(promotion);
+        return PromotionDto.entityToDto(promotion);
+    }
+
 
 	}
