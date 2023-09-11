@@ -47,13 +47,21 @@ public class PromotionServiceImpl implements PromotionService {
 		promotionDto = PromotionDto.entityToDto(pro);
 		return promotionDto;
 	}
-	//insert
-	@Override
-    public PromotionDto savePromotion(PromotionDto promotionDto) {
+
+//	@Override
+//	public PromotionDto insertPromotion(PromotionDto promotionDto) {
+//		Promotion promotion = Promotion.dtoToEntity(promotionDto);
+//		promotionRepository.insertPromotion(promotion);
+//		promotionDto = PromotionDto.entityToDto(promotion);
+//		return promotionDto;
+//	}
+	
+    @Override
+    public PromotionDto insertPromotion(PromotionDto promotionDto) {
         Promotion promotion = Promotion.dtoToEntity(promotionDto);
-        promotion.setPromotionDate(new Date());
-        Promotion savedPromotion = promotionRepository.save(promotion);
-        return PromotionDto.entityToDto(savedPromotion);
+        promotion = promotionRepository.save(promotion);
+        return PromotionDto.entityToDto(promotion);
     }
+
 
 	}

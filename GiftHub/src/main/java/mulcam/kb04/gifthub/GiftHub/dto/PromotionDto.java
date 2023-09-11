@@ -2,14 +2,11 @@ package mulcam.kb04.gifthub.GiftHub.dto;
 
 import java.util.Date;
 
-import org.springframework.web.multipart.MultipartFile;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import mulcam.kb04.gifthub.GiftHub.entity.Promotion;
-import mulcam.kb04.gifthub.GiftHub.entity.Store;
 
 @Data
 @NoArgsConstructor

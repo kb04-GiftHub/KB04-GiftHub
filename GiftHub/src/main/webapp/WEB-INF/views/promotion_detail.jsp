@@ -66,7 +66,17 @@
 											<th>게시물 번호</th><td>${promotion.promotionNo}</td>
 										</tr>
 										<tr>
-											<th>게시물 종류</th><td>${promotion.promotionType}</td>
+											<th>게시물 종류</th>
+											<td>
+											<c:choose>
+							                            <c:when test="${promotion.promotionType == 1}">
+							                                홍보
+							                            </c:when>
+							                            <c:when test="${promotion.promotionType == 2}">
+							                                이벤트
+							                            </c:when>
+							                        </c:choose>
+							                  </td>
 										</tr>
 										<tr>
 											<th>게시물 제목</th><td>${promotion.promotionTitle}</td>

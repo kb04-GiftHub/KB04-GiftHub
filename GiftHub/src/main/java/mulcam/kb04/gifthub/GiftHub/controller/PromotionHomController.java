@@ -44,50 +44,40 @@ public class PromotionHomController {
 	
       //게시물 등록 처리 
 	@PostMapping("/promotion_insert")
-	  public String insertPromotion(@ModelAttribute PromotionDto dto, HttpSession ses, @RequestParam("promotionImage") String promotionImage) {
-		String storeIdString = "store1234";
-		String str = (String)ses.getAttribute("storeId");
+	  public String insertPromotion(@RequestParam("promotionType") int promotionType,
+	    		@RequestParam("promotionTitle") String promotionTitle, 
+	    		@RequestParam("promotionContent") String promotionContent,
+	    		@RequestParam("promotionImage") MultipartFile promotionImage,
+	    		Model model) {
 		
-		System.out.println(str);
-		dto.setStoreId(str);
-
+		String upDir=System.getProperty("user.dir"); // 프로젝트 루트 디렉토리
+		upDir+="/src/main/resources/static/upload_images/promotion";
+		File dir=new File(upDir);
+		if(!dir.exists()){
+			dir.mkdirs();
+		}
+		String newfilename ="";
+		if(promotionImage != null) {
+			String originFname=promotionImage.getOriginalFilename();
+			UUID uuid=UUID.randomUUID();
+			newfilename=uuid.toString()+"_"+originFname;
+			
+			//새로운 이미지 업로드
+			try {
+				promotionImage.transferTo(new File(upDir,newfilename));
+			}catch(Exception e) {
+				
+			}
+		}
 		
-		Promotion entity = Promotion.dtoToEntity(dto);
-        entity.setPromotionDate(new Date()); // 현재 시간으로 설정
-        int promotionType = dto.getPromotionType();
-        String promotionTitle = dto.getPromotionTitle();
-        String promotionContent = dto.getPromotionContent();
-        
-	    
-     // 이미지 업로드 및 저장
-        if (promotionImage != null && !promotionImage.isEmpty()) {
-            String upDir = System.getProperty("user.dir") + "/src/main/resources/static/upload_images/promotion";
-            File dir = new File(upDir);
-            
-            if (!dir.exists()) {
-                dir.mkdirs();
-            }
-            
-            String newfilename = "";
-//            String originFname = promotionImage.getOriginalFilename();
-            String originFname = (String)promotionImage;
-            UUID uuid = UUID.randomUUID();
-            newfilename = uuid.toString() + "_" + originFname;
-            
-//            try {
-//                promotionImage.transferTo(new File(upDir, newfilename));
-                dto.setPromotionImage(newfilename);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-                // 오류 처리
-//            }
-        }
-
-         dto.setPromotionContent(promotionContent);
+		 PromotionDto dto = new PromotionDto();
+		 dto.setPromotionContent(promotionContent);
 		 dto.setPromotionType(promotionType);
 		 dto.setPromotionTitle(promotionTitle);
-	     dto = promotionService.save(dto);
-        
+		 dto.setPromotionImage(newfilename);
+		 dto.setStoreId("store1234");
+	     dto = promotionService.insertPromotion(dto);
+		
 	     return "redirect:/promotion_list";
 	   }
 	
