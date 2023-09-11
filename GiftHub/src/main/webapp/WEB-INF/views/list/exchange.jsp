@@ -53,7 +53,7 @@
             myChart.destroy();
         }
 
-        fetch(`/getMonthlyCount`)
+        fetch(`/getMonthlyExchange`)
             .then(response => response.json())
             .then(data => {
                 const ctx = document.getElementById('myChart').getContext('2d');
@@ -78,9 +78,9 @@
                             },
                             y: {
                             	min: 0, // y축의 최소값 설정
-                                max: 10, // y축의 최대값 설정
+                                max: 1000, // y축의 최대값 설정
                                 ticks: {
-                                    stepSize: 1, // 눈금 간격 설정
+                                    stepSize: 100, // 눈금 간격 설정
                                 },
                                 title: {
                                     display: true,
@@ -117,10 +117,10 @@
 					<tr>
 						<th scope="row">${iterStat.index + 1}</th>
 						<td>${exchange.storeId}</td>
-						<td>${exchange.exchangeBank} - ${exchange.exchangeAccount}</td>
+						<td>${exchange.exchangeBank}- ${exchange.exchangeAccount}</td>
 						<td>${exchange.exchangeMoney}</td>
-						<td>${exchange.exchangeDage}</td>
-						<td>${exchange.exchageNo}</td>
+						<td>${exchange.exchangeDate}</td>
+						<td>${exchange.exchangeNo}</td>
 					</tr>
 				</c:forEach>
 			</tbody>
