@@ -1,5 +1,7 @@
 package mulcam.kb04.gifthub.GiftHub.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import mulcam.kb04.gifthub.GiftHub.dto.CustomerDto;
+import mulcam.kb04.gifthub.GiftHub.dto.GiftDto;
 import mulcam.kb04.gifthub.GiftHub.dto.StoreDto;
 import mulcam.kb04.gifthub.GiftHub.service.MyPageService;
 
@@ -117,5 +120,23 @@ public class MyPageController {
 		model.addAttribute("subTitle", "COMPLETE");
 		model.addAttribute("msg", "회원정보가 수정되었습니다. 메인페이지로 이동하여 서비스를 이용하세요.");
 		return "member_complete";
+	}
+	
+	@GetMapping("/member/mypage/use_detail")
+	public String member_use_detail(HttpSession session, Model model) {
+		String loggedMemberId = (String)session.getAttribute("loggedMemberId");
+		if(loggedMemberId == null || session.getAttribute("loggedStroeId") != null) {
+			return "redirect:/index";
+		}
+		
+		List<GiftDto> list = myPageService.findByCustomerIdToList(loggedMemberId);
+		
+		if(list.size() == 0) {
+			model.addAttribute("msg", "보유한 기프티콘이 없습니다.");
+		} else {
+			model.addAttribute("list", list);
+		}
+		
+		return "mypage/member_use_detail";
 	}
 }
