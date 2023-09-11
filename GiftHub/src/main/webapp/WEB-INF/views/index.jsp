@@ -52,12 +52,18 @@
                     <h1 class="m-0"><img src="img/icon.png" alt="Logo"> GiftHub</h1>
                 </a>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav mx-auto py-0"></div>
+                    <div class="navbar-nav mx-auto py-0">
+                    </div>
+                    <!-- 테스트 -->
+                    <div class="navbar-nav py-0" style="color: white; font-weight: 500; font-size: 15pt;">
+                    	<c:if test="${not empty loggedStoreId}">STORE</c:if>
+                    	<c:if test="${not empty loggedMemberId}">MEMBER</c:if>
+                    </div>
                 </div>
             </nav>
 
         <!-- Navbar & Hero End -->
- 			<div class="container-xxl bg-primary index-header" id="mydiv">
+ 			<div class="container-xxl bg-primary index-header">
                 <div class="container px-lg-5">
                     <div class="row g-5 align-items-end">
                         <div class="col-lg-6 text-center text-lg-start">
