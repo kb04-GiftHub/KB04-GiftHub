@@ -24,7 +24,9 @@ public class Exchange {
 	@SequenceGenerator(sequenceName = "EXCHANGE_SEQ", allocationSize = 1, name = "EXCHANGE_SEQ")
 	private int exchangeNo;
 
-	private String exchangeBank, exchangeAccount;
+	private String exchangeBank;
+
+	private String exchangeAccount;
 
 	private int exchangeMoney;
 

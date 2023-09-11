@@ -8,7 +8,7 @@
 <!-- <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 <meta charset="UTF-8">
-<title>판매 내역</title>
+<title>정산 내역</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
@@ -22,7 +22,7 @@
 		<div class="container my-5 py-5 px-lg-5">
 			<div class="row g-5 py-5">
 				<div class="col-12 text-center">
-					<h1 class="text-white animated slideInDown">판매내역</h1>
+					<h1 class="text-white animated slideInDown">정산 내역</h1>
 				</div>
 			</div>
 		</div>
@@ -53,7 +53,7 @@
             myChart.destroy();
         }
 
-        fetch(`/getMonthlyCount`)
+        fetch(`/getMonthlyExchange`)
             .then(response => response.json())
             .then(data => {
                 const ctx = document.getElementById('myChart').getContext('2d');
@@ -62,7 +62,7 @@
                     data: {
                         labels: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
                         datasets: [{
-                            label: '월별 판매 수',
+                            label: '월별 정산 금액',
                             data: Object.values(data), // 서버에서 반환된 월별 카운트 배열
                             borderColor: 'rgba(75, 192, 192, 1)',
                             borderWidth: 1
@@ -78,13 +78,13 @@
                             },
                             y: {
                             	min: 0, // y축의 최소값 설정
-                                max: 10, // y축의 최대값 설정
+                                max: 1000, // y축의 최대값 설정
                                 ticks: {
-                                    stepSize: 1, // 눈금 간격 설정
+                                    stepSize: 100, // 눈금 간격 설정
                                 },
                                 title: {
                                     display: true,
-                                    text: '판매 수'
+                                    text: '정산 금액'
                                 }
                             }
                         }
@@ -104,21 +104,23 @@
 			<thead>
 				<tr>
 					<th scope="col">순번</th>
-					<th scope="col">상품명</th>
-					<th scope="col">쿠폰번호</th>
-					<th scope="col">금액</th>
-					<th scope="col">사용일자</th>
+					<th scope="col">가맹점명</th>
+					<th scope="col">정산 계좌</th>
+					<th scope="col">정산 금액</th>
+					<th scope="col">정산 일자</th>
+					<th scope="col">정산 확인</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="data" items="${combinedViewData}"
+				<c:forEach var="exchange" items="${exchangeDetailsList}"
 					varStatus="iterStat">
 					<tr>
 						<th scope="row">${iterStat.index + 1}</th>
-						<td>${data.productname}</td>
-						<td>${data.giftno}</td>
-						<td>${data.buyprice}</td>
-						<td>${data.useddate}</td>
+						<td>${exchange.storeId}</td>
+						<td>${exchange.exchangeBank}- ${exchange.exchangeAccount}</td>
+						<td>${exchange.exchangeMoney}</td>
+						<td>${exchange.exchangeDate}</td>
+						<td>${exchange.exchangeNo}</td>
 					</tr>
 				</c:forEach>
 			</tbody>
