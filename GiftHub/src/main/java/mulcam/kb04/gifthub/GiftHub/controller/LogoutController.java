@@ -11,8 +11,14 @@ public class LogoutController {
 
 	@GetMapping("/logout")
 	public String login(HttpSession session, RedirectAttributes redirect) {
-		if(session.getAttribute("loggedId") != null) {
-			session.removeAttribute("loggedId");
+		if(session.getAttribute("loggedStoreId") != null) {
+			session.removeAttribute("loggedStoreId");
+			redirect.addFlashAttribute("msg", "로그아웃이 완료되었습니다.");
+			return "redirect:/index";
+		}
+		
+		if(session.getAttribute("loggedMemberId") != null) {
+			session.removeAttribute("loggedMemberId");
 			redirect.addFlashAttribute("msg", "로그아웃이 완료되었습니다.");
 			return "redirect:/index";
 		}

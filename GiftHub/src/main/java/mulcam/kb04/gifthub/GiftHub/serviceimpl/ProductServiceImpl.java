@@ -1,4 +1,4 @@
-package mulcam.kb04.gifthub.GiftHub.service;
+package mulcam.kb04.gifthub.GiftHub.serviceimpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 import mulcam.kb04.gifthub.GiftHub.dto.ProductDto;
 import mulcam.kb04.gifthub.GiftHub.entity.Product;
 import mulcam.kb04.gifthub.GiftHub.repository.ProductRepository;
+import mulcam.kb04.gifthub.GiftHub.service.ProductService;
 
 @Component
 public class ProductServiceImpl implements ProductService {
