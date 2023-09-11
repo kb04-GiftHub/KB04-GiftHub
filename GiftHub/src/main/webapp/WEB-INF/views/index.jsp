@@ -103,6 +103,15 @@
     <script src="lib/isotope/isotope.pkgd.min.js"></script>
     <script src="lib/lightbox/js/lightbox.min.js"></script>
 
+	<!-- Check JavaScript -->
+	<script>
+		window.onload = function() {
+		    if ('${msg}' != '') {
+		        alert('${msg}');
+		    }
+		};
+	</script>
+
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 </body>
