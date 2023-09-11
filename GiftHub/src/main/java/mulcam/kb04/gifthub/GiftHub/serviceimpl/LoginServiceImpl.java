@@ -1,4 +1,4 @@
-package mulcam.kb04.gifthub.GiftHub.service;
+package mulcam.kb04.gifthub.GiftHub.serviceimpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -9,6 +9,7 @@ import mulcam.kb04.gifthub.GiftHub.entity.Customer;
 import mulcam.kb04.gifthub.GiftHub.entity.Store;
 import mulcam.kb04.gifthub.GiftHub.repository.CustomerRepository;
 import mulcam.kb04.gifthub.GiftHub.repository.StoreRepository;
+import mulcam.kb04.gifthub.GiftHub.service.LoginService;
 
 @Component
 public class LoginServiceImpl implements LoginService {
