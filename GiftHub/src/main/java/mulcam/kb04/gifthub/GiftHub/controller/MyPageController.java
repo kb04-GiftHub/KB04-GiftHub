@@ -23,7 +23,7 @@ public class MyPageController {
 	// 가맹점
 	@GetMapping("/store/mypage/check_pwd")
 	public String check_pwd(HttpSession session) {
-		if(session.getAttribute("loggedId") == null) {
+		if(session.getAttribute("loggedStoreId") == null || session.getAttribute("loggedMemberId") != null) {
 			return "redirect:/index";
 		}
 		
@@ -33,8 +33,8 @@ public class MyPageController {
 	@PostMapping("/store/mypage/check_action")
 	public String check_action(@RequestParam String password,
 			Model model, RedirectAttributes redirect, HttpSession session) {
-		String loggedId = (String)session.getAttribute("loggedId");
-		StoreDto storeDto = myPageService.findByStoreId(loggedId);
+		String loggedStoreId = (String)session.getAttribute("loggedStoreId");
+		StoreDto storeDto = myPageService.findByStoreId(loggedStoreId);
 		if(storeDto.getStorePwd().equals(password)) {
 			model.addAttribute("storeDto", storeDto);
 			return "mypage/store_info";
@@ -71,7 +71,7 @@ public class MyPageController {
 	// 회원
 	@GetMapping("/member/mypage/check_pwd")
 	public String member_check_pwd(HttpSession session) {
-		if(session.getAttribute("loggedId") == null) {
+		if(session.getAttribute("loggedMemberId") == null || session.getAttribute("loggedStroeId") != null) {
 			return "redirect:/index";
 		}
 		
@@ -81,8 +81,8 @@ public class MyPageController {
 	@PostMapping("/member/mypage/check_action")
 	public String member_check_action(@RequestParam String password,
 			Model model, RedirectAttributes redirect, HttpSession session) {
-		String loggedId = (String)session.getAttribute("loggedId");
-		CustomerDto customerDto = myPageService.findByCustomerId(loggedId);
+		String loggedMemberId = (String)session.getAttribute("loggedMemberId");
+		CustomerDto customerDto = myPageService.findByCustomerId(loggedMemberId);
 		if(customerDto.getCustomerPwd().equals(password)) {
 			model.addAttribute("customerDto", customerDto);
 			return "mypage/member_info";

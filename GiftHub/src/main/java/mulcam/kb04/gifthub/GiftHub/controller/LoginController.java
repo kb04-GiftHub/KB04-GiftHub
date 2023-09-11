@@ -23,7 +23,7 @@ public class LoginController {
 	// 가맹점 로그인
 	@GetMapping("/store/login")
 	public String store_login(HttpSession session) {
-		if(session.getAttribute("loggedId") != null) {
+		if(session.getAttribute("loggedStoreId") != null || session.getAttribute("loggedMemberId") != null) {
 			return "redirect:/index";
 		}
 		return "login/store_login";
@@ -37,7 +37,7 @@ public class LoginController {
 			StoreDto storeDto = loginService.findByStoreId(id);
 			
 			if(storeDto.getStorePwd().equals(pwd)) {
-				session.setAttribute("loggedId", storeDto.getStoreId());
+				session.setAttribute("loggedStoreId", storeDto.getStoreId());
 				model.addAttribute("title", "로그인");
 				model.addAttribute("subTitle", "WELCOME");
 				model.addAttribute("msg", storeDto.getStoreId() + "님 환영합니다. 메인페이지로 이동하여 서비스를 이용하세요.");
@@ -65,7 +65,7 @@ public class LoginController {
 	// 가맹점 로그인
 	@GetMapping("/member/login")
 	public String member_login(HttpSession session) {
-		if(session.getAttribute("loggedId") != null) {
+		if(session.getAttribute("loggedMemberId") != null || session.getAttribute("loggedStoreId") != null) {
 			return "redirect:/index";
 		}
 		return "login/member_login";
@@ -79,7 +79,7 @@ public class LoginController {
 			CustomerDto customerDto = loginService.findByCustomerId(id);
 			
 			if(customerDto.getCustomerPwd().equals(pwd)) {
-				session.setAttribute("loggedId", customerDto.getCustomerId());
+				session.setAttribute("loggedMemberId", customerDto.getCustomerId());
 				model.addAttribute("title", "로그인");
 				model.addAttribute("subTitle", "WELCOME");
 				model.addAttribute("msg", customerDto.getCustomerId() + "님 환영합니다. 메인페이지로 이동하여 서비스를 이용하세요.");

@@ -23,7 +23,7 @@ public class RegisterController {
 	// 가맹점 회원가입
 	@GetMapping("/store/register")
 	public String store_register(HttpSession session) {
-		if(session.getAttribute("loggedId") != null) {
+		if(session.getAttribute("loggedStoreId") != null || session.getAttribute("loggedMemberId") != null) {
 			return "redirect:/index";
 		}
 		
@@ -83,7 +83,7 @@ public class RegisterController {
 	// 회원 회원가입
 	@GetMapping("/member/register")
 	public String member_register(HttpSession session) {
-		if(session.getAttribute("loggedId") != null) {
+		if(session.getAttribute("loggedMemberId") != null || session.getAttribute("loggedStoreId") != null) {
 			return "redirect:/index";
 		}
 		

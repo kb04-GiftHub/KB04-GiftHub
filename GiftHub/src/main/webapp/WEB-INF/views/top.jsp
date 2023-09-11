@@ -42,7 +42,7 @@
 
 <script>
 	window.onload = function() {
-		if ('${loggedId}'.trim() != '') {
+		if ('${loggedStoreId}'.trim() != '') {
 			document.getElementById('logout').style.visibility = 'visible';
 		}
 	}
