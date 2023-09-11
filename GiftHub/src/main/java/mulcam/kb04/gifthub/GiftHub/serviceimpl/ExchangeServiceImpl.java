@@ -28,11 +28,9 @@ public class ExchangeServiceImpl implements ExchangeService {
 	public Map<Integer, Long> getCountByMonth() {
 		List<Object[]> counts = exchangeRepository.sumExchangeMoneyByMonth();
 
-		// Initialize a map with all months set to 0
 		Map<Integer, Long> countMap = IntStream.rangeClosed(1, 12).boxed()
 				.collect(Collectors.toMap(Function.identity(), v -> 0L));
 
-		// Fill the map with the counts from the database
 		for (Object[] count : counts) {
 			countMap.put((Integer) count[0], (Long) count[1]);
 		}
