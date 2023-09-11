@@ -21,7 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import mulcam.kb04.gifthub.GiftHub.dto.ProductDto;
 import mulcam.kb04.gifthub.GiftHub.service.ProductService;
-import mulcam.kb04.gifthub.GiftHub.service.ProductServiceImpl;
+import mulcam.kb04.gifthub.GiftHub.serviceimpl.ProductServiceImpl;
 
 @Controller
 public class ProductController {
@@ -45,10 +45,15 @@ public class ProductController {
 			@RequestParam("expiry") String productExp,
 			HttpSession ses, Model model){
 		
+		String loggedId = (String)ses.getAttribute("loggedStoreId");
 
 		// [1] 이미지 저장
-		ServletContext app=ses.getServletContext();
-		String upDir=app.getRealPath("/resources/products");
+//		ServletContext app=ses.getServletContext();
+//		String upDir=app.getRealPath("/resources/products");
+
+		String upDir=System.getProperty("user.dir"); // 프로젝트 루트 디렉토리
+		upDir+="/src/main/resources/static/upload_images/product";
+		
 		File dir=new File(upDir);
 		String newfilename = null;
 		if(!dir.exists()){
@@ -58,8 +63,7 @@ public class ProductController {
 
 			String originFname=file.getOriginalFilename();
 			UUID uuid=UUID.randomUUID();
-			newfilename=uuid.toString()+"_"+originFname;
-
+			newfilename=originFname;
 
 
 			//새로운 이미지 업로드
@@ -92,7 +96,7 @@ public class ProductController {
 		productDto.setProductMemo(productMemo);
 		productDto.setProductExp(expiryDate);
 		productDto.setProductImage(newfilename);
-		productDto.setStoreId("store01");			// 수정할 부분
+		productDto.setStoreId(loggedId);			// 수정할 부분
 		
 		ProductDto dto = productService.save(productDto);
 		System.out.println("등록완료");
