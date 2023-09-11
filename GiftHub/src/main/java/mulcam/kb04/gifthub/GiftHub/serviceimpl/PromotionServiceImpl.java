@@ -1,4 +1,4 @@
-package mulcam.kb04.gifthub.GiftHub.service;
+package mulcam.kb04.gifthub.GiftHub.serviceimpl;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -9,6 +9,7 @@ import mulcam.kb04.gifthub.GiftHub.dto.PromotionDto;
 import mulcam.kb04.gifthub.GiftHub.entity.Promotion;
 import mulcam.kb04.gifthub.GiftHub.entity.Store;
 import mulcam.kb04.gifthub.GiftHub.repository.PromotionRepository;
+import mulcam.kb04.gifthub.GiftHub.service.PromotionService;
 
 @Component
 public class PromotionServiceImpl implements PromotionService {
