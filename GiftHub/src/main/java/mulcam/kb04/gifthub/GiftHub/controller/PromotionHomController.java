@@ -44,7 +44,7 @@ public class PromotionHomController {
 	
       //게시물 등록 처리 
 	@PostMapping("/promotion_insert")
-	  public String insertPromotion(@ModelAttribute PromotionDto dto, HttpSession ses, @RequestParam("promotionImage") MultipartFile promotionImage) {
+	  public String insertPromotion(@ModelAttribute PromotionDto dto, HttpSession ses, @RequestParam("promotionImage") String promotionImage) {
 		String storeIdString = "store1234";
 		String str = (String)ses.getAttribute("storeId");
 		
@@ -60,32 +60,28 @@ public class PromotionHomController {
         
 	    
      // 이미지 업로드 및 저장
-        String upDir = System.getProperty("user.dir"); 
-        upDir += "/src/main/resources/static/upload_images/promotion";
-        
-        File dir = new File(upDir);
-        
-        if (!dir.exists()) {
-            dir.mkdirs();
-        }
-        
-        String newfilename = "";
-        
         if (promotionImage != null && !promotionImage.isEmpty()) {
-            String originFname = promotionImage.getOriginalFilename();
+            String upDir = System.getProperty("user.dir") + "/src/main/resources/static/upload_images/promotion";
+            File dir = new File(upDir);
+            
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+            
+            String newfilename = "";
+//            String originFname = promotionImage.getOriginalFilename();
+            String originFname = (String)promotionImage;
             UUID uuid = UUID.randomUUID();
             newfilename = uuid.toString() + "_" + originFname;
             
-            try {
-                promotionImage.transferTo(new File(upDir, newfilename));
-                dto.setPromotionImage(newfilename);  // Set the filename to the DTO
-            } catch (IOException e) {
-                e.printStackTrace(); 
-                // Add error handling here
-            }
-            
-            
-         }
+//            try {
+//                promotionImage.transferTo(new File(upDir, newfilename));
+                dto.setPromotionImage(newfilename);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+                // 오류 처리
+//            }
+        }
 
          dto.setPromotionContent(promotionContent);
 		 dto.setPromotionType(promotionType);
