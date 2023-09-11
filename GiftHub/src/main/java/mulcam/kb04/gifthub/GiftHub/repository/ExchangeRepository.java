@@ -12,6 +12,10 @@ import mulcam.kb04.gifthub.GiftHub.entity.Exchange;
 
 @Repository
 public interface ExchangeRepository extends JpaRepository<Exchange, Integer> {
-	@Query("SELECT s.storeName, e.exchangeBank, e.exchangeAccount, e.exchangeMoney, e.exchangeDate FROM Store s JOIN Exchange e ON s.storeId = e.storeId WHERE s.storeId = :storeId")
+	@Query("SELECT new mulcam.kb04.gifthub.GiftHub.dto.ExchangeDto(e.exchangeNo, s.storeName, e.exchangeBank, e.exchangeAccount, e.exchangeMoney, e.exchangeDate, e.storeId) FROM Store s JOIN Exchange e ON s.storeId = e.storeId WHERE s.storeId = :storeId")
 	List<ExchangeDto> findExchangeDetailsByStoreId(@Param("storeId") String storeId);
+
+	@Query("SELECT FUNCTION('MONTH', e.exchangeDate) as month, SUM(e.exchangeMoney) as totalExchangeMoney FROM Exchange e GROUP BY FUNCTION('MONTH', e.exchangeDate)")
+	List<Object[]> sumExchangeMoneyByMonth();
+
 }
