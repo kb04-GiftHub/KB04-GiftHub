@@ -71,6 +71,7 @@
 										varStatus="iterStat">
 										<tr>
 											<th scope="row">${iterStat.index + 1}</th>
+
 											<td>${exchange.storeName}</td>
 											<td>${exchange.exchangeBank}- ${exchange.exchangeAccount}</td>
 											<td>${exchange.exchangeMoney}</td>
@@ -95,7 +96,9 @@
 									<c:forEach var="i" begin="${startPage}" end="${endPage}">
 										<li class="page-item ${i == currentPage ? 'active' : ''}"><a
 											class="page-link" id="ggg"
+
 											href="?page=${i}&storeId=${storeId}#tableSection" style="background: #0058C6; border: 1px solid #0058C6">${i}</a></li>
+
 									</c:forEach>
 									<li class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
 										<a class="page-link"

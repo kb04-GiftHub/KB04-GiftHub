@@ -47,6 +47,48 @@
 			</div>
 		</div>
 	</div>
+	<script>
+	$(function(){
+		$('#imageInput').change(function(){
+			var file = this.files[0];
+			var reg = /(.*?)\/(jpg|jpeg|png|bmp)$/;
+		    if (!file.type.match(reg)) {
+		        alert("확장자는 이미지 확장자만 가능합니다.");
+		        return;
+		    }
+			document.querySelector('#image_container').innerHTML="";
+			var reader = new FileReader();
+			reader.onload = function(event) {
+				var img = document.createElement("img");
+				img.setAttribute("src", event.target.result);
+				img.setAttribute("style", "width:50%;height:auto;");
+				img.setAttribute("class","rectangular");
+				document.querySelector('#image_container').appendChild(img);
+			};
+			reader.readAsDataURL(this.files[0]);
+		})
+	})
+</script>
+<style>
+/* 삭제하기,수정하기 버튼 스타일 */
+.du-button {
+    background-color: #0058C6; /* 배경색을 파란색으로 설정 */
+    color: white; /* 텍스트 색상을 하얀색으로 설정 */
+    padding: 10px 100px; /* 내부 여백 설정 (상하 10px, 좌우 20px) */
+    border: none; /* 테두리 없음 */
+    border-radius: 5px; /* 버튼 모서리를 둥글게 만듭니다. */
+    cursor: pointer; /* 커서 모양을 포인터로 변경하여 클릭 가능한 버튼임을 나타냅니다. */
+}
+/* 목록이동 버튼 스타일 */
+.list-button {
+    background-color: #ffc107; /* 배경색을 노란색으로 설정 */
+    color: white; /* 텍스트 색상을 하얀색으로 설정 */
+    padding: 10px 190px; /* 내부 여백 설정 (상하 10px, 좌우 20px) */
+    border: none; /* 테두리 없음 */
+    border-radius: 5px; /* 버튼 모서리를 둥글게 만듭니다. */
+    cursor: pointer; /* 커서 모양을 포인터로 변경하여 클릭 가능한 버튼임을 나타냅니다. */
+}
+</style>
         <!-- Contact Start -->
         <div class="container-xxl py-5">
             <div class="container py-5 px-lg-5">
@@ -57,11 +99,11 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-7">
                         <div class="wow fadeInUp" data-wow-delay="0.3s">
-                            <p class="text-center mb-4">게시물 상세보기</p>
-                            <form>
+                            <p class="text-center mb-4">게시물 수정 및 삭제가 가능합니다.</p>
+                            <form action="image_use" method="post" enctype="multipart/form-data">
                                 <div class="row g-3">
-                                    <h1>상세보기</h1>
-									<table>
+                                    
+									<table class="text-center">
 										<tr>
 											<th>게시물 번호</th><td>${promotion.promotionNo}</td>
 										</tr>
@@ -86,17 +128,24 @@
 										</tr>
 										<tr>
 											<th>게시물 내용</th>
+											<td>${promotion.promotionContent}</td>
 										</tr>
 										<tr>
-											<td colspan="2"><textarea rows="3" cols="60">${promotion.promotionContent}</textarea></td>
+											<th>게시물 이미지</th>
+											<td><img src="${pageContext.request.contextPath}/upload_images/promotion/${promotion.promotionImage}" width="300" height="200">
+											</td>
 										</tr>
-										</table>    
-										<div class="col-12">
-											    <a class="btn btn-primary w-100 py-3" href="/promotion_delete_form?promotionNo=${promotion.promotionNo}&promotionTitle=${promotion.promotionTitle}">삭제하기</a>
-											    <a class="btn btn-primary w-100 py-3" href="/promotion_update_form?promotionNo=${promotion.promotionNo}">수정하기</a>
-										</div>                             
-                                    <div class="col-12">
-                                        <a href="/promotion_list">게시물 목록으로 이동</a>
+										  
+										</table>
+										   
+										<div class="col-12 text-center">
+											    <a class="du-button" href="/promotion_delete_form?promotionNo=${promotion.promotionNo}&promotionTitle=${promotion.promotionTitle}&promotionType=${promotion.promotionType}&promotionContent=${promotion.promotionContent}&promotionImage=${promotion.promotionImage}">삭제하기</a>
+											    <a href="/promotion_update_form?promotionNo=${promotion.promotionNo}" class="du-button">수정하기</a>
+										</div>  
+										<br>
+										<br>                           
+                                    <div class="col-12 text-center">
+                                        <a href="/promotion_list" class="list-button" >게시물 목록으로 이동</a>
                                     </div>
                                 </div>
                             </form>

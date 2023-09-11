@@ -19,4 +19,5 @@ public interface PromotionRepository extends JpaRepository<Promotion, Integer> {
 //	@Query("INSERT INTO Promotion(promotionNo, promotionTitle, promotionContent, promotionDate, promotionType, promotionImage, storeId) VALUES(:pro.promotionNo, :pro.promotionTitle, "
 //			+ ":pro.promotionContent, SYSDATE, :pro.promotionType, :pro.promotionImage, :pro.storeId)")
 //	void insertPromotion(@Param("pro") Promotion promotion);
+
 }
