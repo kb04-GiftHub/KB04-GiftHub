@@ -2,8 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html lang="en">
-<c:set var="path" value="${pageContext.request.contextPath}" /> 
+<html lang="en" style="overflow: hidden;">
 <head>
     <meta charset="utf-8">
     <title>GiftHub</title>
@@ -48,43 +47,38 @@
 
         <!-- Navbar & Hero Start -->
         <div class="container-xxl position-relative p-0">
-            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0" style="height: 80px">
                 <a href="" class="navbar-brand p-0">
                     <h1 class="m-0"><img src="img/icon.png" alt="Logo"> GiftHub</h1>
-                    
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="fa fa-bars"></span>
-                </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav mx-auto py-0">
-                        
-                    </div>
-                    <a href="" class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block">회원가입</a>
+                    <div class="navbar-nav mx-auto py-0"></div>
                 </div>
             </nav>
 
         <!-- Navbar & Hero End -->
- <div class="container-xxl bg-primary hero-header" >
+ 			<div class="container-xxl bg-primary index-header" id="mydiv">
                 <div class="container px-lg-5">
                     <div class="row g-5 align-items-end">
                         <div class="col-lg-6 text-center text-lg-start">
-                        <h1>${path }</h1>
-                            <h1 class="text-white mb-4 animated slideInDown">A Digital Agency Of Inteligents & Creative People</h1>
+                            <h1 class="text-white mb-4 animated slideInDown">SIGN UP, HERE</h1>
                             <p class="text-white pb-3 animated slideInDown">Tempor rebum no at dolore lorem clita rebum rebum ipsum rebum stet dolor sed justo kasd. Ut dolor sed magna dolor sea diam. Sit diam sit justo amet ipsum vero ipsum clita lorem</p>
-                            <a href="" class="btn btn-secondary py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft">가맹점 로그인</a>
-                            <a href="" class="btn btn-light py-sm-3 px-sm-5 rounded-pill animated slideInRight">회원 로그인</a>
-
+                            <a href="/store/register" class="btn btn-secondary py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft" style="width: 270px;">가맹점 회원가입</a>
+                            <a href="/member/register" class="btn btn-light py-sm-3 px-sm-5 rounded-pill animated slideInRight" style="width: 270px;">일반회원 회원가입</a>
                         </div>
+                        <!-- <div class="col-lg-6 text-center text-lg-start" style="display: flex; justify-content: center; align-items: center;">
+                            <img class="img-fluid animated zoomIn" src="img/giftbox.png" alt="" style="width: 50%;">
+                        </div> -->
                         <div class="col-lg-6 text-center text-lg-start">
-                            <img class="img-fluid animated zoomIn" src="img/hero.png" alt="">
+                            <h1 class="text-white mb-4 animated slideInDown">LOGIN, HERE</h1>
+                            <p class="text-white pb-3 animated slideInDown">Tempor rebum no at dolore lorem clita rebum rebum ipsum rebum stet dolor sed justo kasd. Ut dolor sed magna dolor sea diam. Sit diam sit justo amet ipsum vero ipsum clita lorem</p>
+                            <a href="/store/login" class="btn btn-secondary py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft" style="width: 270px;">가맹점 로그인</a>
+                            <a href="/member/login" class="btn btn-light py-sm-3 px-sm-5 rounded-pill animated slideInRight" style="width: 270px;">일반회원 로그인</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-       
-	<c:import url="footer.jsp" />
         
 
 
