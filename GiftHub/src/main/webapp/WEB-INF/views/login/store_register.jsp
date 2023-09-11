@@ -5,7 +5,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>Register</title>
+<title>회원가입</title>
 </head>
 <body>
 	<c:import url="../top.jsp" />
@@ -24,6 +24,7 @@
 	<div class="container-xxl py-5">
 		<div class="container py-5 px-lg-5">
 			<div class="wow fadeInUp" data-wow-delay="0.1s">
+			<p class="section-title text-secondary justify-content-center"><span></span>가맹점회원<span></span></p>
 				<h1 class="text-center mb-5">ENTER YOUR INFO</h1>
 			</div>
 			<div class="row justify-content-center">
@@ -48,7 +49,7 @@
 									<button class="btn btn-primary w-100 py-3" id="check_id">중복확인</button>
 								</div>
 								<div class="col-12">
-									<p id="idCheckMsg" style="margin: 0;"></p>
+									<p id="idCheckMsg" style="margin: 0;"> ❗ 아이디 중복확인은 필수입니다.</p>
 								</div>
 								<div class="col-12">
 									<div class="form-floating">
