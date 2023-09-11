@@ -68,12 +68,12 @@
                                 <div class="row g-3">
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            제목<input type="text" class="form-control" id="promotionTitle" placeholder="Subject">
+                                            제목<input type="text" class="form-control" name="promotionTitle" id="promotionTitle" placeholder="Subject">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            내용<textarea class="form-control" placeholder="Leave a message here" id="promotionContent" style="height: 150px"></textarea>
+                                            내용<textarea class="form-control" name="promotionContent" placeholder="Leave a message here" id="promotionContent" style="height: 150px"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-6">

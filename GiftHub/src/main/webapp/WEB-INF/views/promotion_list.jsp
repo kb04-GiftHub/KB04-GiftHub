@@ -58,18 +58,29 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-7">
                         <div class="wow fadeInUp" data-wow-delay="0.3s">
-                            <p class="text-center mb-4">게시물 관리</p>
+                            <p class="text-center mb-4">상세보기에서 게시물을 삭제, 수정할 수 있습니다.</p>
                             <form>
                                 <div class="row g-3">
                                     <table>
 										<tr>
 											<th>번호</th>
+											<th>게시물 종류</th>											
 											<th>제목</th>
-											<th>상세보기</th>
+											<th></th>
 										</tr>
 										<c:forEach items="${promotion_list}" var="promotion">
 										<tr>
 											<td>${promotion.promotionNo}</td>
+											<td>
+												<c:choose>
+							                            <c:when test="${promotion.promotionType == 1}">
+							                                홍보
+							                            </c:when>
+							                            <c:when test="${promotion.promotionType == 2}">
+							                                이벤트
+							                            </c:when>
+							                        </c:choose>
+						                        </td>
                 							<td>${promotion.promotionTitle}</td>
                 							<td><a href="promotion_detail?promotionNo=${promotion.promotionNo}">상세보기</a></td>
 										</tr>
