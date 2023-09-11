@@ -24,7 +24,7 @@
 	<div class="container-xxl py-5">
 		<div class="container py-5 px-lg-5">
 			<div class="wow fadeInUp" data-wow-delay="0.1s">
-			<p class="section-title text-secondary justify-content-center"><span></span>회원가입<span></span></p>
+			<p class="section-title text-secondary justify-content-center"><span></span>일반회원<span></span></p>
 				<h1 class="text-center mb-5">ENTER YOUR INFO</h1>
 			</div>
 			<div class="row justify-content-center">
