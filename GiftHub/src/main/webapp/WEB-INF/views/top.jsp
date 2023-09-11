@@ -104,10 +104,10 @@
 								data-bs-toggle="dropdown">내역 관리</a>
 							<div class="dropdown-menu m-0">
 								<a href="sale" class="dropdown-item">판매 내역</a> <a
-									href="calculate" class="dropdown-item">정산 내역</a>
+									href="exchange" class="dropdown-item">정산 내역</a>
 							</div>
 						</div>
-						<a href="/contact/contact" class="nav-item nav-link">문의하기</a>
+						<a href="/store/mypage/check_pwd" class="nav-item nav-link">마이페이지</a>
 					</div>
 					<a href="/logout"
 						class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block" id="logout" style="visibility: hidden;">LOGOUT</a>

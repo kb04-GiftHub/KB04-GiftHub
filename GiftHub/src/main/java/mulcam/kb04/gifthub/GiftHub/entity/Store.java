@@ -22,27 +22,19 @@ public class Store {
 	private String storeId;
 
 	private String storePwd, storeName, storeEmail, storeTel, storeAdd1, storeAdd2, storeAdd3;
-	private int storeStatus;
+	private Integer storeStatus;
 
 	@ManyToOne
 	@JoinColumn(name = "categoryNo")
 	private Category categoryNo;
-	
+
 	public static Store dtoToEntity(StoreDto dto) {
 		Category category = new Category();
 		category.setCategoryNo(dto.getCategoryNo());
-		
-		return Store.builder()
-				.storeId(dto.getStoreId())
-				.storePwd(dto.getStorePwd())
-				.storeName(dto.getStoreName())
-				.storeEmail(dto.getStoreEmail())
-				.storeTel(dto.getStoreTel())
-				.storeAdd1(dto.getStoreAdd1())
-				.storeAdd2(dto.getStoreAdd2())
-				.storeAdd3(dto.getStoreAdd3())
-				.storeStatus(dto.getStoreStatus())
-				.categoryNo(category)
-				.build();
+
+		return Store.builder().storeId(dto.getStoreId()).storePwd(dto.getStorePwd()).storeName(dto.getStoreName())
+				.storeEmail(dto.getStoreEmail()).storeTel(dto.getStoreTel()).storeAdd1(dto.getStoreAdd1())
+				.storeAdd2(dto.getStoreAdd2()).storeAdd3(dto.getStoreAdd3()).storeStatus(dto.getStoreStatus())
+				.categoryNo(category).build();
 	}
 }
