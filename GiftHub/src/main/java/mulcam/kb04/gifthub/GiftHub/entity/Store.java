@@ -11,11 +11,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import mulcam.kb04.gifthub.GiftHub.dto.StoreDto;
 
-@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Entity
 public class Store {
 
 	@Id
@@ -32,9 +32,16 @@ public class Store {
 		Category category = new Category();
 		category.setCategoryNo(dto.getCategoryNo());
 
-		return Store.builder().storeId(dto.getStoreId()).storePwd(dto.getStorePwd()).storeName(dto.getStoreName())
-				.storeEmail(dto.getStoreEmail()).storeTel(dto.getStoreTel()).storeAdd1(dto.getStoreAdd1())
-				.storeAdd2(dto.getStoreAdd2()).storeAdd3(dto.getStoreAdd3()).storeStatus(dto.getStoreStatus())
+		return Store.builder()
+				.storeId(dto.getStoreId())
+				.storePwd(dto.getStorePwd())
+				.storeName(dto.getStoreName())
+				.storeEmail(dto.getStoreEmail())
+				.storeTel(dto.getStoreTel())
+				.storeAdd1(dto.getStoreAdd1())
+				.storeAdd2(dto.getStoreAdd2())
+				.storeAdd3(dto.getStoreAdd3())
+				.storeStatus(dto.getStoreStatus())
 				.categoryNo(category).build();
 	}
 }

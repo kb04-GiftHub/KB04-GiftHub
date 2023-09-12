@@ -15,9 +15,16 @@ public class StoreDto {
 	private Integer storeStatus, categoryNo;
 
 	public static StoreDto entityToDto(Store entity) {
-		return StoreDto.builder().storeId(entity.getStoreId()).storePwd(entity.getStorePwd())
-				.storeName(entity.getStoreName()).storeEmail(entity.getStoreEmail()).storeTel(entity.getStoreTel())
-				.storeAdd1(entity.getStoreAdd1()).storeAdd2(entity.getStoreAdd2()).storeAdd3(entity.getStoreAdd3())
-				.storeStatus(entity.getStoreStatus()).categoryNo(entity.getCategoryNo().getCategoryNo()).build();
+		return StoreDto.builder()
+				.storeId(entity.getStoreId())
+				.storePwd(entity.getStorePwd())
+				.storeName(entity.getStoreName())
+				.storeEmail(entity.getStoreEmail())
+				.storeTel(entity.getStoreTel())
+				.storeAdd1(entity.getStoreAdd1())
+				.storeAdd2(entity.getStoreAdd2())
+				.storeAdd3(entity.getStoreAdd3())
+				.storeStatus(entity.getStoreStatus())
+				.categoryNo(entity.getCategoryNo().getCategoryNo()).build();
 	}
 }

@@ -10,5 +10,4 @@ public interface StoreRepository extends JpaRepository<Store, String> {
 
 	Store findByStoreId(String id);
 	int countByStoreId(String id);
-	
 }
