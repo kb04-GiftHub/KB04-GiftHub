@@ -3,36 +3,40 @@ package mulcam.kb04.gifthub.GiftHub.controller;
 import java.io.File;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import mulcam.kb04.gifthub.GiftHub.dto.ProductDto;
+import mulcam.kb04.gifthub.GiftHub.dto.StoreDto;
 import mulcam.kb04.gifthub.GiftHub.service.ProductService;
-import mulcam.kb04.gifthub.GiftHub.serviceimpl.ProductServiceImpl;
 
 @Controller
 public class ProductController {
 	
 	@Autowired
 	ProductService productService;
-//	private ProductRepository repository;
-
+	
+	//모든 물품 정보 가져오기
+	@GetMapping("/allProduct")
+	@ResponseBody
+	public List<StoreDto> allStores() {
+		List<StoreDto> list = productService.allStores(); 
+		return list;
+	}
+	
 	@GetMapping("/product")
 	public String gifticon_add() {
-		
 		return "product/add_form";
 	}
 
@@ -107,6 +111,15 @@ public class ProductController {
 		System.out.println(productDto);
 		return "product/add_ok";
 	} 
+	
+	@GetMapping("/product/list")
+	public String product_list(Model model) {
+		
+		List<Object[]> list = productService.allProducts();
+		model.addAttribute("productList", list);
+		
+		return "product/list";
+	}
 	
 //	@GetMapping("/product/add_ok")
 //	public String product_add_ok(@PathVariable int productId, Model model) {

@@ -121,20 +121,32 @@ public class MyPageController {
 		return "member_complete";
 	}
 	
-	@GetMapping("/member/mypage/use_detail")
-	public String member_use_detail(HttpSession session, Model model) {
+	@GetMapping("/member/mypage/use_list")
+	public String member_use_list(HttpSession session, Model model) {
 		String loggedMemberId = (String)session.getAttribute("loggedMemberId");
 		if(loggedMemberId == null || session.getAttribute("loggedStroeId") != null) {
 			return "redirect:/index";
 		}
 		
 		List<Object[]> list = myPageService.findByCustomerIdToList(loggedMemberId);
+		model.addAttribute("list", list);
 		
 		if(list.size() == 0) {
 			model.addAttribute("msg", "보유한 기프티콘이 없습니다.");
-		} else {
-			model.addAttribute("list", list);
 		}
+		
+		return "mypage/member_use_list";
+	}
+	
+	@GetMapping("/member/mypage/use_detail")
+	public String member_use_detail(HttpSession session, Model model, @RequestParam("giftNo") int giftNo) {
+		String loggedMemberId = (String)session.getAttribute("loggedMemberId");
+		if(loggedMemberId == null || session.getAttribute("loggedStroeId") != null) {
+			return "redirect:/index";
+		}
+		
+		Object object = myPageService.findByGiftNo(giftNo);
+		model.addAttribute("object", object);
 		
 		return "mypage/member_use_detail";
 	}

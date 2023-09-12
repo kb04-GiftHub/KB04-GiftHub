@@ -23,7 +23,7 @@ public class PromotionHomController {
 
 	@Autowired
 	private PromotionService promotionService;
-	
+
 	//게시물 등록 폼  
 	@GetMapping("/promotion_insert_form")
     public String promotionInsertForm(Model model, HttpSession ses) {
@@ -89,6 +89,7 @@ public class PromotionHomController {
         model.addAttribute("promotion", promotionDto);
         return "promotion_detail";
     }
+	
 	//게시글 상세페이지에서 이동한 삭제 폼
 		@GetMapping("/promotion_delete_form")
 		public String promotion_delete_form() {
@@ -154,16 +155,27 @@ public class PromotionHomController {
 	 
 	 
 	
-//	//사용자 커뮤니티 view
-//	//사용자(가맹점주X) 게시글 목록 보기
-//	@GetMapping("/promotionView")
-//	public String promotionView() {
-//		return "promotionView";
-//}
-//	//사용자(가맹점주X) 게시글 목록에서 이동한 사용자 게시글 상세 보기
-//	@GetMapping("/promotionView_detail")
-//	public String promotionView_detail() {
-//		return "promotionView_detail";
-//}
+	//사용자 커뮤니티 view
+	//사용자(가맹점주X) 게시글 목록 보기
+	 @GetMapping("/promotionView_list")
+	    public String promotionView_list(Model model) {
+	        List<PromotionDto> promotions = promotionService.getAllPromotions();
+	        model.addAttribute("promotions", promotions);
+	        return "promotionView_list";
+	    }
+	 
+	//사용자(가맹점주X) 게시글 목록에서 이동한 사용자 게시글 상세 보기
+	@GetMapping("/promotionView_detail")
+	public String promotionView_detail(@RequestParam("promotionNo") int promotionNo, Model model) {
+        Object list = promotionService.findPromotionAndStore(promotionNo);
+//        System.out.println(list.length);
+        model.addAttribute("promotion", list);
+        //지도
+//        Gson gson = new Gson();
+//        String jsonStores = gson.toJson(list);
+//        model.addAttribute("stores", jsonStores);
+//        System.out.println(jsonStores);
+		return "promotionView_detail";
+}
 
 }

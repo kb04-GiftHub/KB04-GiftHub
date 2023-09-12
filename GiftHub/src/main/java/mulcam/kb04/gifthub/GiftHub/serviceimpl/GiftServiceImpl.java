@@ -37,20 +37,14 @@ public class GiftServiceImpl implements GiftService{
 	}
 	
 	@Override
-	public List<GiftDto> findByCustomerIdToList(String id) {
+	public List<Object[]> findByCustomerIdToList(String id) {
 		Customer customer = new Customer();
 		customer.setCustomerId(id);
 		
-		List<Gift> list = giftRepository.findByCustomerId(customer);
-		List<GiftDto> dtoList = new ArrayList<GiftDto>();
-		GiftDto dto = new GiftDto();
+		List<Object[]> list = giftRepository.findByCustomerIdToList(customer);
 		
-		for(Gift gift : list) {
-			dto = GiftDto.entityToDto(gift);
-			dtoList.add(dto);
-		}
 		
-		return dtoList;
+		return list;
 	}
 
 }
