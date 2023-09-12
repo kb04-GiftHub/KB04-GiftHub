@@ -12,8 +12,8 @@ import mulcam.kb04.gifthub.GiftHub.entity.Store;
 @Builder
 public class StoreDto {
 	private String storeId, storePwd, storeName, storeEmail, storeTel, storeAdd1, storeAdd2, storeAdd3;
-	private int storeStatus, categoryNo;
-	
+	private Integer storeStatus, categoryNo;
+
 	public static StoreDto entityToDto(Store entity) {
 		return StoreDto.builder()
 				.storeId(entity.getStoreId())
@@ -25,7 +25,6 @@ public class StoreDto {
 				.storeAdd2(entity.getStoreAdd2())
 				.storeAdd3(entity.getStoreAdd3())
 				.storeStatus(entity.getStoreStatus())
-				.categoryNo(entity.getCategoryNo().getCategoryNo())
-				.build();
+				.categoryNo(entity.getCategoryNo().getCategoryNo()).build();
 	}
 }

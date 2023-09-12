@@ -39,6 +39,15 @@
 
 <!-- Template Stylesheet -->
 <link href="/css/style.css" rel="stylesheet">
+
+<script>
+	window.onload = function() {
+		if ('${loggedStoreId}'.trim() != '') {
+			document.getElementById('logout').style.visibility = 'visible';
+		}
+	}
+</script>
+
 </head>
 
 <body>
@@ -78,8 +87,9 @@
 							<a href="about" class="nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">기프티콘 관리</a>
 							<div class="dropdown-menu m-0">
-								<a href="about" class="dropdown-item">상품등록</a> <a
-									href="calculate" class="dropdown-item">기프티콘 사용</a>
+								<a href="/product" class="dropdown-item">상품등록</a> <a
+									href="/gifticon/use" class="dropdown-item">기프티콘 사용</a><a
+									href="/gifticon/useList" class="dropdown-item">기프티콘 사용내역</a>
 							</div>
 						</div>
 						<div class="nav-item dropdown">
@@ -95,14 +105,13 @@
 								data-bs-toggle="dropdown">내역 관리</a>
 							<div class="dropdown-menu m-0">
 								<a href="sale" class="dropdown-item">판매 내역</a> <a
-									href="calculate" class="dropdown-item">정산 내역</a>
+									href="exchange" class="dropdown-item">정산 내역</a>
 							</div>
 						</div>
-						<a href="/contact/contact" class="nav-item nav-link">문의하기</a>
+						<a href="/store/mypage/check_pwd" class="nav-item nav-link">마이페이지</a>
 					</div>
-					<a href=""
-						class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Get
-						Started</a>
+					<a href="/logout"
+						class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block" id="logout" style="visibility: hidden;">LOGOUT</a>
 				</div>
 			</nav>
 

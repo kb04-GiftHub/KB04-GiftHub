@@ -1,21 +1,21 @@
 package mulcam.kb04.gifthub.GiftHub.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import mulcam.kb04.gifthub.GiftHub.dto.CustomerDto;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Builder
 public class Customer {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String customerId;
 
 	private String customerPwd;
@@ -38,8 +38,26 @@ public class Customer {
 
 	private String customerNickname;
 
-	private int customerPoint;
+	private int point;
 
 	private int customerStatus;
+	
+	public static Customer dtoToEntity(CustomerDto dto) {
+		return Customer.builder()
+				.customerId(dto.getCustomerId())
+				.customerPwd(dto.getCustomerPwd())
+				.customerEmail(dto.getCustomerEmail())
+				.customerGender(dto.getCustomerGender())
+				.customerBirth(dto.getCustomerBirth())
+				.customerName(dto.getCustomerName())
+				.customerTel(dto.getCustomerTel())
+				.customerAdd1(dto.getCustomerAdd1())
+				.customerAdd2(dto.getCustomerAdd2())
+				.customerAdd3(dto.getCustomerAdd3())
+				.customerNickname(dto.getCustomerNickname())
+				.point(dto.getPoint())
+				.customerStatus(dto.getCustomerStatus())
+				.build();
+	}
 
 }
