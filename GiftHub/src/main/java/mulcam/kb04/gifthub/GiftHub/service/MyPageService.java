@@ -16,5 +16,5 @@ public interface MyPageService {
 	public void save(StoreDto storeDto);
 	public void MemberSave(CustomerDto customerDto);
 	
-	public List<GiftDto> findByCustomerIdToList(String id);
+	public List<Object[]> findByCustomerIdToList(String id);
 }
