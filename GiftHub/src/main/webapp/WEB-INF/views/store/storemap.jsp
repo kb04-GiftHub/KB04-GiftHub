@@ -20,10 +20,6 @@
 	<div class="container-xxl py-5">
 		<div class="container py-5 px-lg-5">
 			<div class="wow fadeInUp" data-wow-delay="0.1s">
-				<p class="section-title text-secondary justify-content-center">
-					<span></span>가맹점<span></span>
-				</p>
-				<div id="map" style="width: 1200px; height: 440px;"></div>
 				<button onclick="changeMarker('all')">전체 마커 보기</button>
 				<button onclick="changeMarker(1)">한식</button>
 				<button onclick="changeMarker(2)">중식</button>
@@ -31,8 +27,60 @@
 				<button onclick="changeMarker(4)">양식</button>
 				<button onclick="changeMarker(5)">카페</button>
 				<button onclick="changeMarker(6)">기타</button>
+				<div id="map" style="width: 1200px; height: 440px;"></div>
 			</div>
 		</div>
+	</div>
+	<div class="container mt-5" id="tableSection">
+		<table class="table table-striped"
+			style="text-align: center; margin-bottom: 3rem;">
+			<thead>
+				<tr>
+					<th scope="col">순번</th>
+					<th scope="col">매장명</th>
+					<th scope="col">주소</th>
+					<th scope="col">업종</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="store" items="${storeDetailsList}"
+					varStatus="iterStat">
+					<tr>
+						<th scope="row">${iterStat.index + 1}</th>
+						<td>${store.storeName}</td>
+						<td>${store.storeAdd2}${store.storeAdd3}</td>
+						<td>${store.categoryNo}</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		<nav aria-label="Page navigation example">
+			<ul class="pagination pagination-primary justify-content-center">
+				<li class="page-item ${currentPage == 1 ? 'disabled' : ''}"><a
+					class="page-link" href="?page=1&storeId=${storeId}"><<</a></li>
+				<li class="page-item ${currentPage == 1 ? 'disabled' : ''}"><a
+					class="page-link"
+					href="?page=${currentPage - 1}&storeId=${storeId}"><</a></li>
+
+				<c:set var="startPage"
+					value="${(currentGroup - 1) * pagesPerGroup + 1}" />
+				<c:set var="endPage"
+					value="${currentGroup * pagesPerGroup > totalPages ? totalPages : currentGroup * pagesPerGroup}" />
+				<c:forEach var="i" begin="${startPage}" end="${endPage}">
+					<li class="page-item ${i == currentPage ? 'active' : ''}"><a
+						class="page-link" id="ggg"
+						href="?page=${i}&storeId=${storeId}#tableSection"
+						style="background: #0058C6; border: 1px solid #0058C6">${i}</a></li>
+				</c:forEach>
+				<li class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
+					<a class="page-link"
+					href="?page=${currentPage + 1}&storeId=${storeId}">></a>
+				</li>
+				<li class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
+					<a class="page-link" href="?page=${totalPages}&storeId=${storeId}">>></a>
+				</li>
+			</ul>
+		</nav>
 	</div>
 	<c:import url="../footer.jsp" />
 	<script type="text/javascript"
@@ -106,14 +154,13 @@
 		// 지도에 확대 축소 컨트롤을 생성한다
 		var zoomControl = new kakao.maps.ZoomControl();
 		map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-		
+
 		kakao.maps
 				.load(function() {
 					// 주소-좌표 변환 객체를 생성합니다
 					var geocoder = new kakao.maps.services.Geocoder();
-
-					var addresses = JSON.parse('${stores}'); // 모든 주소와 카테고리 정보를 가져옵니다
-
+					// 모든 주소와 카테고리 정보를 가져옵니다
+					var addresses = JSON.parse('${stores}');
 					addresses
 							.forEach(function(address) {
 								// 주소로 좌표를 검색합니다
@@ -126,7 +173,6 @@
 														var coords = new kakao.maps.LatLng(
 																result[0].y,
 																result[0].x);
-
 														// categoryno에 따라 마커 이미지를 선택합니다
 														var markerImage;
 														switch (address.categoryNo.categoryNo) {
@@ -153,7 +199,6 @@
 																			24,
 																			24));
 														}
-
 														// 결과값으로 받은 위치를 마커로 표시합니다
 														var marker = new kakao.maps.Marker(
 																{
@@ -162,11 +207,9 @@
 																	image : markerImage
 																// 선택된 마커 이미지를 사용
 																});
-
 														// 카테고리 별 마커 배열에 마커 추가
 														markersByCategory[address.categoryNo.categoryNo]
 																.push(marker);
-
 														// 인포윈도우로 장소에 대한 설명을 표시합니다
 														var infowindow = new kakao.maps.InfoWindow(
 																{
@@ -184,16 +227,15 @@
 				});
 		function changeMarker(categoryNo) {
 			categoryNo = categoryNo.toString();
-
 			for ( var key in markersByCategory) {
 				if (markersByCategory.hasOwnProperty(key)) {
 					var markers = markersByCategory[key];
 					var infoWindows = infoWindowsByCategory[key];
 					var mapValue = null;
-					
+
 					if (categoryNo === 'all' || key === categoryNo) {
-	                    mapValue = map;
-	                }
+						mapValue = map;
+					}
 
 					for (var i = 0; i < markers.length; i++) {
 						markers[i].setMap(mapValue);
