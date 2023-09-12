@@ -1,6 +1,7 @@
 package mulcam.kb04.gifthub.GiftHub.service;
 
 import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import mulcam.kb04.gifthub.GiftHub.dto.PromotionDto;
@@ -15,4 +16,11 @@ public interface PromotionService {
     PromotionDto save(PromotionDto promotionDto);
        
     PromotionDto insertPromotion(PromotionDto promotionDto);
+    
+    List<PromotionDto> getAllPromotions();
+    
+    List<PromotionDto> getPromotionsByType(int promotionType);
+
+	Object findPromotionAndStore(int promotionNo);
+    
 }

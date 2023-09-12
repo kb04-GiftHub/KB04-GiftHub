@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -33,13 +33,10 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-    
-    <script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=14b45607c24e81b779e6418cf489de08&libraries=services"></script>
 </head>
 
 <body>
-     <c:import url="top.jsp" />
+        <c:import url="top.jsp" />
 
 	<div class="container-xxl py-5 bg-primary hero-header">
 		<div class="container my-5 py-5 px-lg-5">
@@ -50,74 +47,60 @@
 			</div>
 		</div>
 	</div>
+   
 
-        <!-- Contact Start -->
+        <!-- Projects Start -->
         <div class="container-xxl py-5">
             <div class="container py-5 px-lg-5">
                 <div class="wow fadeInUp" data-wow-delay="0.1s">
                     <p class="section-title text-secondary justify-content-center"><span></span>커뮤니티<span></span></p>
-                    <h1 class="text-center mb-5">게시물 상세보기</h1>
+                    <h1 class="text-center mb-5">홍보 및 이벤트 게시판</h1>
                 </div>
                 
-                
-            <div class="row justify-content-center">
-            <!-- 왼쪽 컬럼: promotionImage -->
-            <div class="col-lg-5">
-                <div class="wow fadeInUp" data-wow-delay="0.3s">
-                    <img src="${pageContext.request.contextPath}/upload_images/promotion/${promotion[3]}" width="100%">
-                </div>
-            </div>
-            
-            <!-- 오른쪽 컬럼: promotionTitle, storeName, promotionDate, promotionContent -->
-            <div class="col-lg-7">
-                <div class="wow fadeInUp text-center" data-wow-delay="0.3s">
-                    <table class="text-center">
-                        <tr>
-                            <th>게시물 제목</th>
-                            <td>${promotion[1]}</td>
-                        </tr>
-                        <!-- 가맹점 이름을 Store 엔터티에서 가져와 표시 -->
-						<tr>
-						    <th>가맹점 이름</th>
-						    <td>${promotion[6]}</td>
-						</tr> 
-                        <tr>
-                            <th>작성일</th>
-                            <td>${promotion[4]}</td>
-                        </tr>
-                        <tr>
-                            <th>게시물 내용</th>
-                            <td>${promotion[2]}</td>
-                       </tr>  
-                        </table>                       
-                       	<div class="col-12 text-center">
-                       		<a href="/promotionView_list" class="list-button" >게시물 목록으로 이동</a>
-                        </div>
-                             </div>
-                           </div>
-                           
-                           <!-- 왼쪽 주소 -->
-                           <div>
-                           <table class="text-center">
-						<tr>
-						    <th>가맹점 이름</th>
-						    <td>${promotion[6]}</td>
-						</tr> 
-                        <tr>
-                            <th>주소</th>
-                            <td>${promotion[7]}</td>
-                        </tr>
-                        </table>
-                        </div>
-                        <!-- 오른쪽 지도 -->
-                        <div>
-                        <div id="map" style="width: 1200px; height: 440px;"></div>  
-                         </div>
-                         <!-- 지도 끝--> 
-                        </div>
+                <!-- 필터 버튼 생성 -->
+                <div class="row mt-n2 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="col-12 text-center">
+                        <ul class="list-inline mb-5" id="portfolio-flters">
+                            <li class="mx-2 active" data-filter="*">전체</li>
+                            <li class="mx-2" data-filter=".promotion-type-1">홍보</li>
+                            <li class="mx-2" data-filter=".promotion-type-2">이벤트</li>
+                        </ul>
                     </div>
                 </div>
-        <!-- Contact End -->
+                
+                <!-- 게시물 나열 -->
+<div class="row g-4 portfolio-container">
+    <c:forEach items="${promotions}" var="promotion">
+        <!-- promotionType에 따라 필터링 -->
+        <c:choose>
+            <c:when test="${promotion.promotionType eq 1}">
+                <c:set var="promotionTypeClass" value="promotion-type-1" />
+                <c:set var="promotionTypeName" value="홍보" />
+            </c:when>
+            <c:when test="${promotion.promotionType eq 2}">
+                <c:set var="promotionTypeClass" value="promotion-type-2" />
+                <c:set var="promotionTypeName" value="이벤트" />
+            </c:when>
+        </c:choose>
+       <!--   -->
+        <div class="col-lg-4 col-md-6 portfolio-item ${promotionTypeClass} wow fadeInUp" data-wow-delay="0.1s">
+            <div class="rounded overflow-hidden">
+                <div class="position-relative overflow-hidden">
+                    <img class="img-fluid w-100" style="width: 100%; height: 300px;"  src="${pageContext.request.contextPath}/upload_images/promotion/${promotion.promotionImage}" alt="">
+                   
+                </div>
+                <div class="bg-light p-4">
+                    <!-- promotionType을 Promotion의 실제 타입으로 표시 -->
+                    <p class="text-primary fw-medium mb-2">${promotionTypeName}</p>
+                    <h5 class="lh-base mb-0"><a href="/promotionView_detail?promotionNo=${promotion.promotionNo}">${promotion.promotionTitle}</a></h5>
+                </div>
+            </div>
+        </div>
+    </c:forEach>
+</div>
+</div>
+</div>
+        <!-- Projects End -->
         
 
         <!-- Footer Start -->
@@ -184,8 +167,7 @@
                             &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved. 
 							
 							<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-							Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a><br><br> 
-                            Distributed By a <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
+							Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
                         </div>
                         <div class="col-md-6 text-center text-md-end">
                             <div class="footer-menu">
@@ -219,53 +201,7 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-    <!-- 지도 -->
-    <script>
-    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-    mapOption = {
-        center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level : 3
-    // 지도의 확대 레벨
-    };
-    var map = new kakao.maps.Map(mapContainer, mapOption);
-    var geocoder = new kakao.maps.services.Geocoder();
-    geocoder.addressSearch('${promotion[7]}', function(result, status) {
-		// 정상적으로 검색이 완료됐으면
-		if (status === kakao.maps.services.Status.OK) {
-			
-			var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-	        //지도 중심 이동
-			map.setCenter(coords);
-		}
-    });
-   
-        // 주소-좌표 변환 객체를 생성합니다
-        
-        /*var addresses = JSON.parse('${stores}'); // 변수 이름을 'address'에서 'addresses'로 변경
-        
-        addresses
-                .forEach(function(address) {
-                    // 주소로 좌표를 검색합니다
-                    geocoder
-                            .addressSearch(
-                                    address.storeAdd2,
-                                    function(result, status) {
-                                        // 정상적으로 검색이 완료됐으면
-                                        if (status === kakao.maps.services.Status.OK) {
-                                            var coords = new kakao.maps.LatLng(
-                                                    result[0].y,
-                                                    result[0].x);
-                                            // 결과값으로 받은 위치를 마커로 표시합니다
-                                            var marker = new kakao.maps.Marker(
-                                                    {
-                                                        map : map,
-                                                        position : coords,
-                                                        // image : markerImage // 'markerImage' 변수가 정의되지 않았으므로 주석 처리
-                                                    });
-                                        }
-                                    });
-                });*/
-    
-</script>
 </body>
+
+
 </html>

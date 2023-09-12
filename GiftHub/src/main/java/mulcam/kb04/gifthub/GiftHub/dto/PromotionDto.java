@@ -19,7 +19,7 @@ public class PromotionDto {
 	private int promotionType;
 	private Date promotionDate;
 	private String promotionImage;
-	
+
 	public static PromotionDto entityToDto(Promotion promo) {
 		return PromotionDto.builder()
 				.promotionTitle(promo.getPromotionTitle())
