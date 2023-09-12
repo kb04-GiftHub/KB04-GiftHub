@@ -1,44 +1,23 @@
 package mulcam.kb04.gifthub.GiftHub.controller;
 
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 import java.util.UUID;
 
-import javax.imageio.ImageIO;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.google.zxing.BinaryBitmap;
-import com.google.zxing.DecodeHintType;
-import com.google.zxing.MultiFormatReader;
-import com.google.zxing.NotFoundException;
-import com.google.zxing.Result;
-import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
-import com.google.zxing.common.HybridBinarizer;
+import com.google.gson.Gson;
 
 import mulcam.kb04.gifthub.GiftHub.dto.PromotionDto;
 import mulcam.kb04.gifthub.GiftHub.entity.Promotion;
-import mulcam.kb04.gifthub.GiftHub.entity.Store;
-import mulcam.kb04.gifthub.GiftHub.repository.PromotionRepository;
-import mulcam.kb04.gifthub.GiftHub.repository.StoreRepository;
 import mulcam.kb04.gifthub.GiftHub.service.PromotionService;
 
 @Controller
@@ -46,7 +25,7 @@ public class PromotionHomController {
 
 	@Autowired
 	private PromotionService promotionService;
-	
+
 	//게시물 등록 폼  
 	@GetMapping("/promotion_insert_form")
     public String promotionInsertForm(Model model, HttpSession ses) {
@@ -112,6 +91,7 @@ public class PromotionHomController {
         model.addAttribute("promotion", promotionDto);
         return "promotion_detail";
     }
+	
 	//게시글 상세페이지에서 이동한 삭제 폼
 		@GetMapping("/promotion_delete_form")
 		public String promotion_delete_form() {
@@ -177,16 +157,27 @@ public class PromotionHomController {
 	 
 	 
 	
-//	//사용자 커뮤니티 view
-//	//사용자(가맹점주X) 게시글 목록 보기
-//	@GetMapping("/promotionView")
-//	public String promotionView() {
-//		return "promotionView";
-//}
-//	//사용자(가맹점주X) 게시글 목록에서 이동한 사용자 게시글 상세 보기
-//	@GetMapping("/promotionView_detail")
-//	public String promotionView_detail() {
-//		return "promotionView_detail";
-//}
+	//사용자 커뮤니티 view
+	//사용자(가맹점주X) 게시글 목록 보기
+	 @GetMapping("/promotionView_list")
+	    public String promotionView_list(Model model) {
+	        List<PromotionDto> promotions = promotionService.getAllPromotions();
+	        model.addAttribute("promotions", promotions);
+	        return "promotionView_list";
+	    }
+	 
+	//사용자(가맹점주X) 게시글 목록에서 이동한 사용자 게시글 상세 보기
+	@GetMapping("/promotionView_detail")
+	public String promotionView_detail(@RequestParam("promotionNo") int promotionNo, Model model) {
+        Object list = promotionService.findPromotionAndStore(promotionNo);
+//        System.out.println(list.length);
+        model.addAttribute("promotion", list);
+        //지도
+//        Gson gson = new Gson();
+//        String jsonStores = gson.toJson(list);
+//        model.addAttribute("stores", jsonStores);
+//        System.out.println(jsonStores);
+		return "promotionView_detail";
+}
 
 }
