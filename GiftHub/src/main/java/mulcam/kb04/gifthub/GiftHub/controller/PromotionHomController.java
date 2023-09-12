@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.google.gson.Gson;
-
 import mulcam.kb04.gifthub.GiftHub.dto.PromotionDto;
 import mulcam.kb04.gifthub.GiftHub.entity.Promotion;
 import mulcam.kb04.gifthub.GiftHub.service.PromotionService;
