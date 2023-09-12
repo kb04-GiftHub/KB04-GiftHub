@@ -129,11 +129,10 @@ public class MyPageController {
 		}
 		
 		List<Object[]> list = myPageService.findByCustomerIdToList(loggedMemberId);
+		model.addAttribute("list", list);
 		
 		if(list.size() == 0) {
 			model.addAttribute("msg", "보유한 기프티콘이 없습니다.");
-		} else {
-			model.addAttribute("list", list);
 		}
 		
 		return "mypage/member_use_detail";
