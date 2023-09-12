@@ -13,7 +13,16 @@
 <script
 	src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
 
-
+<style>
+        .event-square {
+            width: 20px; /* 네모 박스의 가로 크기를 조절하세요. */
+            height: 20px; /* 네모 박스의 세로 크기를 조절하세요. */
+            background-color: blue; /* 네모 박스의 배경색을 설정하세요. */
+            position: absolute; /* 절대 위치로 배치합니다. */
+            top: 2px; /* 원하는 위치로 조절하세요. */
+            left: 2px; /* 원하는 위치로 조절하세요. */
+        }
+    </style>
 
 </head>
 <body>
@@ -39,7 +48,7 @@
 			</div>
 		</div>
 
-
+	</div>
 
 		<!-- end -->
 
@@ -55,12 +64,23 @@
             events : [
             	<c:forEach var="gift" items="${list}">
                 {
+                	id: 1,
                     title: '<c:out value="${gift.giftNo}" />',
                     start: '<c:out value="${gift.giftExp}" />',
                     end: '<c:out value="${gift.giftExp}" />'
                 },
             </c:forEach>
+           /*  {
+        		id: 1,
+        		title: 'Test1',
+        		start: '2023-09-22',
+        		end: '2023-09-22'
+        	} */
             ],
+            eventRender: function(info) {
+                var element = info.el;
+                element.innerHTML = '<div class="event-square"></div>'; // 네모 박스로 대체
+            }
          });
          calendar.render();
       });
