@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Main Page</title>
+<title>회원 메인페이지</title>
 <link
 	href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.css'
 	rel='stylesheet' />
@@ -127,11 +127,32 @@
             },
          
          eventClick: function(info) {
+        	 
+        	 var eventStatus = info.event.extendedProps.giftStatus;
+        	 var statusText = '';
+        	 
+        	// eventStatus에 따라 상태 텍스트 설정
+        	    switch (eventStatus) {
+        	        case 1:
+        	            statusText = '사용가능';
+        	            break;
+        	        case 2:
+        	            statusText = '사용완료';
+        	            break;
+        	        case 3:
+        	            statusText = '기간만료';
+        	            break;
+        	        default:
+        	            statusText = '알 수 없음';
+        	    }
+        	
              // 클릭한 이벤트의 정보를 모달에 채웁니다.
              document.getElementById('eventTitle').textContent = info.event.title;
              /* document.getElementById('eventStart').textContent = info.event.startStr;
              document.getElementById('eventEnd').textContent = info.event.endStr; */
-             document.getElementById('eventStatus').textContent = info.event.extendedProps.giftStatus;
+             /* document.getElementById('eventStatus').textContent = info.event.extendedProps.giftStatus; */
+             document.getElementById('eventStatus').textContent = statusText;
+             
 			 document.getElementById('eventGiftNo').textContent = info.event.extendedProps.giftNo;
 			 document.getElementById('eventBarcode').textContent = info.event.extendedProps.giftBarcode;
              // 모달을 열기 위한 Bootstrap 모달 메서드 호출
