@@ -65,10 +65,12 @@
          <!-- modal 폼 -->
          <div class="modal-body">
             <p><strong>제목:</strong> <span id="eventTitle"></span></p>
-            <p><strong>시작 시간:</strong> <span id="eventStart"></span></p>
-            <p><strong>종료 시간:</strong> <span id="eventEnd"></span></p>
+            <!-- <p><strong>시작 시간:</strong> <span id="eventStart"></span></p>
+            <p><strong>종료 시간:</strong> <span id="eventEnd"></span></p> -->
             <p><strong>상태:</strong> <span id="eventStatus"></span></p>
             <p><strong>기프티콘 번호:</strong> <span id="eventGiftNo"></span></p>
+            <p><strong>바코드 번호:</strong> <span id="eventBarcode"></span></p>
+            
          </div>
          <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal" id="modalClose">닫기</button>
@@ -92,11 +94,12 @@
             		<c:set var="formattedEnd" value="${fn:substring(gift[1], 0, 10)}" />
                 {
                 	id: 1,
-                    title: '<c:out value="${gift[8]}" />',
+                    title: '<c:out value="[${gift[11]}] ${gift[8]}" />',
                     start: '<c:out value="${formattedStart}" />',
                     end: '<c:out value="${formattedEnd}" />',
                     giftStatus: ${gift[3]}, // giftStatus 값을 이벤트 객체에 저장
-                    giftNo: ${gift[0]} // giftNo
+                    giftNo: ${gift[0]}, // giftNo
+                    giftBarcode: '${gift[2]}'
                     /* start: '<c:out value="${gift[1]}" />',
                     end: '<c:out value="${gift[1]}" />' */
                 },
@@ -126,18 +129,20 @@
          eventClick: function(info) {
              // 클릭한 이벤트의 정보를 모달에 채웁니다.
              document.getElementById('eventTitle').textContent = info.event.title;
-             document.getElementById('eventStart').textContent = info.event.startStr;
-             document.getElementById('eventEnd').textContent = info.event.endStr;
+             /* document.getElementById('eventStart').textContent = info.event.startStr;
+             document.getElementById('eventEnd').textContent = info.event.endStr; */
              document.getElementById('eventStatus').textContent = info.event.extendedProps.giftStatus;
 			 document.getElementById('eventGiftNo').textContent = info.event.extendedProps.giftNo;
+			 document.getElementById('eventBarcode').textContent = info.event.extendedProps.giftBarcode;
              // 모달을 열기 위한 Bootstrap 모달 메서드 호출
              
-             console.log('이벤트를 클릭했습니다.');
+             /* console.log('이벤트를 클릭했습니다.');
     		 console.log('제목:', info.event.title);
     		 console.log('시작 시간:', info.event.startStr);
     		 console.log('종료 시간:', info.event.endStr);
     		 console.log('상태:', info.event.extendedProps.giftStatus);
     		 console.log('기프티콘 번호:', info.event.extendedProps.giftNo);
+    		 console.log('바코드 번호:', info.event.extendedProps.giftBarcode); */
              $('#eventModal').modal('show');
              
              $('#modalClose').click(function(){
