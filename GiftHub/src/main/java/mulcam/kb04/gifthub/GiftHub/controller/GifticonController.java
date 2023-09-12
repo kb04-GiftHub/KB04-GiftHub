@@ -109,7 +109,7 @@ public class GifticonController {
 	@GetMapping("/gifticon/barcode_generate")
 	public String barcode_generate(@RequestParam String userId, Model model, HttpSession ses) {
 		
-		 // 바코드 생성을 위한 설정
+		// 바코드 생성을 위한 설정
         int width = 400; // 이미지 너비
         int height = 100; // 이미지 높이
         String format = "png"; // 이미지 형식
