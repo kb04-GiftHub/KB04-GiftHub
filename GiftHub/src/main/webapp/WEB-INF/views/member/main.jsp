@@ -57,10 +57,10 @@
    <div class="modal-dialog" role="document">
       <div class="modal-content">
          <div class="modal-header">
-            <h5 class="modal-title" id="eventModalLabel">이벤트 상세 정보</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <h5 class="modal-title" id="eventModalLabel">기프티콘 상세 정보</h5>
+            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                <span aria-hidden="true">&times;</span>
-            </button>
+            </button> -->
          </div>
          <!-- modal 폼 -->
          <div class="modal-body">
@@ -71,7 +71,7 @@
             <p><strong>기프티콘 번호:</strong> <span id="eventGiftNo"></span></p>
          </div>
          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="modalClose">닫기</button>
          </div>
       </div>
    </div>
@@ -133,14 +133,17 @@
              // 모달을 열기 위한 Bootstrap 모달 메서드 호출
              
              console.log('이벤트를 클릭했습니다.');
-    console.log('제목:', info.event.title);
-    console.log('시작 시간:', info.event.startStr);
-    console.log('종료 시간:', info.event.endStr);
-    console.log('상태:', info.event.extendedProps.giftStatus);
-    console.log('기프티콘 번호:', info.event.extendedProps.giftNo);
+    		 console.log('제목:', info.event.title);
+    		 console.log('시작 시간:', info.event.startStr);
+    		 console.log('종료 시간:', info.event.endStr);
+    		 console.log('상태:', info.event.extendedProps.giftStatus);
+    		 console.log('기프티콘 번호:', info.event.extendedProps.giftNo);
              $('#eventModal').modal('show');
+             
+             $('#modalClose').click(function(){
+	             $('#eventModal').modal('hide');
+             });
           },
-
          });
          calendar.render();
       });
