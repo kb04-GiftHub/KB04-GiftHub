@@ -72,15 +72,12 @@
 			<artifactId>javase</artifactId>
 			<version>3.4.1</version>
 		</dependency>
-		
 		<!-- GSON object을 json으로 변경 -->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 		</dependency>
-		
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>

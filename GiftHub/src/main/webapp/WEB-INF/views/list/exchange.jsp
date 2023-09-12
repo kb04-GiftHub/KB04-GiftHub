@@ -27,7 +27,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="container-xxl py-5">
 		<div class="container py-5 px-lg-5">
 			<div class="wow fadeInUp" data-wow-delay="0.1s">
@@ -36,8 +36,9 @@
 			<div class="row justify-content-center">
 				<div class="col-lg-10">
 					<div class="wow fadeInUp" data-wow-delay="0.3s">
-					<p class="text-center mb-4"></p>
-						<div class="dropdown" style="display: flex; justify-content: right; align-items: center; margin-right: 15px; margin-bottom: 20px;">
+						<p class="text-center mb-4"></p>
+						<div class="dropdown"
+							style="display: flex; justify-content: right; align-items: center; margin-right: 15px; margin-bottom: 20px;">
 							<button class="btn btn-primary dropdown-toggle" type="button"
 								id="dropdownMenuButton1" data-bs-toggle="dropdown"
 								aria-expanded="false">2023년</button>
@@ -50,12 +51,13 @@
 								<li><a class="dropdown-item" href="#">2028년</a></li>
 							</ul>
 						</div>
-						
+
 						<canvas id="myChart" width="400" height="200"></canvas>
-						
+
 						<hr style="margin-top: 3rem;">
 						<div class="container mt-5" id="tableSection">
-							<table class="table table-striped" style="text-align: center; margin-bottom: 3rem;">
+							<table class="table table-striped"
+								style="text-align: center; margin-bottom: 3rem;">
 								<thead>
 									<tr>
 										<th scope="col">순번</th>
@@ -73,7 +75,8 @@
 											<th scope="row">${iterStat.index + 1}</th>
 
 											<td>${exchange.storeName}</td>
-											<td>${exchange.exchangeBank}- ${exchange.exchangeAccount}</td>
+											<td>${exchange.exchangeBank}-
+												${exchange.exchangeAccount}</td>
 											<td>${exchange.exchangeMoney}</td>
 											<td>${exchange.exchangeDate}</td>
 											<td>${exchange.exchangeNo}</td>
@@ -88,7 +91,7 @@
 									<li class="page-item ${currentPage == 1 ? 'disabled' : ''}"><a
 										class="page-link"
 										href="?page=${currentPage - 1}&storeId=${storeId}"><</a></li>
-					
+
 									<c:set var="startPage"
 										value="${(currentGroup - 1) * pagesPerGroup + 1}" />
 									<c:set var="endPage"
@@ -96,16 +99,18 @@
 									<c:forEach var="i" begin="${startPage}" end="${endPage}">
 										<li class="page-item ${i == currentPage ? 'active' : ''}"><a
 											class="page-link" id="ggg"
-
-											href="?page=${i}&storeId=${storeId}#tableSection" style="background: #0058C6; border: 1px solid #0058C6">${i}</a></li>
-
+											href="?page=${i}&storeId=${storeId}#tableSection"
+											style="background: #0058C6; border: 1px solid #0058C6">${i}</a></li>
 									</c:forEach>
-									<li class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
+									<li
+										class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
 										<a class="page-link"
 										href="?page=${currentPage + 1}&storeId=${storeId}">></a>
 									</li>
-									<li class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
-										<a class="page-link" href="?page=${totalPages}&storeId=${storeId}">>></a>
+									<li
+										class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
+										<a class="page-link"
+										href="?page=${totalPages}&storeId=${storeId}">>></a>
 									</li>
 								</ul>
 							</nav>
