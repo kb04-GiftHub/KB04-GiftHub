@@ -7,12 +7,12 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import mulcam.kb04.gifthub.GiftHub.repository.GiftUsedRepository;
 import mulcam.kb04.gifthub.GiftHub.service.GiftUsedService;
 
-@Service
+@Component
 public class GiftUsedServiceImpl implements GiftUsedService {
 
 	@Autowired

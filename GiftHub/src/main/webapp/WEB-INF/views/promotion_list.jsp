@@ -34,7 +34,31 @@
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 </head>
-
+<style>
+/* 버튼 컨테이너 스타일 */
+.button-container {
+    display: flex;
+    justify-content: center; /* 가로 중앙 정렬 */
+}
+/* 목록이동 버튼 스타일 */
+.new-button {
+    background-color: #0058C6; /* 배경색을 노란색으로 설정 */
+    color: white; /* 텍스트 색상을 하얀색으로 설정 */
+    padding: 10px 50px; /* 내부 여백 설정 (상하 10px, 좌우 20px) */
+    border: none; /* 테두리 없음 */
+    border-radius: 5px; /* 버튼 모서리를 둥글게 만듭니다. */
+    cursor: pointer; /* 커서 모양을 포인터로 변경하여 클릭 가능한 버튼임을 나타냅니다. */
+}
+/* 상세보기 이동 버튼 스타일 */
+.detail-button {
+    background-color: #ffc107; /* 배경색을 노란색으로 설정 */
+    color: white; /* 텍스트 색상을 하얀색으로 설정 */
+    padding: 0px 5px; /* 내부 여백 설정 (상하 10px, 좌우 20px) */
+    border: none; /* 테두리 없음 */
+    border-radius: 5px; /* 버튼 모서리를 둥글게 만듭니다. */
+    cursor: pointer; /* 커서 모양을 포인터로 변경하여 클릭 가능한 버튼임을 나타냅니다. */
+}
+</style>
 <body>
  <c:import url="top.jsp" />
 
@@ -58,25 +82,38 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-7">
                         <div class="wow fadeInUp" data-wow-delay="0.3s">
-                            <p class="text-center mb-4">게시물 관리</p>
+                            <p class="text-center mb-4">상세보기에서 게시물을 삭제, 수정할 수 있습니다.</p>
                             <form>
                                 <div class="row g-3">
                                     <table>
 										<tr>
 											<th>번호</th>
+											<th>게시물 종류</th>											
 											<th>제목</th>
-											<th>상세보기</th>
+											<th></th>
 										</tr>
 										<c:forEach items="${promotion_list}" var="promotion">
 										<tr>
 											<td>${promotion.promotionNo}</td>
+											<td>
+												<c:choose>
+							                            <c:when test="${promotion.promotionType == 1}">
+							                                홍보
+							                            </c:when>
+							                            <c:when test="${promotion.promotionType == 2}">
+							                                이벤트
+							                            </c:when>
+							                        </c:choose>
+						                        </td>
                 							<td>${promotion.promotionTitle}</td>
-                							<td><a href="promotion_detail?promotionNo=${promotion.promotionNo}">상세보기</a></td>
+                							<td><a href="promotion_detail?promotionNo=${promotion.promotionNo}" class="detail-button">상세보기</a></td>
 										</tr>
 										</c:forEach>
 									</table>
-                                    <div class="col-12">
-                                        <a href="/promotion_insert_form">게시글 새로 등록하기</a>                                  	
+									<br>
+									<br>
+                                    <div class="button-container">
+                                        <a href="/promotion_insert_form" class="new-button">게시글 새로 등록하기</a>                                  	
                                     </div>
                                 </div>
                             </form>

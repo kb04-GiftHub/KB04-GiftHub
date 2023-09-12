@@ -1,5 +1,7 @@
 package mulcam.kb04.gifthub.GiftHub.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +25,7 @@ public class MyPageController {
 	// 가맹점
 	@GetMapping("/store/mypage/check_pwd")
 	public String check_pwd(HttpSession session) {
-		if(session.getAttribute("loggedId") == null) {
+		if(session.getAttribute("loggedStoreId") == null || session.getAttribute("loggedMemberId") != null) {
 			return "redirect:/index";
 		}
 		
@@ -33,8 +35,8 @@ public class MyPageController {
 	@PostMapping("/store/mypage/check_action")
 	public String check_action(@RequestParam String password,
 			Model model, RedirectAttributes redirect, HttpSession session) {
-		String loggedId = (String)session.getAttribute("loggedId");
-		StoreDto storeDto = myPageService.findByStoreId(loggedId);
+		String loggedStoreId = (String)session.getAttribute("loggedStoreId");
+		StoreDto storeDto = myPageService.findByStoreId(loggedStoreId);
 		if(storeDto.getStorePwd().equals(password)) {
 			model.addAttribute("storeDto", storeDto);
 			return "mypage/store_info";
@@ -65,13 +67,13 @@ public class MyPageController {
 		model.addAttribute("title", "마이페이지");
 		model.addAttribute("subTitle", "COMPLETE");
 		model.addAttribute("msg", "가맹점 정보가 수정되었습니다. 메인페이지로 이동하여 서비스를 이용하세요.");
-		return "complete";
+		return "store_complete";
 	}
 	
 	// 회원
 	@GetMapping("/member/mypage/check_pwd")
 	public String member_check_pwd(HttpSession session) {
-		if(session.getAttribute("loggedId") == null) {
+		if(session.getAttribute("loggedMemberId") == null || session.getAttribute("loggedStroeId") != null) {
 			return "redirect:/index";
 		}
 		
@@ -81,8 +83,8 @@ public class MyPageController {
 	@PostMapping("/member/mypage/check_action")
 	public String member_check_action(@RequestParam String password,
 			Model model, RedirectAttributes redirect, HttpSession session) {
-		String loggedId = (String)session.getAttribute("loggedId");
-		CustomerDto customerDto = myPageService.findByCustomerId(loggedId);
+		String loggedMemberId = (String)session.getAttribute("loggedMemberId");
+		CustomerDto customerDto = myPageService.findByCustomerId(loggedMemberId);
 		if(customerDto.getCustomerPwd().equals(password)) {
 			model.addAttribute("customerDto", customerDto);
 			return "mypage/member_info";
@@ -116,6 +118,24 @@ public class MyPageController {
 		model.addAttribute("title", "마이페이지");
 		model.addAttribute("subTitle", "COMPLETE");
 		model.addAttribute("msg", "회원정보가 수정되었습니다. 메인페이지로 이동하여 서비스를 이용하세요.");
-		return "complete";
+		return "member_complete";
+	}
+	
+	@GetMapping("/member/mypage/use_detail")
+	public String member_use_detail(HttpSession session, Model model) {
+		String loggedMemberId = (String)session.getAttribute("loggedMemberId");
+		if(loggedMemberId == null || session.getAttribute("loggedStroeId") != null) {
+			return "redirect:/index";
+		}
+		
+		List<Object[]> list = myPageService.findByCustomerIdToList(loggedMemberId);
+		
+		if(list.size() == 0) {
+			model.addAttribute("msg", "보유한 기프티콘이 없습니다.");
+		} else {
+			model.addAttribute("list", list);
+		}
+		
+		return "mypage/member_use_detail";
 	}
 }

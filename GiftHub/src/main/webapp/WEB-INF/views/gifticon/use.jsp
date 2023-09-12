@@ -5,13 +5,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>판매 내역</title>
+<title>기프티콘 사용</title>
  <!-- jQuery -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
-</head>
-<body> -->
 	<c:import url="../top.jsp" />
-	
 	<div class="container-xxl py-5 bg-primary hero-header">
 		<div class="container my-5 py-5 px-lg-5">
 			<div class="row g-5 py-5">
@@ -61,7 +58,7 @@
           		//})
          // 	})
           </script>
-          
+          <c:set var="path" value="${pageContext.request.contextPath}" />
             <!-- Bordered Tabs -->
             <ul class="nav nav-tabs nav-tabs-bordered justify-content-center">
               <li class="nav-item">

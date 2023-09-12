@@ -23,7 +23,7 @@ public class RegisterController {
 	// 가맹점 회원가입
 	@GetMapping("/store/register")
 	public String store_register(HttpSession session) {
-		if(session.getAttribute("loggedId") != null) {
+		if(session.getAttribute("loggedStoreId") != null || session.getAttribute("loggedMemberId") != null) {
 			return "redirect:/index";
 		}
 		
@@ -55,7 +55,7 @@ public class RegisterController {
 		model.addAttribute("title", "회원가입");
 		model.addAttribute("subTitle", "WELCOME");
 		model.addAttribute("msg", "가맹점 등록이 완료되었습니다. 메인페이지로 이동하여 서비스를 이용하세요.");
-		return "complete";
+		return "store_complete";
 	}
 	
 	@PostMapping("/store/id_check_action")
@@ -83,7 +83,7 @@ public class RegisterController {
 	// 회원 회원가입
 	@GetMapping("/member/register")
 	public String member_register(HttpSession session) {
-		if(session.getAttribute("loggedId") != null) {
+		if(session.getAttribute("loggedMemberId") != null || session.getAttribute("loggedStoreId") != null) {
 			return "redirect:/index";
 		}
 		
@@ -121,7 +121,7 @@ public class RegisterController {
 		model.addAttribute("title", "회원가입");
 		model.addAttribute("subTitle", "WELCOME");
 		model.addAttribute("msg", "회원등록이 완료되었습니다. 메인페이지로 이동하여 서비스를 이용하세요.");
-		return "complete";
+		return "member_complete";
 	}
 	
 	@PostMapping("/member/id_check_action")
