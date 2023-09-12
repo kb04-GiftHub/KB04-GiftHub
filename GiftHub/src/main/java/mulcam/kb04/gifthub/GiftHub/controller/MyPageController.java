@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import mulcam.kb04.gifthub.GiftHub.dto.CustomerDto;
-import mulcam.kb04.gifthub.GiftHub.dto.GiftDto;
 import mulcam.kb04.gifthub.GiftHub.dto.StoreDto;
 import mulcam.kb04.gifthub.GiftHub.service.MyPageService;
 
@@ -129,12 +128,11 @@ public class MyPageController {
 			return "redirect:/index";
 		}
 		
-		List<GiftDto> list = myPageService.findByCustomerIdToList(loggedMemberId);
+		List<Object[]> list = myPageService.findByCustomerIdToList(loggedMemberId);
+		model.addAttribute("list", list);
 		
 		if(list.size() == 0) {
 			model.addAttribute("msg", "보유한 기프티콘이 없습니다.");
-		} else {
-			model.addAttribute("list", list);
 		}
 		
 		return "mypage/member_use_detail";
