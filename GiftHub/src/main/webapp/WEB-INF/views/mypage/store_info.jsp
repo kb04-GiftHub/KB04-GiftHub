@@ -93,19 +93,52 @@
 											<option>업종을 선택하세요.</option>
 											<c:choose>
 												<c:when test="${storeDto.categoryNo eq 1}">
-													<option value="1" selected>Groceries</option>
-													<option value="2">Electronics</option>
-													<option value="3">Fashion</option>
+													<option value="1" selected>한식</option>
+												    <option value="2">중식</option>
+												    <option value="3">일식</option>
+												    <option value="4">양식</option>
+												    <option value="5">카페/베이커리</option>
+												    <option value="6">기타</option>
 												</c:when>
 												<c:when test="${storeDto.categoryNo eq 2}">
-													<option value="1">Groceries</option>
-													<option value="2" selected>Electronics</option>
-													<option value="3">Fashion</option>
+													<option value="1">한식</option>
+												    <option value="2" selected>중식</option>
+												    <option value="3">일식</option>
+												    <option value="4">양식</option>
+												    <option value="5">카페/베이커리</option>
+												    <option value="6">기타</option>
 												</c:when>
 												<c:when test="${storeDto.categoryNo eq 3}">
-													<option value="1">Groceries</option>
-													<option value="2">Electronics</option>
-													<option value="3" selected>Fashion</option>
+													<option value="1">한식</option>
+												    <option value="2">중식</option>
+												    <option value="3" selected>일식</option>
+												    <option value="4">양식</option>
+												    <option value="5">카페/베이커리</option>
+												    <option value="6">기타</option>
+												</c:when>
+												<c:when test="${storeDto.categoryNo eq 4}">
+													<option value="1">한식</option>
+												    <option value="2">중식</option>
+												    <option value="3">일식</option>
+												    <option value="4" selected>양식</option>
+												    <option value="5">카페/베이커리</option>
+												    <option value="6">기타</option>
+												</c:when>
+												<c:when test="${storeDto.categoryNo eq 5}">
+													<option value="1">한식</option>
+												    <option value="2">중식</option>
+												    <option value="3">일식</option>
+												    <option value="4">양식</option>
+												    <option value="5" selected>카페/베이커리</option>
+												    <option value="6">기타</option>
+												</c:when>
+												<c:when test="${storeDto.categoryNo eq 6}">
+													<option value="1">한식</option>
+												    <option value="2">중식</option>
+												    <option value="3">일식</option>
+												    <option value="4">양식</option>
+												    <option value="5">카페/베이커리</option>
+												    <option value="6" selected>기타</option>
 												</c:when>
 											</c:choose>
 										</select>

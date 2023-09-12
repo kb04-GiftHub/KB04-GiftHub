@@ -103,9 +103,12 @@
 									<div class="form-floating">
 										<select name="category" id="category" class="form-control">
 											<option>업종을 선택하세요.</option>
-										    <option value="1">Groceries</option>
-										    <option value="2">Electronics</option>
-										    <option value="3">Fashion</option>
+										    <option value="1">한식</option>
+										    <option value="2">중식</option>
+										    <option value="3">일식</option>
+										    <option value="4">양식</option>
+										    <option value="5">카페/베이커리</option>
+										    <option value="6">기타</option>
 									  	</select>
 									  	<label for="category">업종</label>
 									</div>
