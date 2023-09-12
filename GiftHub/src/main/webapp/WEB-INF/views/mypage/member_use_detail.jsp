@@ -20,94 +20,68 @@
             </div>
         </div>
     </div>
-
-        <!-- Projects Start -->
-		<c:choose>
-			<c:when test="${list.size() == 0}">
-				<div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-					<div class="container px-lg-5 text-center">
-						<div class="row justify-content-center">
-							<div class="col-lg-6">
-								<h1 class="mb-4">MY GIFTICONS</h1>
-								<p class="mb-4">${msg}</p>
-								<a class="btn btn-primary rounded-pill py-3 px-5" href="/">기프티콘 구경하기</a>
+    
+	<!-- 기프티콘 상세 Start -->
+	<div class="container-xxl py-5">
+		<div class="container py-5 px-lg-5">
+			<div class="wow fadeInUp" data-wow-delay="0.1s">
+				<h1 class="text-center mb-5">GIFTICON INFO</h1>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-lg-7">
+					<div class="wow fadeInUp" data-wow-delay="0.3s">
+					<p class="text-center mb-4"></p>
+						<div class="row g-3">
+							<div class="col-6">
+								<div class="form-floating">
+									<img alt="" src="/upload_images/product/${object[8]}" style="width: 100%; margin-bottom: 20px;">
+									<img alt="" src="/upload_images/gifticon/${object[2]}.png" style="margin: auto; display: block; width: 60%">
+									<p class="mb-0" style="text-align: center; letter-spacing: 4px; margin-top: 10px;">${object[0]}</p>
+								</div>
+							</div>
+							<div class="col-6" style="padding-left: 50px;">
+								<div class="form-floating">
+									<h4 class="mb-3">${object[6]}</h4>
+									<hr>
+									<c:choose>
+										<c:when test="${object[3] eq 1}">
+											<p class="mb-1">쿠폰상태 : 사용가능</p>
+										</c:when>
+										<c:when test="${object[3] eq 2}">
+											<p class="mb-1">쿠폰상태 : 사용완료</p>
+										</c:when>
+									</c:choose>
+									<p class="mb-1">유효기간 : <fmt:formatDate value="${object[1]}" pattern="yyyy년 MM월 dd일"/></p>
+									<p class="mb-1">구매일자 : <fmt:formatDate value="${object[4]}" pattern="yyyy년 MM월 dd일"/></p>
+									<p class="mb-1">구매금액 : ${object[5]}원</p>
+									
+									<p class="mb-1">가게이름 : ${object[9]}</p>
+									<p class="mb-1">전화번호 : ${object[10]}</p>
+								</div>
+							</div>
+							<div class="col-12">
+								<hr style="margin: 30px 0;">
+								<div class="form-floating">
+									<p class="mb-10" style="text-align: center;">상품정보</p>
+									<p class="mb-0">${object[7]}</p>
+								</div>
+							</div>
+							
+							<div class="col-12">
+								<button class="btn btn-primary w-100 py-3" id="backBtn" style="margin-top: 50px;">이전으로 돌아가기</button>
 							</div>
 						</div>
 					</div>
 				</div>
-			</c:when>
-			<c:when test="${list.size() > 0}">
-				<div class="container-xxl py-5">
-					<div class="container py-5 px-lg-5">
-						<div class="wow fadeInUp" data-wow-delay="0.1s">
-							<h1 class="text-center mb-5">MY GIFTICONS</h1>
-						</div>
-						<div class="row mt-n2 wow fadeInUp" data-wow-delay="0.3s">
-							<div class="col-12 text-center">
-								<ul class="list-inline mb-5" id="portfolio-flters">
-									<li class="mx-2 active" data-filter="*">All</li>
-									<li class="mx-2" data-filter=".first">Available</li>
-									<li class="mx-2" data-filter=".second">Expired</li>
-								</ul>
-							</div>
-						</div>
-						<div class="row g-4 portfolio-container">
+			</div>
+		</div>
+	</div>
+	<!-- 기프티콘 상세 End -->
 	
-							<c:forEach items="${list}" var="list">
-								<c:choose>
-									<c:when test="${list[3] eq 1}">
-										<div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
-					                        <div class="rounded overflow-hidden">
-					                            <div class="position-relative overflow-hidden" style="height: 250px; display: flex; justify-content: center; align-items: center;">
-					                                <img class="img-fluid" src="/upload_images/product/${list[10]}" alt="" id="img" onload="adjustImageSize(this)">
-					                            </div>
-					                            <div class="p-4" style="background: #E2EFFF; color: #0058C6;">
-					                                <p class="mb-1">${list[11]}</p>
-					                                <h5 class="lh-base mb-0">${list[8]}</h5>
-					                            </div>
-					                        </div>
-					                    </div>
-										<%-- <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
-											<div class="feature-item rounded text-center p-4" style="background: #E2EFFF;">
-												<img alt="" src="/img/check.png" style="width: 10%; margin-bottom: 15px;">
-												<h5 class="mb-3">${list[5]}</h5>
-												<p class="m-0">~ <fmt:formatDate value="${list[1]}" pattern="yyyy년 MM월 dd일"/></p>
-											</div>
-										</div> --%>
-									</c:when>
-									<c:when test="${list[3] eq 2}">
-										<div class="col-lg-4 col-md-6 portfolio-item second wow fadeInUp" data-wow-delay="0.1s">
-					                        <div class="rounded overflow-hidden">
-					                            <div class="position-relative overflow-hidden" style="height: 250px; display: flex; justify-content: center; align-items: center;">
-					                                <img class="img-fluid" src="/upload_images/product/${list[10]}" alt="" id="img" onload="adjustImageSize(this)">
-					                            </div>
-					                            <div class="p-4" style="background: #EEEEEE; color: black;">
-					                                <p class="mb-1">${list[11]}</p>
-					                                <h5 class="lh-base mb-0">${list[8]}</h5>
-					                            </div>
-					                        </div>
-					                    </div>
-										<%-- <div class="col-lg-4 col-md-6 portfolio-item second wow fadeInUp" data-wow-delay="0.1s">
-											<div class="feature-item rounded text-center p-4" style="background: #eeeeee;">
-												<img alt="" src="/img/delete.png" style="width: 10%; margin-bottom: 15px;">
-												<h5 class="mb-3">${list[5]}</h5>
-												<p class="m-0">~ <fmt:formatDate value="${list[1]}" pattern="yyyy년 MM월 dd일"/></p>
-											</div>
-										</div> --%>
-									</c:when>
-								</c:choose>
-							</c:forEach>
-						</div>
-					</div>
-				</div>
-			</c:when>
-		</c:choose>
-		<!-- Projects End -->
-        
-		<c:import url="../footer.jsp" />
-
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-secondary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+	<c:import url="../footer.jsp" />
+	
+	<!-- Back to Top -->
+	<a href="#" class="btn btn-lg btn-secondary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
 
     <!-- JavaScript Libraries -->
@@ -120,26 +94,6 @@
     <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="/lib/isotope/isotope.pkgd.min.js"></script>
     <script src="/lib/lightbox/js/lightbox.min.js"></script>
-    
-    <script>
-    function adjustImageSize(img) {
-        var imgElement = $(img);
-        var imgWidth = imgElement.width();
-        var imgHeight = imgElement.height();
-        
-        var container = imgElement.parent();
-        var containerWidth = container.width();
-        var containerHeight = container.height();
-        
-        if (imgWidth / containerWidth > imgHeight / containerHeight) {
-            imgElement.css('width', '100%');
-            imgElement.css('height', 'auto');
-        } else {
-            imgElement.css('height', '100%');
-            imgElement.css('width', 'auto');
-        }
-    }
-	</script>
 
     <!-- Template Javascript -->
     <script src="/js/main.js"></script>
