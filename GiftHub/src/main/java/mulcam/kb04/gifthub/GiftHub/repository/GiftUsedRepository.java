@@ -15,7 +15,9 @@ public interface GiftUsedRepository extends JpaRepository<GiftUsed, Integer> {
 	List<Object[]> countByMonth();
 
 	/* JOIN Store s ON (b.storeId = s.storeId) */
-	@Query(value = "SELECT gu.usedNo, gu.usedDate, gu.giftNo, gu.customerId, p.productName  FROM GiftUsed gu JOIN Gift g ON (gu.giftNo = g.giftNo) JOIN BUY b ON (b.buyNo = g.buyNo) JOIN Product p ON(p.productNo = b.productNo) WHERE p.storeId = :storeId" , nativeQuery = true)
+	@Query(value = "SELECT gu.usedNo, gu.usedDate, gu.giftNo, gu.customerId, "
+			+ "p.productName  FROM GiftUsed gu JOIN Gift g ON (gu.giftNo = g.giftNo) JOIN BUY b ON (b.buyNo = g.buyNo) JOIN Product p ON(p.productNo = b.productNo) "
+			+ "WHERE p.storeId = :storeId" , nativeQuery = true)
 	List<Object[]> findByStoreId(Store storeId);
 	
 }

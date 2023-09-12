@@ -67,9 +67,10 @@
     <!-- Navbar & Hero Start -->
     <div class="container-xxl position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-            <a href="" class="navbar-brand p-0">
-                <h1 class="m-0">GiftHub</h1>
-            </a>
+               <a href="" class="navbar-brand p-0">
+                <h1 class="m-0">
+                	<img src ="img/icon.png" alt="Logo">
+                	GiftHub</h1>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars"></span>
             </button>
@@ -108,26 +109,24 @@
 
     /* 수정된 가로 박스 스타일 */
     .info-box {
-        background-color: rgba(135, 206, 235, 0.7); /* 연하늘색 박스 */
+        background-color: rgba(173, 216, 230, 0.4); 
         padding: 10px 20px; /* 위아래 여백 줄임 */
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 3px;
+        margin-top: 20px; /* 상단 여백 조절 */
+        margin-bottom: 20px; /* 하단 여백 조절 */
     }
 
     .info-box img {
         max-width: 100%;
         height: auto;
     }
- /* 텍스트 스타일 수정 */
+
+    /* 각 박스의 텍스트 스타일 수정 */
     .info-box h2 {
         font-weight: bold; /* 글꼴 두껍게 */
         font-size: 18px; /* 글꼴 크기 */
         color: #333; /* 진한 회색 텍스트 색상 */
-    }
-
-    .info-box img {
-        max-width: 100%;
-        height: auto;
+        margin-bottom: 8px; /* 텍스트 아래 여백 조절 */
     }
 
     /* Q&A 스타일 */
@@ -141,6 +140,9 @@
         margin-bottom: 20px;
     }
 </style>
+
+
+
 
 <div class="container-xxl py-5">
     <!-- 입점신청, 가맹계약, 가게오픈 투명 연하늘색 박스 -->
@@ -157,22 +159,23 @@
     </div>
     <div class="row mt-4">
         <!-- 왼쪽 블록 (Step 1) -->
-        <div class="col-md-4 text-center">
-            <h3>STEP 1</h3>
-            <img src="이미지1의_경로.jpg" alt="Step 1 이미지">
-            <p>입점 신청 버튼을 통해 <br>
-GiftHub 입점을 신청해요.</p>
-        </div>
+ <div class="col-md-4 text-center">
+    <h3>STEP 1</h3>
+    <img class="img-fluid" src="img/store%202.jpg" alt="Step 1 이미지" style="width: 80%; height: auto;">
+    <p>입점 신청 버튼을 통해 <br>
+    GiftHub 입점을 신청해요.</p>
+</div>
+
         <!-- 가운데 블록 (Step 2) -->
-        <div class="col-md-4 text-center">
+         <div class="col-md-4 text-center">
             <h3>STEP 2</h3>
-            <img src="이미지2의_경로.jpg" alt="Step 2 이미지">
+            <img class="img-fluid" src="img/스크린샷%202023-08-30%20오후%205.01%201@2x.png" alt="Step 1 이미지">
             <p>승인 심사 후 가맹을 계약하세요.</p>
         </div>
         <!-- 오른쪽 블록 (Step 3) -->
         <div class="col-md-4 text-center">
             <h3>STEP 3</h3>
-            <img src="이미지3의_경로.jpg" alt="Step 3 이미지">
+            <img class="img-fluid" src="img/image%2052.png" alt="Step 1 이미지">
             <p>GiftHub에 사장님 <br> 
 가게가 등록되어요.</p>
         </div>
@@ -187,8 +190,10 @@ GiftHub 입점을 신청해요.</p>
             <h2>Q&A</h2>
         </div>
     </div>
+
+    
     <div class="row justify-content-center mt-5">
-        <div class="col-md-8" style="background-color: rgba(135, 206, 235, 0.7); padding: 20px; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+        <div class="col-md-8" style="background-color: rgba(135, 206, 235, 0.2); padding: 20px; border-radius: 5px; ">
             <!-- Q&A 섹션 -->
             <div class="row justify-content-center">
                 <div class="col-md-12">
@@ -210,14 +215,65 @@ GiftHub 입점을 신청해요.</p>
     </div>
 </div>
 
+        <div class="container-xxl py-5">
+            <div class="container py-5 px-lg-5">
+                <div class="wow fadeInUp" data-wow-delay="0.1s">
+                    <p class="section-title text-secondary justify-content-center"><span></span>Q & A<span></span></p>
+                    <h1 class="text-center mb-5">질문 등록하기</h1>
+                </div>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                            <label for="name">성함</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                            <label for="email">연락받을 이메일</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="subject" placeholder="Subject">
+                                            <label for="subject">제목</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 150px"></textarea>
+                                            <label for="message">내용</label>
+                                        </div>
+<div class="col-12">
+    <button class="btn btn-primary w-100 py-3" type="submit" onclick="reloadPage()">질문 등록</button>
+</div>
+
+<script>
+    function reloadPage() {
+        location.reload(); // 현재 페이지를 리로드합니다.
+    }
+</script>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Contact End -->
 
 
 
-
-
-
-
-
+<style>
+    /* 진한 파란색 버튼 스타일 */
+    .btn-primary {
+        background-color: #0056b3; /* 배경색을 더 진한 파랑색으로 설정 */
+        border-color: #0056b3; /* 테두리 색을 더 진한 파랑색으로 설정 */
+        color: #fff; /* 텍스트 색을 흰색으로 설정 */
+    }
+</style>
 
 
 

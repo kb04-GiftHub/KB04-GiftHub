@@ -1,7 +1,6 @@
 package mulcam.kb04.gifthub.GiftHub.serviceimpl;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -63,6 +62,33 @@ public class PromotionServiceImpl implements PromotionService {
         promotion = promotionRepository.save(promotion);
         return PromotionDto.entityToDto(promotion);
     }
+    
+    
+    //사용자 게시물 View 코드
+    @Override
+    public List<PromotionDto> getAllPromotions() {
+        List<Promotion> promotions = promotionRepository.findAll();
+        List<PromotionDto> promotionDtos = new ArrayList<>();
+        for (Promotion promotion : promotions) {
+            promotionDtos.add(PromotionDto.entityToDto(promotion));
+        }
+        return promotionDtos;
+    }
 
+    @Override
+    public List<PromotionDto> getPromotionsByType(int promotionType) {
+        List<Promotion> promotions = promotionRepository.findByPromotionType(promotionType);
+        List<PromotionDto> promotionDtos = new ArrayList<>();
+        for (Promotion promotion : promotions) {
+            promotionDtos.add(PromotionDto.entityToDto(promotion));
+       }
+
+        return promotionDtos;
+    }
+	@Override
+	public Object findPromotionAndStore(int promotionNo) {
+		Object list = promotionRepository.findPromotionAndStore(promotionNo);
+		return list;
+	}
 
 	}

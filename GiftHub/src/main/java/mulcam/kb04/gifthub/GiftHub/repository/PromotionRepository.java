@@ -3,9 +3,7 @@ package mulcam.kb04.gifthub.GiftHub.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import mulcam.kb04.gifthub.GiftHub.entity.Promotion;
@@ -13,11 +11,13 @@ import mulcam.kb04.gifthub.GiftHub.entity.Store;
 
 @Repository
 public interface PromotionRepository extends JpaRepository<Promotion, Integer> {
-	Promotion findByPromotionNo(Integer promotionNo);
+	//가맹점주
+	Promotion findByPromotionNo(int promotionNo);
 	List<Promotion> findByStoreId(Store storeId);
-//	@Modifying
-//	@Query("INSERT INTO Promotion(promotionNo, promotionTitle, promotionContent, promotionDate, promotionType, promotionImage, storeId) VALUES(:pro.promotionNo, :pro.promotionTitle, "
-//			+ ":pro.promotionContent, SYSDATE, :pro.promotionType, :pro.promotionImage, :pro.storeId)")
-//	void insertPromotion(@Param("pro") Promotion promotion);
-
+	//사용자-promotionType의 필터를 걸기 위해 
+	List<Promotion> findByPromotionType(int promotionType);
+	
+	@Query(value = "SELECT p.promotionNO, p.promotionTitle, p.promotionContent, p.promotionImage, p.promotionDate, p.promotionType, s.storeName, s.storeAdd2 FROM Promotion p JOIN Store s ON p.storeId = s.storeId WHERE p.promotionNo = :promotionNo ", nativeQuery=true)
+	Object findPromotionAndStore(int promotionNo);
+	
 }

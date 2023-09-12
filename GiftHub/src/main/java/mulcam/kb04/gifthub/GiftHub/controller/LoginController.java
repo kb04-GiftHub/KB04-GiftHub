@@ -79,6 +79,7 @@ public class LoginController {
 			CustomerDto customerDto = loginService.findByCustomerId(id);
 			
 			if(customerDto.getCustomerPwd().equals(pwd)) {
+				session.setAttribute("user", customerDto);
 				session.setAttribute("loggedMemberId", customerDto.getCustomerId());
 				model.addAttribute("title", "로그인");
 				model.addAttribute("subTitle", "WELCOME");
