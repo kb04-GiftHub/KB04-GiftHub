@@ -27,10 +27,14 @@ public class CalendarController {
 		}
 		
 		CustomerDto customerDto =  giftService.findByCustomerId(loggedMemberId);
-		List<GiftDto> list = giftService.findByCustomerIdToList(loggedMemberId);
+		List<Object[]> list = giftService.findByCustomerIdToList(loggedMemberId);
 		
 		model.addAttribute("list", list);
-		System.out.println(list);
+		
+		for (Object[] objects : list) {
+			System.out.println(objects[1]);
+		}
+		//System.out.println("리스트>> " + list);
 
 		return "member/main";
 	}
