@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.google.gson.Gson;
 
-import mulcam.kb04.gifthub.GiftHub.dto.ExchangeDto;
 import mulcam.kb04.gifthub.GiftHub.entity.Store;
 import mulcam.kb04.gifthub.GiftHub.service.FindStoreService;
 
@@ -30,7 +29,8 @@ public class FindStoreController {
 		int totalPages = (int) Math.ceil((double) totalDataCount / dataPerPage);
 		int pagesPerGroup = 5;
 		int currentGroup = (int) Math.ceil((double) currentPage / pagesPerGroup);
-		model.addAttribute("stores", jsonStores);
+		model.addAttribute("jsonStores", jsonStores);
+		model.addAttribute("stores", stores);
 		model.addAttribute("totalPages", totalPages);
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("currentGroup", currentGroup);
