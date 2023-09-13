@@ -19,7 +19,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.zxing.BarcodeFormat;
@@ -35,7 +34,6 @@ import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.common.HybridBinarizer;
 
-import mulcam.kb04.gifthub.GiftHub.dto.GiftUsedDto;
 import mulcam.kb04.gifthub.GiftHub.project.GiftoconGenerator;
 import mulcam.kb04.gifthub.GiftHub.project.UniqueCode;
 import mulcam.kb04.gifthub.GiftHub.service.GifticonService;

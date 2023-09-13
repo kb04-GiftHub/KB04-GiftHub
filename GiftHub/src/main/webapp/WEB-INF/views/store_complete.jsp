@@ -20,7 +20,7 @@
 	</div>
 
 	<!-- register_complete Start -->
-        <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s" style="margin: 100px 0;">
             <div class="container px-lg-5 text-center">
                 <div class="row justify-content-center">
                     <div class="col-lg-6">

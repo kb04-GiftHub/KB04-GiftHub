@@ -33,14 +33,14 @@
 				var img = document.createElement("img");
 				img.setAttribute("src", event.target.result);
 				img.setAttribute("style", "width:50%;height:auto;");
-				img.setAttribute("class","rectangular");
+				img.setAttribute("class","rectangular border");
 				document.querySelector('#image_container').appendChild(img);
 			};
 			reader.readAsDataURL(this.files[0]);
 		})
 	})
-</script>
-	
+	</script>
+		
 	<!-- Contact Start -->
         <div class="container-xxl py-5">
 					<h1 class="text-center text-black animated slideInDown">기프티콘 사용</h1>
@@ -77,10 +77,9 @@
 	                <div class="row justify-content-center">
 	                    <div class="col-lg-7">
 	                        <div class="wow">
-	                            <p class="text-center mb-4"></p>
 	                            <form action="image_use" method="post" enctype="multipart/form-data">
 	                                <div class="row g-3">
-	                                    	 <div class="col-12 text-center" id=image_container class="pt-2 text-center"></div>
+	                                    	 <div class="col-12 text-center" id="image_container"></div>
 	                                    <div class="col-12">
 	                                        <div class="form-floating">
 	                                            <input type="file" class="form-control" name="image" id="imageInput" placeholder="이미지">
@@ -104,7 +103,6 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-7">
                         <div class="fadeInUp" data-wow-delay="0.1s">
-                            <p class="text-center mb-4"></p>
                             <form action="code_use" method="post">
                                 <div class="row g-3">
                                     <div class="col-12">
