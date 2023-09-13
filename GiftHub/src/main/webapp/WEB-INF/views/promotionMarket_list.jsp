@@ -34,20 +34,9 @@
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 </head>
-<style>
 
-/* 목록이동 버튼 스타일 */
-.list-button {
-    background-color: #ffc107; /* 배경색을 노란색으로 설정 */
-    color: white; /* 텍스트 색상을 하얀색으로 설정 */
-    padding: 10px 190px; /* 내부 여백 설정 (상하 10px, 좌우 20px) */
-    border: none; /* 테두리 없음 */
-    border-radius: 5px; /* 버튼 모서리를 둥글게 만듭니다. */
-    cursor: pointer; /* 커서 모양을 포인터로 변경하여 클릭 가능한 버튼임을 나타냅니다. */
-}
-</style>
 <body>
-    <c:import url="top.jsp" />
+        <c:import url="top.jsp" />
 
 	<div class="container-xxl py-5 bg-primary hero-header">
 		<div class="container my-5 py-5 px-lg-5">
@@ -60,54 +49,34 @@
 	</div>
    
 
-        <!-- Contact Start -->
+        <!-- Projects Start -->
         <div class="container-xxl py-5">
             <div class="container py-5 px-lg-5">
                 <div class="wow fadeInUp" data-wow-delay="0.1s">
                     <p class="section-title text-secondary justify-content-center"><span></span>커뮤니티<span></span></p>
-                    <h1 class="text-center mb-5">게시물 관리</h1>
+                    <h1 class="text-center mb-5">전통시장 홍보게시판</h1>
                 </div>
-                <div class="row justify-content-center">
-                    <div class="col-lg-7">
-                        <div class="wow fadeInUp" data-wow-delay="0.3s">
-                            <h3>게시물 수정</h3>
-							<form action="/update_promotion_submit" method="post" enctype="multipart/form-data">
-							  <input type="hidden" name="promotionNo" value="${promotion.promotionNo}">
-							  
-							  <label for="promotionType">게시물 종류</label><br>
-								<select id="promotionType" name="promotionType">
-								  <option value="1" ${promotion.promotionType == '1' ? 'selected' : ''}>홍보</option>
-								  <option value="2" ${promotion.promotionType == '2' ? 'selected' : ''}>이벤트</option>
-								</select><br>
-
-							  게시물 제목<br>
-							  <input type="text" id="promotionTitle" name="promotionTitle" value="${promotion.promotionTitle}" style="width: 60%"><br>
-							  
-							  <label for="promotionContent">게시물 내용</label><br>
-							  <textarea id="promotionContent" name="promotionContent" rows="10" cols="100">${promotion.promotionContent}</textarea><br>
-
-								<div class="form-floating">
-                             	현재 이미지<br>
-                             	<img id="promotionImage"
-                                  src="${pageContext.request.contextPath}/upload_images/promotion/${promotion.promotionImage}"
-                                  onclick="window.open(this.src)"><br>
-                             이미지 첨부<input type="file"
-                                            id="promotionImage"
-                                            name="promotionImage"
-                                            accept=".jpg,.jpeg,.png"><br>
-                         </div>
-                         <div class="col-12 text-center" >
-							    <button class="btn btn-primary " type="submit">수정 완료</button> 
-							    <a class="btn btn-primary" href="/promotion_list">수정 취소</a>
-							</div>
-							</form>	
-                                </div>
-                        </div>
-                    </div>
+                
+               
+                <!-- 게시물 나열 -->
+<div class="row g-4 portfolio-container">
+    <c:forEach items="${promotions}" var="promotion">
+        <div class="col-lg-4 col-md-6 portfolio-item wow fadeInUp" data-wow-delay="0.1s">
+            <div class="rounded overflow-hidden">
+                <div class="position-relative overflow-hidden">
+                    <img class="img-fluid w-100" style="width: 100%; height: 300px;"  src="${pageContext.request.contextPath}/upload_images/promotion/${promotion.promotionImage}" alt="">
+                   
+                </div>
+                <div class="bg-light p-4">
+                    <h5 class="lh-base mb-0"><a href="/promotionView_detail?promotionNo=${promotion.promotionNo}">${promotion.promotionTitle}</a></h5>
                 </div>
             </div>
         </div>
-        <!-- Contact End -->
+    </c:forEach>
+</div>
+</div>
+</div>
+        <!-- Projects End -->
         
 
         <!-- Footer Start -->
@@ -174,8 +143,7 @@
                             &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved. 
 							
 							<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-							Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a><br><br> 
-                            Distributed By a <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
+							Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
                         </div>
                         <div class="col-md-6 text-center text-md-end">
                             <div class="footer-menu">
@@ -210,4 +178,6 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 </body>
+
+
 </html>

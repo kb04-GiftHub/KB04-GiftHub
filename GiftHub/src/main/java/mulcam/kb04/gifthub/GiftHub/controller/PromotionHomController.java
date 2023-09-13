@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.gson.Gson;
+
 import mulcam.kb04.gifthub.GiftHub.dto.PromotionDto;
 import mulcam.kb04.gifthub.GiftHub.entity.Promotion;
 import mulcam.kb04.gifthub.GiftHub.service.PromotionService;
@@ -168,13 +170,13 @@ public class PromotionHomController {
 	@GetMapping("/promotionView_detail")
 	public String promotionView_detail(@RequestParam("promotionNo") int promotionNo, Model model) {
         Object list = promotionService.findPromotionAndStore(promotionNo);
-//        System.out.println(list.length);
         model.addAttribute("promotion", list);
+        
         //지도
-//        Gson gson = new Gson();
-//        String jsonStores = gson.toJson(list);
-//        model.addAttribute("stores", jsonStores);
-//        System.out.println(jsonStores);
+        Gson gson = new Gson();
+        String jsonStores = gson.toJson(list);
+        model.addAttribute("stores", jsonStores);
+        System.out.println(jsonStores);
 		return "promotionView_detail";
 }
 

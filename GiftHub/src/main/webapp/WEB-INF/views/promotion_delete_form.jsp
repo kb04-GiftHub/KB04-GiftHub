@@ -86,14 +86,18 @@
             <div class="container py-5 px-lg-5">
                 <div class="wow fadeInUp" data-wow-delay="0.1s">
                     <p class="section-title text-secondary justify-content-center"><span></span>커뮤니티<span></span></p>
-                    <h1 class="text-center mb-5">게시물 삭제</h1>
+                    <h4 class="text-center mb-5" style="color: #6C6969">삭제하시겠습니까?</h4>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-lg-7">
                         <div class="wow fadeInUp" data-wow-delay="0.3s">
                      		<form action="/promotion_delete" method="get">
                      		<input type="hidden" name="promotionNo" value="${param.promotionNo }">
-                            <table class="text-center">
+                            <table class="text-center table" style="border: 1px solid #000; border-collapse: collapse;">
+                            <colgroup>
+									<col style="width:20%; border-right: 1px solid #000;background-color:#F4F2F2;">
+									<col style="width:*">
+							</colgroup>
             					<tr>
                 					<th>게시물 번호</th>
                 					<td>${param.promotionNo}</td>
