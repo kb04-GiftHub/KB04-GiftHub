@@ -24,49 +24,14 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 
 import mulcam.kb04.gifthub.GiftHub.dto.ProductDto;
+import mulcam.kb04.gifthub.GiftHub.dto.StoreDto;
 
-public class GiftoconGenerator {
+public class GifticonGenerator {
 	
 	private static String productImageFile;
 	private static String expirationDate;
 	
-	public static BufferedImage barcodeGenerate(String barcodeData) {
-		//바코드 이미지 생성
-		BufferedImage barcodeImage = null;
-		// 바코드 생성을 위한 설정
-		try {
-	        int width = 400; // 이미지 너비
-	        int height = 100; // 이미지 높이
-	        String format = "png"; // 이미지 형식
-
-	        Map<EncodeHintType, Object> hints = new HashMap<EncodeHintType, Object>();
-	        hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
-	        
-	        
-	        // 바코드 생성
-	        BitMatrix bitMatrix;
-				bitMatrix = new MultiFormatWriter().encode(
-				        barcodeData,
-				        BarcodeFormat.CODE_128, // 바코드 형식 선택
-				        width,
-				        height,
-				        hints
-				);
-				// BitMatrix를 BufferedImage로 변환
-				barcodeImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-				for (int x = 0; x < width; x++) {
-					for (int y = 0; y < height; y++) {
-						barcodeImage.setRGB(x, y, bitMatrix.get(x, y) ? 0x000000 : 0xFFFFFF);
-					}
-				}
-			} catch (WriterException e) {
-				e.printStackTrace();
-			}
-		return barcodeImage;
-	}
-	
-	
-	public static void createGiftCard(HttpSession ses,ProductDto product) {
+	public static void createGiftCard(HttpSession ses,ProductDto product,String barcodeData, StoreDto store) {
 		int width = 350; // 이미지 너비
         int height = 650; // 이미지 높이
         BufferedImage giftCardImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -103,19 +68,29 @@ public class GiftoconGenerator {
             e.printStackTrace();
         }
         
+        String category = "기타";
+        if(store.getCategoryNo()==1) {
+        	category = "한식";
+        }else if(store.getCategoryNo()==2) {
+        	category = "중식";
+        }else if(store.getCategoryNo()==3) {
+        	category = "일식";
+        }else if(store.getCategoryNo()==4) {
+        	category = "양식";
+        }else if(store.getCategoryNo()==5) {
+        	category = "카페/디저트";
+        }
+        
         //상품명
         g2d.setColor(Color.GRAY); // 테두리의 색상 설정
         g2d.setFont(new Font("함초롬돋움",Font.PLAIN, 16));
-        g2d.drawString("카테고리", 30,354 );
+        g2d.drawString(category, 30,354 );
         
         g2d.setColor(Color.BLACK); // 테두리의 색상 설정
         g2d.setFont(new Font("함초롬돋움",Font.BOLD, 20));
         g2d.drawString(productTitle, 20,384 );
         
      // 바코드 생성을 위한 코드(날짜와시간+시퀀스)
-        String unique=UniqueCode.generateUniqueBarcode();
-        String barcodeData = unique;
-        
         BufferedImage barcodeImage = barcodeGenerate(barcodeData);
 
         int barcodeWidth = 350;
@@ -160,8 +135,8 @@ public class GiftoconGenerator {
         g2d.setFont(new Font("나눔 고딕",Font.PLAIN, 14));
         g2d.drawString("교 환 처", 30,548 );
         g2d.setColor(Color.BLACK);  
-        g2d.setFont(new Font("나눔 고딕",Font.BOLD, 16));
-        g2d.drawString("교환처 이름",200,545);
+        g2d.setFont(new Font("HYShortSamul 중간",Font.BOLD, 16));
+        g2d.drawString(store.getStoreName(),200,545);
         
         // 
         g2d.setColor(Color.GRAY);
@@ -170,7 +145,7 @@ public class GiftoconGenerator {
         g2d.setFont(new Font("나눔 고딕",Font.PLAIN, 14));
         g2d.drawString("유효기간", 30,583 );
         g2d.setColor(Color.BLACK);  
-        g2d.setFont(new Font("새굴림",Font.BOLD, 16));
+        g2d.setFont(new Font("HYPost",Font.BOLD, 16));
         Date date = product.getProductExp();
         SimpleDateFormat form = new SimpleDateFormat("yyyy년 MM월 dd일");
         expirationDate=form.format(date);
@@ -192,5 +167,40 @@ public class GiftoconGenerator {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static BufferedImage barcodeGenerate(String barcodeData) {
+		//바코드 이미지 생성
+		BufferedImage barcodeImage = null;
+		// 바코드 생성을 위한 설정
+		try {
+	        int width = 400; // 이미지 너비
+	        int height = 100; // 이미지 높이
+	        String format = "png"; // 이미지 형식
+
+	        Map<EncodeHintType, Object> hints = new HashMap<EncodeHintType, Object>();
+	        hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
+	        
+	        
+	        // 바코드 생성
+	        BitMatrix bitMatrix;
+				bitMatrix = new MultiFormatWriter().encode(
+				        barcodeData,
+				        BarcodeFormat.CODE_128, // 바코드 형식 선택
+				        width,
+				        height,
+				        hints
+				);
+				// BitMatrix를 BufferedImage로 변환
+				barcodeImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+				for (int x = 0; x < width; x++) {
+					for (int y = 0; y < height; y++) {
+						barcodeImage.setRGB(x, y, bitMatrix.get(x, y) ? 0x000000 : 0xFFFFFF);
+					}
+				}
+			} catch (WriterException e) {
+				e.printStackTrace();
+			}
+		return barcodeImage;
 	}
 }

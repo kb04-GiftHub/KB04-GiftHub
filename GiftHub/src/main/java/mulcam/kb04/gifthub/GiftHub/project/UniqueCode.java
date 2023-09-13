@@ -18,6 +18,7 @@ public class UniqueCode {
         // 시간 정보와 시퀀스를 결합하여 고유한 값을 생성
         String uniqueValue = currentTimestamp+""+sequence;
         
+        
         return uniqueValue;
     }
     public static void main(String[] args) {

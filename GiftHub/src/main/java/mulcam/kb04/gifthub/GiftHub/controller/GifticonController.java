@@ -34,7 +34,6 @@ import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.common.HybridBinarizer;
 
-import mulcam.kb04.gifthub.GiftHub.project.GiftoconGenerator;
 import mulcam.kb04.gifthub.GiftHub.project.UniqueCode;
 import mulcam.kb04.gifthub.GiftHub.service.GifticonService;
 

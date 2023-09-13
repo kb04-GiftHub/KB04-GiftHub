@@ -21,7 +21,8 @@ import org.springframework.web.multipart.MultipartFile;
 import mulcam.kb04.gifthub.GiftHub.dto.CustomerDto;
 import mulcam.kb04.gifthub.GiftHub.dto.ProductDto;
 import mulcam.kb04.gifthub.GiftHub.dto.StoreDto;
-import mulcam.kb04.gifthub.GiftHub.project.GiftoconGenerator;
+import mulcam.kb04.gifthub.GiftHub.project.GifticonGenerator;
+import mulcam.kb04.gifthub.GiftHub.project.UniqueCode;
 import mulcam.kb04.gifthub.GiftHub.service.ProductService;
 
 @Controller
@@ -129,6 +130,12 @@ public class ProductController {
 	
 	@GetMapping("/product/detail/{productNo}")
 	public String product_detail(@PathVariable("productNo") int productNo , Model model, HttpSession ses) {
+		if(ses.getAttribute("user") == null ) {
+			model.addAttribute("Msg","로그인이 필요한 기능입니다");
+			model.addAttribute("loc","member/login");
+			ses.invalidate();
+			return "msg";
+		}
 		
 		ProductDto dto = productService.findByProductNo(productNo);
 		model.addAttribute("product",dto);
@@ -145,7 +152,7 @@ public class ProductController {
 		//회원객체와 상품객체 불러오기
 		CustomerDto customer = productService.findByCustomerId(customerId);
 		ProductDto product = productService.findByProductNo(productNo);
-		
+		StoreDto store = productService.findByStoreId(product.getStoreId());
 		//포인트 유무(부족하면 msg보내기)
 		if(customer.getPoint() < product.getProductPrice()) {
 			model.addAttribute("Msg","포인트가 부족합니다");
@@ -158,7 +165,11 @@ public class ProductController {
 		ses.setAttribute("user", customer);
 		
 		//기프티콘 생성
-		GiftoconGenerator.createGiftCard(ses,product);
+		
+		String unique=UniqueCode.generateUniqueBarcode();//기프티콘 고유번호
+		Long giftNo = Long.parseLong(unique);
+		GifticonGenerator.createGiftCard(ses,product,unique,store);
+		
 		return "redirect:/product/list";
 	}
 }
