@@ -37,7 +37,34 @@
     <script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=14b45607c24e81b779e6418cf489de08&libraries=services"></script>
 </head>
+<style>
+/* 목록이동 버튼 스타일 */
+.list-button {
+    background-color: #ffc107; /* 배경색을 노란색으로 설정 */
+    color: white; /* 텍스트 색상을 하얀색으로 설정 */
+    padding: 10px 190px; /* 내부 여백 설정 (상하 10px, 좌우 20px) */
+    border: none; /* 테두리 없음 */
+    border-radius: 5px; /* 버튼 모서리를 둥글게 만듭니다. */
+    cursor: pointer; /* 커서 모양을 포인터로 변경하여 클릭 가능한 버튼임을 나타냅니다. */
+}
+    /* 이미지 스타일 */
+    .promotion-image {
+        width: 100%;
+        height: auto; /* 이미지의 높이를 자동으로 조정하여 원래 비율을 유지 */
+    }
 
+    /* 오른쪽 글자박스 스타일 */
+    .text-box {
+        position: absolute;
+        top: 0; /* 위쪽에 위치 */
+        right: 0; /* 오른쪽에 위치 */
+        background-color: #C3DBF8;
+        border-radius: 10px;
+        padding: 20px;
+        z-index: 1; /* 글자박스를 이미지 위에 배치 */
+        max-width: 50%; /* 최대 너비 설정 */
+    }
+</style>
 <body>
      <c:import url="top.jsp" />
 
@@ -56,65 +83,65 @@
             <div class="container py-5 px-lg-5">
                 <div class="wow fadeInUp" data-wow-delay="0.1s">
                     <p class="section-title text-secondary justify-content-center"><span></span>커뮤니티<span></span></p>
-                    <h1 class="text-center mb-5">게시물 상세보기</h1>
+                    <h1 class="text-center mb-5 ">게시물 상세보기</h1>
                 </div>
                 
                 
             <div class="row justify-content-center">
-            <!-- 왼쪽 컬럼: promotionImage -->
-            <div class="col-lg-5">
-                <div class="wow fadeInUp" data-wow-delay="0.3s">
-                    <img src="${pageContext.request.contextPath}/upload_images/promotion/${promotion[3]}" width="100%">
-                </div>
-            </div>
             
-            <!-- 오른쪽 컬럼: promotionTitle, storeName, promotionDate, promotionContent -->
-            <div class="col-lg-7">
-                <div class="wow fadeInUp text-center" data-wow-delay="0.3s">
-                    <table class="text-center">
-                        <tr>
-                            <th>게시물 제목</th>
-                            <td>${promotion[1]}</td>
-                        </tr>
-                        <!-- 가맹점 이름을 Store 엔터티에서 가져와 표시 -->
-						<tr>
-						    <th>가맹점 이름</th>
-						    <td>${promotion[6]}</td>
-						</tr> 
-                        <tr>
-                            <th>작성일</th>
-                            <td>${promotion[4]}</td>
-                        </tr>
-                        <tr>
-                            <th>게시물 내용</th>
-                            <td>${promotion[2]}</td>
-                       </tr>  
-                        </table>                       
-                       	<div class="col-12 text-center">
-                       		<a href="/promotionView_list" class="list-button" >게시물 목록으로 이동</a>
-                        </div>
-                             </div>
-                           </div>
-                           
-                           <!-- 왼쪽 주소 -->
-                           <div>
-                           <table class="text-center">
-						<tr>
-						    <th>가맹점 이름</th>
-						    <td>${promotion[6]}</td>
-						</tr> 
-                        <tr>
-                            <th>주소</th>
-                            <td>${promotion[7]}</td>
-                        </tr>
-                        </table>
-                        </div>
-                        <!-- 오른쪽 지도 -->
+            <div class="row ">
+    <!-- 왼쪽 컬럼: promotionImage -->
+    <div class="col-lg-5" style="background-color: #C8DFFD; border-radius: 10px; padding: 20px;">
+        <div class="wow fadeInUp" data-wow-delay="0.3s">
+            <img src="${pageContext.request.contextPath}/upload_images/promotion/${promotion[3]}" width="100%">
+        </div>
+    </div>
+
+    <!-- 오른쪽 컬럼: promotionTitle, storeName, promotionDate, promotionContent -->
+    <div class="col-lg-7" style="background-color: #C8DFFD; border-radius: 10px; padding: 20px;">
+        <div class="wow fadeInUp" data-wow-delay="0.3s">
+            <h6 class="text-center" style="color: #434242">
+                <br>
+                <c:choose>
+                    <c:when test="${promotion[5] == 1}">-----홍보-----<span></span>
+                    </c:when>
+                    <c:when test="${promotion[5] == 2}">-----이벤트-----<span></span>
+                    </c:when>
+                </c:choose>
+            </h6>
+            <h5 class="text-center" style="color: #434242">
+                <span>&#9733;</span> <!-- 별 이모티콘 (★) -->
+                ${promotion[6]} <!-- 텍스트 -->
+                <span>&#9733;</span> <!-- 별 이모티콘 (★) -->
+            </h5>
+            <h3 class="text-center"  style="color: #434242">${promotion[1]}</h3>
+            
+            <h5 class="text-center" style="color: #434242; background : white;"><br><br>${promotion[2]}<br><br><br></h5>
+            
+            <h6 class="text-center" style="color: #696969">**해당 화면을 캡처하여 가게 사장님께 보여주세요**</h6>
+            
+        </div>
+    </div>
+</div>
+               <div class="text-center" style="background-color: #FFE9B4; border-radius: 10px; padding: 10px;margin-top: 20px;">
+               <!--주소 -->
+                <div class="text-center">
+                <br>
+                	<h4 style="color:#434242;">매장 위치</h4>
+                	<h6 style="color:#434242;">${promotion[7]}</h6>
+	            </div>
+                        <!-- 지도 -->
                         <div>
-                        <div id="map" style="width: 1200px; height: 440px;"></div>  
+                        	<div id="map" style="width: 1200px; height: 440px;"></div>  
                          </div>
-                         <!-- 지도 끝--> 
+                         <!-- 지도 끝-->
+                         </div>
                         </div>
+                        
+                        <br>
+                         <div class="col-12 text-center">
+                       		<a href="/promotionView_list" class="list-button" >게시물 목록으로 이동</a>
+                		</div> 
                     </div>
                 </div>
         <!-- Contact End -->
@@ -219,8 +246,12 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    
     <!-- 지도 -->
     <script>
+    var objectData = JSON.parse('${stores}');
+	var address = objectData[7];
+	
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
     mapOption = {
         center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -234,6 +265,12 @@
 		if (status === kakao.maps.services.Status.OK) {
 			
 			var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+	      
+	        //마커 표시
+			var marker = new kakao.maps.Marker({
+				map : map,
+				position : coords
+			});  
 	        //지도 중심 이동
 			map.setCenter(coords);
 		}

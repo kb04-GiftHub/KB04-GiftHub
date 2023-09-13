@@ -9,13 +9,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import mulcam.kb04.gifthub.GiftHub.dto.JjimDto;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Builder
 public class Jjim {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "JJIM_SEQ")
@@ -29,5 +32,19 @@ public class Jjim {
 	@ManyToOne
 	@JoinColumn(name = "customerId")
 	private Customer customerId;
+	
+	public static Jjim dtoToEntity(JjimDto dto) {
+		Product product = new Product();
+		product.setProductNo(dto.getProductNo());
+		
+		Customer customer = new Customer();
+		customer.setCustomerId(dto.getCustomerId());
+
+		return Jjim.builder()
+				.jjimNo(dto.getJjimNo())
+				.productNo(product)
+				.customerId(customer)
+				.build();
+	}
 
 }
