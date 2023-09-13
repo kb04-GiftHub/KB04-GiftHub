@@ -21,13 +21,12 @@ public class ExchangeController {
 	public String getExchangeDetails(Model model, @RequestParam(value = "page", defaultValue = "1") int currentPage,
 			@RequestParam(value = "storeId") String storeId) {
 		List<ExchangeDto> exchangeDetailsList = exchangeService.findExchangeDetailsByStoreId(storeId);
-		model.addAttribute("exchangeDetailsList", exchangeDetailsList);
 		int totalDataCount = exchangeDetailsList.size();
 		int dataPerPage = 10;
 		int totalPages = (int) Math.ceil((double) totalDataCount / dataPerPage);
 		int pagesPerGroup = 5;
 		int currentGroup = (int) Math.ceil((double) currentPage / pagesPerGroup);
-
+		model.addAttribute("exchangeDetailsList", exchangeDetailsList);
 		model.addAttribute("totalPages", totalPages);
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("currentGroup", currentGroup);
