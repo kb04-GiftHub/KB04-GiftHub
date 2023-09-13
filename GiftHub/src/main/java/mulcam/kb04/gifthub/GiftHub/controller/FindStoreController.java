@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.google.gson.Gson;
 
-import mulcam.kb04.gifthub.GiftHub.dto.ExchangeDto;
 import mulcam.kb04.gifthub.GiftHub.entity.Store;
 import mulcam.kb04.gifthub.GiftHub.service.FindStoreService;
 
@@ -25,16 +24,25 @@ public class FindStoreController {
 		List<Store> stores = findStoreService.getAllStores();
 		Gson gson = new Gson();
 		String jsonStores = gson.toJson(stores);
+
 		int totalDataCount = stores.size();
 		int dataPerPage = 10;
 		int totalPages = (int) Math.ceil((double) totalDataCount / dataPerPage);
 		int pagesPerGroup = 5;
 		int currentGroup = (int) Math.ceil((double) currentPage / pagesPerGroup);
-		model.addAttribute("stores", jsonStores);
+
+		// 현재 페이지에 따라서 데이터를 분할
+		int start = (currentPage - 1) * dataPerPage;
+		int end = Math.min(start + dataPerPage, totalDataCount);
+		List<Store> pagedStores = stores.subList(start, end);
+
+		model.addAttribute("jsonStores", jsonStores);
+		model.addAttribute("stores", stores);
 		model.addAttribute("totalPages", totalPages);
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("currentGroup", currentGroup);
 		model.addAttribute("pagesPerGroup", pagesPerGroup);
+		model.addAttribute("pagedStores", pagedStores);
 		return "store/storemap";
 	}
 }
