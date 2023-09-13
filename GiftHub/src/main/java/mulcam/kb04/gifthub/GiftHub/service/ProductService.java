@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import mulcam.kb04.gifthub.GiftHub.dto.CustomerDto;
 import mulcam.kb04.gifthub.GiftHub.dto.ProductDto;
 import mulcam.kb04.gifthub.GiftHub.dto.StoreDto;
 
@@ -17,6 +18,14 @@ public interface ProductService {
 	public List<StoreDto> allStores();
 
 	public List<Object[]> allProducts();
+
+	public ProductDto findByProductNo(int productNo);
+
+	public StoreDto findByStoreId(String storeId);
+
+	public CustomerDto findByCustomerId(String customerId);
+
+	public void payPoint(CustomerDto customer);
 
 //	public Product getProductById(int productId);
 
