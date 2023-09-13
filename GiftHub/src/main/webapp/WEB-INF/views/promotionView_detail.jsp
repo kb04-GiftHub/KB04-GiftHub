@@ -70,7 +70,7 @@
             
             <!-- 오른쪽 컬럼: promotionTitle, storeName, promotionDate, promotionContent -->
             <div class="col-lg-7">
-                <div class="wow fadeInUp text-center" data-wow-delay="0.3s">
+                <div class="wow fadeInUp" data-wow-delay="0.3s">
                     <table class="text-center">
                         <tr>
                             <th>게시물 제목</th>
@@ -85,11 +85,16 @@
                             <th>작성일</th>
                             <td>${promotion[4]}</td>
                         </tr>
+                        </table>
+                        
+                        <table>
                         <tr>
                             <th>게시물 내용</th>
-                            <td>${promotion[2]}</td>
-                       </tr>  
-                        </table>                       
+                        </tr>
+                        <tr>
+                            <td class="text-center">${promotion[2]}</td>
+                       </tr> 
+                       </table>                       
                        	<div class="col-12 text-center">
                        		<a href="/promotionView_list" class="list-button" >게시물 목록으로 이동</a>
                         </div>
@@ -219,6 +224,7 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    
     <!-- 지도 -->
     <script>
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
