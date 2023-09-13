@@ -17,4 +17,6 @@ public interface MyPageService {
 	
 	public List<Object[]> findByCustomerIdToList(String id);
 	public Object findByGiftNo(int no);
+	
+	public List<Object[]> findByCustomerIdToJjimList(String id);
 }

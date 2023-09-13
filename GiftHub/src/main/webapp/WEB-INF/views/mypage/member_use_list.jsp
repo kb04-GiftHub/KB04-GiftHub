@@ -62,13 +62,13 @@
 					                            </div>
 					                            <div class="p-3" style="background: #E2EFFF; color: gray;">
 					                                <p class="mb-0">${list[11]}</p>
-					                                <h5 class="lh-base mb-0">${list[8]}</h5>
+					                                <h5 class="lh-base mb-1">${list[8]}</h5>
 					                                <p class="mb-0" style="font-size: 10pt; text-align: right;">유효기간 : <fmt:formatDate value="${list[1]}" pattern="yyyy년 MM월 dd일"/></p>
 					                            </div>
 					                        </div>
 					                    </div>
 									</c:when>
-									<c:when test="${list[3] eq 2}">
+									<c:when test="${list[3] eq 2 || list[3] eq 3}">
 										<div class="col-lg-3 col-md-6 portfolio-item second wow fadeInUp" data-wow-delay="0.1s" onclick="window.location.href = '/member/mypage/use_detail?giftNo=${list[0]}'">
 					                        <div class="rounded overflow-hidden" style="border: 4px solid #EEEEEE">
 					                            <div class="position-relative overflow-hidden" style="height: 200px; display: flex; justify-content: center; align-items: center;">
@@ -76,7 +76,7 @@
 					                            </div>
 					                            <div class="p-3" style="background: #EEEEEE; color: gray;">
 					                                <p class="mb-0">${list[11]}</p>
-					                                <h5 class="lh-base mb-0">${list[8]}</h5>
+					                                <h5 class="lh-base mb-1">${list[8]}</h5>
 					                                <p class="mb-0" style="font-size: 10pt; text-align: right;">유효기간 : <fmt:formatDate value="${list[1]}" pattern="yyyy년 MM월 dd일"/></p>
 					                            </div>
 					                        </div>
@@ -85,6 +85,27 @@
 								</c:choose>
 							</c:forEach>
 						</div>
+<%-- 	                    <!-- 페이징 컨트롤 추가 -->
+	                    <div class="row justify-content-center">
+	                        <div class="col-12 text-center">
+	                            <ul class="pagination">
+	                                <c:forEach begin="1" end="${totalPages}" varStatus="loop">
+	                                    <c:set var="currentPage" value="${currentPage}" />
+	                                    <li class="page-item ${loop.index == currentPage ? 'active' : ''}">
+	                                        <c:choose>
+	                                            <c:when test="${loop.index == currentPage}">
+	                                                <span class="page-link">${loop.index}</span>
+	                                            </c:when>
+	                                            <c:otherwise>
+	                                                <a class="page-link" href="?page=${loop.index}">${loop.index}</a>
+	                                            </c:otherwise>
+	                                        </c:choose>
+	                                    </li>
+	                                </c:forEach>
+	                            </ul>
+	                        </div>
+	                    </div>
+	                    <!-- 페이징 컨트롤 추가 끝 --> --%>
 					</div>
 				</div>
 			</c:when>
@@ -114,11 +135,7 @@
         var imgWidth = imgElement.width();
         var imgHeight = imgElement.height();
         
-        var container = imgElement.parent();
-        var containerWidth = container.width();
-        var containerHeight = container.height();
-        
-        if (imgWidth / containerWidth > imgHeight / containerHeight) {
+        if (imgWidth > imgHeight) {
             imgElement.css('width', '100%');
             imgElement.css('height', 'auto');
         } else {
