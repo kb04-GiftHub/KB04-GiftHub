@@ -122,7 +122,7 @@
 								<div class="col-12">
 									<button class="btn btn-primary w-100 py-3" type="submit">등록하기</button>
 								</div>
-								<a href="promotion_list">목록으로 이동하기</a>
+								<a href="promotion_list">게시물 목록으로 이동하기</a>
 							</div>
 						</form>
 					</div>
