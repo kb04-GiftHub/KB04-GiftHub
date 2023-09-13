@@ -11,6 +11,7 @@ import mulcam.kb04.gifthub.GiftHub.entity.Customer;
 import mulcam.kb04.gifthub.GiftHub.entity.Store;
 import mulcam.kb04.gifthub.GiftHub.repository.CustomerRepository;
 import mulcam.kb04.gifthub.GiftHub.repository.GiftRepository;
+import mulcam.kb04.gifthub.GiftHub.repository.JjimRepository;
 import mulcam.kb04.gifthub.GiftHub.repository.StoreRepository;
 import mulcam.kb04.gifthub.GiftHub.service.MyPageService;
 
@@ -25,6 +26,9 @@ public class MyPageServiceImpl implements MyPageService {
 	
 	@Autowired
 	private GiftRepository giftRepository;
+	
+	@Autowired
+	private JjimRepository jjimRepository;
 
 	@Override
 	public StoreDto findByStoreId(String id) {
@@ -65,5 +69,14 @@ public class MyPageServiceImpl implements MyPageService {
 	public Object findByGiftNo(int no) {
 		Object object = giftRepository.findByGiftNo(no);
 		return object;
+	}
+	
+	@Override
+	public List<Object[]> findByCustomerIdToJjimList(String id) {
+		Customer customer = new Customer();
+		customer.setCustomerId(id);
+		
+		List<Object[]> list = jjimRepository.findByCustomerIdToList(customer);
+		return list;
 	}
 }

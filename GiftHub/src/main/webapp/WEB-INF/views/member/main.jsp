@@ -8,28 +8,49 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 메인페이지</title>
-<link
-	href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.css'
-	rel='stylesheet' />
-<!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.js'></script> -->
-<script
-	src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
-
 <style>
 .event-square {
 	width: 20px; /* 네모 박스의 가로 크기를 조절하세요. */
 	height: 20px; /* 네모 박스의 세로 크기를 조절하세요. */
-	background-color: blue; /* 네모 박스의 배경색을 설정하세요. */
+	background-color: red; /* 네모 박스의 배경색을 설정하세요. */
 	position: absolute; /* 절대 위치로 배치합니다. */
 	top: 2px; /* 원하는 위치로 조절하세요. */
 	left: 2px; /* 원하는 위치로 조절하세요. */
 }
+.status-blue {
+    background-color: #006699 !important;
+    border: 2px solid #006699;
+}
+.status-red {
+    background-color: #666666 !important;
+    border: 2px solid #666666;
+    color: #006699 !important;
+    
+}
 </style>
+<link
+	href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.css'
+	/>
+<!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.js'></script> -->
+<script
+	src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+
+<!-- <style>
+.event-square {
+	width: 20px; /* 네모 박스의 가로 크기를 조절하세요. */
+	height: 20px; /* 네모 박스의 세로 크기를 조절하세요. */
+	background-color: black; /* 네모 박스의 배경색을 설정하세요. */
+	position: absolute; /* 절대 위치로 배치합니다. */
+	top: 2px; /* 원하는 위치로 조절하세요. */
+	left: 2px; /* 원하는 위치로 조절하세요. */
+}
+</style> -->
 
 </head>
 <body>
 	<%-- <c:import url="../top.jsp" /> --%>
 	<c:import url="../top_customer.jsp" />
+	<c:set var="imagePath" value="${pageContext.request.contextPath}/upload_images/product/${list[10]}" />
 	<div class="container-xxl py-5 bg-primary hero-header">
 		<div class="container my-5 py-5 px-lg-5">
 			<div class="wow fadeInUp" data-wow-delay="0.1s"></div>
@@ -70,6 +91,7 @@
             <p><strong>상태:</strong> <span id="eventStatus"></span></p>
             <p><strong>기프티콘 번호:</strong> <span id="eventGiftNo"></span></p>
             <p><strong>바코드 번호:</strong> <span id="eventBarcode"></span></p>
+            <img src="" id="eventImage" alt="이미지" />
             
          </div>
          <div class="modal-footer">
@@ -99,7 +121,8 @@
                     end: '<c:out value="${formattedEnd}" />',
                     giftStatus: ${gift[3]}, // giftStatus 값을 이벤트 객체에 저장
                     giftNo: ${gift[0]}, // giftNo
-                    giftBarcode: '${gift[2]}'
+                    giftBarcode: '${gift[2]}',
+                    productImage: '${gift[10]}'
                     /* start: '<c:out value="${gift[1]}" />',
                     end: '<c:out value="${gift[1]}" />' */
                 },
@@ -111,6 +134,16 @@
         		end: '2023-09-22'
         	} */
             ],
+            eventClassNames: function(arg) {
+                var classNames = [];
+                var giftStatus = arg.event.extendedProps.giftStatus;
+                if (giftStatus == 1) {
+                    classNames.push('status-blue');
+                } else if (giftStatus == 2 || giftStatus == 3) {
+                    classNames.push('status-red');
+                }
+                return classNames;
+            },
             /* eventColor: '#378006', */
             eventRender: function(info) {
                 var element = info.el;
@@ -119,11 +152,13 @@
                var giftStatus = info.event.extendedProps.giftStatus;
 
                 // giftStatus에 따라 배경색 설정
-                if (giftStatus == 1) {
-                    element.style.backgroundColor = 'blue';
-                } else if (giftStatus == 2) {
-                    element.style.backgroundColor = 'red';
-                }
+                /* if (giftStatus == 1) {
+                    //element.style.backgroundColor = 'blue';
+                	info.el.style.backgroundColor = '#0000FF';
+                } else if (giftStatus == 2 || giftStatus == 3) {
+                    //element.style.backgroundColor = 'red';
+                	info.el.style.backgroundColor = '#FF0000';
+                } */
             },
          
          eventClick: function(info) {
@@ -155,6 +190,7 @@
              
 			 document.getElementById('eventGiftNo').textContent = info.event.extendedProps.giftNo;
 			 document.getElementById('eventBarcode').textContent = info.event.extendedProps.giftBarcode;
+			 document.getElementById('eventImage').src = "/upload_images/gifticon/" + info.event.extendedProps.giftBarcode;
              // 모달을 열기 위한 Bootstrap 모달 메서드 호출
              
              /* console.log('이벤트를 클릭했습니다.');
