@@ -50,6 +50,7 @@
 <body>
 	<%-- <c:import url="../top.jsp" /> --%>
 	<c:import url="../top_customer.jsp" />
+	<c:set var="imagePath" value="${pageContext.request.contextPath}/upload_images/product/${list[10]}" />
 	<div class="container-xxl py-5 bg-primary hero-header">
 		<div class="container my-5 py-5 px-lg-5">
 			<div class="wow fadeInUp" data-wow-delay="0.1s"></div>
@@ -120,7 +121,8 @@
                     end: '<c:out value="${formattedEnd}" />',
                     giftStatus: ${gift[3]}, // giftStatus 값을 이벤트 객체에 저장
                     giftNo: ${gift[0]}, // giftNo
-                    giftBarcode: '${gift[2]}'
+                    giftBarcode: '${gift[2]}',
+                    productImage: '${gift[10]}'
                     /* start: '<c:out value="${gift[1]}" />',
                     end: '<c:out value="${gift[1]}" />' */
                 },
@@ -188,6 +190,7 @@
              
 			 document.getElementById('eventGiftNo').textContent = info.event.extendedProps.giftNo;
 			 document.getElementById('eventBarcode').textContent = info.event.extendedProps.giftBarcode;
+			 document.getElementById('eventImage').src = "/upload_images/gifticon/" + info.event.extendedProps.giftBarcode;
              // 모달을 열기 위한 Bootstrap 모달 메서드 호출
              
              /* console.log('이벤트를 클릭했습니다.');
