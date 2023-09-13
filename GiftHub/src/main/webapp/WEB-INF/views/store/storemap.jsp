@@ -43,25 +43,25 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="store" items="${stores}" varStatus="iterStat">
+				<c:forEach var="pagedStore" items="${pagedStores}" varStatus="iterStat">
 					<tr>
 						<th scope="row">${iterStat.index + 1}</th>
-						<td>${store.storeName}</td>
-						<td>${store.storeAdd2}  ${store.storeAdd3}</td>
+						<td>${pagedStore.storeName}</td>
+						<td>${pagedStore.storeAdd2}${pagedStore.storeAdd3}</td>
 						<td><c:choose>
-								<c:when test="${store.categoryNo.categoryNo == 1}">
+								<c:when test="${pagedStore.categoryNo.categoryNo == 1}">
                     한식
                 </c:when>
-								<c:when test="${store.categoryNo.categoryNo == 2}">
+								<c:when test="${pagedStore.categoryNo.categoryNo == 2}">
                     중식
                 </c:when>
-								<c:when test="${store.categoryNo.categoryNo == 3}">
+								<c:when test="${pagedStore.categoryNo.categoryNo == 3}">
                     일식
                 </c:when>
-								<c:when test="${store.categoryNo.categoryNo == 4}">
+								<c:when test="${pagedStore.categoryNo.categoryNo == 4}">
                     양식
                 </c:when>
-								<c:when test="${store.categoryNo.categoryNo == 5}">
+								<c:when test="${pagedStore.categoryNo.categoryNo == 5}">
                     카페/베이커리
                 </c:when>
 								<c:otherwise>
@@ -76,28 +76,22 @@
 		<nav aria-label="Page navigation example">
 			<ul class="pagination pagination-primary justify-content-center">
 				<li class="page-item ${currentPage == 1 ? 'disabled' : ''}"><a
-					class="page-link" href="?page=1&storeId=${storeId}"><<</a></li>
+					class="page-link" href="?page=1"><<</a></li>
 				<li class="page-item ${currentPage == 1 ? 'disabled' : ''}"><a
-					class="page-link"
-					href="?page=${currentPage - 1}&storeId=${storeId}"><</a></li>
-
+					class="page-link" href="?page=${currentPage - 1}"><</a></li>
 				<c:set var="startPage"
 					value="${(currentGroup - 1) * pagesPerGroup + 1}" />
 				<c:set var="endPage"
 					value="${currentGroup * pagesPerGroup > totalPages ? totalPages : currentGroup * pagesPerGroup}" />
 				<c:forEach var="i" begin="${startPage}" end="${endPage}">
 					<li class="page-item ${i == currentPage ? 'active' : ''}"><a
-						class="page-link" id="ggg"
-						href="?page=${i}&storeId=${storeId}#tableSection"
+						class="page-link" id="ggg" href="?page=${i}#tableSection"
 						style="background: #0058C6; border: 1px solid #0058C6">${i}</a></li>
 				</c:forEach>
-				<li class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
-					<a class="page-link"
-					href="?page=${currentPage + 1}&storeId=${storeId}">></a>
-				</li>
-				<li class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
-					<a class="page-link" href="?page=${totalPages}&storeId=${storeId}">>></a>
-				</li>
+				<li class="page-item ${currentPage == totalPages ? 'disabled' : ''}"><a
+					class="page-link" href="?page=${currentPage + 1}">></a></li>
+				<li class="page-item ${currentPage == totalPages ? 'disabled' : ''}"><a
+					class="page-link" href="?page=${totalPages}">>></a></li>
 			</ul>
 		</nav>
 	</div>
