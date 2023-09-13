@@ -159,7 +159,7 @@ public class GifticonController {
 			e.printStackTrace();
 		}
 		
-		GiftoconGenerator.createGiftCard(ses);
+//		GiftoconGenerator.createGiftCard(ses);
 		return "redirect:/gifticon/use";
 	}
 	

@@ -1,5 +1,6 @@
 package mulcam.kb04.gifthub.GiftHub.project;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
@@ -7,33 +8,74 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.imageio.ImageIO;
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
+
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+
+import mulcam.kb04.gifthub.GiftHub.dto.ProductDto;
 
 public class GiftoconGenerator {
 	
 	private static String productImageFile;
-	private static String productDescription;
-	private static String barcodeImageFile;
 	private static String expirationDate;
 	
+	public static BufferedImage barcodeGenerate(String barcodeData) {
+		//바코드 이미지 생성
+		BufferedImage barcodeImage = null;
+		// 바코드 생성을 위한 설정
+		try {
+	        int width = 400; // 이미지 너비
+	        int height = 100; // 이미지 높이
+	        String format = "png"; // 이미지 형식
+
+	        Map<EncodeHintType, Object> hints = new HashMap<EncodeHintType, Object>();
+	        hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
+	        
+	        
+	        // 바코드 생성
+	        BitMatrix bitMatrix;
+				bitMatrix = new MultiFormatWriter().encode(
+				        barcodeData,
+				        BarcodeFormat.CODE_128, // 바코드 형식 선택
+				        width,
+				        height,
+				        hints
+				);
+				// BitMatrix를 BufferedImage로 변환
+				barcodeImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+				for (int x = 0; x < width; x++) {
+					for (int y = 0; y < height; y++) {
+						barcodeImage.setRGB(x, y, bitMatrix.get(x, y) ? 0x000000 : 0xFFFFFF);
+					}
+				}
+			} catch (WriterException e) {
+				e.printStackTrace();
+			}
+		return barcodeImage;
+	}
 	
-	public static void createGiftCard(HttpSession ses) {
-		int width = 460; // 이미지 너비
-	    int height = 700; // 이미지 높이
-        ServletContext app=ses.getServletContext();
-		
-        productImageFile = "2022-11-16.jpg";
-        barcodeImageFile = "barcode.png";
-        productDescription = "이 기프티콘은 특별한 선물입니다.ddddddddddd\n 맛있는 도넛을 친구나 가족처럼 \n 소중한 사람에게 선물하세요";//30번째 마다 한번씩 나누기 7번째줄까지
-        expirationDate = "유효 기간: 2023-12-31 까지";
-        String productTitle = " 맛있는 도넛";
-        
+	
+	public static void createGiftCard(HttpSession ses,ProductDto product) {
+		int width = 350; // 이미지 너비
+        int height = 650; // 이미지 높이
         BufferedImage giftCardImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         Graphics2D g2d = giftCardImage.createGraphics();
+	    
+        productImageFile = product.getProductImage();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        expirationDate= format.format(product.getProductExp());
+        String productTitle = product.getProductName();
         
         // 배경 색상 설정
         g2d.setColor(Color.WHITE);
@@ -41,118 +83,109 @@ public class GiftoconGenerator {
         
         //로고 이미지 그리기
         try {
-        	String rootDirectory=app.getRealPath("/resources/Gificon");
+        	String upDir=System.getProperty("user.dir");
+        	String rootDirectory = upDir+"/src/main/resources/static/img";
         	String productImagePath = rootDirectory+"/"+"logo.png";
             BufferedImage logoImage = ImageIO.read(new File(productImagePath));
-            g2d.drawImage(logoImage, 150, 10, 160, 40, null);
+            g2d.drawImage(logoImage, 115, 25, 120, 35, null);
         } catch (IOException e) {
             e.printStackTrace();
         }
         
-     // 상품 이미지 그리기
+        // 상품 이미지 그리기
         try {
-        	String rootDirectory=app.getRealPath("/resources/User_Image");
+        	String upDir=System.getProperty("user.dir");
+        	String rootDirectory = upDir+"/src/main/resources/static/upload_images/product";
         	String productImagePath = rootDirectory+"/"+productImageFile;
             BufferedImage productImage = ImageIO.read(new File(productImagePath));
-            g2d.drawImage(productImage, 100, 60, 260, 260, null);
+            g2d.drawImage(productImage, 25, 70, 300, 260, null);
         } catch (IOException e) {
             e.printStackTrace();
         }
         
-     // 바코드 이미지 그리기
-        try {
-        	String rootDirectory=app.getRealPath("/resources/Gificon");
-            String barcodeImagePath = rootDirectory + "/" + barcodeImageFile;
-            BufferedImage barcodeImage = ImageIO.read(new File(barcodeImagePath));
-
-            int barcodeWidth = 407;
-            int barcodeHeight = 90;
-            int barcodeX = 20;
-            int barcodeY = 340;
-
-            // 바코드 이미지 크기를 맞추기 위해 스케일 조정
-            BufferedImage scaledBarcodeImage = new BufferedImage(barcodeWidth, barcodeHeight, BufferedImage.TYPE_INT_RGB);
-            Graphics2D barcodeGraphics = scaledBarcodeImage.createGraphics();
-            barcodeGraphics.drawImage(barcodeImage, 0, 0, barcodeWidth, barcodeHeight, null);
-            barcodeGraphics.dispose();
-
-            // 바코드 그리기
-            g2d.drawImage(scaledBarcodeImage, barcodeX, barcodeY, null);
-
-            // 바코드 중앙 위치 계산
-            int barcodeCenterX = barcodeX + barcodeWidth / 2;
-
-            // 유효 기간 텍스트 그리기 (가운데 정렬)
-            g2d.setColor(Color.BLACK); // 테두리의 색상 설정
-            g2d.setFont(new Font("맑은 고딕",Font.PLAIN, 12));
-            FontMetrics fontMetrics = g2d.getFontMetrics();
-            int expirationDateWidth = fontMetrics.stringWidth(expirationDate);
-            int expirationDateX = barcodeCenterX - (expirationDateWidth / 2);
-            int expirationDateY = barcodeY + barcodeHeight + 20; // 바코드 아래에 위치
-            g2d.drawString(expirationDate, expirationDateX, expirationDateY);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        //상품명
+        g2d.setColor(Color.GRAY); // 테두리의 색상 설정
+        g2d.setFont(new Font("함초롬돋움",Font.PLAIN, 16));
+        g2d.drawString("카테고리", 30,354 );
         
-        
-     // 상품명을 가운데 정렬하기 위해 필요한 값들 계산
-        Font font = new Font("맑은 고딕", Font.BOLD, 20);
-        FontMetrics metrics = g2d.getFontMetrics(font);
-        int stringWidth = metrics.stringWidth(productTitle);
-        int xCoordinate = (350 - stringWidth) / 2 + 50; // 텍스트 박스의 가운데로 정렬
-
-        g2d.setColor(Color.BLACK);
-        g2d.setFont(font);
-
-        g2d.drawString(productTitle, xCoordinate, 480);
-        
-     // 상품 설명 가운데 정렬
         g2d.setColor(Color.BLACK); // 테두리의 색상 설정
-        g2d.drawRoundRect(50, 500, 350, 150, 20, 20);
+        g2d.setFont(new Font("함초롬돋움",Font.BOLD, 20));
+        g2d.drawString(productTitle, 20,384 );
+        
+     // 바코드 생성을 위한 코드(날짜와시간+시퀀스)
+        String unique=UniqueCode.generateUniqueBarcode();
+        String barcodeData = unique;
+        
+        BufferedImage barcodeImage = barcodeGenerate(barcodeData);
 
-        // 상품 설명 그리기
-        int x = 60; // 텍스트의 시작 x 좌표
-        int y = 520; // 텍스트의 시작 y 좌표
-        int maxWidth = 330; // 텍스트 상자의 최대 너비
+        int barcodeWidth = 350;
+        int barcodeHeight = 70;
+        int barcodeX = 0;
+        int barcodeY = 410;
 
-        g2d.setColor(Color.BLACK);
-        g2d.setFont(new Font("맑은 고딕", Font.BOLD, 14));
+        // 바코드 이미지 크기를 맞추기 위해 스케일 조정
+        BufferedImage scaledBarcodeImage = new BufferedImage(barcodeWidth, barcodeHeight, BufferedImage.TYPE_INT_RGB);
+        Graphics2D barcodeGraphics = scaledBarcodeImage.createGraphics();
+        barcodeGraphics.drawImage(barcodeImage, 0, 0, barcodeWidth, barcodeHeight, null);
+        barcodeGraphics.dispose();
 
-        metrics = g2d.getFontMetrics();
-        String[] descriptionLines = productDescription.split("\n"); // '\n'을 기준으로 텍스트를 나눕니다.
+        // 바코드 그리기
+        g2d.drawImage(scaledBarcodeImage, barcodeX, barcodeY, null);
 
-        for (String line : descriptionLines) {
-            // 현재 줄의 길이 계산
-            int lineWidth = metrics.stringWidth(line);
-            
-            if (lineWidth > maxWidth) {
-                // 현재 줄이 최대 너비를 초과하는 경우 줄바꿈
-                int startIndex = 0;
-                while (startIndex < line.length()) {
-                    int endIndex = startIndex + 1;
-                    while (endIndex < line.length() && metrics.stringWidth(line.substring(startIndex, endIndex + 1)) <= maxWidth) {
-                        endIndex++;
-                    }
-                    String subLine = line.substring(startIndex, endIndex);
-                    g2d.drawString(subLine, x, y);
-                    y += metrics.getHeight(); // 다음 줄로 이동
-                    startIndex = endIndex;
-                }
-            } else {
-                // 현재 줄이 최대 너비를 초과하지 않으면 그대로 그림
-                g2d.drawString(line, x, y);
-                y += metrics.getHeight(); // 다음 줄로 이동
-            }
-        }
+        // 바코드 중앙 위치 계산
+        int barcodeCenterX = barcodeX + barcodeWidth / 2;
+
+        // 코드 번호 텍스트 그리기 (가운데 정렬)
+        g2d.setColor(Color.BLACK); // 테두리의 색상 설정
+        g2d.setFont(new Font("Digital-7",Font.BOLD, 15));
+        FontMetrics fontMetrics = g2d.getFontMetrics();
+        int expirationDateWidth = fontMetrics.stringWidth(barcodeData);
+        int expirationDateX = barcodeCenterX - (expirationDateWidth / 2);
+        int expirationDateY = barcodeY + barcodeHeight + 20; // 바코드 아래에 위치
+        g2d.drawString(barcodeData, expirationDateX, expirationDateY);
         
         
-        // 그래픽 컨텍스트 종료
+        float lineWidth = 1.5f; // 원하는 굵기로 조절
+        BasicStroke stroke = new BasicStroke(lineWidth);
+        g2d.setStroke(stroke);
+        
+        //테두리
+        g2d.setColor(Color.BLACK); // 테두리의 색상 설정
+        g2d.drawRoundRect(7, 15, 336, 620, 20, 20);
+        
+        //선
+        g2d.setColor(Color.GRAY);
+        g2d.drawLine( 30, 525, 320,525);
+        g2d.setColor(Color.GRAY); // 
+        g2d.setFont(new Font("나눔 고딕",Font.PLAIN, 14));
+        g2d.drawString("교 환 처", 30,548 );
+        g2d.setColor(Color.BLACK);  
+        g2d.setFont(new Font("나눔 고딕",Font.BOLD, 16));
+        g2d.drawString("교환처 이름",200,545);
+        
+        // 
+        g2d.setColor(Color.GRAY);
+        g2d.drawLine( 30, 555, 320,555);
+        g2d.setColor(Color.GRAY); // 
+        g2d.setFont(new Font("나눔 고딕",Font.PLAIN, 14));
+        g2d.drawString("유효기간", 30,583 );
+        g2d.setColor(Color.BLACK);  
+        g2d.setFont(new Font("새굴림",Font.BOLD, 16));
+        Date date = product.getProductExp();
+        SimpleDateFormat form = new SimpleDateFormat("yyyy년 MM월 dd일");
+        expirationDate=form.format(date);
+        g2d.drawString(expirationDate,170,580);
+        
+        g2d.setColor(Color.GRAY);
+        g2d.drawLine( 30, 590, 320,590);
+        g2d.setColor(Color.GRAY); // 
+        
         g2d.dispose();
         
 		try {
 			UUID uuid = UUID.randomUUID();
-			String rootDirectory=app.getRealPath("/resources/Gificon");
+			String upDir=System.getProperty("user.dir");
+        	String rootDirectory = upDir+"/src/main/resources/static/upload_images/gifticon";
 			String giftCardImageFile = rootDirectory+"/"+uuid.toString() + "_gift_card.png"; // 저장될 파일 이름
 			ImageIO.write(giftCardImage, "png", new File(giftCardImageFile));
 			System.out.println("Gift card image saved as: " + giftCardImageFile);

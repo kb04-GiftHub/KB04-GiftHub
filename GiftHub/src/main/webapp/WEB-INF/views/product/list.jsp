@@ -106,7 +106,7 @@
 								src="/upload_images/product/${product[5]}" alt="">
 							<div class="portfolio-overlay">
 								<a class="btn btn-square btn-outline-light mx-1"
-									href="product/detail?productNo=${product[0]}" data-lightbox="portfolio"><i
+									href="/product/detail/${product[0]}" data-lightbox="portfolio"><i
 									class="fa fa-eye"></i></a> <a
 									class="btn btn-square btn-outline-light mx-1"
 									href="/promotionView_detail?promotionNo="><i
