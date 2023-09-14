@@ -1,5 +1,7 @@
 package mulcam.kb04.gifthub.GiftHub.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -9,6 +11,9 @@ import mulcam.kb04.gifthub.GiftHub.entity.Store;
 public interface StoreRepository extends JpaRepository<Store, String> {
 
 	Store findByStoreId(String id);
+
 	int countByStoreId(String id);
-	
+
+	List<Store> findAll();
+
 }

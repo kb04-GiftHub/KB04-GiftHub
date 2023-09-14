@@ -22,12 +22,19 @@ public class CalendarController {
 	public String member_main(HttpSession ses, Model model) {
 		
 		String loggedMemberId = (String) ses.getAttribute("loggedMemberId");
+		if(loggedMemberId == null || ses.getAttribute("loggedStroeId") != null) {
+			return "redirect:/index";
+		}
 		
 		CustomerDto customerDto =  giftService.findByCustomerId(loggedMemberId);
-		List<GiftDto> list = giftService.findByCustomerIdToList(loggedMemberId);
+		List<Object[]> list = giftService.findByCustomerIdToList(loggedMemberId);
 		
 		model.addAttribute("list", list);
-		//System.out.println(list);
+		
+		for (Object[] objects : list) {
+			System.out.println(objects[1]);
+		}
+		//System.out.println("리스트>> " + list);
 
 		return "member/main";
 	}

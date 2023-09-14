@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.google.gson.Gson;
+
 import mulcam.kb04.gifthub.GiftHub.dto.CustomerDto;
 import mulcam.kb04.gifthub.GiftHub.dto.StoreDto;
+import mulcam.kb04.gifthub.GiftHub.entity.Jjim;
 import mulcam.kb04.gifthub.GiftHub.service.MyPageService;
 
 @Controller
@@ -121,21 +124,68 @@ public class MyPageController {
 		return "member_complete";
 	}
 	
-	@GetMapping("/member/mypage/use_detail")
-	public String member_use_detail(HttpSession session, Model model) {
+	@GetMapping("/member/mypage/use_list")
+	public String member_use_list(HttpSession session, Model model) {
 		String loggedMemberId = (String)session.getAttribute("loggedMemberId");
 		if(loggedMemberId == null || session.getAttribute("loggedStroeId") != null) {
 			return "redirect:/index";
 		}
 		
 		List<Object[]> list = myPageService.findByCustomerIdToList(loggedMemberId);
+		model.addAttribute("list", list);
+	    
+		if(list.size() == 0) {
+			model.addAttribute("msg", "보유한 기프티콘이 없습니다.");
+		}
+		
+		return "mypage/member_use_list";
+	}
+	
+	@GetMapping("/member/mypage/use_detail")
+	public String member_use_detail(HttpSession session, Model model, @RequestParam("giftNo") long giftNo) {
+		String loggedMemberId = (String) session.getAttribute("loggedMemberId");
+		if (loggedMemberId == null || session.getAttribute("loggedStroeId") != null) {
+			return "redirect:/index";
+		}
+		
+		Object object = myPageService.findByGiftNo(giftNo);
+		
+		Gson gson = new Gson();
+		String jsonObject = gson.toJson(object);
+		
+		model.addAttribute("object", object);
+		model.addAttribute("jsonObject", jsonObject);
+		return "mypage/member_use_detail";
+	}
+	
+	@GetMapping("/member/mypage/check_point")
+	public String member_check_point(HttpSession session, Model model) {
+		String loggedMemberId = (String) session.getAttribute("loggedMemberId");
+		if (loggedMemberId == null || session.getAttribute("loggedStroeId") != null) {
+			return "redirect:/index";
+		}
+		
+		CustomerDto customerDto = myPageService.findByCustomerId(loggedMemberId);
+		int point = customerDto.getPoint();
+		model.addAttribute("point", point);
+		
+		return "mypage/member_check_point";
+	}
+	
+	@GetMapping("/member/mypage/jjim_list")
+	public String member_jjim_list(HttpSession session, Model model) {
+		String loggedMemberId = (String)session.getAttribute("loggedMemberId");
+		if(loggedMemberId == null || session.getAttribute("loggedStroeId") != null) {
+			return "redirect:/index";
+		}
+		
+		List<Object[]> list = myPageService.findByCustomerIdToJjimList(loggedMemberId);
+		model.addAttribute("list", list);
 		
 		if(list.size() == 0) {
 			model.addAttribute("msg", "보유한 기프티콘이 없습니다.");
-		} else {
-			model.addAttribute("list", list);
 		}
 		
-		return "mypage/member_use_detail";
+		return "mypage/member_jjim_list";
 	}
 }

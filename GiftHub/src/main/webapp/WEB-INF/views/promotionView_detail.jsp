@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     <!DOCTYPE html>
 <html lang="en">
 
@@ -32,111 +33,117 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    
+    <script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=14b45607c24e81b779e6418cf489de08&libraries=services"></script>
 </head>
+<style>
+/* 목록이동 버튼 스타일 */
+.list-button {
+    background-color: #ffc107; /* 배경색을 노란색으로 설정 */
+    color: white; /* 텍스트 색상을 하얀색으로 설정 */
+    padding: 10px 190px; /* 내부 여백 설정 (상하 10px, 좌우 20px) */
+    border: none; /* 테두리 없음 */
+    border-radius: 5px; /* 버튼 모서리를 둥글게 만듭니다. */
+    cursor: pointer; /* 커서 모양을 포인터로 변경하여 클릭 가능한 버튼임을 나타냅니다. */
+}
+    /* 이미지 스타일 */
+    .promotion-image {
+        width: 100%;
+        height: auto; /* 이미지의 높이를 자동으로 조정하여 원래 비율을 유지 */
+    }
 
+    /* 오른쪽 글자박스 스타일 */
+    .text-box {
+        position: absolute;
+        top: 0; /* 위쪽에 위치 */
+        right: 0; /* 오른쪽에 위치 */
+        background-color: #C3DBF8;
+        border-radius: 10px;
+        padding: 20px;
+        z-index: 1; /* 글자박스를 이미지 위에 배치 */
+        max-width: 50%; /* 최대 너비 설정 */
+    }
+</style>
 <body>
-    <div class="container-xxl bg-white p-0">
-        <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div>
-        <!-- Spinner End -->
+     <c:import url="top.jsp" />
 
-
-        <!-- Navbar & Hero Start -->
-        <div class="container-xxl position-relative p-0">
-            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-                <a href="" class="navbar-brand p-0">
-                    <h1 class="m-0">DGital</h1>
-                    <!-- <img src="img/logo.png" alt="Logo"> -->
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="fa fa-bars"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav mx-auto py-0">
-                        <a href="index.html" class="nav-item nav-link">Home</a>
-                        <a href="about.html" class="nav-item nav-link">About</a>
-                        <a href="service.html" class="nav-item nav-link">Service</a>
-                        <a href="project.html" class="nav-item nav-link">Project</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu m-0">
-                                <a href="team.html" class="dropdown-item">Our Team</a>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                <a href="404.html" class="dropdown-item">404 Page</a>
-                            </div>
-                        </div>
-                        <a href="contact.html" class="nav-item nav-link active">Contact</a>
-                    </div>
-                    <a href="" class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Get Started</a>
-                </div>
-            </nav>
-
-            <div class="container-xxl py-5 bg-primary hero-header">
-                <div class="container my-5 py-5 px-lg-5">
-                    <div class="row g-5 py-5">
-                        <div class="col-12 text-center">
-                            <h1 class="text-white animated slideInDown">Contact</h1>
-                            <hr class="bg-white mx-auto mt-0" style="width: 90px;">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb justify-content-center">
-                                    <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-                                    <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
-                                    <li class="breadcrumb-item text-white active" aria-current="page">Contact</li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Navbar & Hero End -->
-
+	<div class="container-xxl py-5 bg-primary hero-header">
+		<div class="container my-5 py-5 px-lg-5">
+			<div class="row g-5 py-5">
+				<div class="col-12 text-center">
+					<h1 class="text-white animated slideInDown">커뮤니티</h1>
+				</div>
+			</div>
+		</div>
+	</div>
 
         <!-- Contact Start -->
         <div class="container-xxl py-5">
             <div class="container py-5 px-lg-5">
                 <div class="wow fadeInUp" data-wow-delay="0.1s">
                     <p class="section-title text-secondary justify-content-center"><span></span>커뮤니티<span></span></p>
-                    <h1 class="text-center mb-5">게시물 관리</h1>
+                    <h1 class="text-center mb-5 ">게시물 상세보기</h1>
                 </div>
-                <div class="row justify-content-center">
-                    <div class="col-lg-7">
-                        <div class="wow fadeInUp" data-wow-delay="0.3s">
-                            <h1>게시물 상세 보기</h1>
-                            
-							<table>
-										<tr>
-											<th>번호</th>
-											<th>종류</th>
-											<th>제목</th>
-											<th>내용</th>
-											<th>이미지</th>
-										</tr>
-										<c:forEach items="${promotion_view_detail}" var="pm">
-										<tr>
-											<td>${pm.promotionNo}</td>
-											<td><a href="promotion_detail?no=${pm.promotionNo}">${pm.promotionType}</a></td>
-											<td><a href="promotion_detail?no=${pm.promotionNo}">${pm.promotionTitle}</a></td>
-											<td><a href="promotion_detail?no=${pm.promotionNo}">${pm.promotionContent}</a></td>
-											<td><a href="promotion_detail?no=${pm.promotionNo}">${pm.promotionImage}</a></td>
-										</tr>
-										</c:forEach>
-									</table>
-									                                  
-                                    <div class="col-12">
-                                    	<a href="/promotion_list">게시물 목록으로 이동</a>
-                                    </div>
-                                </div>
-                            </form>
+                
+                
+            <div class="row justify-content-center">
+            
+            <div class="row ">
+    <!-- 왼쪽 컬럼: promotionImage -->
+    <div class="col-lg-5" style="background-color: #C8DFFD; border-radius: 10px; padding: 20px;">
+        <div class="wow fadeInUp" data-wow-delay="0.3s">
+            <img src="${pageContext.request.contextPath}/upload_images/promotion/${promotion[3]}" width="100%">
+        </div>
+    </div>
+
+    <!-- 오른쪽 컬럼: promotionTitle, storeName, promotionDate, promotionContent -->
+    <div class="col-lg-7" style="background-color: #C8DFFD; border-radius: 10px; padding: 20px;">
+        <div class="wow fadeInUp" data-wow-delay="0.3s">
+            <h6 class="text-center" style="color: #434242">
+                <br>
+                <c:choose>
+                    <c:when test="${promotion[5] == 1}">-----홍보-----<span></span>
+                    </c:when>
+                    <c:when test="${promotion[5] == 2}">-----이벤트-----<span></span>
+                    </c:when>
+                </c:choose>
+            </h6>
+            <h5 class="text-center" style="color: #434242">
+                <span>&#9733;</span> <!-- 별 이모티콘 (★) -->
+                ${promotion[6]} <!-- 텍스트 -->
+                <span>&#9733;</span> <!-- 별 이모티콘 (★) -->
+            </h5>
+            <h3 class="text-center"  style="color: #434242">${promotion[1]}</h3>
+            
+            <h5 class="text-center" style="color: #434242; background : white;"><br><br>${promotion[2]}<br><br><br></h5>
+            
+            <h6 class="text-center" style="color: #696969">**해당 화면을 캡처하여 가게 사장님께 보여주세요**</h6>
+            
+        </div>
+    </div>
+</div>
+               <div class="text-center" style="background-color: #FFE9B4; border-radius: 10px; padding: 10px;margin-top: 20px;">
+               <!--주소 -->
+                <div class="text-center">
+                <br>
+                	<h4 style="color:#434242;">매장 위치</h4>
+                	<h6 style="color:#434242;">${promotion[7]}</h6>
+	            </div>
+                        <!-- 지도 -->
+                        <div>
+                        	<div id="map" style="width: 1200px; height: 440px;"></div>  
+                         </div>
+                         <!-- 지도 끝-->
+                         </div>
                         </div>
+                        
+                        <br>
+                         <div class="col-12 text-center">
+                       		<a href="/promotionView_list" class="list-button" >게시물 목록으로 이동</a>
+                		</div> 
                     </div>
                 </div>
-            </div>
-        </div>
         <!-- Contact End -->
         
 
@@ -239,5 +246,63 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    
+    <!-- 지도 -->
+    <script>
+    var objectData = JSON.parse('${stores}');
+	var address = objectData[7];
+	
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+    mapOption = {
+        center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level : 3
+    // 지도의 확대 레벨
+    };
+    var map = new kakao.maps.Map(mapContainer, mapOption);
+    var geocoder = new kakao.maps.services.Geocoder();
+    geocoder.addressSearch('${promotion[7]}', function(result, status) {
+		// 정상적으로 검색이 완료됐으면
+		if (status === kakao.maps.services.Status.OK) {
+			
+			var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+	      
+	        //마커 표시
+			var marker = new kakao.maps.Marker({
+				map : map,
+				position : coords
+			});  
+	        //지도 중심 이동
+			map.setCenter(coords);
+		}
+    });
+   
+        // 주소-좌표 변환 객체를 생성합니다
+        
+        /*var addresses = JSON.parse('${stores}'); // 변수 이름을 'address'에서 'addresses'로 변경
+        
+        addresses
+                .forEach(function(address) {
+                    // 주소로 좌표를 검색합니다
+                    geocoder
+                            .addressSearch(
+                                    address.storeAdd2,
+                                    function(result, status) {
+                                        // 정상적으로 검색이 완료됐으면
+                                        if (status === kakao.maps.services.Status.OK) {
+                                            var coords = new kakao.maps.LatLng(
+                                                    result[0].y,
+                                                    result[0].x);
+                                            // 결과값으로 받은 위치를 마커로 표시합니다
+                                            var marker = new kakao.maps.Marker(
+                                                    {
+                                                        map : map,
+                                                        position : coords,
+                                                        // image : markerImage // 'markerImage' 변수가 정의되지 않았으므로 주석 처리
+                                                    });
+                                        }
+                                    });
+                });*/
+    
+</script>
 </body>
 </html>

@@ -10,10 +10,13 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 	<c:import url="../top.jsp" />
 	<div class="container-xxl py-5 bg-primary hero-header">
-		<div class="container my-5 py-5 px-lg-5">
+		<div class="container my-3 py-3 px-lg-3">
 			<div class="row g-5 py-5">
 				<div class="col-12 text-center">
 					<h1 class="text-white animated slideInDown">기프티콘 관리</h1>
+					<p class="section-title animated slideInDown text-secondary justify-content-center">
+					<span></span>쿠폰 사용<span></span>
+				</p>
 				</div>
 			</div>
 		</div>
@@ -33,31 +36,19 @@
 				var img = document.createElement("img");
 				img.setAttribute("src", event.target.result);
 				img.setAttribute("style", "width:50%;height:auto;");
-				img.setAttribute("class","rectangular");
+				img.setAttribute("class","rectangular border");
 				document.querySelector('#image_container').appendChild(img);
 			};
 			reader.readAsDataURL(this.files[0]);
 		})
 	})
-</script>
-	
+	</script>
+		
 	<!-- Contact Start -->
         <div class="container-xxl py-5">
 					<h1 class="text-center text-black animated slideInDown">기프티콘 사용</h1>
 					<div class="card">
           <div class="card-body pt-3">
-          
-          <script>
-          	//$(function(){
-          		//$('#imageUsed').click(function(){
-          		//	var file = $('#imageInput').files[0];
-          		//	 if (!file) {
-          		   //     // 파일 입력 요소의 값을 비웁니다.
-          		   //     this.value = ''; // 이렇게 하면 다시 선택할 수 있습니다.
-          		  //  }
-          		//})
-         // 	})
-          </script>
           <c:set var="path" value="${pageContext.request.contextPath}" />
             <!-- Bordered Tabs -->
             <ul class="nav nav-tabs nav-tabs-bordered justify-content-center">
@@ -77,10 +68,9 @@
 	                <div class="row justify-content-center">
 	                    <div class="col-lg-7">
 	                        <div class="wow">
-	                            <p class="text-center mb-4"></p>
 	                            <form action="image_use" method="post" enctype="multipart/form-data">
 	                                <div class="row g-3">
-	                                    	 <div class="col-12 text-center" id=image_container class="pt-2 text-center"></div>
+	                                    	 <div class="col-12 text-center" id="image_container"></div>
 	                                    <div class="col-12">
 	                                        <div class="form-floating">
 	                                            <input type="file" class="form-control" name="image" id="imageInput" placeholder="이미지">
@@ -104,7 +94,6 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-7">
                         <div class="fadeInUp" data-wow-delay="0.1s">
-                            <p class="text-center mb-4"></p>
                             <form action="code_use" method="post">
                                 <div class="row g-3">
                                     <div class="col-12">

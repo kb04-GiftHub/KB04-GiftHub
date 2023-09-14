@@ -2,8 +2,8 @@ package mulcam.kb04.gifthub.GiftHub.service;
 
 import java.util.List;
 
-import mulcam.kb04.gifthub.GiftHub.dto.StoreDto;
+import mulcam.kb04.gifthub.GiftHub.entity.Store;
 
 public interface FindStoreService {
-	List<StoreDto> findAllStores();
+	public List<Store> getAllStores();
 }

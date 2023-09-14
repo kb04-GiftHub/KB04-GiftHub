@@ -70,7 +70,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-7">
                         <div class="wow fadeInUp" data-wow-delay="0.3s">
-                            <h1>게시물 수정</h1>
+                            <h3>게시물 수정</h3>
 							<form action="/update_promotion_submit" method="post" enctype="multipart/form-data">
 							  <input type="hidden" name="promotionNo" value="${promotion.promotionNo}">
 							  
@@ -81,13 +81,13 @@
 								</select><br>
 
 							  게시물 제목<br>
-							  <input type="text" id="promotionTitle" name="promotionTitle" value="${promotion.promotionTitle}"><br>
+							  <input type="text" id="promotionTitle" name="promotionTitle" value="${promotion.promotionTitle}" style="width: 60%"><br>
 							  
 							  <label for="promotionContent">게시물 내용</label><br>
-							  <textarea id="promotionContent" name="promotionContent" rows="10" cols="50">${promotion.promotionContent}</textarea><br>
+							  <textarea id="promotionContent" name="promotionContent" rows="10" cols="100">${promotion.promotionContent}</textarea><br>
 
 								<div class="form-floating">
-                             	게시물 이미지<br>
+                             	현재 이미지<br>
                              	<img id="promotionImage"
                                   src="${pageContext.request.contextPath}/upload_images/promotion/${promotion.promotionImage}"
                                   onclick="window.open(this.src)"><br>

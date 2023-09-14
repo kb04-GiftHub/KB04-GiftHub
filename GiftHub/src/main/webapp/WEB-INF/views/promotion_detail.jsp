@@ -34,7 +34,26 @@
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 </head>
-
+<style>
+/* 삭제하기,수정하기 버튼 스타일 */
+.du-button {
+    background-color: #0058C6; /* 배경색을 파란색으로 설정 */
+    color: white; /* 텍스트 색상을 하얀색으로 설정 */
+    padding: 10px 100px; /* 내부 여백 설정 (상하 10px, 좌우 20px) */
+    border: none; /* 테두리 없음 */
+    border-radius: 5px; /* 버튼 모서리를 둥글게 만듭니다. */
+    cursor: pointer; /* 커서 모양을 포인터로 변경하여 클릭 가능한 버튼임을 나타냅니다. */
+}
+/* 목록이동 버튼 스타일 */
+.list-button {
+    background-color: #ffc107; /* 배경색을 노란색으로 설정 */
+    color: white; /* 텍스트 색상을 하얀색으로 설정 */
+    padding: 10px 190px; /* 내부 여백 설정 (상하 10px, 좌우 20px) */
+    border: none; /* 테두리 없음 */
+    border-radius: 5px; /* 버튼 모서리를 둥글게 만듭니다. */
+    cursor: pointer; /* 커서 모양을 포인터로 변경하여 클릭 가능한 버튼임을 나타냅니다. */
+}
+</style>
 <body>
     <c:import url="top.jsp" />
 
@@ -69,26 +88,7 @@
 		})
 	})
 </script>
-<style>
-/* 삭제하기,수정하기 버튼 스타일 */
-.du-button {
-    background-color: #0058C6; /* 배경색을 파란색으로 설정 */
-    color: white; /* 텍스트 색상을 하얀색으로 설정 */
-    padding: 10px 100px; /* 내부 여백 설정 (상하 10px, 좌우 20px) */
-    border: none; /* 테두리 없음 */
-    border-radius: 5px; /* 버튼 모서리를 둥글게 만듭니다. */
-    cursor: pointer; /* 커서 모양을 포인터로 변경하여 클릭 가능한 버튼임을 나타냅니다. */
-}
-/* 목록이동 버튼 스타일 */
-.list-button {
-    background-color: #ffc107; /* 배경색을 노란색으로 설정 */
-    color: white; /* 텍스트 색상을 하얀색으로 설정 */
-    padding: 10px 190px; /* 내부 여백 설정 (상하 10px, 좌우 20px) */
-    border: none; /* 테두리 없음 */
-    border-radius: 5px; /* 버튼 모서리를 둥글게 만듭니다. */
-    cursor: pointer; /* 커서 모양을 포인터로 변경하여 클릭 가능한 버튼임을 나타냅니다. */
-}
-</style>
+
         <!-- Contact Start -->
         <div class="container-xxl py-5">
             <div class="container py-5 px-lg-5">
@@ -103,12 +103,17 @@
                             <form action="image_use" method="post" enctype="multipart/form-data">
                                 <div class="row g-3">
                                     
-									<table class="text-center">
+									<table class="text-center table" style="border: 1px solid #000; border-collapse: collapse;">
+										<colgroup>
+										<col style="width:20%; border-right: 1px solid #000;background-color:#F4F2F2;">
+										<col style="width:*">
+										</colgroup>
 										<tr>
-											<th>게시물 번호</th><td>${promotion.promotionNo}</td>
+											<th>번호</th>
+											<td>${promotion.promotionNo}</td>
 										</tr>
 										<tr>
-											<th>게시물 종류</th>
+											<th>종류</th>
 											<td>
 											<c:choose>
 							                            <c:when test="${promotion.promotionType == 1}">
@@ -121,17 +126,19 @@
 							                  </td>
 										</tr>
 										<tr>
-											<th>게시물 제목</th><td>${promotion.promotionTitle}</td>
+											<th>제목</th>
+											<td>${promotion.promotionTitle}</td>
 										</tr>
 										<tr>
-											<th>게시물 작성일</th><td>${promotion.promotionDate}</td>
+											<th>작성일</th>
+											<td>${promotion.promotionDate}</td>
 										</tr>
 										<tr>
-											<th>게시물 내용</th>
+											<th>내용</th>
 											<td>${promotion.promotionContent}</td>
 										</tr>
 										<tr>
-											<th>게시물 이미지</th>
+											<th>이미지</th>
 											<td><img src="${pageContext.request.contextPath}/upload_images/promotion/${promotion.promotionImage}" width="300" height="200">
 											</td>
 										</tr>

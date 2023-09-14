@@ -11,5 +11,6 @@ import mulcam.kb04.gifthub.GiftHub.dto.GiftDto;
 public interface GiftService {
 	public CustomerDto findByCustomerId(String id);
 
-	public List<GiftDto> findByCustomerIdToList(String id);
+//	public List<GiftDto> findByCustomerIdToList(String id);
+	public List<Object[]> findByCustomerIdToList(String id);
 }
