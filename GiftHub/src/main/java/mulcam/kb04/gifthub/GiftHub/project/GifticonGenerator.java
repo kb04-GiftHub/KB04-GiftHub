@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -38,8 +39,17 @@ public class GifticonGenerator {
         Graphics2D g2d = giftCardImage.createGraphics();
 	    
         productImageFile = product.getProductImage();
+        
+        
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(product.getProductExp());
+        calendar.add(Calendar.MONTH, 1);
+
+        Date expDate = calendar.getTime();
+        // 현재 날짜에 30일 더하기
+        
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        expirationDate= format.format(product.getProductExp());
+        expirationDate= format.format(expDate);
         String productTitle = product.getProductName();
         
         // 배경 색상 설정
