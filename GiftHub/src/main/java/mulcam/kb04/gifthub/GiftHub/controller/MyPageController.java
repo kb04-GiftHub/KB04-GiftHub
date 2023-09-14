@@ -142,7 +142,7 @@ public class MyPageController {
 	}
 	
 	@GetMapping("/member/mypage/use_detail")
-	public String member_use_detail(HttpSession session, Model model, @RequestParam("giftNo") int giftNo) {
+	public String member_use_detail(HttpSession session, Model model, @RequestParam("giftNo") long giftNo) {
 		String loggedMemberId = (String) session.getAttribute("loggedMemberId");
 		if (loggedMemberId == null || session.getAttribute("loggedStroeId") != null) {
 			return "redirect:/index";

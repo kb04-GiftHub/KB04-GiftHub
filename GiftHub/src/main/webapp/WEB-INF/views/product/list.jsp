@@ -16,9 +16,9 @@
 	<div class="container my-5 py-5 px-lg-5">
 		<div class="wow fadeInUp" data-wow-delay="0.1s">
 			<h1 class="text-center mb-5" style="color: white;">상품 목록</h1>
-			<p class="text-center text-m text-white">
+			<!-- <p class="text-center text-m text-white">
 					내 주변의 상품을 찾을 수 있습니다. <br> 지도를 움직이며 관심있는 상품을 둘러보세요!
-				</p>
+				</p> -->
 		</div>
 	</div>
 </div>
@@ -36,10 +36,10 @@
 		</div>
 	</section> -->
 	<!-- 카카오맵 지도 위치 -->
-	<div class="map-box" class="d-flex jutify-content-center"
+	<!-- <div class="map-box" class="d-flex jutify-content-center"
 		style="height: 350px;border-radius:20px;">
 		<div id="map" style="width: 80%;height: 100%; margin: auto;border-radius:20px;"></div>
-	</div>
+	</div> -->
 	<!-- 필터 버튼 생성 -->
 	<div class="row mt-4 mb-4 wow fadeInUp" data-wow-delay="0.3s">
 		<div class="col-12 text-center">
