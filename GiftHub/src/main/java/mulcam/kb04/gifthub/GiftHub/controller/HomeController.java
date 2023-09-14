@@ -21,5 +21,29 @@ public class HomeController {
 	public String manual() {
 		return "manual";
 	}
+
+	@GetMapping("/donate")
+	public String donate() {
+		return "donate";
+	}
+	@GetMapping("/donateboard")
+	public String donateboard() {
+		return "donateboard";
+	}
+	@GetMapping("/donation")
+	public String donation() {
+		return "donation";
+	}
+
+
+	@GetMapping("/team")
+	public String team() {
+		return "team";
+	}
 	
+	@GetMapping("/service")
+	public String service() {
+		return "service";
+	}
 }
+

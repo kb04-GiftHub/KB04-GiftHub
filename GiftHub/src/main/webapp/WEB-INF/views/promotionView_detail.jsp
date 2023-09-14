@@ -81,69 +81,104 @@
         <!-- Contact Start -->
         <div class="container-xxl py-5">
             <div class="container py-5 px-lg-5">
-                <div class="wow fadeInUp" data-wow-delay="0.1s">
-                    <p class="section-title text-secondary justify-content-center"><span></span>커뮤니티<span></span></p>
-                    <h1 class="text-center mb-5 ">게시물 상세보기</h1>
+            
+    <div class="wow fadeInUp" data-wow-delay="0.1s">
+       <span></span>
+	        <h3 class="text-center mb-5 section-title text-secondary justify-content-center">
+                    <c:choose>
+                    	<c:when test="${promotion[5] == 1}"><span></span>홍보<span></span>
+                    	</c:when>
+                    	<c:when test="${promotion[5] == 2}"><span></span>이벤트<span></span>
+                    	</c:when>
+                	</c:choose>
+            </h3>
+	   <span></span>   
+    </div>   
+            
+    <div class="container border border-5 rounded p-4 text-center">            
+    <div class="row">
+      
+    <div class="container">
+    <div class="row">
+        <!-- 첫 번째 열에 promotionImage 배치 -->
+        <div class="col-md-6 wow fadeInUp text-center" data-wow-delay="0.3s">
+            <img src="${pageContext.request.contextPath}/upload_images/promotion/${promotion[3]}" width="100%" height="auto">
+            <br>
+            <br>
+        </div>
+        
+        <!-- 두 번째 열에 가게 이름과 제목 배치
+        제목과 내용 하나의 열에 배치 -->
+        <div class="col-md-6">
+                <div class="text-center col-md-12" style="color: white; position: relative; display: inline-block;">
+                    <span style="background-color:#0058C6; padding: 10px;border-radius: 30px;font-size: 25px;">
+                        ${promotion[6]}
+                    </span><br><br>
                 </div>
                 
+                <div class="col-md-12">
+                    <h4 style="margin-top: 3px;color: #434242;">${promotion[1]}</h4>
+                </div>
                 
-            <div class="row justify-content-center">
-            
-            <div class="row ">
-    <!-- 왼쪽 컬럼: promotionImage -->
-    <div class="col-lg-5" style="background-color: #C8DFFD; border-radius: 10px; padding: 20px;">
-        <div class="wow fadeInUp" data-wow-delay="0.3s">
-            <img src="${pageContext.request.contextPath}/upload_images/promotion/${promotion[3]}" width="100%">
-        </div>
-    </div>
-
-    <!-- 오른쪽 컬럼: promotionTitle, storeName, promotionDate, promotionContent -->
-    <div class="col-lg-7" style="background-color: #C8DFFD; border-radius: 10px; padding: 20px;">
-        <div class="wow fadeInUp" data-wow-delay="0.3s">
-            <h6 class="text-center" style="color: #434242">
-                <br>
-                <c:choose>
-                    <c:when test="${promotion[5] == 1}">-----홍보-----<span></span>
-                    </c:when>
-                    <c:when test="${promotion[5] == 2}">-----이벤트-----<span></span>
-                    </c:when>
-                </c:choose>
-            </h6>
-            <h5 class="text-center" style="color: #434242">
-                <span>&#9733;</span> <!-- 별 이모티콘 (★) -->
-                ${promotion[6]} <!-- 텍스트 -->
-                <span>&#9733;</span> <!-- 별 이모티콘 (★) -->
-            </h5>
-            <h3 class="text-center"  style="color: #434242">${promotion[1]}</h3>
-            
-            <h5 class="text-center" style="color: #434242; background : white;"><br><br>${promotion[2]}<br><br><br></h5>
-            
-            <h6 class="text-center" style="color: #696969">**해당 화면을 캡처하여 가게 사장님께 보여주세요**</h6>
-            
-        </div>
-    </div>
-</div>
-               <div class="text-center" style="background-color: #FFE9B4; border-radius: 10px; padding: 10px;margin-top: 20px;">
-               <!--주소 -->
-                <div class="text-center">
-                <br>
-                	<h4 style="color:#434242;">매장 위치</h4>
-                	<h6 style="color:#434242;">${promotion[7]}</h6>
-	            </div>
-                        <!-- 지도 -->
-                        <div>
-                        	<div id="map" style="width: 1200px; height: 440px;"></div>  
-                         </div>
-                         <!-- 지도 끝-->
-                         </div>
-                        </div>
-                        
+            <hr>
+            <!-- promotionContent를 두 번째 열과 동일한 열에 배치 -->
+            <div class="row" style="justify-content: center;">
+                <div class="col-md-12 text-center" style="background-color: #D6E8FF; width:90%;height: 250px; display: flex; align-items: center; justify-content: center;border-radius: 15px">
+                    <div class="wow fadeInUp" data-wow-delay="0.3s">
+                        <p class="text-center" style="color: #434242; white-space: pre-line;font-size:30px;">
+                            ${promotion[2]}
+                        </p>
                         <br>
-                         <div class="col-12 text-center">
-                       		<a href="/promotionView_list" class="list-button" >게시물 목록으로 이동</a>
-                		</div> 
+                        
                     </div>
                 </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+    <br>
+    <hr>
+    
+    <!-- 지도 시작-->
+    <div class="text-center" style="width: 100%; height: auto;">
+    
+    <!--주소 -->
+    <div class="col">
+    	<div class="text-center" style="position: relative; display: inline-block;justify-content: center;">
+             <span style="background-color:#FFE7AC;color:#434242;border-radius: 30px;font-size: 25px;padding:10px;">
+    				매장 위치
+    		</span>	
+    	</div><br><br>
+    	
+    	<div>
+          <h5 style="color:#434242;">${promotion[7]}</h5>
+        </div>
+	</div>
+	
+    <!-- 지도 -->
+    <div>
+         <div id="map" style="width: 100%; height: 440px;"></div>  
+    </div>
+    
+    </div>
+    
+   
+    
+    
+    
+     </div>
+     </div>
+      <!-- 게시물 이동 버튼 -->
+    
+    <div class="col-12 text-center">
+	    <br>
+         <a href="/promotionView_list" class="list-button" style="font-size: 20px" >게시물 목록으로 이동</a>
+    </div>
+               
+    </div>
+    </div>
         <!-- Contact End -->
         
 

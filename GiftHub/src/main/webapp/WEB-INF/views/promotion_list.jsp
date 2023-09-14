@@ -85,7 +85,7 @@
                             <p class="text-center mb-4">상세보기에서 게시물을 삭제, 수정할 수 있습니다.</p>
                             <form>
                                 <div class="row g-3">
-                                    <table class="table" style="border: 1px solid #000; border-collapse: collapse;">
+                                    <table class="table" style="border: 1px solid #CFCBCB; border-collapse: collapse; ">
 										<tr style="background-color:#D0E5FF" class="text-center">
 											<th>번호</th>
 											<th>게시물 종류</th>											
