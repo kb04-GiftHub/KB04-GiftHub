@@ -13,7 +13,8 @@ import mulcam.kb04.gifthub.GiftHub.entity.GiftUsed;
 @AllArgsConstructor
 @Builder
 public class GiftUsedDto {
-	private int usedNo, giftNo;
+	private int usedNo; 
+	private long giftNo;
 	private String customerId;
 	private Date usedDate;
 	

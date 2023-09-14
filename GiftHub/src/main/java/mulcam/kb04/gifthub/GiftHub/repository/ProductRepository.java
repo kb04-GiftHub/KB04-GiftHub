@@ -17,7 +17,10 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 	List<Object[]> findAllProductAndStore();
 	
 	
-	@Query(value = "SELECT p.PRODUCTNO, p.PRODUCTPRICE, p.PRODUCTNAME, p.PRODUCTMEMO, p.PRODUCTEXP, p.PRODUCTIMAGE, p.STOREID, s.CATEGORYNO FROM PRODUCT p JOIN STORE s ON p.STOREID = s.STOREID", nativeQuery = true)
+	@Query(value = "SELECT p.PRODUCTNO, p.PRODUCTPRICE, p.PRODUCTNAME, p.PRODUCTMEMO, p.PRODUCTEXP, p.PRODUCTIMAGE, p.STOREID, s.CATEGORYNO FROM PRODUCT p JOIN STORE s ON p.STOREID = s.STOREID WHERE p.PRODUCTEXP >= SYSDATE", nativeQuery = true)
 	List<Object[]> findAllProductAndCategory();
+
+
+	Product findByProductNo(int productNo);
 	
 }

@@ -7,6 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>마이페이지</title>
+<style>
+	td {
+		padding: 5px 0;
+	}
+</style>
 </head>
 <body>
 	<c:import url="../top_customer.jsp" />
@@ -32,43 +37,73 @@
 					<div class="wow fadeInUp" data-wow-delay="0.3s">
 					<p class="text-center mb-4"></p>
 						<div class="row g-3">
-							<div class="col-6">
+							<div class="col-5">
 								<div class="form-floating">
-									<img alt="" src="/upload_images/product/${object[8]}" style="width: 100%; margin-bottom: 20px;">
-									<img alt="" src="/upload_images/gifticon/${object[2]}.png" style="margin: auto; display: block; width: 60%">
-									<p class="mb-0" style="text-align: center; letter-spacing: 4px; margin-top: 10px;">${object[0]}</p>
+									<img alt="" src="/upload_images/gifticon/${object[2]}.png" style="margin: auto; display: block; width: 100%">
 								</div>
 							</div>
-							<div class="col-6" style="padding-left: 50px;">
+							<div class="col-7" style="padding-left: 50px;">
 								<div class="form-floating">
-									<h4 class="mb-3">${object[6]}</h4>
+									<p class="mb-10" style="text-align: center;">상품정보</p>
 									<hr>
-									<c:choose>
-										<c:when test="${object[3] eq 1}">
-											<p class="mb-1">쿠폰상태 : 사용가능</p>
-										</c:when>
-										<c:when test="${object[3] eq 2}">
-											<p class="mb-1">쿠폰상태 : 사용완료</p>
-										</c:when>
-									</c:choose>
-									<p class="mb-1">유효기간 : <fmt:formatDate value="${object[1]}" pattern="yyyy년 MM월 dd일"/></p>
-									<p class="mb-1">구매일자 : <fmt:formatDate value="${object[4]}" pattern="yyyy년 MM월 dd일"/></p>
-									<p class="mb-1">구매금액 : ${object[5]}원</p>
-									
-									<p class="mb-1">가게이름 : ${object[9]}</p>
-									<p class="mb-1">전화번호 : ${object[10]}</p>
+									<table style="width: 100%; border-collapse: collapse;">
+										<tr>
+											<td style="width: 25%;">상품이름</td>
+											<td style="width: 75%;">${object[6]}</td>
+										</tr>
+										<tr>
+											<td>쿠폰상태</td>
+											<td style="font-weight: 800;">
+												<c:choose>
+													<c:when test="${object[3] eq 1}">
+														사용가능
+													</c:when>
+													<c:when test="${object[3] eq 2}">
+														사용완료
+													</c:when>
+													<c:when test="${object[3] eq 3}">
+														기간만료
+													</c:when>
+												</c:choose>
+											</td>
+										</tr>
+										<tr>
+											<td>구매일자</td>
+											<td><fmt:formatDate value="${object[4]}" pattern="yyyy년 MM월 dd일"/></td>
+										</tr>
+										<tr>
+											<td>결제금액</td>
+											<td><fmt:formatNumber value="${object[5]}" type="currency" currencySymbol=""/>원</td>
+										</tr>
+										<tr>
+											<td>가게이름</td>
+											<td>${object[9]}</td>
+										</tr>
+										<tr>
+											<td>전화번호</td>
+											<td>${object[10]}</td>
+										</tr>
+										<tr>
+											<td>가게위치</td>
+											<td>${object[11]}</td>
+										</tr>
+										<tr>
+											<td colspan="2">
+												<div id="map" style="width: 100%; height: 250px;"></div>
+											</td>
+										</tr>
+									</table>
 								</div>
 							</div>
 							<div class="col-12">
+								
 								<hr style="margin: 30px 0;">
 								<div class="form-floating">
-									<p class="mb-10" style="text-align: center;">상품정보</p>
 									<p class="mb-0">${object[7]}</p>
 								</div>
 							</div>
-							
 							<div class="col-12">
-								<button class="btn btn-primary w-100 py-3" id="backBtn" style="margin-top: 50px;">이전으로 돌아가기</button>
+								<button class="btn btn-primary w-100 py-3" id="backBtn" style="margin-top: 50px;" onclick="window.location.href = '/member/mypage/use_list'">이전으로 돌아가기</button>
 							</div>
 						</div>
 					</div>
@@ -95,7 +130,43 @@
     <script src="/lib/isotope/isotope.pkgd.min.js"></script>
     <script src="/lib/lightbox/js/lightbox.min.js"></script>
 
-    <!-- Template Javascript -->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=14b45607c24e81b779e6418cf489de08&libraries=services"></script>
+
+	<script>
+		var objectData = JSON.parse('${jsonObject}');
+		var address = objectData[11];
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+		mapOption = {
+			center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+			level : 3
+		// 지도의 확대 레벨
+		};
+		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+		// 주소-좌표 변환 객체를 생성합니다
+		var geocoder = new kakao.maps.services.Geocoder();
+		// 주소로 좌표를 검색합니다
+		geocoder.addressSearch(address, function(result, status) {
+			// 정상적으로 검색이 완료됐으면
+			if (status === kakao.maps.services.Status.OK) {
+				var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+				// 결과값으로 받은 위치를 마커로 표시합니다
+				var marker = new kakao.maps.Marker({
+					map : map,
+					position : coords
+				});
+				/* // 인포윈도우로 장소에 대한 설명을 표시합니다
+				var infowindow = new kakao.maps.InfoWindow(
+						{
+							content : '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+						});
+				infowindow.open(map, marker); */
+				// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+				map.setCenter(coords);
+			}
+		});
+	</script>
+
+	<!-- Template Javascript -->
     <script src="/js/main.js"></script>
 </body>
 
