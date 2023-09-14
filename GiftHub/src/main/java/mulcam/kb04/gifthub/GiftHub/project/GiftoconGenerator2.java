@@ -5,15 +5,25 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
-public class GiftoconGenerator {
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.DecodeHintType;
+import com.google.zxing.MultiFormatReader;
+import com.google.zxing.Result;
+import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
+import com.google.zxing.common.HybridBinarizer;
+
+public class GiftoconGenerator2 {
 	
 	private static String productImageFile;
 	private static String productDescription;
@@ -95,8 +105,24 @@ public class GiftoconGenerator {
             e.printStackTrace();
         }
         
+        //바코드로 번호 불러오기
+		/*
+		 * Map<DecodeHintType, Object> hints = new HashMap<>();
+		 * hints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
+		 * 
+		 * String rootDirectory=app.getRealPath("/resources/Gificon"); String
+		 * barcodeImagePath = rootDirectory + "/" + barcodeImageFile; BufferedImage
+		 * image1 = ImageIO.read(new File(barcodeImagePath));
+		 * 
+		 * BinaryBitmap binaryBitmap = new BinaryBitmap(new HybridBinarizer(new
+		 * BufferedImageLuminanceSource(image1))); Result result = new
+		 * MultiFormatReader().decode(binaryBitmap, hints);
+		 * 
+		 * String giftNo = result.getText();
+		 */
+        ///////////////////////////////////////////////////////////////////
         
-     // 상품명을 가운데 정렬하기 위해 필요한 값들 계산
+        // 상품명을 가운데 정렬하기 위해 필요한 값들 계산
         Font font = new Font("맑은 고딕", Font.BOLD, 20);
         FontMetrics metrics = g2d.getFontMetrics(font);
         int stringWidth = metrics.stringWidth(productTitle);

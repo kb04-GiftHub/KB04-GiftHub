@@ -12,13 +12,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import mulcam.kb04.gifthub.GiftHub.dto.CustomerDto;
 import mulcam.kb04.gifthub.GiftHub.dto.ProductDto;
 import mulcam.kb04.gifthub.GiftHub.dto.StoreDto;
+import mulcam.kb04.gifthub.GiftHub.project.GifticonGenerator;
+import mulcam.kb04.gifthub.GiftHub.project.UniqueCode;
 import mulcam.kb04.gifthub.GiftHub.service.ProductService;
 
 @Controller
@@ -113,25 +117,59 @@ public class ProductController {
 	} 
 	
 	@GetMapping("/product/list")
-	public String product_list(Model model) {
+	public String product_list(Model model, HttpSession ses) {
 		
 		List<Object[]> list = productService.allProducts();
 		model.addAttribute("productList", list);
 		
+		CustomerDto dto = (CustomerDto) ses.getAttribute("user");
+		ses.setAttribute("user",dto);
+		
 		return "product/list";
 	}
 	
-//	@GetMapping("/product/add_ok")
-//	public String product_add_ok(@PathVariable int productId, Model model) {
-//		
-//		//Product product = productService.getProductById(productId);
-//		//System.out.println(product);
-//		//model.addAttribute("product", product);
-////		Product savedProduct = productService.saveProduct(product);
-////		
-////		model.addAttribute("savedProduct", savedProduct);
-//		
-//		return "product/add_ok";
-//	}
-
+	@GetMapping("/product/detail/{productNo}")
+	public String product_detail(@PathVariable("productNo") int productNo , Model model, HttpSession ses) {
+		if(ses.getAttribute("user") == null ) {
+			model.addAttribute("Msg","로그인이 필요한 기능입니다");
+			model.addAttribute("loc","member/login");
+			ses.invalidate();
+			return "msg";
+		}
+		
+		ProductDto dto = productService.findByProductNo(productNo);
+		model.addAttribute("product",dto);
+		
+		StoreDto storeDto = productService.findByStoreId(dto.getStoreId());
+		model.addAttribute("store", storeDto);
+		
+		return "product/detail";
+	}
+	
+	@GetMapping("/product/buy")
+	public String product_duy(@RequestParam int productNo, @RequestParam String customerId, 
+			Model model, HttpSession ses) throws Exception {
+		//회원객체와 상품객체 불러오기
+		CustomerDto customer = productService.findByCustomerId(customerId);
+		ProductDto product = productService.findByProductNo(productNo);
+		StoreDto store = productService.findByStoreId(product.getStoreId());
+		//포인트 유무(부족하면 msg보내기)
+		if(customer.getPoint() < product.getProductPrice()) {
+			model.addAttribute("Msg","포인트가 부족합니다");
+			model.addAttribute("loc","product/detail/"+productNo);
+			return "msg";
+		}
+		//포인트 차감
+		customer.setPoint(customer.getPoint()-product.getProductPrice());
+		productService.payPoint(customer);
+		ses.setAttribute("user", customer);
+		
+		//기프티콘 생성
+		
+		String unique=UniqueCode.generateUniqueBarcode();//기프티콘 고유번호
+		Long giftNo = Long.parseLong(unique);
+		GifticonGenerator.createGiftCard(ses,product,unique,store);
+		
+		return "redirect:/product/list";
+	}
 }
