@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
 <title>로그인</title>
@@ -54,41 +55,12 @@
 </head>
    
 <body>       
-<div class="container-xxl bg-white p-0">
-    <!-- Spinner Start -->
-    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
-    </div>
-    <!-- Spinner End -->
-
-    <!-- Navbar & Hero Start -->
-    <div class="container-xxl position-relative p-0">
-        <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-               <a href="" class="navbar-brand p-0">
-                <h1 class="m-0">
-                	<img src ="img/icon.png" alt="Logo">
-                	GiftHub</h1>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="fa fa-bars"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav mx-auto py-0">
-                    <a href="index.html" class="nav-item nav-link">이용안내</a>
-                    <a href="about.html" class="nav-item nav-link">커뮤니티</a>
-                    <a href="service.html" class="nav-item nav-link">우리동네가맹점찾기</a>
-                    <a href="project.html" class="nav-item nav-link">구매하기</a>
-                    <a href="project.html" class="nav-item nav-link">마이페이지</a>
-                </div>
-            </div>
-        </nav>
-
-        <div class="container-xxl py-5 bg-primary hero-header">
+	<c:import url="top_customer.jsp" />
+	    <div class="container-xxl py-5 bg-primary hero-header">
             <div class="container my-5 py-5 px-lg-5">
                 <div class="row g-5 py-5">
                     <div class="col-12 text-center">
-                        <h1 class="text-white animated slideInDown">기부게시판</h1>
+                        <h1 class="text-white animated slideInDown">기부해주세요</h1>
                         <hr class="bg-white mx-auto mt-0" style="width: 90px;">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb justify-content-center">
@@ -100,6 +72,7 @@
         </div>
     </div>
     <!-- Navbar & Hero End -->
+
 
 
 
