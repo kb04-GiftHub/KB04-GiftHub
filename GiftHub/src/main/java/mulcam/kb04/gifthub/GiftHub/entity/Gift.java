@@ -23,10 +23,10 @@ import mulcam.kb04.gifthub.GiftHub.dto.GiftDto;
 @Entity
 @Builder
 public class Gift {
+//	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GIFT_SEQ")
+//	@SequenceGenerator(sequenceName = "GIFT_SEQ", allocationSize = 1, name = "GIFT_SEQ")
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GIFT_SEQ")
-	@SequenceGenerator(sequenceName = "GIFT_SEQ", allocationSize = 1, name = "GIFT_SEQ")
-	private int giftNo;		// 기프티콘 번호(pk)
+	private long giftNo;		// 기프티콘 번호(pk)
 
 	private int giftStatus; // 사용여부
 

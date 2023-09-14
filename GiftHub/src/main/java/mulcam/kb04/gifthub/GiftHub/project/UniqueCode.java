@@ -20,8 +20,10 @@ public class UniqueCode {
         
         return uniqueValue;
     }
-//    public static void main(String[] args) {
-//		int n = generateUniqueBarcode().length();
-//		System.out.println(n);
-//	}
+    public static void main(String[] args) {
+		int n = generateUniqueBarcode().length();
+		System.out.println(n);
+		System.out.println(generateUniqueBarcode());
+		
+	}
 }
