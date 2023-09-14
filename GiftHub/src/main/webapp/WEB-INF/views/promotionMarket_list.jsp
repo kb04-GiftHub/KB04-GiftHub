@@ -47,37 +47,88 @@
 			</div>
 		</div>
 	</div>
-   
 
         <!-- Projects Start -->
         <div class="container-xxl py-5">
             <div class="container py-5 px-lg-5">
                 <div class="wow fadeInUp" data-wow-delay="0.1s">
-                    <p class="section-title text-secondary justify-content-center"><span></span>커뮤니티<span></span></p>
-                    <h1 class="text-center mb-5">전통시장 홍보게시판</h1>
+                    <p class="section-title text-secondary justify-content-center"><span></span>가맹점주 프로젝트<span></span></p>
+                    <h2 class="text-center mb-5">전통시장 홍보게시판</h2>
+                    <h5 class="text-center mb-5">전통시장에서 재료 구매 영수증을 인증하신 가맹점주에게는 2만원 상당의 상품권을 지급합니다.</h5>
+                    
                 </div>
-                
-               
-                <!-- 게시물 나열 -->
-<div class="row g-4 portfolio-container">
-    <c:forEach items="${promotions}" var="promotion">
-        <div class="col-lg-4 col-md-6 portfolio-item wow fadeInUp" data-wow-delay="0.1s">
-            <div class="rounded overflow-hidden">
-                <div class="position-relative overflow-hidden">
-                    <img class="img-fluid w-100" style="width: 100%; height: 300px;"  src="${pageContext.request.contextPath}/upload_images/promotion/${promotion.promotionImage}" alt="">
-                   
-                </div>
-                <div class="bg-light p-4">
-                    <h5 class="lh-base mb-0"><a href="/promotionView_detail?promotionNo=${promotion.promotionNo}">${promotion.promotionTitle}</a></h5>
+                <!--  -->
+                <div class="row g-4 portfolio-container">
+                    <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <img class="img-fluid w-100" src="img/market/fru.jpg" alt="">
+                            </div>
+                            <div class="bg-light p-4">
+                                <p class="text-primary fw-medium mb-2">과일</p>
+                                <h5 class="lh-base mb-0">영순이네 과일가게</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!--  -->
+                    <div class="col-lg-4 col-md-6 portfolio-item second wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <img class="img-fluid w-100" src="img/market/채소.jpg" alt="">
+                            </div>
+                            <div class="bg-light p-4">
+                                <p class="text-primary fw-medium mb-2">채소</p>
+                                <h5 class="lh-base mb-0">철수네 채소가게</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!--  -->
+                    <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <img class="img-fluid w-100" src="img/market/생선.jpg" alt="">
+                            </div>
+                            <div class="bg-light p-4">
+                                <p class="text-primary fw-medium mb-2">생선</p>
+                                <h5 class="lh-base mb-0">순자네 과일가게</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!--  -->
+                    <div class="col-lg-4 col-md-6 portfolio-item second wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <img class="img-fluid w-100" src="img/market/정육점.jpg" alt="">
+                            </div>
+                            <div class="bg-light p-4">
+                                <p class="text-primary fw-medium mb-2">육류</p>
+                                <h5 class="lh-base mb-0">곽자네 정육점</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!--  -->
+                    <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <img class="img-fluid w-100" src="img/market/반찬.jpg" alt="">
+                            </div>
+                            <div class="bg-light p-4">
+                                <p class="text-primary fw-medium mb-2">반찬</p>
+                                <h5 class="lh-base mb-0">하준이네 반찬가게</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!--  -->
+                    
                 </div>
             </div>
         </div>
-    </c:forEach>
-</div>
-</div>
-</div>
         <!-- Projects End -->
-        
 
         <!-- Footer Start -->
         <div class="container-fluid bg-primary text-light footer wow fadeIn" data-wow-delay="0.1s">
@@ -156,6 +207,7 @@
                     </div>
                 </div>
             </div>
+             
         </div>
         <!-- Footer End -->
 
