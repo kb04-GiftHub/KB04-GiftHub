@@ -13,7 +13,8 @@ import mulcam.kb04.gifthub.GiftHub.entity.Gift;
 @AllArgsConstructor
 @Builder
 public class GiftDto {
-	private int giftNo, giftStatus, buyNo;
+	private long giftNo;
+	private int giftStatus, buyNo;
 	private String giftBarcode, customerId;
 	private Date giftExp;
 

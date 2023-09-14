@@ -66,7 +66,7 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 	
 	@Override
-	public Object findByGiftNo(int no) {
+	public Object findByGiftNo(long no) {
 		Object object = giftRepository.findByGiftNo(no);
 		return object;
 	}

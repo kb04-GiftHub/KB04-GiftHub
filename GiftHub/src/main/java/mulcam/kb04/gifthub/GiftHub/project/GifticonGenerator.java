@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -31,15 +32,16 @@ public class GifticonGenerator {
 	private static String productImageFile;
 	private static String expirationDate;
 	
-	public static void createGiftCard(HttpSession ses,ProductDto product,String barcodeData, StoreDto store) {
+	public static String createGiftCard(HttpSession ses,ProductDto product,String barcodeData, StoreDto store, Date expDate) {
 		int width = 350; // 이미지 너비
         int height = 650; // 이미지 높이
         BufferedImage giftCardImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         Graphics2D g2d = giftCardImage.createGraphics();
 	    
         productImageFile = product.getProductImage();
+        
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        expirationDate= format.format(product.getProductExp());
+        expirationDate= format.format(expDate);
         String productTitle = product.getProductName();
         
         // 배경 색상 설정
@@ -63,34 +65,25 @@ public class GifticonGenerator {
         	String rootDirectory = upDir+"/src/main/resources/static/upload_images/product";
         	String productImagePath = rootDirectory+"/"+productImageFile;
             BufferedImage productImage = ImageIO.read(new File(productImagePath));
-            g2d.drawImage(productImage, 25, 70, 300, 260, null);
+            int imageWidth = 300;
+            int imageHeight = 280;
+            int imageX = 25;
+            int imageY = 70;
+            int imageCenterX = imageX + imageWidth /2;
+            g2d.drawImage(productImage, imageX, imageY, imageWidth, imageHeight, null);
+            
+            g2d.setColor(Color.BLACK); // 테두리의 색상 설정
+            g2d.setFont(new Font("함초롬돋움",Font.BOLD, 20));
+            FontMetrics fontMetrics = g2d.getFontMetrics();
+            int titleDateWidth = fontMetrics.stringWidth(productTitle);
+            int titleDateX = imageCenterX - (titleDateWidth / 2);
+            int titleDateY = imageY + imageHeight + 35; // 바코드 아래에 위치
+            g2d.drawString(productTitle, titleDateX, titleDateY);
         } catch (IOException e) {
             e.printStackTrace();
         }
         
-        String category = "기타";
-        if(store.getCategoryNo()==1) {
-        	category = "한식";
-        }else if(store.getCategoryNo()==2) {
-        	category = "중식";
-        }else if(store.getCategoryNo()==3) {
-        	category = "일식";
-        }else if(store.getCategoryNo()==4) {
-        	category = "양식";
-        }else if(store.getCategoryNo()==5) {
-        	category = "카페/디저트";
-        }
-        
-        //상품명
-        g2d.setColor(Color.GRAY); // 테두리의 색상 설정
-        g2d.setFont(new Font("함초롬돋움",Font.PLAIN, 16));
-        g2d.drawString(category, 30,354 );
-        
-        g2d.setColor(Color.BLACK); // 테두리의 색상 설정
-        g2d.setFont(new Font("함초롬돋움",Font.BOLD, 20));
-        g2d.drawString(productTitle, 20,384 );
-        
-     // 바코드 생성을 위한 코드(날짜와시간+시퀀스)
+        // 바코드 생성을 위한 코드(날짜와시간+시퀀스)
         BufferedImage barcodeImage = barcodeGenerate(barcodeData);
 
         int barcodeWidth = 350;
@@ -113,6 +106,12 @@ public class GifticonGenerator {
         // 코드 번호 텍스트 그리기 (가운데 정렬)
         g2d.setColor(Color.BLACK); // 테두리의 색상 설정
         g2d.setFont(new Font("Digital-7",Font.BOLD, 15));
+        
+        StringBuilder builder = new StringBuilder(barcodeData);
+        builder.insert(4, "-");
+        builder.insert(10, "-");
+        builder.insert(15,"-");
+        barcodeData=builder.toString();
         FontMetrics fontMetrics = g2d.getFontMetrics();
         int expirationDateWidth = fontMetrics.stringWidth(barcodeData);
         int expirationDateX = barcodeCenterX - (expirationDateWidth / 2);
@@ -157,16 +156,20 @@ public class GifticonGenerator {
         
         g2d.dispose();
         
+        String gifticonName = null;
 		try {
 			UUID uuid = UUID.randomUUID();
+			gifticonName = uuid.toString()+"_gifticon.png";
 			String upDir=System.getProperty("user.dir");
         	String rootDirectory = upDir+"/src/main/resources/static/upload_images/gifticon";
-			String giftCardImageFile = rootDirectory+"/"+uuid.toString() + "_gift_card.png"; // 저장될 파일 이름
+			String giftCardImageFile = rootDirectory+"/"+gifticonName; // 저장될 파일 이름
 			ImageIO.write(giftCardImage, "png", new File(giftCardImageFile));
 			System.out.println("Gift card image saved as: " + giftCardImageFile);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		return gifticonName;
 	}
 	
 	public static BufferedImage barcodeGenerate(String barcodeData) {
@@ -203,4 +206,5 @@ public class GifticonGenerator {
 			}
 		return barcodeImage;
 	}
+
 }
