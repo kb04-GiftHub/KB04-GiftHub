@@ -6,13 +6,19 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import mulcam.kb04.gifthub.GiftHub.dto.BuyDto;
 import mulcam.kb04.gifthub.GiftHub.dto.CustomerDto;
+import mulcam.kb04.gifthub.GiftHub.dto.GiftDto;
 import mulcam.kb04.gifthub.GiftHub.dto.ProductDto;
 import mulcam.kb04.gifthub.GiftHub.dto.StoreDto;
+import mulcam.kb04.gifthub.GiftHub.entity.Buy;
 import mulcam.kb04.gifthub.GiftHub.entity.Customer;
+import mulcam.kb04.gifthub.GiftHub.entity.Gift;
 import mulcam.kb04.gifthub.GiftHub.entity.Product;
 import mulcam.kb04.gifthub.GiftHub.entity.Store;
+import mulcam.kb04.gifthub.GiftHub.repository.BuyRepository;
 import mulcam.kb04.gifthub.GiftHub.repository.CustomerRepository;
+import mulcam.kb04.gifthub.GiftHub.repository.GiftRepository;
 import mulcam.kb04.gifthub.GiftHub.repository.ProductRepository;
 import mulcam.kb04.gifthub.GiftHub.repository.StoreRepository;
 import mulcam.kb04.gifthub.GiftHub.service.ProductService;
@@ -28,7 +34,14 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Autowired
 	private CustomerRepository customerRepo;
-
+	
+	@Autowired
+	private BuyRepository buyRepo;
+	
+	@Autowired
+	private GiftRepository giftRepo;
+	
+	
 	@Override
 	public ProductDto save(ProductDto productDto) {
 		Product product = Product.dtoToEntity(productDto);
@@ -84,6 +97,23 @@ public class ProductServiceImpl implements ProductService {
 	public void payPoint(CustomerDto customer) {
 		Customer cus = Customer.dtoToEntity(customer);
 		customerRepo.save(cus);
+	}
+
+	@Override
+	public BuyDto buyProduct(BuyDto buy) {
+		Buy buyEntity = Buy.dtoToEntity(buy);
+		buyEntity = buyRepo.save(buyEntity);
+		buy = BuyDto.entityToDto(buyEntity);
+		return buy;
+	}
+
+	@Override
+	public GiftDto createGifticon(GiftDto gift) {
+		Gift giftEntity = Gift.dtoToEntity(gift);
+		giftEntity = giftRepo.save(giftEntity);
+		gift = GiftDto.entityToDto(giftEntity);
+		
+		return gift;
 	}
 
 

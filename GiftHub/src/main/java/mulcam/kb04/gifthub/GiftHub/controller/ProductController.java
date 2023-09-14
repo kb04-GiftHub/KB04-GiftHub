@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import mulcam.kb04.gifthub.GiftHub.dto.BuyDto;
 import mulcam.kb04.gifthub.GiftHub.dto.CustomerDto;
+import mulcam.kb04.gifthub.GiftHub.dto.GiftDto;
 import mulcam.kb04.gifthub.GiftHub.dto.ProductDto;
 import mulcam.kb04.gifthub.GiftHub.dto.StoreDto;
 import mulcam.kb04.gifthub.GiftHub.project.GifticonGenerator;
@@ -56,8 +59,6 @@ public class ProductController {
 		String loggedId = (String)ses.getAttribute("loggedStoreId");
 
 		// [1] 이미지 저장
-//		ServletContext app=ses.getServletContext();
-//		String upDir=app.getRealPath("/resources/products");
 
 		String upDir=System.getProperty("user.dir"); // 프로젝트 루트 디렉토리
 		upDir+="/src/main/resources/static/upload_images/product";
@@ -67,6 +68,7 @@ public class ProductController {
 		if(!dir.exists()){
 			dir.mkdirs();
 		}
+		
 		if(file != null) {
 
 			String originFname=file.getOriginalFilename();
@@ -81,6 +83,19 @@ public class ProductController {
 			}
 		}
 		
+		ServletContext app=ses.getServletContext();
+		String imageDir=app.getRealPath("/resources/products");
+		File imgDir = new File(imageDir);
+		if(!imgDir.exists()) {
+			imgDir.mkdirs();
+		}
+		if(file != null) {
+			//새로운 이미지 업로드
+			try {
+				file.transferTo(new File(imageDir,newfilename));
+			}catch(Exception e) {
+			}
+		}
 		
 		// [2] 유효기간 설정
 		// '일'을 추출하고 숫자로 파싱
@@ -164,11 +179,32 @@ public class ProductController {
 		productService.payPoint(customer);
 		ses.setAttribute("user", customer);
 		
-		//기프티콘 생성
+		BuyDto buy = new BuyDto();
+		buy.setStoreId(store.getStoreId());
+		buy.setProductNo(productNo);
+		buy.setBuyPrice(product.getProductPrice());
+		buy.setBuyerId(customerId);
+		buy.setBuyDate(new Date());
+		buy = productService.buyProduct(buy);
 		
+		//기프티콘 생성
 		String unique=UniqueCode.generateUniqueBarcode();//기프티콘 고유번호
 		Long giftNo = Long.parseLong(unique);
-		GifticonGenerator.createGiftCard(ses,product,unique,store);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(product.getProductExp());
+        calendar.add(Calendar.MONTH, 1);
+        Date expDate = calendar.getTime();
+		String barcodeName = GifticonGenerator.createGiftCard(ses,product,unique,store,expDate);
+		
+		GiftDto gift = new GiftDto();
+		gift.setGiftNo(giftNo);
+		gift.setCustomerId(customerId);
+		gift.setBuyNo(buy.getBuyNo());
+		gift.setGiftBarcode(barcodeName);
+		gift.setGiftExp(expDate);
+		gift.setGiftStatus(0);
+		
+		gift = productService.createGifticon(gift);
 		
 		return "redirect:/product/list";
 	}
