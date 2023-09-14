@@ -179,5 +179,11 @@ public class PromotionHomController {
         System.out.println(jsonStores);
 		return "promotionView_detail";
 }
+	//전통시장 
+		@GetMapping("/promotionMarket_list")
+		public String promotionMarketList() {
+			
+			return "promotionMarket_list";
+		}
 
 }
