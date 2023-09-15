@@ -14,8 +14,8 @@ import lombok.NoArgsConstructor;
 public class SmsRequestDto {
 	private String type;
 	private String contentType;
-	private String countryCode;
 	private String from;
+	private String subject;
 	private String content;
 	private List<MessageDto> messages;
 	private List<FileIdDto> files;

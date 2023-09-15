@@ -12,6 +12,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class MessageDto {
 	private String to;
-	//private String subject;
+	private String subject;
 	private String content;
 }

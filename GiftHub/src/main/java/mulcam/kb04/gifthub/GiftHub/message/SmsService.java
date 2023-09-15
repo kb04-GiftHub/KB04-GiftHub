@@ -89,14 +89,15 @@ public class SmsService {
 		fdto.setFileId(mresDto.getFileId());
 //		fdto.setFileId("0c86117f-9350-4b69-a522-1ea5ea87838f");
 		List<FileIdDto> filedList = new ArrayList<>();
+		filedList.add(fdto);
 //		String str[] = new String[1];
 //		str[1] = mresDto.getFileId();
 //		filedList.add(str);
 		SmsRequestDto request = SmsRequestDto.builder()
 				.type("MMS")
 				.contentType("COMM")
-				.countryCode("82")
 				.from(phone)
+				.subject(messageDto.getSubject())
 				.content(messageDto.getContent())
 				.messages(messages)
 //				.files("0c86117f-9350-4b69-a522-1ea5ea87838f")

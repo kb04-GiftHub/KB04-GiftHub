@@ -31,7 +31,7 @@
             </tr>
         </table>
         <button type="submit" class="btn btn-default">발송</button>
-        <a href="sms/send1?tel=01034803259&content=kimkim">보내기</a>
+        <a href="sms/send1">보내기</a>
        <h1>${response }</h1> 
     </form>
  
