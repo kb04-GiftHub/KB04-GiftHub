@@ -92,7 +92,7 @@
 							<div class="form-floating">
 								<input type="text" class="form-control"
 									value="${formattedExpDate}" readonly> <label
-									for="productName">유효기간</label>
+									for="productName">판매기간</label>
 								<%-- <div style="border: 1px solid #ccc; padding: 5px;">유효기간 : ${formattedExpDate}</div> --%>
 							</div>
 						</div>

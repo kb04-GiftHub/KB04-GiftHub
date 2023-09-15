@@ -9,6 +9,7 @@ import mulcam.kb04.gifthub.GiftHub.dto.CustomerDto;
 import mulcam.kb04.gifthub.GiftHub.dto.GiftDto;
 import mulcam.kb04.gifthub.GiftHub.dto.ProductDto;
 import mulcam.kb04.gifthub.GiftHub.dto.StoreDto;
+import mulcam.kb04.gifthub.GiftHub.entity.Product;
 
 @Service
 public interface ProductService {
@@ -32,6 +33,8 @@ public interface ProductService {
 	public BuyDto buyProduct(BuyDto buy);
 
 	public GiftDto createGifticon(GiftDto gift);
+
+	public List<ProductDto> findByStoreIdToList(String id);
 
 //	public Product getProductById(int productId);
 
