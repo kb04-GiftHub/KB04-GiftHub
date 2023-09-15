@@ -103,9 +103,9 @@
                             <form action="image_use" method="post" enctype="multipart/form-data">
                                 <div class="row g-3">
                                     
-									<table class="text-center table" style="border: 1px solid #000; border-collapse: collapse;">
+									<table class="text-center table" style="border: 1px solid #CFCBCB; border-collapse: collapse;">
 										<colgroup>
-										<col style="width:20%; border-right: 1px solid #000;background-color:#F4F2F2;">
+										<col style="width:20%; border-right: 1px solid #CFCBCB;background-color:#F4F2F2;">
 										<col style="width:*">
 										</colgroup>
 										<tr>

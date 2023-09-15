@@ -11,7 +11,9 @@ import mulcam.kb04.gifthub.GiftHub.entity.Customer;
 @AllArgsConstructor
 @Builder
 public class CustomerDto {
-	private String customerId,customerPwd, customerEmail,customerGender,customerBirth, customerName, customerTel, customerAdd1, customerAdd2, customerAdd3, customerNickname;
+	private String customerId,customerPwd, customerEmail,customerGender,
+	customerBirth, customerName, customerTel, customerAdd1, customerAdd2, 
+	customerAdd3, customerNickname;
 	private int point,customerStatus;
 
 	public static CustomerDto entityToDto(Customer entity) {
