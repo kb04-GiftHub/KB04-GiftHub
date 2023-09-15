@@ -2,6 +2,8 @@ package mulcam.kb04.gifthub.GiftHub.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +21,9 @@ public class SaleController {
 
 	@GetMapping("/sale")
 	public String listSale(Model model, @RequestParam(value = "page", defaultValue = "1") int currentPage,
-			@RequestParam(value = "storeId") String storeId) {
+			@RequestParam(value = "storeId") String storeId, HttpSession session) {
+		String id = (String)session.getAttribute("loggedStoreId");
+		System.out.println(id);
 		List<CombinedView> combinedViewData = combinedViewService.findByStoreId(storeId);
 		model.addAttribute("combinedViewData", combinedViewData);
 
