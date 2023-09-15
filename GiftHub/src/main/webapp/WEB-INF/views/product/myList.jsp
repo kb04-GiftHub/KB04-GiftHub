@@ -10,7 +10,7 @@
 <title>내 상품</title>
 </head>
 <body>
-   <c:import url="../top_customer.jsp" />
+   <c:import url="../top.jsp" />
         <div class="container-xxl py-5 bg-primary hero-header">
             <div class="container my-5 py-5 px-lg-5">
                 <div class="row g-5 py-5">
