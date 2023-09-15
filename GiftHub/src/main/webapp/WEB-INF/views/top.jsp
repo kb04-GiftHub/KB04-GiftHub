@@ -48,6 +48,8 @@
 
 <script>
 	window.onload = function() {
+		var id = '${loggedStoreId}';
+		console.log(id);
 		if ('${loggedStoreId}'.trim() != '') {
 			document.getElementById('loginInfo').style.visibility = 'visible';
 		}
@@ -90,7 +92,7 @@
 					<div class="navbar-nav mx-auto py-0">
 						<a href="/sale?storeId=${loggedStoreId}" class="nav-item nav-link active">HOME</a> 
 						<div class="nav-item dropdown">
-							<a href="/product" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">기프티콘관리</a>
+							<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">기프티콘관리</a>
 							<div class="dropdown-menu m-0">
 								<a href="/product" class="dropdown-item">상품등록</a> 
 								<a href="/product/myList" class="dropdown-item">내 상품</a> 
@@ -99,15 +101,14 @@
 							</div>
 						</div>
 						<div class="nav-item dropdown">
-							<a href="service" class="nav-link dropdown-toggle"
-								data-bs-toggle="dropdown">커뮤니티</a>
+							<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">커뮤니티</a>
 							<div class="dropdown-menu m-0">
 								<a href="sale" class="dropdown-item">게시글 등록</a> 
 								<a href="calculate" class="dropdown-item">게시글 조회</a>
 							</div>
 						</div>
 						<div class="nav-item dropdown">
-							<a href="/sale?storeId=${loggedStoreId}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">내역조회</a>
+							<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">내역조회</a>
 							<div class="dropdown-menu m-0">
 								<a href="/sale?storeId=${loggedStoreId}" class="dropdown-item">판매내역</a>
 								<a href="/exchange?storeId=${loggedStoreId}" class="dropdown-item">정산내역</a>
@@ -117,9 +118,9 @@
 					</div>
 					<div class="navbar-nav py-0" id="loginInfo" style="visibility: hidden;">
 						<div class="nav-item dropdown">
-							<a href="list" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="margin-right: 0 !important;">
+							<p class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="margin: 0 !important; padding: 0;">
 								<img src="/img/user.png" style="width: 50px; margin-right: 15px;">${storeUser.storeName}
-							</a>
+							</p>
 							<div class="dropdown-menu m-0">
 								<a class="dropdown-item">
 									<img src="/img/coin.png" style="width: 30px;"> ${storeUser.storePoint} Point
