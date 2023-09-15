@@ -27,6 +27,7 @@
 			</div>
 		</div>
 	</div>
+	</div>
 
 	<div class="container-xxl py-5">
 		<div class="container py-5 px-lg-5">
@@ -74,7 +75,7 @@
 										<tr>
 											<th scope="row">${iterStat.index + 1}</th>
 
-											<td>${exchange.storeName}</td>
+											<td>${loggedStoreId}</td>
 											<td>${exchange.exchangeBank}-
 												${exchange.exchangeAccount}</td>
 											<td>${exchange.exchangeMoney}</td>
