@@ -50,6 +50,7 @@ public class RegisterController {
 		storeDto.setStoreAdd3(add3);
 		storeDto.setCategoryNo(cate);
 		storeDto.setStoreStatus(status);
+		storeDto.setStorePoint(0);
 		
 		registerService.save(storeDto);
 		model.addAttribute("title", "회원가입");

@@ -24,6 +24,7 @@ import mulcam.kb04.gifthub.GiftHub.dto.CustomerDto;
 import mulcam.kb04.gifthub.GiftHub.dto.GiftDto;
 import mulcam.kb04.gifthub.GiftHub.dto.ProductDto;
 import mulcam.kb04.gifthub.GiftHub.dto.StoreDto;
+import mulcam.kb04.gifthub.GiftHub.entity.Product;
 import mulcam.kb04.gifthub.GiftHub.project.GifticonGenerator;
 import mulcam.kb04.gifthub.GiftHub.project.UniqueCode;
 import mulcam.kb04.gifthub.GiftHub.service.ProductService;
@@ -143,6 +144,33 @@ public class ProductController {
 		return "product/list";
 	}
 	
+	@GetMapping("/product/myList")
+	public String product_myList(Model model, HttpSession ses) {
+		
+		String loggedStoreId = (String) ses.getAttribute("loggedStoreId");
+		/*
+		 * if(loggedStoreId == null || ses.getAttribute("loggedStroeId") != null) {
+		 * return "redirect:/index"; }
+		 */
+		Date now = new Date();
+		List<ProductDto> myList = productService.findByStoreIdToList(loggedStoreId);
+		model.addAttribute("myList", myList);
+		model.addAttribute("nowDate", now);
+		for (ProductDto dto : myList) {
+			System.out.println(dto);
+		}
+		return "product/myList";
+	}
+	
+	@GetMapping("/product/myList/product_detail")
+	public String myproduct_detail(
+			@RequestParam("productNo") int productNo) {
+		
+		
+		
+		
+		return "product/myDetail";
+	}
 	@GetMapping("/product/detail/{productNo}")
 	public String product_detail(@PathVariable("productNo") int productNo , Model model, HttpSession ses) {
 		if(ses.getAttribute("user") == null ) {

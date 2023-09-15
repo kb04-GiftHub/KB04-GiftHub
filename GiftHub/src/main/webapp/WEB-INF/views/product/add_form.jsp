@@ -126,7 +126,7 @@
 								<div class="col-md-12">
 									<div class="form-floating">
 										<div>
-											<label>유효 기간:</label> <input type="radio" id="expiry30"
+											<label>판매 기간:</label> <input type="radio" id="expiry30"
 												name="expiry" value="30" required checked> <label
 												for="expiry30">30일</label> <input type="radio" id="expiry60"
 												name="expiry" value="60"> <label for="expiry60">60일</label>
