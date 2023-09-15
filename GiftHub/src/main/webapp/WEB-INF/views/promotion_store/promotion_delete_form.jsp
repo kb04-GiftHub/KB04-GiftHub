@@ -93,9 +93,9 @@
                         <div class="wow fadeInUp" data-wow-delay="0.3s">
                      		<form action="/promotion_store/promotion_delete" method="get">
                      		<input type="hidden" name="promotionNo" value="${param.promotionNo }">
-                            <table class="text-center table" style="border: 1px solid #000; border-collapse: collapse;">
+                            <table class="text-center table" style="border: 1px solid #CFCBCB; border-collapse: collapse;">
                             <colgroup>
-									<col style="width:20%; border-right: 1px solid #000;background-color:#F4F2F2;">
+									<col style="width:20%; border-right: 1px solid #CFCBCB;background-color:#F4F2F2;">
 									<col style="width:*">
 							</colgroup>
             					<tr>

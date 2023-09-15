@@ -92,9 +92,10 @@
 						<div class="nav-item dropdown">
 							<a href="/product" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">기프티콘관리</a>
 							<div class="dropdown-menu m-0">
-								<a href="/product" class="dropdown-item">상품등록</a> <a
-									href="/gifticon/use" class="dropdown-item">기프티콘 사용</a><a
-									href="/gifticon/useList" class="dropdown-item">기프티콘 사용내역</a>
+								<a href="/product" class="dropdown-item">상품등록</a> 
+								<a href="/product/myList" class="dropdown-item">내 상품</a> 
+								<a href="/gifticon/use" class="dropdown-item">기프티콘 사용</a>
+								<a href="/gifticon/useList" class="dropdown-item">기프티콘 사용내역</a>
 							</div>
 						</div>
 						<div class="nav-item dropdown">
