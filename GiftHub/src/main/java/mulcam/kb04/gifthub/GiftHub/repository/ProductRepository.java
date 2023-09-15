@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import mulcam.kb04.gifthub.GiftHub.entity.Product;
+import mulcam.kb04.gifthub.GiftHub.entity.Store;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 	
@@ -22,5 +23,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
 
 	Product findByProductNo(int productNo);
+
+	List<Product> findByStoreId(Store store);
 	
 }

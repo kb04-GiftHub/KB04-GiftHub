@@ -40,10 +40,16 @@
 <!-- Template Stylesheet -->
 <link href="/css/style.css" rel="stylesheet">
 
+<style>
+	a {
+		text-align: center !important;
+	}
+</style>
+
 <script>
 	window.onload = function() {
 		if ('${loggedStoreId}'.trim() != '') {
-			document.getElementById('logout').style.visibility = 'visible';
+			document.getElementById('loginInfo').style.visibility = 'visible';
 		}
 	}
 </script>
@@ -82,36 +88,46 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarCollapse">
 					<div class="navbar-nav mx-auto py-0">
-						<a href="/" class="nav-item nav-link active">Home</a> 
+						<a href="/sale?storeId=${loggedStoreId}" class="nav-item nav-link active">HOME</a> 
 						<div class="nav-item dropdown">
-							<a href="about" class="nav-link dropdown-toggle"
-								data-bs-toggle="dropdown">기프티콘 관리</a>
+							<a href="/product" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">기프티콘관리</a>
 							<div class="dropdown-menu m-0">
-								<a href="/product" class="dropdown-item">상품등록</a> <a
-									href="/gifticon/use" class="dropdown-item">기프티콘 사용</a><a
-									href="/gifticon/useList" class="dropdown-item">기프티콘 사용내역</a>
+								<a href="/product" class="dropdown-item">상품등록</a> 
+								<a href="/product/myList" class="dropdown-item">내 상품</a> 
+								<a href="/gifticon/use" class="dropdown-item">기프티콘 사용</a>
+								<a href="/gifticon/useList" class="dropdown-item">기프티콘 사용내역</a>
 							</div>
 						</div>
 						<div class="nav-item dropdown">
 							<a href="service" class="nav-link dropdown-toggle"
-								data-bs-toggle="dropdown">커뮤니티 관리</a>
+								data-bs-toggle="dropdown">커뮤니티</a>
 							<div class="dropdown-menu m-0">
 								<a href="sale" class="dropdown-item">게시글 등록</a> 
 								<a href="calculate" class="dropdown-item">게시글 조회</a>
 							</div>
 						</div>
 						<div class="nav-item dropdown">
-							<a href="list" class="nav-link dropdown-toggle"
-								data-bs-toggle="dropdown">내역 관리</a>
+							<a href="/sale?storeId=${loggedStoreId}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">내역조회</a>
 							<div class="dropdown-menu m-0">
-								<a href="sale" class="dropdown-item">판매 내역</a> <a
-									href="exchange" class="dropdown-item">정산 내역</a>
+								<a href="/sale?storeId=${loggedStoreId}" class="dropdown-item">판매내역</a>
+								<a href="/exchange?storeId=${loggedStoreId}" class="dropdown-item">정산내역</a>
 							</div>
 						</div>
 						<a href="/store/mypage/check_pwd" class="nav-item nav-link">마이페이지</a>
 					</div>
-					<a href="/logout"
-						class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block" id="logout" style="visibility: hidden;">LOGOUT</a>
+					<div class="navbar-nav py-0" id="loginInfo" style="visibility: hidden;">
+						<div class="nav-item dropdown">
+							<a href="list" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="margin-right: 0 !important;">
+								<img src="/img/user.png" style="width: 50px; margin-right: 15px;">${storeUser.storeName}
+							</a>
+							<div class="dropdown-menu m-0">
+								<a class="dropdown-item">
+									<img src="/img/coin.png" style="width: 30px;"> ${storeUser.storePoint} Point
+								</a>
+								<a href="/logout" class="dropdown-item">로그아웃</a>
+							</div>
+						</div>
+					</div>
 				</div>
 			</nav>
 

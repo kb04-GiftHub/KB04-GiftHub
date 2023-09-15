@@ -22,7 +22,7 @@ public class Store {
 	private String storeId;
 
 	private String storePwd, storeName, storeEmail, storeTel, storeAdd1, storeAdd2, storeAdd3;
-	private Integer storeStatus;
+	private Integer storeStatus, storePoint;
 
 	@ManyToOne
 	@JoinColumn(name = "categoryNo")
@@ -42,6 +42,8 @@ public class Store {
 				.storeAdd2(dto.getStoreAdd2())
 				.storeAdd3(dto.getStoreAdd3())
 				.storeStatus(dto.getStoreStatus())
-				.categoryNo(category).build();
+				.categoryNo(category)
+				.storePoint(dto.getStorePoint())
+				.build();
 	}
 }
