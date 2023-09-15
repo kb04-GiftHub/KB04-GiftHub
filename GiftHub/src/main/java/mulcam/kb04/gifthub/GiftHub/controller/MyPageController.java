@@ -5,18 +5,20 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
 
 import mulcam.kb04.gifthub.GiftHub.dto.CustomerDto;
+import mulcam.kb04.gifthub.GiftHub.dto.JjimDto;
 import mulcam.kb04.gifthub.GiftHub.dto.StoreDto;
-import mulcam.kb04.gifthub.GiftHub.entity.Jjim;
 import mulcam.kb04.gifthub.GiftHub.service.MyPageService;
 
 @Controller
@@ -24,7 +26,7 @@ public class MyPageController {
 	
 	@Autowired
 	private MyPageService myPageService;
-
+	
 	// 가맹점
 	@GetMapping("/store/mypage/check_pwd")
 	public String check_pwd(HttpSession session) {
@@ -187,5 +189,28 @@ public class MyPageController {
 		}
 		
 		return "mypage/member_jjim_list";
+	}
+	
+	@PostMapping("/member/mypage/update_jjim")
+	@ResponseBody
+	public ResponseEntity<String> member_update_jjim(
+			@RequestParam("jjimNo") int jjimNo, @RequestParam("jjimStatus") boolean jjimStatus,
+			@RequestParam("productNo") int productNo, HttpSession session) {
+		String customerId = (String)session.getAttribute("loggedMemberId");
+		
+		JjimDto jjimDto = new JjimDto();
+		jjimDto.setCustomerId(customerId);
+		jjimDto.setProductNo(productNo);
+		jjimDto.setJjimNo(jjimNo);
+		
+		if(jjimStatus) {
+			jjimDto.setJjimStatus(1);
+		} else {
+			jjimDto.setJjimStatus(2);
+		}
+		
+		myPageService.save(jjimDto);
+		
+		return ResponseEntity.ok("완료");
 	}
 }
