@@ -27,15 +27,15 @@ public class PromotionHomController {
 	private PromotionService promotionService;
 
 	//게시물 등록 폼  
-	@GetMapping("/promotion_insert_form")
+	@GetMapping("/promotion_store/promotion_insert_form")
     public String promotionInsertForm(Model model, HttpSession ses) {
 		ses.setAttribute("storeId", "store1234");
         model.addAttribute("promotion", new Promotion());
-        return "promotion_insert_form";
+        return "promotion_store/promotion_insert_form";
     }
 	
       //게시물 등록 처리 
-	@PostMapping("/promotion_insert")
+	@PostMapping("/promotion_store/promotion_insert")
 	  public String insertPromotion(@RequestParam("promotionType") int promotionType,
 	    		@RequestParam("promotionTitle") String promotionTitle, 
 	    		@RequestParam("promotionContent") String promotionContent,
@@ -70,54 +70,54 @@ public class PromotionHomController {
 		 dto.setStoreId("store1234");
 	     dto = promotionService.insertPromotion(dto);
 		
-	     return "redirect:/promotion_list";
+	     return "redirect:/promotion_store/promotion_list";
 	   }
 	
 	
 	//게시물 목록 
-	@GetMapping("/promotion_list")
+	@GetMapping("/promotion_store/promotion_list") //내가 주소창에 치는거
 	public String promotionList(Model model) {
 	String storeIdString = "store1234";
 	List<PromotionDto> promotionList = promotionService.findByStoreId(storeIdString);
 	model.addAttribute("promotion_list", promotionList);
 
-	return "promotion_list";
+	return "promotion_store/promotion_list";//리턴할 jsp, 이 페이지가 들어있는 경로를 써야해
 	}
 	
 	//게시물 목록에서 이동한 상세 페이지
-	@GetMapping("/promotion_detail")
+	@GetMapping("/promotion_store/promotion_detail")
 	public String promotionDetail(@RequestParam("promotionNo") int promotionNo, Model model) {
         PromotionDto promotionDto = promotionService.findByPromotionNo(promotionNo);
         model.addAttribute("promotion", promotionDto);
-        return "promotion_detail";
+        return "promotion_store/promotion_detail";
     }
 	
-	//게시글 상세페이지에서 이동한 삭제 폼
-		@GetMapping("/promotion_delete_form")
+		//게시글 상세페이지에서 이동한 삭제 폼
+		@GetMapping("/promotion_store/promotion_delete_form")
 		public String promotion_delete_form() {
-			return "promotion_delete_form";
+			return "promotion_store/promotion_delete_form";
 		}
 		
 		 //게시글 삭제 처리
-		@GetMapping("/promotion_delete")
+		@GetMapping("/promotion_store/promotion_delete")
 	    public String promotionDelete(@RequestParam("promotionNo") int promotionNo) {
 	        promotionService.deleteBypromotionNo(promotionNo);
-	        return "redirect:/promotion_list";
+	        return "redirect:/promotion_store/promotion_list";
 	    }
 		
 		
 	 //게시물 수정 폼 
-	 @GetMapping("/promotion_update_form")
+	 @GetMapping("/promotion_store/promotion_update_form")
 	 public String promotionUpdateForm(@RequestParam("promotionNo") int promotionNo, Model model) {
 		 PromotionDto dto = promotionService.findByPromotionNo(promotionNo);
      if (dto != null) {
 	         model.addAttribute("promotion", dto);
 	     }
-	     return "promotion_update_form";
+	     return "promotion_store/promotion_update_form";
 	 }
 	 
 	//게시글 수정 처리
-	 @PostMapping("/update_promotion_submit")
+	 @PostMapping("/promotion_store/update_promotion_submit")
 	    public String promotionUpdate(@RequestParam("promotionNo") int promotionNo,
 	    		@RequestParam("promotionType") int promotionType,
 	    		@RequestParam("promotionTitle") String promotionTitle, 
@@ -152,22 +152,22 @@ public class PromotionHomController {
 		 dto.setPromotionTitle(promotionTitle);
 		 dto.setPromotionImage(newfilename);
 	     dto = promotionService.save(dto);
-	        return "redirect:/promotion_list";
+	        return "redirect:/promotion_store/promotion_list";
 	 }
 	 
 	 
 	
 	//사용자 커뮤니티 view
 	//사용자(가맹점주X) 게시글 목록 보기
-	 @GetMapping("/promotionView_list")
+	 @GetMapping("/promotion_member/promotionView_list")
 	    public String promotionView_list(Model model) {
 	        List<PromotionDto> promotions = promotionService.getAllPromotions();
 	        model.addAttribute("promotions", promotions);
-	        return "promotionView_list";
+	        return "promotion_member/promotionView_list";
 	    }
 	 
 	//사용자(가맹점주X) 게시글 목록에서 이동한 사용자 게시글 상세 보기
-	@GetMapping("/promotionView_detail")
+	@GetMapping("/promotion_member/promotionView_detail")
 	public String promotionView_detail(@RequestParam("promotionNo") int promotionNo, Model model) {
         Object list = promotionService.findPromotionAndStore(promotionNo);
         model.addAttribute("promotion", list);
@@ -177,13 +177,13 @@ public class PromotionHomController {
         String jsonStores = gson.toJson(list);
         model.addAttribute("stores", jsonStores);
         System.out.println(jsonStores);
-		return "promotionView_detail";
+		return "promotion_member/promotionView_detail";
 }
 	//전통시장 
-		@GetMapping("/promotionMarket_list")
+		@GetMapping("/promotion_store/promotionMarket_list")
 		public String promotionMarketList() {
 			
-			return "promotionMarket_list";
+			return "promotion_store/promotionMarket_list";
 		}
 
 }
