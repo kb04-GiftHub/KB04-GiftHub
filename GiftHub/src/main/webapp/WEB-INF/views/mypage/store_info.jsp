@@ -339,7 +339,7 @@
 	        
 	        $("#idexBtn").click(function(e) {
 	        	e.preventDefault();
-	            var url = "/";
+	            var url = '/sale?storeId=${loggedStoreId}';
 	            window.location.href = url;
 	        });
 	    });

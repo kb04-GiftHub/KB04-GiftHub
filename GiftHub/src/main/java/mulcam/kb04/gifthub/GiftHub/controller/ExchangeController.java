@@ -2,6 +2,8 @@ package mulcam.kb04.gifthub.GiftHub.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import mulcam.kb04.gifthub.GiftHub.dto.ExchangeDto;
-import mulcam.kb04.gifthub.GiftHub.entity.CombinedView;
 import mulcam.kb04.gifthub.GiftHub.service.ExchangeService;
 
 @Controller
@@ -19,7 +20,10 @@ public class ExchangeController {
 
 	@GetMapping("/exchange")
 	public String getExchangeDetails(Model model, @RequestParam(value = "page", defaultValue = "1") int currentPage,
-			@RequestParam(value = "storeId") String storeId) {
+			@RequestParam(value = "storeId") String storeId, HttpSession session) {
+		if (session.getAttribute("loggedStoreId") == null) {
+			return "redirect:/member/main";
+		}
 		List<ExchangeDto> exchangeDetailsList = exchangeService.findExchangeDetailsByStoreId(storeId);
 		int totalDataCount = exchangeDetailsList.size();
 		int dataPerPage = 10;
