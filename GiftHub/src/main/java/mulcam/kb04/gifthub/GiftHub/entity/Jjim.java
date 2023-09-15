@@ -33,6 +33,8 @@ public class Jjim {
 	@JoinColumn(name = "customerId")
 	private Customer customerId;
 	
+	private int jjimStatus;
+	
 	public static Jjim dtoToEntity(JjimDto dto) {
 		Product product = new Product();
 		product.setProductNo(dto.getProductNo());
@@ -44,7 +46,7 @@ public class Jjim {
 				.jjimNo(dto.getJjimNo())
 				.productNo(product)
 				.customerId(customer)
+				.jjimStatus(dto.getJjimStatus())
 				.build();
 	}
-
 }
