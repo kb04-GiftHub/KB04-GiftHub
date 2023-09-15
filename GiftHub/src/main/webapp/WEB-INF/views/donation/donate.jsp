@@ -10,36 +10,14 @@
 <meta content="" name="keywords">
 <meta content="" name="description">
 
-<!-- Favicon -->
-<link href="img/favicon.ico" rel="icon">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-<!-- Google Web Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Jost:wght@500;600;700&display=swap"
-	rel="stylesheet">
-
-<!-- Icon Font Stylesheet -->
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
-	rel="stylesheet">
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
-	rel="stylesheet">
-
-<!-- Libraries Stylesheet -->
-<link href="/lib/animate/animate.min.css" rel="stylesheet">
-<link href="/lib/owlcarousel/assets/owl.carousel.min.css"
-	rel="stylesheet">
-<link href="/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-
-<!-- Customized Bootstrap Stylesheet -->
-<link href="/css/bootstrap.min.css" rel="stylesheet">
-<link href="/css/custom.css" rel="stylesheet">
-
-<!-- Template Stylesheet -->
-<link href="/css/style.css" rel="stylesheet">
 
 <style>
 /* 플레이스홀더 텍스트 대신 아래에 검정색 선을 표시합니다. */
@@ -55,6 +33,18 @@
 	{
 	border-bottom: 1px solid #000 !important;
 	box-shadow: none !important;
+}
+
+body {
+	background-color: white;
+}
+
+.btn-primary {
+	background-color: blue;
+}
+
+.form-control {
+	border-color: blue;
 }
 </style>
 
@@ -79,31 +69,32 @@
 	</div>
 	<!-- Navbar & Hero End -->
 
-	<form>
-		<div class="row g-3">
-			<div class="col-md-6">
-				<div class="form-floating">
-					<input type="text" class="form-control" id="name"
-						placeholder="Your Name"> <label for="name">성명</label><br>
-				</div>
+	<!-- 포인트 정보 표시 -->
+	<div class="container-xxl py-5">
+		<div class="container py-5 px-lg-5">
+			<div class="wow fadeInUp" data-wow-delay="0.1s">
+				<h1 class="text-center mb-5">보유 포인트 : ${point}</h1>
 			</div>
-
-			<!-- 포인트 정보 표시 -->
-			<p>보유 포인트: ${point}</p>
-
-
-			<form action="/donation/donate_done" method="post">
-				<div class="form-floating">
-					<input type="number" class="form-control" name="pointToUse"
-						id="pointToUse" placeholder="사용할 포인트"> <label
-						for="pointToUse">사용할 포인트</label>
-				</div>
-				<button type="submit" class="btn btn-primary">Submit</button>
-			</form>
-
-
+		</div>
+	</div>
+	<form action="/donation/donate_done" method="post">
+		<div class="form-group">
+			<label for="exampleFormControlInput1">포인트 기부</label> <input
+				type="number" class="form-control" id="pointToUse" name="pointToUse"
+				placeholder="기부할 포인트를 입력해주세요.">
+		</div>
+		<div class="dropdown">
+			<button class="btn btn-primary dropdown-toggle" type="button"
+				id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+				aria-expanded="false">단체를 골라주세요.</button>
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				<a class="dropdown-item" href="#">1번 단체</a> <a class="dropdown-item"
+					href="#">2번 단체</a> <a class="dropdown-item" href="#">3번 단체</a>
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
 		</div>
 	</form>
+
 	<c:import url="../footer.jsp" />
 	<!-- gifthub-contact End -->
 
