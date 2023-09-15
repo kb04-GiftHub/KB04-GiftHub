@@ -40,10 +40,16 @@
 <!-- Template Stylesheet -->
 <link href="/css/style.css" rel="stylesheet">
 
+<style>
+	a {
+		text-align: center !important;
+	}
+</style>
+
 <script>
 	window.onload = function() {
 		if ('${loggedMemberId}'.trim() != '') {
-			document.getElementById('logout').style.visibility = 'visible';
+			document.getElementById('loginInfo').style.visibility = 'visible';
 		}
 	}
 </script>
@@ -68,58 +74,51 @@
           
 		<!-- Navbar & Hero Start -->
 		<div class="container-xxl position-relative p-0">
-			<nav
-				class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+			<nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
 				<a href="/" class="navbar-brand p-0">
 					<h1 class="m-0">
 						<img src="/img/icon.png" alt="Logo"> GiftHub
 					</h1>
-
 				</a>
-				<button class="navbar-toggler" type="button"
-					data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
 					<span class="fa fa-bars"></span>
 				</button>
-				<div class="collapse navbar-collapse" id="navbarCollapse">
+				<div class="collapse navbar-collapse text-center" id="navbarCollapse">
 					<div class="navbar-nav mx-auto py-0">
-						<a href="/" class="nav-item nav-link active">Home</a> 
+						<a href="/member/main" class="nav-item nav-link active">HOME</a> 
+						<a href="/" class="nav-item nav-link">구매하기</a>
+						<a href="/showMap" class="nav-item nav-link">가맹점찾기</a>
 						<div class="nav-item dropdown">
-							<a href="about" class="nav-link dropdown-toggle"
-								data-bs-toggle="dropdown">기프티콘 관리</a>
+							<a href="/donate" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">기부관리</a>
 							<div class="dropdown-menu m-0">
-								<a href="/product" class="dropdown-item">상품등록</a> <a
-									href="calculate" class="dropdown-item">기프티콘 사용</a>
+								<a href="/donateboard" class="dropdown-item">기부게시판</a>
+								<a href="/donate" class="dropdown-item">기부하기</a>
+								<a href="/donation" class="dropdown-item">기부내역</a>
 							</div>
 						</div>
+						<a href="/promotion_list" class="nav-item nav-link">커뮤니티</a>
 						<div class="nav-item dropdown">
-							<a href="service" class="nav-link dropdown-toggle"
-								data-bs-toggle="dropdown">커뮤니티 관리</a>
+							<a href="/member/mypage/check_pwd" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">마이페이지</a>
 							<div class="dropdown-menu m-0">
-								<a href="sale" class="dropdown-item">게시글 등록</a> 
-								<a href="calculate" class="dropdown-item">게시글 조회</a>
+								<a href="/member/mypage/check_pwd" class="dropdown-item">정보수정</a>
+								<a href="/member/mypage/use_list" class="dropdown-item">나의 기프티콘</a>
+								<a href="/member/mypage/jjim_list" class="dropdown-item">나의 찜</a>
 							</div>
 						</div>
-						<div class="nav-item dropdown">
-							<a href="list" class="nav-link dropdown-toggle"
-								data-bs-toggle="dropdown">내역 관리</a>
-							<div class="dropdown-menu m-0">
-								<a href="sale" class="dropdown-item">판매 내역</a> <a
-									href="calculate" class="dropdown-item">정산 내역</a>
-							</div>
-						</div>
-						<div class="nav-item dropdown">
-							<a href="about" class="nav-link dropdown-toggle"
-								data-bs-toggle="dropdown">기부 관리</a>
-							<div class="dropdown-menu m-0">
-								<a href="http://localhost:8080/donateboard" class="dropdown-item">기부게시판</a>
-								<a href="http://localhost:8080/donate" class="dropdown-item">기부하기</a> <a
-									href="http://localhost:8080/donation" class="dropdown-item">기부내역</a>
-							</div>
-						</div>
-						<a href="/contact/contact" class="nav-item nav-link">문의하기</a>
 					</div>
-					<a href="/logout"
-						class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block" id="logout" style="visibility: hidden;">LOGOUT</a>
+					<div class="navbar-nav py-0" id="loginInfo" style="visibility: hidden;">
+						<div class="nav-item dropdown">
+							<a href="list" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="margin-right: 0 !important;">
+								<img src="/img/user.png" style="width: 50px; margin-right: 15px;">${user.customerNickname}
+							</a>
+							<div class="dropdown-menu m-0">
+								<a class="dropdown-item">
+									<img src="/img/coin.png" style="width: 30px;"> ${user.point} Point
+								</a>
+								<a href="/logout" class="dropdown-item">로그아웃</a>
+							</div>
+						</div>
+					</div>
 				</div>
 			</nav>
 
