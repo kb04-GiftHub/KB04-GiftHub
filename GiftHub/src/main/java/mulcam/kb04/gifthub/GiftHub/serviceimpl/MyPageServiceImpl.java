@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import mulcam.kb04.gifthub.GiftHub.dto.CustomerDto;
+import mulcam.kb04.gifthub.GiftHub.dto.JjimDto;
 import mulcam.kb04.gifthub.GiftHub.dto.StoreDto;
 import mulcam.kb04.gifthub.GiftHub.entity.Customer;
+import mulcam.kb04.gifthub.GiftHub.entity.Jjim;
 import mulcam.kb04.gifthub.GiftHub.entity.Store;
 import mulcam.kb04.gifthub.GiftHub.repository.CustomerRepository;
 import mulcam.kb04.gifthub.GiftHub.repository.GiftRepository;
@@ -78,5 +80,14 @@ public class MyPageServiceImpl implements MyPageService {
 		
 		List<Object[]> list = jjimRepository.findByCustomerIdToList(customer);
 		return list;
+	}
+
+	@Override
+	public JjimDto save(JjimDto jjimDto) {
+		Jjim jjim = Jjim.dtoToEntity(jjimDto);
+		jjimRepository.save(jjim);
+		
+		JjimDto dto = JjimDto.entityToDto(jjim);
+		return dto;
 	}
 }

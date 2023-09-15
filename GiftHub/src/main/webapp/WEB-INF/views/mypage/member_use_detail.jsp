@@ -39,7 +39,7 @@
 						<div class="row g-3">
 							<div class="col-5">
 								<div class="form-floating">
-									<img alt="" src="/upload_images/gifticon/${object[2]}.png" style="margin: auto; display: block; width: 100%">
+									<img alt="" src="/upload_images/gifticon/${object[2]}" style="margin: auto; display: block; width: 100%">
 								</div>
 							</div>
 							<div class="col-7" style="padding-left: 50px;">
