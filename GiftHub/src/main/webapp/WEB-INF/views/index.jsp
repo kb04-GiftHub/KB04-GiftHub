@@ -6,6 +6,7 @@
 <head>
     <meta charset="utf-8">
     <title>GiftHub</title>
+    
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -86,9 +87,16 @@
         </div>
     </div>
 </div>
-
+ <div class="custom-background">
 <!-- Service Start -->
-<div class="container-xxl py-5">
+
+<div class="container-xl py-5 bg-yellow-gradient ">
+ <style>
+    /* 원하는 부분의 배경 주황색으로 변경하는 스타일 */
+    .bg-yellow-gradient {
+        background: linear-gradient(135deg,#FFC400, #FFC400); /* 연한 노란색에서 주황색으로 그라데이션 설정 */
+    }
+</style>
     <div class="container py-5 px-lg-5">
         <div class="wow fadeInUp" data-wow-delay="0.1s">
             <p class="section-title text-secondary justify-content-center"><span></span>이용 안내<span></span></p>
@@ -131,12 +139,16 @@
     </div>
 </div>
 <!-- Service End -->
-
+</div>
 
 
 
         <!-- Testimonial Start -->
-        <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container-xxl py-5  wow fadeInUp" data-wow-delay="0.1s">
+
+``
+
+           
             <div class="container py-5 px-lg-5">
                 <p class="section-title text-secondary justify-content-center"><span></span>자주 하는 질문<span></span></p>
                 <h1 class="text-center mb-5">Q & A</h1>
