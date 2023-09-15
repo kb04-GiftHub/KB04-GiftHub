@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  
+
 <meta charset="utf-8">
 <title>GiftHub</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -18,7 +18,9 @@
 <!-- Google Web Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Jost:wght@500;600;700&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Jost:wght@500;600;700&display=swap"
+	rel="stylesheet">
 
 <!-- Icon Font Stylesheet -->
 <link
@@ -64,13 +66,13 @@
 
 		<!-- Spinner End -->
 
-	
-          
+
+
 		<!-- Navbar & Hero Start -->
 		<div class="container-xxl position-relative p-0">
 			<nav
 				class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-				<a href="/" class="navbar-brand p-0">
+				<a href='/sale?storeId=${loggedStoreId}' class="navbar-brand p-0">
 					<h1 class="m-0">
 						<img src="/img/icon.png" alt="Logo"> GiftHub
 					</h1>
@@ -82,7 +84,8 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarCollapse">
 					<div class="navbar-nav mx-auto py-0">
-						<a href="/" class="nav-item nav-link active">Home</a> 
+						<a href='/sale?storeId=${loggedStoreId}'
+							class="nav-item nav-link active">Home</a>
 						<div class="nav-item dropdown">
 							<a href="about" class="nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">기프티콘 관리</a>
@@ -96,22 +99,24 @@
 							<a href="service" class="nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">커뮤니티 관리</a>
 							<div class="dropdown-menu m-0">
-								<a href="sale" class="dropdown-item">게시글 등록</a> 
-								<a href="calculate" class="dropdown-item">게시글 조회</a>
+								<a href="sale" class="dropdown-item">게시글 등록</a> <a
+									href="calculate" class="dropdown-item">게시글 조회</a>
 							</div>
 						</div>
 						<div class="nav-item dropdown">
 							<a href="list" class="nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">내역 관리</a>
 							<div class="dropdown-menu m-0">
-								<a href="sale" class="dropdown-item">판매 내역</a> <a
-									href="exchange" class="dropdown-item">정산 내역</a>
+								<a href='/sale?storeId=${loggedStoreId}' class="dropdown-item">판매
+									내역</a> <a href='/exchange?storeId=${loggedStoreId}'
+									class="dropdown-item">정산 내역</a>
 							</div>
 						</div>
 						<a href="/store/mypage/check_pwd" class="nav-item nav-link">마이페이지</a>
 					</div>
 					<a href="/logout"
-						class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block" id="logout" style="visibility: hidden;">LOGOUT</a>
+						class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block"
+						id="logout">LOGOUT</a>
 				</div>
 			</nav>
 
