@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
@@ -9,14 +9,7 @@
 <meta charset="UTF-8">
 <title>회원 메인페이지</title>
 <style>
-.event-square {
-	width: 20px; /* 네모 박스의 가로 크기를 조절하세요. */
-	height: 20px; /* 네모 박스의 세로 크기를 조절하세요. */
-	background-color: red; /* 네모 박스의 배경색을 설정하세요. */
-	position: absolute; /* 절대 위치로 배치합니다. */
-	top: 2px; /* 원하는 위치로 조절하세요. */
-	left: 2px; /* 원하는 위치로 조절하세요. */
-}
+
 .status-blue {
     background-color: #006699 !important;
     border: 2px solid #006699;
@@ -29,52 +22,45 @@
 }
 </style>
 <link
-	href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.css'
-	/>
+   href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.css'
+   />
 <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.js'></script> -->
 <script
-	src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
-
-<!-- <style>
-.event-square {
-	width: 20px; /* 네모 박스의 가로 크기를 조절하세요. */
-	height: 20px; /* 네모 박스의 세로 크기를 조절하세요. */
-	background-color: black; /* 네모 박스의 배경색을 설정하세요. */
-	position: absolute; /* 절대 위치로 배치합니다. */
-	top: 2px; /* 원하는 위치로 조절하세요. */
-	left: 2px; /* 원하는 위치로 조절하세요. */
-}
-</style> -->
+   src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+   
+<!-- <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/locales/ko.js'></script>
+ -->
 
 </head>
 <body>
-	<%-- <c:import url="../top.jsp" /> --%>
-	<c:import url="../top_customer.jsp" />
-	<c:set var="imagePath" value="${pageContext.request.contextPath}/upload_images/product/${list[10]}" />
-	<div class="container-xxl py-5 bg-primary hero-header">
-		<div class="container my-5 py-5 px-lg-5">
-			<div class="wow fadeInUp" data-wow-delay="0.1s"></div>
+   <%-- <c:import url="../top.jsp" /> --%>
+   <c:import url="../top_customer.jsp" />
+   <c:set var="imagePath" value="${pageContext.request.contextPath}/upload_images/product/${list[10]}" />
+   <div class="container-xxl py-5 bg-primary hero-header">
+      <div class="container my-5 py-5 px-lg-5">
+         <div class="wow fadeInUp" data-wow-delay="0.1s"></div>
 
-		</div>
-	</div>
-	<div class="row">
+      </div>
+   </div>
+   <div class="row">
 
 
-		<!-- start -->
-		<div class="container-xxl py-5">
-			<div class="container py-5 px-lg-5">
-				<div class="row justify-content-center">
-					<div class="col-lg-10">
-						<div id="calendar"></div>
-					</div>
-				</div>
-			</div>
-		</div>
+      <!-- start -->
+      <div class="container-xxl py-5">
+         <div class="container py-5 px-lg-5">
+            <div class="row justify-content-center">
+               <div class="col-lg-10">
+                  <div id="calendar"></div>
+               </div>
+            </div>
+         </div>
+      </div>
 
-	</div>
+   </div>
 
-	<!-- end -->
-	<div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel" aria-hidden="true">
+   <!-- end -->
+   <div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel" aria-hidden="true">
    <div class="modal-dialog" role="document">
       <div class="modal-content">
          <div class="modal-header">
@@ -104,18 +90,36 @@
 
 
 
-	<script>
+   <script>
       document.addEventListener('DOMContentLoaded', function() {
       
          var calendarEl = document.getElementById('calendar');
          var calendar = new FullCalendar.Calendar(calendarEl, {
+            locale: 'ko', // 한글 적용
             initialView : 'dayGridMonth', // 달력 초기 뷰 설정
+            
+         // dayCellContent 콜백 함수 추가
+            dayCellContent: function (info) {
+              var number = document.createElement("a");
+              number.classList.add("fc-daygrid-day-number");
+              // "일"과 "日"을 제거하고 날짜를 설정
+              number.innerHTML = info.dayNumberText.replace("일", '').replace("日", '');
+              if (info.view.type === "dayGridMonth") {
+                return {
+                  html: number.outerHTML
+                };
+              }
+              return {
+                domNodes: []
+              };
+            },
+            
             events : [
-            	<c:forEach var="gift" items="${list}">
-            		<c:set var="formattedStart" value="${fn:substring(gift[1], 0, 10)}" />
-            		<c:set var="formattedEnd" value="${fn:substring(gift[1], 0, 10)}" />
+               <c:forEach var="gift" items="${list}">
+                  <c:set var="formattedStart" value="${fn:substring(gift[1], 0, 10)}" />
+                  <c:set var="formattedEnd" value="${fn:substring(gift[1], 0, 10)}" />
                 {
-                	id: 1,
+                   id: 1,
                     title: '<c:out value="[${gift[11]}] ${gift[8]}" />',
                     start: '<c:out value="${formattedStart}" />',
                     end: '<c:out value="${formattedEnd}" />',
@@ -123,16 +127,8 @@
                     giftNo: ${gift[0]}, // giftNo
                     giftBarcode: '${gift[2]}',
                     productImage: '${gift[10]}'
-                    /* start: '<c:out value="${gift[1]}" />',
-                    end: '<c:out value="${gift[1]}" />' */
                 },
             </c:forEach>
-           /*  {
-        		id: 1,
-        		title: 'Test1',
-        		start: '2023-09-22',
-        		end: '2023-09-22'
-        	} */
             ],
             eventClassNames: function(arg) {
                 var classNames = [];
@@ -144,43 +140,32 @@
                 }
                 return classNames;
             },
-            /* eventColor: '#378006', */
             eventRender: function(info) {
                 var element = info.el;
-               /*  element.innerHTML = '<div class="event-square"></div>'; // 네모 박스로 대체 */
                
                var giftStatus = info.event.extendedProps.giftStatus;
-
-                // giftStatus에 따라 배경색 설정
-                /* if (giftStatus == 1) {
-                    //element.style.backgroundColor = 'blue';
-                	info.el.style.backgroundColor = '#0000FF';
-                } else if (giftStatus == 2 || giftStatus == 3) {
-                    //element.style.backgroundColor = 'red';
-                	info.el.style.backgroundColor = '#FF0000';
-                } */
             },
          
          eventClick: function(info) {
-        	 
-        	 var eventStatus = info.event.extendedProps.giftStatus;
-        	 var statusText = '';
-        	 
-        	// eventStatus에 따라 상태 텍스트 설정
-        	    switch (eventStatus) {
-        	        case 1:
-        	            statusText = '사용가능';
-        	            break;
-        	        case 2:
-        	            statusText = '사용완료';
-        	            break;
-        	        case 3:
-        	            statusText = '기간만료';
-        	            break;
-        	        default:
-        	            statusText = '알 수 없음';
-        	    }
-        	
+            
+            var eventStatus = info.event.extendedProps.giftStatus;
+            var statusText = '';
+            
+           // eventStatus에 따라 상태 텍스트 설정
+               switch (eventStatus) {
+                   case 1:
+                       statusText = '사용가능';
+                       break;
+                   case 2:
+                       statusText = '사용완료';
+                       break;
+                   case 3:
+                       statusText = '기간만료';
+                       break;
+                   default:
+                       statusText = '알 수 없음';
+               }
+           
              // 클릭한 이벤트의 정보를 모달에 채웁니다.
              document.getElementById('eventTitle').textContent = info.event.title;
              /* document.getElementById('eventStart').textContent = info.event.startStr;
@@ -188,22 +173,22 @@
              /* document.getElementById('eventStatus').textContent = info.event.extendedProps.giftStatus; */
              document.getElementById('eventStatus').textContent = statusText;
              
-			 document.getElementById('eventGiftNo').textContent = info.event.extendedProps.giftNo;
-			 document.getElementById('eventBarcode').textContent = info.event.extendedProps.giftBarcode;
-			 document.getElementById('eventImage').src = "/upload_images/gifticon/" + info.event.extendedProps.giftBarcode;
+          document.getElementById('eventGiftNo').textContent = info.event.extendedProps.giftNo;
+          document.getElementById('eventBarcode').textContent = info.event.extendedProps.giftBarcode;
+          document.getElementById('eventImage').src = "/upload_images/gifticon/" + info.event.extendedProps.giftBarcode;
              // 모달을 열기 위한 Bootstrap 모달 메서드 호출
              
              /* console.log('이벤트를 클릭했습니다.');
-    		 console.log('제목:', info.event.title);
-    		 console.log('시작 시간:', info.event.startStr);
-    		 console.log('종료 시간:', info.event.endStr);
-    		 console.log('상태:', info.event.extendedProps.giftStatus);
-    		 console.log('기프티콘 번호:', info.event.extendedProps.giftNo);
-    		 console.log('바코드 번호:', info.event.extendedProps.giftBarcode); */
+           console.log('제목:', info.event.title);
+           console.log('시작 시간:', info.event.startStr);
+           console.log('종료 시간:', info.event.endStr);
+           console.log('상태:', info.event.extendedProps.giftStatus);
+           console.log('기프티콘 번호:', info.event.extendedProps.giftNo);
+           console.log('바코드 번호:', info.event.extendedProps.giftBarcode); */
              $('#eventModal').modal('show');
              
              $('#modalClose').click(function(){
-	             $('#eventModal').modal('hide');
+                $('#eventModal').modal('hide');
              });
           },
          });
@@ -212,19 +197,19 @@
    </script>
 
 
-	<c:import url="../footer.jsp" />
+   <c:import url="../footer.jsp" />
 
-	<!-- 		<!-- JavaScript Libraries -->
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="/lib/wow/wow.min.js"></script>
-	<script src="/lib/easing/easing.min.js"></script>
-	<script src="/lib/waypoints/waypoints.min.js"></script>
-	<script src="/lib/counterup/counterup.min.js"></script>
-	<script src="/lib/owlcarousel/owl.carousel.min.js"></script>
-	<script src="/lib/isotope/isotope.pkgd.min.js"></script>
-	<script src="/lib/lightbox/js/lightbox.min.js"></script>
-	-->
+   <!--       <!-- JavaScript Libraries -->
+   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+   <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="/lib/wow/wow.min.js"></script>
+   <script src="/lib/easing/easing.min.js"></script>
+   <script src="/lib/waypoints/waypoints.min.js"></script>
+   <script src="/lib/counterup/counterup.min.js"></script>
+   <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+   <script src="/lib/isotope/isotope.pkgd.min.js"></script>
+   <script src="/lib/lightbox/js/lightbox.min.js"></script>
+   -->
 </body>
 </html>

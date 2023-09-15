@@ -62,6 +62,24 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
+	public List<ProductDto> findByStoreIdToList(String id) {
+		
+		Store store = new Store();
+		store.setStoreId(id);
+
+		List<Product> listEntity = repository.findByStoreId(store);
+		List<ProductDto> myList = new ArrayList<ProductDto>();
+		
+		for(Product product : listEntity) {
+			ProductDto dto = ProductDto.entityToDto(product);
+			myList.add(dto);
+		}
+		
+		
+		return myList;
+	}
+	
+	@Override
 	public List<Object[]> allProducts() {
 		List<Object[]> list = repository.findAllProductAndCategory();
 		return list;
@@ -84,6 +102,7 @@ public class ProductServiceImpl implements ProductService {
 		return dto;
 		
 	}
+	
 
 	@Override
 	public CustomerDto findByCustomerId(String customerId) {
@@ -115,6 +134,8 @@ public class ProductServiceImpl implements ProductService {
 		
 		return gift;
 	}
+
+	
 
 
 	
