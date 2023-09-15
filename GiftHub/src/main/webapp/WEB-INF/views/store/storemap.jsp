@@ -17,93 +17,101 @@
 			</div>
 		</div>
 	</div>
+	
 	<div class="container-xxl py-5">
 		<div class="container py-5 px-lg-5">
 			<div class="wow fadeInUp" data-wow-delay="0.1s">
-				<div style="position: absolute; top: 480px; left: 60px;">
-					<button onclick="changeMarker('all')">전체 마커 보기</button>
-					<button onclick="changeMarker(1)">한식</button>
-					<button onclick="changeMarker(2)">중식</button>
-					<button onclick="changeMarker(3)">일식</button>
-					<button onclick="changeMarker(4)">양식</button>
-					<button onclick="changeMarker(5)">카페</button>
-					<button onclick="changeMarker(6)">기타</button>
+				<h1 class="text-center mb-5">FIND STORE</h1>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-lg-5">
+					<div class="wow fadeInUp" data-wow-delay="0.3s">
+						<p class="text-center mb-4"></p>
+						<div>
+							<button onclick="changeMarker('all')">전체 마커 보기</button>
+							<button onclick="changeMarker(1)">한식</button>
+							<button onclick="changeMarker(2)">중식</button>
+							<button onclick="changeMarker(3)">일식</button>
+							<button onclick="changeMarker(4)">양식</button>
+							<button onclick="changeMarker(5)">카페</button>
+							<button onclick="changeMarker(6)">기타</button>
+						</div>
+					</div>
 				</div>
-				<!-- 검색창과 검색 버튼 추가 -->
-				<div style="position: absolute; top: 480px; right: 60px;">
-					<input type="text" id="searchInput" placeholder="검색어를 입력하세요"
-						style="width: 500px;">
-					<button onclick="searchFunction()">검색</button>
+				<div class="col-lg-5">
+					<div class="wow fadeInUp" data-wow-delay="0.3s">
+						<p class="text-center mb-4"></p>
+						<div style="text-align: right;">
+							<input type="text" id="searchInput" placeholder="검색어를 입력하세요" style="width: 300px;">
+							<button onclick="searchFunction()">검색</button>
+						</div>
+					</div>
 				</div>
-				<div id="map" style="width: 1200px; height: 440px;"></div>
+				<div class="col-lg-10">
+					<div class="wow fadeInUp" data-wow-delay="0.3s">
+						<div id="map" style="width: 100%; height: 500px; margin-top: 20px; margin-bottom: 50px;"></div>
+						<hr style="margin-bottom: 40px;">
+					</div>
+				</div>
+				<div class="col-lg-10">
+					<table class="table table-striped" style="text-align: center; margin-bottom: 3rem;">
+						<thead>
+							<tr>
+								<th scope="col">순번</th>
+								<th scope="col">매장명</th>
+								<th scope="col">주소</th>
+								<th scope="col">업종</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="pagedStore" items="${pagedStores}" varStatus="iterStat">
+								<tr>
+									<th scope="row">${iterStat.index + 1}</th>
+									<td>${pagedStore.storeName}</td>
+									<td>${pagedStore.storeAdd2}${pagedStore.storeAdd3}</td>
+									<td>
+										<c:choose>
+											<c:when test="${pagedStore.categoryNo.categoryNo == 1}">한식</c:when>
+											<c:when test="${pagedStore.categoryNo.categoryNo == 2}">중식</c:when>
+											<c:when test="${pagedStore.categoryNo.categoryNo == 3}">일식</c:when>
+											<c:when test="${pagedStore.categoryNo.categoryNo == 4}">양식</c:when>
+											<c:when test="${pagedStore.categoryNo.categoryNo == 5}">카페/베이커리</c:when>
+											<c:otherwise>기타</c:otherwise>
+										</c:choose>
+									</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+					<nav aria-label="Page navigation example">
+						<ul class="pagination pagination-primary justify-content-center">
+							<li class="page-item ${currentPage == 1 ? 'disabled' : ''}">
+								<a class="page-link" href="?page=1"><<</a>
+							</li>
+							<li class="page-item ${currentPage == 1 ? 'disabled' : ''}">
+								<a class="page-link" href="?page=${currentPage - 1}"><</a>
+							</li>
+							<c:set var="startPage" value="${(currentGroup - 1) * pagesPerGroup + 1}" />
+							<c:set var="endPage" value="${currentGroup * pagesPerGroup > totalPages ? totalPages : currentGroup * pagesPerGroup}" />
+							<c:forEach var="i" begin="${startPage}" end="${endPage}">
+								<li class="page-item ${i == currentPage ? 'active' : ''}">
+									<a class="page-link" id="ggg" href="?page=${i}#tableSection"
+										style="background: #0058C6; border: 1px solid #0058C6">${i}</a>
+								</li>
+							</c:forEach>
+							<li class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
+								<a class="page-link" href="?page=${currentPage + 1}">></a>
+							</li>
+							<li class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
+								<a class="page-link" href="?page=${totalPages}">>></a>
+							</li>
+						</ul>
+					</nav>
+				</div>
 			</div>
 		</div>
 	</div>
-	<div class="container mt-5" id="tableSection">
-		<table class="table table-striped"
-			style="text-align: center; margin-bottom: 3rem;">
-			<thead>
-				<tr>
-					<th scope="col">순번</th>
-					<th scope="col">매장명</th>
-					<th scope="col">주소</th>
-					<th scope="col">업종</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="pagedStore" items="${pagedStores}"
-					varStatus="iterStat">
-					<tr>
-						<th scope="row">${iterStat.index + 1}</th>
-						<td>${pagedStore.storeName}</td>
-						<td>${pagedStore.storeAdd2}${pagedStore.storeAdd3}</td>
-						<td><c:choose>
-								<c:when test="${pagedStore.categoryNo.categoryNo == 1}">
-                    한식
-                </c:when>
-								<c:when test="${pagedStore.categoryNo.categoryNo == 2}">
-                    중식
-                </c:when>
-								<c:when test="${pagedStore.categoryNo.categoryNo == 3}">
-                    일식
-                </c:when>
-								<c:when test="${pagedStore.categoryNo.categoryNo == 4}">
-                    양식
-                </c:when>
-								<c:when test="${pagedStore.categoryNo.categoryNo == 5}">
-                    카페/베이커리
-                </c:when>
-								<c:otherwise>
-                    기타
-                </c:otherwise>
-							</c:choose></td>
-					</tr>
-				</c:forEach>
 
-			</tbody>
-		</table>
-		<nav aria-label="Page navigation example">
-			<ul class="pagination pagination-primary justify-content-center">
-				<li class="page-item ${currentPage == 1 ? 'disabled' : ''}"><a
-					class="page-link" href="?page=1"><<</a></li>
-				<li class="page-item ${currentPage == 1 ? 'disabled' : ''}"><a
-					class="page-link" href="?page=${currentPage - 1}"><</a></li>
-				<c:set var="startPage"
-					value="${(currentGroup - 1) * pagesPerGroup + 1}" />
-				<c:set var="endPage"
-					value="${currentGroup * pagesPerGroup > totalPages ? totalPages : currentGroup * pagesPerGroup}" />
-				<c:forEach var="i" begin="${startPage}" end="${endPage}">
-					<li class="page-item ${i == currentPage ? 'active' : ''}"><a
-						class="page-link" id="ggg" href="?page=${i}#tableSection"
-						style="background: #0058C6; border: 1px solid #0058C6">${i}</a></li>
-				</c:forEach>
-				<li class="page-item ${currentPage == totalPages ? 'disabled' : ''}"><a
-					class="page-link" href="?page=${currentPage + 1}">></a></li>
-				<li class="page-item ${currentPage == totalPages ? 'disabled' : ''}"><a
-					class="page-link" href="?page=${totalPages}">>></a></li>
-			</ul>
-		</nav>
-	</div>
 	<c:import url="../footer.jsp" />
 	<script>
 		function searchFunction() {
