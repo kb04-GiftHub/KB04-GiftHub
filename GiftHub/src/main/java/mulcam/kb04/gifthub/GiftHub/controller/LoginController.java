@@ -37,10 +37,11 @@ public class LoginController {
 			StoreDto storeDto = loginService.findByStoreId(id);
 			
 			if(storeDto.getStorePwd().equals(pwd)) {
+				session.setAttribute("storeUser", storeDto);
 				session.setAttribute("loggedStoreId", storeDto.getStoreId());
 				model.addAttribute("title", "로그인");
 				model.addAttribute("subTitle", "WELCOME");
-				model.addAttribute("msg", storeDto.getStoreId() + "님 환영합니다. 메인페이지로 이동하여 서비스를 이용하세요.");
+				model.addAttribute("msg", storeDto.getStoreName() + "님 환영합니다. 메인페이지로 이동하여 서비스를 이용하세요.");
 				return "store_complete";
 			} else {
 				redirect.addFlashAttribute("msg", " ✖️ 비밀번호가 일치하지 않습니다.");
@@ -83,7 +84,7 @@ public class LoginController {
 				session.setAttribute("loggedMemberId", customerDto.getCustomerId());
 				model.addAttribute("title", "로그인");
 				model.addAttribute("subTitle", "WELCOME");
-				model.addAttribute("msg", customerDto.getCustomerId() + "님 환영합니다. 메인페이지로 이동하여 서비스를 이용하세요.");
+				model.addAttribute("msg", customerDto.getCustomerNickname() + "님 환영합니다. 메인페이지로 이동하여 서비스를 이용하세요.");
 				return "member_complete";
 			} else {
 				redirect.addFlashAttribute("msg", " ✖️ 비밀번호가 일치하지 않습니다.");
