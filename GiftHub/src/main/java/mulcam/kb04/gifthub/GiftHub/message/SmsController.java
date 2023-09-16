@@ -35,7 +35,7 @@ public class SmsController {
 	@GetMapping(value="/sms/send1")
 	public String sendMms(Model model) throws RestClientException, URISyntaxException, InvalidKeyException, NoSuchAlgorithmException, IOException  {
 		String upDir=System.getProperty("user.dir"); // 프로젝트 루트 디렉토리
-		upDir+="/src/main/resources/static/upload_images/gifticon/abcd.jpg";
+		upDir+="/src/main/resources/static/upload_images/gifticon/29fed84e-23ca-4bed-91f3-727e4b029200_gifticon.jpg";
 		String imagePath = upDir;
 		
 		File imageFile = new File(imagePath);
@@ -47,7 +47,7 @@ public class SmsController {
 		
 		FilesDto dto = new FilesDto("abcd.jpg",base64Image);
 		
-		MessageDto messageDto = new MessageDto("01034803259","제목","안녕");
+		MessageDto messageDto = new MessageDto("01042995025","제목","내동생");
 		
 		MmsResponseDto mmsResponse = mmsService.sendSms(dto);
 		SmsResponseDto response = smsService.sendSms(messageDto, mmsResponse);
