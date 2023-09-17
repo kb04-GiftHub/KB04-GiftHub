@@ -27,12 +27,15 @@ public class SmsController {
 	@Autowired
 	private final MmsService mmsService;
 	
+	@Autowired
+	private final SmsResultService resultService;
+	
 	@GetMapping("/send")
 	public String getSmsPage() {
 		return "sendSms";
 	}
 	
-	@GetMapping(value="/sms/send1")
+	@GetMapping(value="/sms/send")
 	public String sendMms(Model model) throws RestClientException, URISyntaxException, InvalidKeyException, NoSuchAlgorithmException, IOException  {
 		String upDir=System.getProperty("user.dir"); // 프로젝트 루트 디렉토리
 		upDir+="/src/main/resources/static/upload_images/gifticon/29fed84e-23ca-4bed-91f3-727e4b029200_gifticon.jpg";
@@ -47,13 +50,25 @@ public class SmsController {
 		
 		FilesDto dto = new FilesDto("abcd.jpg",base64Image);
 		
-		MessageDto messageDto = new MessageDto("01042995025","제목","내동생");
+		MessageDto messageDto = new MessageDto("0104","제목","내동생");
 		
 		MmsResponseDto mmsResponse = mmsService.sendSms(dto);
 		SmsResponseDto response = smsService.sendSms(messageDto, mmsResponse);
-//		SmsResponseDto response = smsService.sendSms(messageDto);
+		//SmsResultDto resResponse= resultService.sendSms(response.getRequestId());
+		System.out.println(response);
+			model.addAttribute("msg1", response.getStatusCode());
+			model.addAttribute("msg2", response.getStatusName());
 //		model.addAttribute("response", mmsResponse);
 		model.addAttribute("response1", response);
+		return "sendSms";
+	}
+	
+	@GetMapping("send/sms")
+	public String result(@RequestParam("requestId") String requestId, Model model) throws RestClientException, URISyntaxException, InvalidKeyException, NoSuchAlgorithmException, IOException  {
+		
+		SmsResultDto resResponse= resultService.sendSms(requestId);
+		
+		//model.addAttribute("response2", resResponse);
 		return "sendSms";
 	}
 	

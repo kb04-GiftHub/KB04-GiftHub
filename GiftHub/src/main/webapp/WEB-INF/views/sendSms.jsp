@@ -11,6 +11,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
+
 <body>
 	<div>
     <h1>텍스트 메일 보내기</h1>
@@ -31,10 +32,20 @@
             </tr>
         </table>
         <button type="submit" class="btn btn-default">발송</button>
-        <a href="sms/send1">보내기</a>
-       <h1>${response }</h1> 
+        <a href="/sms/send">보내기</a>
+        <a href="/send/sms?requestId=${response1.requestId }">보내기</a>
+       <h1>${response1.requestId }</h1> 
+       <h1>${msg1 }</h1>
+       <h1>${msg2 }</h1>
     </form>
- 
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">모달 열기</button>
+    
+	      
+	    </div>
+	  </div>
+	</div>
+    
+
  </div>
 </body>
 </html>

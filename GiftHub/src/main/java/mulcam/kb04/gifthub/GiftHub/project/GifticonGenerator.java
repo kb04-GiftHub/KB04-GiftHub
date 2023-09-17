@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.imageio.ImageIO;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import com.google.zxing.BarcodeFormat;
@@ -59,6 +60,7 @@ public class GifticonGenerator {
             e.printStackTrace();
         }
         
+        //폰트설정
         String font=System.getProperty("user.dir");
     	String fontDirectory = font+"/src/main/resources/static/font/IBMPlexSansKR-Medium.ttf";
 //    	String fontDirectory = font+"/src/main/resources/static/font/NanumPenScript-Regular.ttf";
@@ -172,14 +174,28 @@ public class GifticonGenerator {
 		try {
 			UUID uuid = UUID.randomUUID();
 			gifticonName = uuid.toString()+"_gifticon.jpg";
-			String upDir=System.getProperty("user.dir");
-        	String rootDirectory = upDir+"/src/main/resources/static/upload_images/gifticon";
+			ServletContext app=ses.getServletContext();
+			String upDir=app.getRealPath("/resources/Gificon");
+			String rootDirectory = upDir;
 			String giftCardImageFile = rootDirectory+"/"+gifticonName; // 저장될 파일 이름
 			ImageIO.write(giftCardImage, "jpg", new File(giftCardImageFile));
+			upDir=System.getProperty("user.dir");
+        	rootDirectory = upDir+"/src/main/resources/static/upload_images/gifticon";
+        	ImageIO.write(giftCardImage, "jpg", new File(giftCardImageFile));
 			System.out.println("Gift card image saved as: " + giftCardImageFile);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+//		ServletContext app=ses.getServletContext();
+//		String directory=app.getRealPath("/resources/Gificon");
+//        String filePath = directory + "/"+gifticonName;
+//        File outputFile = new File(filePath);
+//        File dir=new File(directory);
+//		if(!dir.exists()){
+//			dir.mkdirs();
+//		}
+//        ImageIO.write(barcodeImage, "jpg", outputFile);
 		
 		return gifticonName;
 	}
