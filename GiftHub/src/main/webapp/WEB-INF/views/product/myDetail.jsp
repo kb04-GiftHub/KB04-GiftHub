@@ -77,27 +77,7 @@
 								</div>
 							</div>
 							<div class="col-12">
-								
-								<%-- <hr style="margin: 30px 0;">
-								<div class="form-floating">
-									<p class="mb-0">${object[7]}</p>
-								</div> --%>
-							</div>
-							<!-- <div class="col-6">
-								<button class="btn btn-primary w-100 py-3" id="backBtn" style="margin-top: 50px;" onclick="window.location.href = '/product'">삭제하기</button>
-							</div> -->
-							
 							<!-- 추가 -->
-    							<%-- <div class="col-6">
-									<form action="/product/product_delete" method="post">
-		    							<input type="hidden" name="productNo" value="${dto.productNo}" />
-	        							<button type="submit" class="btn btn-primary w-100 py-3" id="deleteBtn" style="margin-top: 50px;" onclick="window.location.href = '/product/myList'">삭제하기</button>
-									</form>
-	        							<button type="submit" class="btn btn-primary w-100 py-3" id="deleteBtn" style="margin-top: 50px;" onclick="window.location.href = '/product/myList'">삭제하기</button>
-							    </div>
-								<div class="col-6">
-									<button class="btn btn-primary w-100 py-3" id="backBtn" style="margin-top: 50px;" onclick="window.location.href = '/product/myList'">목록 이동</button>
-								</div> --%>
 								<div class="col-6">
 								<form action="/product/delete/${productNo}" method="post">
 									<button type="button" class="btn btn-primary w-100 py-3"
@@ -111,9 +91,6 @@
 										onclick="window.location.href = '/product/myList'">목록
 										이동</button>
 								</div>
-							
-
-
 							<!-- 끝 -->
 							
 							
