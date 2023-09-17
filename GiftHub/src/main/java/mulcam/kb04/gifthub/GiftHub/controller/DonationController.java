@@ -41,16 +41,6 @@ public class DonationController {
 		return "donation/donate";
 	}
 
-//	@PostMapping("/donation/donate_done")
-//	public String updateCustomerPoint(@RequestParam int pointToUse, HttpSession session,
-//			RedirectAttributes redirectAttributes) {
-//		String customerId = (String) session.getAttribute("loggedMemberId");
-//		customerService.updateCustomerPoint(customerId, pointToUse);
-//		int point = customerService.getCustomerById(customerId).getPoint();
-//		redirectAttributes.addFlashAttribute("point", point);
-//		return "redirect:/donation/donate_done";
-//	}
-
 	@PostMapping("/donation/donate_done")
 	public String updateCustomerPoint(@RequestParam int pointToUse, HttpSession session, Model model) {
 		String customerId = (String) session.getAttribute("loggedMemberId");
