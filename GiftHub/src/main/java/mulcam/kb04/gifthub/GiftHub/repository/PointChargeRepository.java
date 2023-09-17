@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import mulcam.kb04.gifthub.GiftHub.entity.PointCharge;
 @Repository
-public interface PointChargeRepository extends JpaRepository<PointCharge, Integer> {
+public interface PointChargeRepository extends JpaRepository<PointCharge, String> {
 
 }
