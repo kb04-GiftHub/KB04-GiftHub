@@ -49,7 +49,7 @@
                         <c:forEach items="${myList}" var="myList">
                         <%-- <c:set var="now" value="<fmt:formatDate value='${nowDate}' pattern='yyyy-MM-dd' />" /> --%>
                            <c:choose>
-                              <c:when test="${myList.productExp > now}">
+                              <c:when test="${myList.productExp >= today}">
                                  <div class="col-lg-3 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s" onclick="window.location.href = '/product/myList/product_detail?productNo=${myList.productNo}'">
                                           <div class="rounded overflow-hidden" style="border: 4px solid #E2EFFF">
                                               <div class="position-relative overflow-hidden" style="height: 200px; display: flex; justify-content: center; align-items: center;">
@@ -64,7 +64,7 @@
                                       </div>
                               </c:when>
                               
-                              <c:when test="${myList.productExp < now}">
+                              <c:when test="${myList.productExp < today}">
                                  <div class="col-lg-3 col-md-6 portfolio-item second wow fadeInUp" data-wow-delay="0.1s" onclick="window.location.href = '/product/myList/product_detail?productNo=${myList.productNo}'">
                                           <div class="rounded overflow-hidden" style="border: 4px solid #E2EFFF">
                                               <div class="position-relative overflow-hidden" style="height: 200px; display: flex; justify-content: center; align-items: center;">
@@ -97,7 +97,8 @@
                   
 
 <!-- 끝 -->
-   
+
+<c:import url="../footer.jsp" />  
    
 <!-- Back to Top -->
 <a href="#" class="btn btn-lg btn-secondary btn-lg-square back-to-top"><i
