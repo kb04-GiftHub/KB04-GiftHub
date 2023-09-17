@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -87,18 +88,32 @@
 							</div> -->
 							
 							<!-- 추가 -->
-    							<div class="col-6">
-									<%-- <form action="/product/product_delete" method="post">
+    							<%-- <div class="col-6">
+									<form action="/product/product_delete" method="post">
 		    							<input type="hidden" name="productNo" value="${dto.productNo}" />
 	        							<button type="submit" class="btn btn-primary w-100 py-3" id="deleteBtn" style="margin-top: 50px;" onclick="window.location.href = '/product/myList'">삭제하기</button>
-									</form> --%>
+									</form>
 	        							<button type="submit" class="btn btn-primary w-100 py-3" id="deleteBtn" style="margin-top: 50px;" onclick="window.location.href = '/product/myList'">삭제하기</button>
 							    </div>
 								<div class="col-6">
 									<button class="btn btn-primary w-100 py-3" id="backBtn" style="margin-top: 50px;" onclick="window.location.href = '/product/myList'">목록 이동</button>
+								</div> --%>
+								<div class="col-6">
+								<form action="/product/delete/${productNo}" method="post">
+									<button type="button" class="btn btn-primary w-100 py-3"
+										id="deleteBtn" style="margin-top: 50px;" onclick="deleteproduct(${dto.productNo})">삭제하기</button>
+									<!-- <button class="btn btn-primary w-100 py-3" id="deleteBtn" style="margin-top: 50px;" type="submit">삭제하기</button> -->
+								</form>
+								</div>
+								<div class="col-6">
+									<button class="btn btn-primary w-100 py-3" id="backBtn"
+										style="margin-top: 50px;"
+										onclick="window.location.href = '/product/myList'">목록
+										이동</button>
 								</div>
 							
-							
+
+
 							<!-- 끝 -->
 							
 							
@@ -109,6 +124,36 @@
 		</div>
 	</div>
 	<!-- 기프티콘 상세 End -->
+	
+	<!-- 삭제 버튼 선택시 status 0으로 변경 -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+	function deleteproduct(productNo) {
+	    if (confirm("정말로 삭제하시겠습니까?")) {
+	        $.ajax({
+	            type: "POST",
+	            url: "/product/delete/" +  productNo, // 삭제 요청을 보낼 URL
+	            data: {productNo: productNo},
+	            success: function (response) {
+	            	console.log("응답 성공 : " + productNo);
+	            	alert("상품이 삭제되었습니다.");
+                    window.location.href = '/product/myList'; // 삭제 후 목록 페이지로 이동
+	               /*  if (response === "success") {
+	                    alert("상품이 삭제되었습니다.");
+	                    window.location.href = '/product/myList'; // 삭제 후 목록 페이지로 이동
+	                } else {
+	                    alert("상품 삭제에 실패했습니다.");
+	                } */
+	            },
+	            error: function () {
+	                alert("상품 삭제에 실패했습니다.");
+	                console.log("응답 실패 : " + productNo);
+	            }
+	        });
+	    }
+	}
+	</script>
+	
 	
 	<c:import url="../footer.jsp" />  
    

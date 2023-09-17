@@ -36,6 +36,9 @@ public interface ProductService {
 
 	public List<ProductDto> findByStoreIdToList(String id);
 
+	public void deleteByProductNo(int productNo);
+
+
 //	public Product getProductById(int productId);
 
 //	public Product saveProduct(Product product);
