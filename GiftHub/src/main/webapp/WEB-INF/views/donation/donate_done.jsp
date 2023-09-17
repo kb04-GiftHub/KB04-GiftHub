@@ -44,7 +44,7 @@
 							<div class="col-12">
 								<button class="btn btn-primary w-100 py-3" id="backBtn"
 									style="margin-top: 50px;"
-									onclick="window.location.href = '/member/mypage/use_list'">포인트
+									onclick="window.location.href = '/member/point_charge'">포인트
 									충전하기</button>
 							</div>
 						</div>

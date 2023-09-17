@@ -20,33 +20,48 @@
 
 
 <style>
-/* 플레이스홀더 텍스트 대신 아래에 검정색 선을 표시합니다. */
-.form-floating input[type="text"].border-0, .form-floating input[type="password"].border-0
-	{
-	border-bottom: 1px solid #000 !important;
-	border-radius: 0 !important;
-	box-shadow: none !important;
+.container-xxl {
+	margin-bottom: -20px; /* 하단 마진을 줄입니다 */
 }
 
-/* 포커스 시 선의 색상을 변경합니다. */
-.form-floating input[type="text"].border-0:focus, .form-floating input[type="password"].border-0:focus
-	{
-	border-bottom: 1px solid #000 !important;
-	box-shadow: none !important;
+.form-group {
+	margin-top: -20px; display : flex;
+	flex-direction: column;
+	align-items: center;
+	display: flex;
 }
 
-body {
-	background-color: white;
+.form-group label {
+	margin-bottom: 10px;
+	font-size: 1.2em;
 }
 
-.btn-primary {
+.form-group input {
+	width: 60%;
+	padding: 10px;
+	border-radius: 5px;
+	border: 1px solid blue;
+	margin-bottom: 20px;
+}
+
+.form-group button {
+	width: 60%; /* 입력 필드와 동일한 너비 */
+	padding: 10px 20px;
+	border-radius: 5px;
+	font-size: 1.2em;
 	background-color: blue;
+	color: white;
+	border: none;
+	cursor: pointer;
+	display: block; /* 블록 요소로 만들어 가운데 정렬 가능하게 함 */
+	margin: auto; /* 가운데 정렬 */
 }
 
-.form-control {
-	border-color: blue;
+.form-group button:hover {
+	background-color: red;
 }
 </style>
+
 
 
 </head>
@@ -81,17 +96,8 @@ body {
 		<div class="form-group">
 			<label for="exampleFormControlInput1">포인트 기부</label> <input
 				type="number" class="form-control" id="pointToUse" name="pointToUse"
-				placeholder="기부할 포인트를 입력해주세요.">
-		</div>
-		<div class="dropdown">
-			<button class="btn btn-primary dropdown-toggle" type="button"
-				id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-				aria-expanded="false">단체를 골라주세요.</button>
-			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				<a class="dropdown-item" href="#">1번 단체</a> <a class="dropdown-item"
-					href="#">2번 단체</a> <a class="dropdown-item" href="#">3번 단체</a>
-			</div>
-			<button type="submit" class="btn btn-primary">Submit</button>
+				placeholder="기부할 포인트를 입력해주세요." min="0" required>
+			<button type="submit" class="btn btn-primary">기 부 하 기</button>
 		</div>
 	</form>
 
