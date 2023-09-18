@@ -97,7 +97,6 @@
 								<option value="1">홍보</option>
 								<option value="2">이벤트</option>
 							</select>
-							<div class="row g-3">
 								<div class="col-12">
 									<div class="form-floating">
 										제목<input type="text" class="form-control"
