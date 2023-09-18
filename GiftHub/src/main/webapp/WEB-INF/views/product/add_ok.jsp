@@ -15,8 +15,8 @@
 </head>
 <body>
 	<c:import url="../top.jsp" />
-	<%-- <c:set var="imagePath" value="/resources/products/${dto.productImage}" /> --%>
- 	<c:set var="imagePath" value="${pageContext.request.contextPath}/upload_images/product/${dto.productImage}" />
+	<c:set var="imagePath" value="/resources/products/${dto.productImage}" />
+ 	<%-- <c:set var="imagePath" value="${pageContext.request.contextPath}/upload_images/product/${dto.productImage}" /> --%>
 	<div class="container-xxl py-5 bg-primary hero-header">
 		<div class="container my-5 py-5 px-lg-5">
 
