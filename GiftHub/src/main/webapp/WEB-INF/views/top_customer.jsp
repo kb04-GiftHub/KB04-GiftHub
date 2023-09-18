@@ -44,16 +44,11 @@
 	a {
 		text-align: center !important;
 	}
-</style>
-
-<script>
-	window.onload = function() {
-		if ('${loggedMemberId}'.trim() != '') {
-			document.getElementById('loginInfo').style.visibility = 'visible';
-		}
+	
+	.dropdown-item:active{
+		background-color:#0058C6 !important;
 	}
-</script>
-
+</style>
 </head>
 
 <body>
@@ -66,16 +61,12 @@
 				<span class="sr-only">Loading...</span>
 			</div>
 		</div> -->
-
-
 		<!-- Spinner End -->
-
-	
           
 		<!-- Navbar & Hero Start -->
 		<div class="container-xxl position-relative p-0">
 			<nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-				<a href="/" class="navbar-brand p-0">
+				<a href="/member/main" class="navbar-brand p-0">
 					<h1 class="m-0">
 						<img src="/img/icon.png" alt="Logo"> GiftHub
 					</h1>
@@ -106,14 +97,15 @@
 							</div>
 						</div>
 					</div>
-					<div class="navbar-nav py-0" id="loginInfo" style="visibility: hidden;">
+					<div class="navbar-nav py-0" id="loginInfo">
 						<div class="nav-item dropdown">
-							<p class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="margin: 0 !important; padding: 0;">
-								<img src="/img/user.png" style="width: 50px; margin-right: 15px;">${user.customerNickname}
-							</p>
+							<img src="/img/user.png" style="width: 45px; border-radius: 50%; border: 3px solid #0058C6; margin-right: 10px;">
+							<p class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="margin: 0 !important;
+								padding: 0; display: inline;">${user.customerNickname}</p>
 							<div class="dropdown-menu m-0">
-								<a class="dropdown-item">
-									<img src="/img/coin.png" style="width: 30px;"> ${user.point} Point
+								<a class="dropdown-item" href="/member/point_charge">
+									<img src="/img/coin.png" style="width: 30px;"> 
+									 <fmt:formatNumber value="${user.point}" type="currency" currencySymbol=""/> Point
 								</a>
 								<a href="/logout" class="dropdown-item">로그아웃</a>
 							</div>
