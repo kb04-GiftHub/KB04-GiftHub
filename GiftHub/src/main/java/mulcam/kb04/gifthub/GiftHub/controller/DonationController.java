@@ -58,12 +58,12 @@ public class DonationController {
 		return "donation/donate_done";
 	}
 
-	@GetMapping("donation/donateboard")
+	@GetMapping("/donation/donateboard")
 	public String donateboard() {
 		return "donation/donateboard";
 	}
 
-	@GetMapping("donation/donation")
+	@GetMapping("/donation/donation")
 	public String donation() {
 		return "donation/donation";
 	}
