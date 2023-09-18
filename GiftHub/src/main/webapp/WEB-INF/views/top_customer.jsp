@@ -91,7 +91,7 @@
 								<a href="/donation/donation" class="dropdown-item">기부내역</a>
 							</div>
 						</div>
-						<a href="/promotion_list" class="nav-item nav-link">커뮤니티</a>
+						<a href="/promotion_member/promotionView_list" class="nav-item nav-link">커뮤니티</a>
 						<div class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">마이페이지</a>
 							<div class="dropdown-menu m-0">
