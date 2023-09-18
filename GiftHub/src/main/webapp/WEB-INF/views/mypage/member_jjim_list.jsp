@@ -45,7 +45,7 @@
 							<div class="col-lg-6">
 								<h1 class="mb-4">MY JJIMS</h1>
 								<p class="mb-4">${msg}</p>
-								<a class="btn btn-primary rounded-pill py-3 px-5" href="/">기프티콘 구경하기</a>
+								<a class="btn btn-primary rounded-pill py-3 px-5" href="/product/list">기프티콘 구경하기</a>
 							</div>
 						</div>
 					</div>
@@ -62,8 +62,8 @@
 										<div class="rounded overflow-hidden"
 											style="border: 4px solid #FFEBEA">
 											<div class="position-relative overflow-hidden"
-												style="height: 200px; display: flex; justify-content: center; align-items: center;" onclick="window.location.href = '/'">
-												<img class="img-fluid" src="/upload_images/product/${list[6]}" alt="" id="img" onload="adjustImageSize(this)">
+												style="height: 200px; display: flex; justify-content: center; align-items: center;" onclick="window.location.href = '/product/detail?productNo=${list[2]}'">
+												<img class="img-fluid" src="/resources/products/${list[6]}" alt="" id="img" onload="adjustImageSize(this)">
 											</div>
 											<div class="p-3" style="background: #FFEBEA; color: gray;">
 												<table style="width: 100%;">
@@ -90,7 +90,7 @@
 							<div class="col-lg-12 text-center">
 								<hr style="margin: 50px 0;">
 								<p class="mb-4">더 많은 기프티콘을 보고싶으신가요?</p>
-								<a class="btn btn-primary rounded-pill py-3 px-5" href="/">기프티콘 구경하기</a>
+								<a class="btn btn-primary rounded-pill py-3 px-5" href="/product/list">기프티콘 구경하기</a>
 							</div>
 						</div>
 					</div>
@@ -176,5 +176,4 @@
     <!-- Template Javascript -->
     <script src="/js/main.js"></script>
 </body>
-
 </html>

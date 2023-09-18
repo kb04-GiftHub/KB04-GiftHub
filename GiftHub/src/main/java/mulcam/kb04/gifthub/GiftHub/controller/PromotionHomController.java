@@ -28,8 +28,9 @@ public class PromotionHomController {
 
 	//게시물 등록 폼  
 	@GetMapping("/promotion_store/promotion_insert_form")
-    public String promotionInsertForm(Model model, HttpSession ses) {
-		ses.setAttribute("storeId", "store1234");
+    public String promotionInsertForm(Model model, HttpSession ses) {		
+//		String loggedId = (String)ses.getAttribute("loggedStoreId");
+//		ses.setAttribute("storeId", "store1234");
         model.addAttribute("promotion", new Promotion());
         return "promotion_store/promotion_insert_form";
     }
@@ -40,10 +41,13 @@ public class PromotionHomController {
 	    		@RequestParam("promotionTitle") String promotionTitle, 
 	    		@RequestParam("promotionContent") String promotionContent,
 	    		@RequestParam("promotionImage") MultipartFile promotionImage,
-	    		Model model) {
+	    		Model model, HttpSession ses) {
 		
+		String loggedId = (String)ses.getAttribute("loggedStoreId");
+		//이미지 저장 
 		String upDir=System.getProperty("user.dir"); // 프로젝트 루트 디렉토리
 		upDir+="/src/main/resources/static/upload_images/promotion";
+		
 		File dir=new File(upDir);
 		if(!dir.exists()){
 			dir.mkdirs();
@@ -67,7 +71,7 @@ public class PromotionHomController {
 		 dto.setPromotionType(promotionType);
 		 dto.setPromotionTitle(promotionTitle);
 		 dto.setPromotionImage(newfilename);
-		 dto.setStoreId("store1234");
+		 dto.setStoreId(loggedId);
 	     dto = promotionService.insertPromotion(dto);
 		
 	     return "redirect:/promotion_store/promotion_list";
@@ -76,8 +80,9 @@ public class PromotionHomController {
 	
 	//게시물 목록 
 	@GetMapping("/promotion_store/promotion_list") //내가 주소창에 치는거
-	public String promotionList(Model model) {
-	String storeIdString = "store1234";
+	public String promotionList(Model model, HttpSession ses) {
+//	String storeIdString = "store1234";
+	String storeIdString = (String) ses.getAttribute("loggedStroeId");
 	List<PromotionDto> promotionList = promotionService.findByStoreId(storeIdString);
 	model.addAttribute("promotion_list", promotionList);
 
@@ -86,7 +91,7 @@ public class PromotionHomController {
 	
 	//게시물 목록에서 이동한 상세 페이지
 	@GetMapping("/promotion_store/promotion_detail")
-	public String promotionDetail(@RequestParam("promotionNo") int promotionNo, Model model) {
+	public String promotionDetail(@RequestParam("promotionNo") int promotionNo, Model model, HttpSession ses) {
         PromotionDto promotionDto = promotionService.findByPromotionNo(promotionNo);
         model.addAttribute("promotion", promotionDto);
         return "promotion_store/promotion_detail";
@@ -94,13 +99,13 @@ public class PromotionHomController {
 	
 		//게시글 상세페이지에서 이동한 삭제 폼
 		@GetMapping("/promotion_store/promotion_delete_form")
-		public String promotion_delete_form() {
+		public String promotion_delete_form(HttpSession ses) {
 			return "promotion_store/promotion_delete_form";
 		}
 		
 		 //게시글 삭제 처리
 		@GetMapping("/promotion_store/promotion_delete")
-	    public String promotionDelete(@RequestParam("promotionNo") int promotionNo) {
+	    public String promotionDelete(@RequestParam("promotionNo") int promotionNo, HttpSession ses) {
 	        promotionService.deleteBypromotionNo(promotionNo);
 	        return "redirect:/promotion_store/promotion_list";
 	    }
@@ -108,7 +113,7 @@ public class PromotionHomController {
 		
 	 //게시물 수정 폼 
 	 @GetMapping("/promotion_store/promotion_update_form")
-	 public String promotionUpdateForm(@RequestParam("promotionNo") int promotionNo, Model model) {
+	 public String promotionUpdateForm(@RequestParam("promotionNo") int promotionNo, Model model, HttpSession ses) {
 		 PromotionDto dto = promotionService.findByPromotionNo(promotionNo);
      if (dto != null) {
 	         model.addAttribute("promotion", dto);
@@ -123,7 +128,7 @@ public class PromotionHomController {
 	    		@RequestParam("promotionTitle") String promotionTitle, 
 	    		@RequestParam("promotionContent") String promotionContent,
 	    		@RequestParam("promotionImage") MultipartFile promotionImage,
-	    		Model model
+	    		Model model, HttpSession ses
 	    		) {
 		 
 			String upDir=System.getProperty("user.dir"); // 프로젝트 루트 디렉토리
