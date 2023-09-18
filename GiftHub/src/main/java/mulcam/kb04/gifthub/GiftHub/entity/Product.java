@@ -28,7 +28,7 @@ public class Product {
     @SequenceGenerator(sequenceName = "PRODUCT_SEQ", allocationSize = 1, name = "PRODUCT_SEQ")
 	private int productNo;
 	
-	private int productPrice;
+	private int productPrice, status;
 	private String productName, productMemo, productImage;
 	private Date productExp;
 
@@ -51,6 +51,7 @@ public class Product {
 				.productImage(dto.getProductImage())
 				.storeId(store)
 				.productExp(dto.getProductExp())
+				.status(dto.getStatus())
 				.build();
 	}
 }

@@ -1,121 +1,166 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>회원가입</title>
-</head>
-<body>
-	<c:import url="../top.jsp" />
-        <div class="container-xxl py-5 bg-primary hero-header">
-            <div class="container my-5 py-5 px-lg-5">
-                <div class="row g-5 py-5">
-                    <div class="col-12 text-center">
-                        <h1 class="text-white animated slideInDown">회원가입</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  
+<meta charset="utf-8">
+<title>GiftHub</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="" name="keywords">
+<meta content="" name="description">
 
-	<!-- 회원가입 폼 Start -->
-	<div class="container-xxl py-5">
-		<div class="container py-5 px-lg-5">
-			<div class="wow fadeInUp" data-wow-delay="0.1s">
-			<p class="section-title text-secondary justify-content-center"><span></span>가맹점회원<span></span></p>
-				<h1 class="text-center mb-5">ENTER YOUR INFO</h1>
-			</div>
-			<div class="row justify-content-center">
-				<div class="col-lg-7">
-					<div class="wow fadeInUp" data-wow-delay="0.3s">
-					<p class="text-center mb-4"></p>
-						<form id="myForm" action="register_action" method="post">
-							<div class="row g-3">
-								<div class="col-12">
-									<div class="form-floating">
-										<input type="text" class="form-control" id="name" name="name" placeholder="이름">
-										<label for="name">가게이름</label>
+<!-- Favicon -->
+<link href="/img/icon.png" rel="icon">
+
+<!-- Google Web Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Jost:wght@500;600;700&display=swap" rel="stylesheet">
+
+<!-- Icon Font Stylesheet -->
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+	rel="stylesheet">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+	rel="stylesheet">
+
+<!-- Libraries Stylesheet -->
+<link href="/lib/animate/animate.min.css" rel="stylesheet">
+<link href="/lib/owlcarousel/assets/owl.carousel.min.css"
+	rel="stylesheet">
+<link href="/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+<!-- Customized Bootstrap Stylesheet -->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Template Stylesheet -->
+<link href="/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+	<div class="container-xxl bg-white p-0">
+		<!-- Navbar & Hero Start -->
+		<div class="container-xxl position-relative p-0">
+			<nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0" style="height: 80px;">
+				<a href="/" class="navbar-brand p-0">
+					<h1 class="m-0">
+						<img src="/img/icon.png" alt="Logo"> GiftHub
+					</h1>
+				</a>
+			</nav>
+			<!-- Navbar & Hero End -->
+			
+	        <div class="container-xxl py-5 bg-primary hero-header">
+	            <div class="container my-5 py-5 px-lg-5">
+	                <div class="row g-5 py-5">
+	                    <div class="col-12 text-center">
+	                        <h1 class="text-white animated slideInDown">회원가입</h1>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+
+		<!-- 회원가입 폼 Start -->
+		<div class="container-xxl py-5">
+			<div class="container py-5 px-lg-5">
+				<div class="wow fadeInUp" data-wow-delay="0.1s">
+				<p class="section-title text-secondary justify-content-center"><span></span>가맹점회원<span></span></p>
+					<h1 class="text-center mb-5">ENTER YOUR INFO</h1>
+				</div>
+				<div class="row justify-content-center">
+					<div class="col-lg-7">
+						<div class="wow fadeInUp" data-wow-delay="0.3s">
+						<p class="text-center mb-4"></p>
+							<form id="myForm" action="register_action" method="post">
+								<div class="row g-3">
+									<div class="col-12">
+										<div class="form-floating">
+											<input type="text" class="form-control" id="name" name="name" placeholder="이름">
+											<label for="name">가게이름</label>
+										</div>
 									</div>
-								</div>
-								<div class="col-6">
-									<div class="form-floating">
-										<input type="text" class="form-control" id="username" name="username" placeholder="아이디">
-										<label for="username">아이디</label>
+									<div class="col-6">
+										<div class="form-floating">
+											<input type="text" class="form-control" id="username" name="username" placeholder="아이디">
+											<label for="username">아이디</label>
+										</div>
 									</div>
-								</div>
-								<div class="col-6">
-									<button class="btn btn-primary w-100 py-3" id="check_id">중복확인</button>
-								</div>
-								<div class="col-12">
-									<p id="idCheckMsg" style="margin: 0;"> ❗ 아이디 중복확인은 필수입니다.</p>
-								</div>
-								<div class="col-12">
-									<div class="form-floating">
-										<input type="password" class="form-control" id="password" name="password" placeholder="비밀번호">
-										<label for="password">비밀번호</label>
+									<div class="col-6">
+										<button class="btn btn-primary w-100 py-3" id="check_id">중복확인</button>
 									</div>
-								</div>
-								<div class="col-12">
-									<div class="form-floating">
-										<input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="비밀번호">
-										<label for="confirmPassword">비밀번호 확인</label>
+									<div class="col-12">
+										<p id="idCheckMsg" style="margin: 0;"> ❗ 아이디 중복확인은 필수입니다.</p>
 									</div>
-								</div>
-								<div class="col-12">
-									<p id="pwdCheckMsg" style="margin: 0;"></p>
-								</div>
-								<div class="col-12">
-									<div class="form-floating">
-										<input type="tel" class="form-control" id="phone" name="phone" placeholder="휴대폰번호">
-										<label for="phone">휴대폰번호</label>
+									<div class="col-12">
+										<div class="form-floating">
+											<input type="password" class="form-control" id="password" name="password" placeholder="비밀번호">
+											<label for="password">비밀번호</label>
+										</div>
 									</div>
-								</div>
-								<div class="col-12">
-									<div class="form-floating">
-										<input type="email" class="form-control" id="email" name="email" placeholder="이메일">
-										<label for="email">이메일</label>
+									<div class="col-12">
+										<div class="form-floating">
+											<input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="비밀번호">
+											<label for="confirmPassword">비밀번호 확인</label>
+										</div>
 									</div>
-								</div>
-								<div class="col-6">
-									<div class="form-floating">
-										<input type="text" class="form-control postcodify_postcode5" id="address1" name="address1" placeholder="우편번호" readonly>
-										<label for="address1">우편번호</label>
+									<div class="col-12">
+										<p id="pwdCheckMsg" style="margin: 0;"></p>
 									</div>
-								</div>
-								<div class="col-6">
-									<button class="btn btn-primary w-100 py-3" id="postcodify_search_button">검색</button>
-								</div>
-								<div class="col-12">
-									<div class="form-floating">
-										<input type="text" class="form-control postcodify_address" id="address2" name="address2" placeholder="도로명주소" readonly>
-										<label for="address2">도로명주소</label>
+									<div class="col-12">
+										<div class="form-floating">
+											<input type="tel" class="form-control" id="phone" name="phone" placeholder="휴대폰번호">
+											<label for="phone">휴대폰번호</label>
+										</div>
 									</div>
-								</div>
-								<div class="col-12">
-									<div class="form-floating">
-										<input type="text" class="form-control" id="address3" name="address3" placeholder="상세주소">
-										<label for="address3">상세주소</label>
+									<div class="col-12">
+										<div class="form-floating">
+											<input type="email" class="form-control" id="email" name="email" placeholder="이메일">
+											<label for="email">이메일</label>
+										</div>
 									</div>
-								</div>
-								<div class="col-12">
-									<div class="form-floating">
-										<select name="category" id="category" class="form-control">
-											<option>업종을 선택하세요.</option>
-										    <option value="1">한식</option>
-										    <option value="2">중식</option>
-										    <option value="3">일식</option>
-										    <option value="4">양식</option>
-										    <option value="5">카페/베이커리</option>
-										    <option value="6">기타</option>
-									  	</select>
-									  	<label for="category">업종</label>
+									<div class="col-6">
+										<div class="form-floating">
+											<input type="text" class="form-control postcodify_postcode5" id="address1" name="address1" placeholder="우편번호" readonly>
+											<label for="address1">우편번호</label>
+										</div>
 									</div>
-								</div>
-								<div class="col-12">
-                                        <div class="form-floating">
-                                            <textarea class="form-control" id="privacyPolicy" style="resize: vertical; overflow-y: scroll; height: 150px;" readonly>
+									<div class="col-6">
+										<button class="btn btn-primary w-100 py-3" id="postcodify_search_button">검색</button>
+									</div>
+									<div class="col-12">
+										<div class="form-floating">
+											<input type="text" class="form-control postcodify_address" id="address2" name="address2" placeholder="도로명주소" readonly>
+											<label for="address2">도로명주소</label>
+										</div>
+									</div>
+									<div class="col-12">
+										<div class="form-floating">
+											<input type="text" class="form-control" id="address3" name="address3" placeholder="상세주소">
+											<label for="address3">상세주소</label>
+										</div>
+									</div>
+									<div class="col-12">
+										<div class="form-floating">
+											<select name="category" id="category" class="form-control">
+												<option>업종을 선택하세요.</option>
+												<option value="1">한식</option>
+												<option value="2">중식</option>
+												<option value="3">일식</option>
+												<option value="4">양식</option>
+												<option value="5">카페/베이커리</option>
+												<option value="6">기타</option>
+											</select>
+											<label for="category">업종</label>
+										</div>
+									</div>
+									<div class="col-12">
+										<div class="form-floating">
+											<textarea class="form-control" id="privacyPolicy" style="resize: vertical; overflow-y: scroll; height: 150px;" readonly>
 개인정보 수집 및 이용 동의서
 
 1. 개인정보 수집 목적
@@ -152,20 +197,21 @@
 회원은 언제든지 개인정보 수집 및 이용에 대한 동의를 철회할 수 있으며, 이 경우 회원 가입 탈퇴가 이루어질 수 있습니다.
 
 본인은 위에서 설명한 개인정보 수집 및 이용에 대해 동의합니다.</textarea>
-                                    </div>
-                                </div>    
-                                <div class="col-12">
-									<button class="btn btn-primary w-100 py-3" id="submitBtn" type="submit">동의하고 회원가입</button>
-									<input type="hidden" value="1" name="status">
+										</div>
+									</div>
+									<div class="col-12">
+										<button class="btn btn-primary w-100 py-3" id="submitBtn" type="submit">동의하고 회원가입</button>
+										<input type="hidden" value="1" name="status">
+									</div>
 								</div>
-							</div>
-						</form>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<!-- 회원가입 폼 End -->
+		<!-- 회원가입 폼 End -->
+	
 	<style>
     /* 버튼 크기를 2배로 키우기 */
     .btn-square {
@@ -192,17 +238,18 @@
 <!-- 소셜 회원가입 버튼 End -->
 
 	<c:import url="../footer.jsp" />
+	</div>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/isotope/isotope.pkgd.min.js"></script>
-    <script src="lib/lightbox/js/lightbox.min.js"></script>
+    <script src="/lib/wow/wow.min.js"></script>
+    <script src="/lib/easing/easing.min.js"></script>
+    <script src="/lib/waypoints/waypoints.min.js"></script>
+    <script src="/lib/counterup/counterup.min.js"></script>
+    <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="/lib/lightbox/js/lightbox.min.js"></script>
 
 	<!-- jQuery와 Postcodify를 로딩한다 -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
@@ -343,6 +390,6 @@
 	</script>
 
 	<!-- Template Javascript -->
-	<script src="js/main.js"></script>
+	<script src="/js/main.js"></script>
 </body>
 </html>

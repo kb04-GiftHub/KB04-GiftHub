@@ -46,18 +46,11 @@
 	a {
 		text-align: center !important;
 	}
-</style>
-
-<script>
-	window.onload = function() {
-		var id = '${loggedStoreId}';
-		console.log(id);
-		if ('${loggedStoreId}'.trim() != '') {
-			document.getElementById('loginInfo').style.visibility = 'visible';
-		}
+	
+	.dropdown-item:active{
+		background-color:#0058C6 !important;
 	}
-</script>
-
+</style>
 </head>
 
 <body>
@@ -70,11 +63,7 @@
 				<span class="sr-only">Loading...</span>
 			</div>
 		</div> -->
-
-
 		<!-- Spinner End -->
-
-
 
 		<!-- Navbar & Hero Start -->
 		<div class="container-xxl position-relative p-0">
@@ -84,7 +73,6 @@
 					<h1 class="m-0">
 						<img src="/img/icon.png" alt="Logo"> GiftHub
 					</h1>
-
 				</a>
 				<button class="navbar-toggler" type="button"
 					data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -107,40 +95,35 @@
 						<div class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">커뮤니티</a>
 							<div class="dropdown-menu m-0">
-								<a href="sale" class="dropdown-item">게시글 등록</a> <a
-									href="calculate" class="dropdown-item">게시글 조회</a>
+								<a href="/promotion_store/promotion_insert_form" class="dropdown-item">게시글 등록</a>
+								<a href="/promotion_store/promotion_list" class="dropdown-item">게시글 조회</a>
+								<a href="/promotion_store/promotionMarket_list" class="dropdown-item">전통시장 살리기</a>
 							</div>
 						</div>
 						<div class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">내역조회</a>
 							<div class="dropdown-menu m-0">
-
-								
-
 								<a href="/sale?storeId=${loggedStoreId}" class="dropdown-item">판매내역</a>
 								<a href="/exchange?storeId=${loggedStoreId}" class="dropdown-item">정산내역</a>
-
 							</div>
 						</div>
 						<a href="/store/mypage/check_pwd" class="nav-item nav-link">마이페이지</a>
 					</div>
-
-					<div class="navbar-nav py-0" id="loginInfo" style="visibility: hidden;">
+					<div class="navbar-nav py-0" id="loginInfo">
 						<div class="nav-item dropdown">
-							<p class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="margin: 0 !important; padding: 0;">
-								<img src="/img/user.png" style="width: 50px; margin-right: 15px;">${storeUser.storeName}
-							</p>
+							<img src="/img/user.png" style="width: 45px; border-radius: 50%; border: 3px solid #0058C6; margin-right: 10px;">
+							<p class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="margin: 0 !important;
+								padding: 0; display: inline;">${storeUser.storeName}</p>
 							<div class="dropdown-menu m-0">
-								<a class="dropdown-item">
-									<img src="/img/coin.png" style="width: 30px;"> ${storeUser.storePoint} Point
+								<a class="dropdown-item" href="/store/point_exchange">
+									<img src="/img/coin.png" style="width: 30px;">
+									 <fmt:formatNumber value="${storeUser.storePoint}" type="currency" currencySymbol=""/> Point
 								</a>
 								<a href="/logout" class="dropdown-item">로그아웃</a>
 							</div>
 						</div>
 					</div>
-
 				</div>
 			</nav>
-
 
 			<!-- Navbar & Hero End -->
