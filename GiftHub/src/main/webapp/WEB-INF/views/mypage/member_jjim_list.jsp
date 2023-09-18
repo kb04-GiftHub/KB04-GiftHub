@@ -128,7 +128,6 @@
             };
             
             products.push(product);
-            console.log(products);
         </c:forEach>
     });
     
