@@ -5,6 +5,18 @@
 <html>
 <head>
 <title>가맹점 찾기</title>
+<style>
+.page-link {
+	color: #0058C6 !important;
+}
+
+.page-item.active .page-link {
+	background-color: #0058C6 !important;
+	border-color: #0058C6 !important;
+	color: white !important;
+}
+}
+</style>
 </head>
 <body>
 	<c:import url="../top_customer.jsp" />
@@ -17,7 +29,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="container-xxl py-5">
 		<div class="container py-5 px-lg-5">
 			<div class="wow fadeInUp" data-wow-delay="0.1s">
@@ -42,19 +54,22 @@
 					<div class="wow fadeInUp" data-wow-delay="0.3s">
 						<p class="text-center mb-4"></p>
 						<div style="text-align: right;">
-							<input type="text" id="searchInput" placeholder="검색어를 입력하세요" style="width: 300px;">
+							<input type="text" id="searchInput" placeholder="검색어를 입력하세요"
+								style="width: 300px;">
 							<button onclick="searchFunction()">검색</button>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-10">
 					<div class="wow fadeInUp" data-wow-delay="0.3s">
-						<div id="map" style="width: 100%; height: 500px; margin-top: 20px; margin-bottom: 50px;"></div>
+						<div id="map"
+							style="width: 100%; height: 500px; margin-top: 20px; margin-bottom: 50px;"></div>
 						<hr style="margin-bottom: 40px;">
 					</div>
 				</div>
 				<div class="col-lg-10">
-					<table class="table table-striped" style="text-align: center; margin-bottom: 3rem;">
+					<table class="table table-striped"
+						style="text-align: center; margin-bottom: 3rem;">
 						<thead>
 							<tr>
 								<th scope="col">순번</th>
@@ -64,21 +79,20 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="pagedStore" items="${pagedStores}" varStatus="iterStat">
+							<c:forEach var="pagedStore" items="${pagedStores}"
+								varStatus="iterStat">
 								<tr>
 									<th scope="row">${iterStat.index + 1}</th>
 									<td>${pagedStore.storeName}</td>
 									<td>${pagedStore.storeAdd2}${pagedStore.storeAdd3}</td>
-									<td>
-										<c:choose>
+									<td><c:choose>
 											<c:when test="${pagedStore.categoryNo.categoryNo == 1}">한식</c:when>
 											<c:when test="${pagedStore.categoryNo.categoryNo == 2}">중식</c:when>
 											<c:when test="${pagedStore.categoryNo.categoryNo == 3}">일식</c:when>
 											<c:when test="${pagedStore.categoryNo.categoryNo == 4}">양식</c:when>
 											<c:when test="${pagedStore.categoryNo.categoryNo == 5}">카페/베이커리</c:when>
 											<c:otherwise>기타</c:otherwise>
-										</c:choose>
-									</td>
+										</c:choose></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -91,18 +105,21 @@
 							<li class="page-item ${currentPage == 1 ? 'disabled' : ''}">
 								<a class="page-link" href="?page=${currentPage - 1}"><</a>
 							</li>
-							<c:set var="startPage" value="${(currentGroup - 1) * pagesPerGroup + 1}" />
-							<c:set var="endPage" value="${currentGroup * pagesPerGroup > totalPages ? totalPages : currentGroup * pagesPerGroup}" />
+							<c:set var="startPage"
+								value="${(currentGroup - 1) * pagesPerGroup + 1}" />
+							<c:set var="endPage"
+								value="${currentGroup * pagesPerGroup > totalPages ? totalPages : currentGroup * pagesPerGroup}" />
 							<c:forEach var="i" begin="${startPage}" end="${endPage}">
 								<li class="page-item ${i == currentPage ? 'active' : ''}">
-									<a class="page-link" id="ggg" href="?page=${i}#tableSection"
-										style="background: #0058C6; border: 1px solid #0058C6">${i}</a>
+									<a class="page-link" id="ggg" href="?page=${i}#tableSection">${i}</a>
 								</li>
 							</c:forEach>
-							<li class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
+							<li
+								class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
 								<a class="page-link" href="?page=${currentPage + 1}">></a>
 							</li>
-							<li class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
+							<li
+								class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
 								<a class="page-link" href="?page=${totalPages}">>></a>
 							</li>
 						</ul>
