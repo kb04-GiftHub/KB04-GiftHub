@@ -145,8 +145,8 @@ public class GifticonController {
 		redirect.addFlashAttribute("msg", "성공적으로 기프티콘을 구입하였습니다.");
 		
 		
-		File file = new File(upDir);
-		file.delete();
+//		File file = new File(upDir);
+//		file.delete();
 		return "redirect:/product/detail?productNo="+productNo;
 	}
 	
