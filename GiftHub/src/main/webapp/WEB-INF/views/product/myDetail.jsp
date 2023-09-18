@@ -76,14 +76,12 @@
 									</table>
 								</div>
 							</div>
-							<div class="col-12">
 							<!-- 추가 -->
 								<div class="col-6">
-								<form action="/product/delete/${productNo}" method="post">
-									<button type="button" class="btn btn-primary w-100 py-3"
-										id="deleteBtn" style="margin-top: 50px;" onclick="deleteproduct(${dto.productNo})">삭제하기</button>
-									<!-- <button class="btn btn-primary w-100 py-3" id="deleteBtn" style="margin-top: 50px;" type="submit">삭제하기</button> -->
-								</form>
+									<form action="/product/delete/${productNo}" method="post">
+										<button type="button" class="btn btn-primary w-100 py-3"
+											id="deleteBtn" style="margin-top: 50px;" onclick="deleteproduct(${dto.productNo})">삭제하기</button>
+									</form>
 								</div>
 								<div class="col-6">
 									<button class="btn btn-primary w-100 py-3" id="backBtn"
@@ -94,7 +92,6 @@
 							<!-- 끝 -->
 							
 							
-						</div>
 					</div>
 				</div>
 			</div>
