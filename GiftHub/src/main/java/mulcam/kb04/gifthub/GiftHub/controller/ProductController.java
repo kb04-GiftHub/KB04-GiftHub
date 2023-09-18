@@ -44,8 +44,7 @@ public class ProductController {
 	
 	@GetMapping("/product")
 	public String gifticon_add() {
-//		ServletContext app=req.getServletContext();
-//		String projectRoot = app.getRealPath("/");
+		
 		
 		return "product/add_form";
 	}
@@ -62,9 +61,12 @@ public class ProductController {
 		String loggedId = (String)ses.getAttribute("loggedStoreId");
 
 		// [1] 이미지 저장
-
-		String upDir=System.getProperty("user.dir"); // 프로젝트 루트 디렉토리
-		upDir+="/src/main/resources/static/upload_images/product";
+		
+		ServletContext app=ses.getServletContext();
+		String upDir = app.getRealPath("/resources/products");
+//		upDir+="/src/main/webapp/resources/products";
+//		upDir+="/src/main/resources/static/upload_images/product";
+		System.out.println(upDir);
 		
 		File dir=new File(upDir);
 		String newfilename = null;
@@ -86,19 +88,19 @@ public class ProductController {
 			}
 		}
 		
-		ServletContext app=ses.getServletContext();
-		String imageDir=app.getRealPath("/resources/products");
-		File imgDir = new File(imageDir);
-		if(!imgDir.exists()) {
-			imgDir.mkdirs();
-		}
-		if(file != null) {
-			//새로운 이미지 업로드
-			try {
-				file.transferTo(new File(imageDir,newfilename));
-			}catch(Exception e) {
-			}
-		}
+////		ServletContext app=ses.getServletContext();
+//		String imageDir=app.getRealPath("/resources/products");
+//		File imgDir = new File(imageDir);
+//		if(!imgDir.exists()) {
+//			imgDir.mkdirs();
+//		}
+//		if(file != null) {
+//			//새로운 이미지 업로드
+//			try {
+//				file.transferTo(new File(imageDir,newfilename));
+//			}catch(Exception e) {
+//			}
+//		}
 		
 		// [2] 유효기간 설정
 		// '일'을 추출하고 숫자로 파싱
