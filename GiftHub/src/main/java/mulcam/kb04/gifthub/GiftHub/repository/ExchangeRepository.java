@@ -17,5 +17,4 @@ public interface ExchangeRepository extends JpaRepository<Exchange, Integer> {
 
 	@Query("SELECT FUNCTION('MONTH', e.exchangeDate) as month, SUM(e.exchangeMoney) as totalExchangeMoney FROM Exchange e GROUP BY FUNCTION('MONTH', e.exchangeDate)")
 	List<Object[]> sumExchangeMoneyByMonth();
-
 }

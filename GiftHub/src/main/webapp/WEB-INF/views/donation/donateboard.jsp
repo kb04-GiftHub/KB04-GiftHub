@@ -49,6 +49,8 @@
         border-bottom: 1px solid #000 !important;
         box-shadow: none !important;
     }
+    
+
 </style>
     
     
@@ -70,7 +72,6 @@
                 </div>
             </div>
         </div>
-    </div>
     <!-- Navbar & Hero End -->
 
 

@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  
+
 <meta charset="utf-8">
 <title>GiftHub</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -18,7 +18,9 @@
 <!-- Google Web Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Jost:wght@500;600;700&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Jost:wght@500;600;700&display=swap"
+	rel="stylesheet">
 
 <!-- Icon Font Stylesheet -->
 <link
@@ -44,18 +46,11 @@
 	a {
 		text-align: center !important;
 	}
-</style>
-
-<script>
-	window.onload = function() {
-		var id = '${loggedStoreId}';
-		console.log(id);
-		if ('${loggedStoreId}'.trim() != '') {
-			document.getElementById('loginInfo').style.visibility = 'visible';
-		}
+	
+	.dropdown-item:active{
+		background-color:#0058C6 !important;
 	}
-</script>
-
+</style>
 </head>
 
 <body>
@@ -68,21 +63,16 @@
 				<span class="sr-only">Loading...</span>
 			</div>
 		</div> -->
-
-
 		<!-- Spinner End -->
 
-	
-          
 		<!-- Navbar & Hero Start -->
 		<div class="container-xxl position-relative p-0">
 			<nav
 				class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-				<a href="/" class="navbar-brand p-0">
+				<a href='/sale?storeId=${loggedStoreId}' class="navbar-brand p-0">
 					<h1 class="m-0">
 						<img src="/img/icon.png" alt="Logo"> GiftHub
 					</h1>
-
 				</a>
 				<button class="navbar-toggler" type="button"
 					data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -90,7 +80,9 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarCollapse">
 					<div class="navbar-nav mx-auto py-0">
+
 						<a href="/sale?storeId=${loggedStoreId}" class="nav-item nav-link active">HOME</a> 
+
 						<div class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">기프티콘관리</a>
 							<div class="dropdown-menu m-0">
@@ -103,8 +95,8 @@
 						<div class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">커뮤니티</a>
 							<div class="dropdown-menu m-0">
-								<a href="sale" class="dropdown-item">게시글 등록</a> 
-								<a href="calculate" class="dropdown-item">게시글 조회</a>
+								<a href="sale" class="dropdown-item">게시글 등록</a> <a
+									href="calculate" class="dropdown-item">게시글 조회</a>
 							</div>
 						</div>
 						<div class="nav-item dropdown">
@@ -116,14 +108,15 @@
 						</div>
 						<a href="/store/mypage/check_pwd" class="nav-item nav-link">마이페이지</a>
 					</div>
-					<div class="navbar-nav py-0" id="loginInfo" style="visibility: hidden;">
+					<div class="navbar-nav py-0" id="loginInfo">
 						<div class="nav-item dropdown">
-							<p class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="margin: 0 !important; padding: 0;">
-								<img src="/img/user.png" style="width: 50px; margin-right: 15px;">${storeUser.storeName}
-							</p>
+							<img src="/img/user.png" style="width: 45px; border-radius: 50%; border: 3px solid #0058C6; margin-right: 10px;">
+							<p class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="margin: 0 !important;
+								padding: 0; display: inline;">${storeUser.storeName}</p>
 							<div class="dropdown-menu m-0">
-								<a class="dropdown-item">
-									<img src="/img/coin.png" style="width: 30px;"> ${storeUser.storePoint} Point
+								<a class="dropdown-item" href="/store/point_exchange">
+									<img src="/img/coin.png" style="width: 30px;">
+									 <fmt:formatNumber value="${storeUser.storePoint}" type="currency" currencySymbol=""/> Point
 								</a>
 								<a href="/logout" class="dropdown-item">로그아웃</a>
 							</div>
@@ -131,6 +124,5 @@
 					</div>
 				</div>
 			</nav>
-
 
 			<!-- Navbar & Hero End -->

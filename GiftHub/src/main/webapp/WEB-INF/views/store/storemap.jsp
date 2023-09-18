@@ -154,15 +154,53 @@
 		};
 
 		// 카테고리 데이터 (서버에서 전달받은 JSON 데이터)
-		var categoryData = {
-			1 : [], // 한식
-			2 : [], // 중식
-			3 : [], // 일식
-			4 : [], // 양식
-			5 : [], // 카페
-			6 : []
-		// 기타
-		};
+var categoryData = {
+    1: [
+        <c:forEach var="store" items="${pagedStores}" varStatus="status">
+            <c:if test="${store.categoryNo.categoryNo == 1}">
+                {storeName: '${store.storeName}', storeAdd2: '${store.storeAdd2}', storeAdd3: '${store.storeAdd3}', categoryNo: ${store.categoryNo.categoryNo}}
+                <c:if test="${!status.last}">,</c:if>
+            </c:if>
+        </c:forEach>
+    ],
+    2: [
+        <c:forEach var="store" items="${pagedStores}" varStatus="status">
+            <c:if test="${store.categoryNo.categoryNo == 2}">
+                {storeName: '${store.storeName}', storeAdd2: '${store.storeAdd2}', storeAdd3: '${store.storeAdd3}', categoryNo: ${store.categoryNo.categoryNo}}<c:if test="${!status.last}">,</c:if>
+            </c:if>
+        </c:forEach>
+    ],
+    3: [
+        <c:forEach var="store" items="${pagedStores}" varStatus="status">
+            <c:if test="${store.categoryNo.categoryNo == 3}">
+                {storeName: '${store.storeName}', storeAdd2: '${store.storeAdd2}', storeAdd3: '${store.storeAdd3}', categoryNo: ${store.categoryNo.categoryNo}}<c:if test="${!status.last}">,</c:if>
+            </c:if>
+        </c:forEach>
+    ],
+    4: [
+        <c:forEach var="store" items="${pagedStores}" varStatus="status">
+            <c:if test="${store.categoryNo.categoryNo == 4}">
+                {storeName: '${store.storeName}', storeAdd2: '${store.storeAdd2}', storeAdd3: '${store.storeAdd3}', categoryNo: ${store.categoryNo.categoryNo}}<c:if test="${!status.last}">,</c:if>
+            </c:if>
+        </c:forEach>
+    ],
+    5: [
+        <c:forEach var="store" items="${pagedStores}" varStatus="status">
+            <c:if test="${store.categoryNo.categoryNo == 5}">
+                {storeName: '${store.storeName}', storeAdd2: '${store.storeAdd2}', storeAdd3: '${store.storeAdd3}', categoryNo: ${store.categoryNo.categoryNo}}<c:if test="${!status.last}">,</c:if>
+            </c:if>
+        </c:forEach>
+    ],
+    6: [
+        <c:forEach var="store" items="${pagedStores}" varStatus="status">
+            <c:if test="${store.categoryNo.categoryNo == 6}">
+                {storeName: '${store.storeName}', storeAdd2: '${store.storeAdd2}', storeAdd3: '${store.storeAdd3}', categoryNo: ${store.categoryNo.categoryNo}}<c:if test="${!status.last}">,</c:if>
+            </c:if>
+        </c:forEach>
+    ],
+};
+
+
 
 		// 음식점 마커 할당
 		var koreaMarkerImage = new kakao.maps.MarkerImage(
@@ -306,21 +344,58 @@
 			// 리스트 업데이트
 			updateList(categoryNo);
 		}
-		
 		function updateList(categoryNo) {
 			var listContainer = document.querySelector('#tableSection tbody');
 			listContainer.innerHTML = ''; // 리스트 초기화
-
 			var dataToDisplay = categoryNo === 'all' ? Object.values(
 					categoryData).flat() : categoryData[categoryNo];
+			dataToDisplay
+					.forEach(function(data) {
+						var row = document.createElement('tr');
 
-			dataToDisplay.forEach(function(data) {
-				var row = document.createElement('tr');
+						// 데이터를 사용하여 행 생성
+						var cellIndex = document.createElement('td');
+						cellIndex.scope = "row";
+						cellIndex.textContent = dataToDisplay.indexOf(data) + 1;
 
-				// ... (데이터를 사용하여 행 생성)
+						var cellStoreName = document.createElement('td');
+						cellStoreName.textContent = data.storeName; // storeName은 데이터 객체의 적절한 속성이어야 합니다.
 
-				listContainer.appendChild(row);
-			});
+						var cellAddress = document.createElement('td');
+						cellAddress.textContent = data.storeAdd2 + ' '
+								+ data.storeAdd3; // storeAdd2와 storeAdd3은 데이터 객체의 적절한 속성이어야 합니다.
+
+						var cellCategory = document.createElement('td');
+						switch (data.categoryNo) {
+						case 1:
+							cellCategory.textContent = '한식';
+							break;
+						case 2:
+							cellCategory.textContent ='중식';
+							break;
+						case 3:
+							cellCategory.textContent ='일식';
+							break;
+						case 4:
+							cellCategory.textContent ='양식';
+							break;
+						case 5:
+							cellCategory.textContent ='카페/베이커리';
+							break;
+						default:
+							cellCategory.textContent='기타';
+							break;
+						}
+						
+						// 행에 셀 추가
+						row.appendChild(cellIndex);
+						row.appendChild(cellStoreName);
+						row.appendChild(cellAddress);
+						row.appendChild(cellCategory);
+
+						// 리스트에 행 추가
+						listContainer.appendChild(row);
+					});
 		}
 	</script>
 </body>
