@@ -8,6 +8,21 @@
 <head>
 <meta charset="UTF-8">
 <title>내 상품</title>
+<script>
+	function adjustImageSize(img) {
+		var imgElement = $(img);
+		var imgWidth = imgElement.width();
+		var imgHeight = imgElement.height();
+
+		if (imgWidth > imgHeight) {
+			imgElement.css('width', '100%');
+			imgElement.css('height', 'auto');
+		} else {
+			imgElement.css('height', '100%');
+			imgElement.css('width', 'auto');
+		}
+	}
+</script>
 </head>
 <body>
    <c:import url="../top.jsp" />
