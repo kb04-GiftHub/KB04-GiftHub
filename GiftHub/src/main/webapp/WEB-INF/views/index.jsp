@@ -33,6 +33,26 @@
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
     
+    <style>
+    	.btn {
+    		display: flex;
+    		flex-direction: column;
+    		justify-content: center;
+    	}
+    	
+    	.testimonial-carousel .owl-nav .owl-prev, .testimonial-carousel .owl-nav .owl-next {
+    		margin: 20px;
+    	    width: 50px;
+    	    height: 50px;
+    		color: white;
+    		background: var(--primary);
+		}
+		
+		.py-5 {
+			padding-top: 4rem !important;
+			padding-bottom: 4rem !important;
+		}
+    </style>
 </head>
 
 <body>
@@ -68,181 +88,122 @@
 					</div>
                 </div>
             </nav>
-<div class="container-xxl bg-primary index-header" style="display: flex; justify-content: center; align-items: center; margin: 0;">
-<img class="img-fluid animated zoomIn" src="img/아저씨.png" alt="" style="width: 50%; margin-left: 15px;">
-    <div class="container-xxl py-5">
-        <div class="container py-5 px-lg-5">
-            <div class="wow fadeInUp" data-wow-delay="0.1s">
-                <h1 class="text-white mb-4 font-weight-bold" style="font-size: 2.5rem;">장사의 비밀, <br> GIFTHUB에 있습니다.</h1>
-                <p class="text-white pb-3 animated slideInDown"> 아직도 기프티콘, 구매하시나요?<br> 직접 만드세요!<br> Gifthub는 소상공인을 위한, 골목 상권을 위한, 우리 가게를 위한 기프티콘 제작 플랫폼입니다.  </p>
-                <div class="btn-group mb-3" role="group"> <!-- 이 부분에서 버튼 간격을 추가 -->
-                    <a href="/store/login" class="btn btn-secondary py-2 px-4 rounded-pill animated slideInLeft" style="width: 270px;">가맹점 로그인</a>
-                    <a href="/member/login" class="btn btn-light py-2 px-4 rounded-pill mx-2 animated slideInRight" style="width: 270px;">일반회원 로그인</a> <!-- 오른쪽 여백 추가 -->
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
- <div class="custom-background">
-<!-- Service Start -->
-<!-- About Start -->
-<div class="container-xxl py-5">
-    <div class="container py-5 px-lg-5">
-        <div class="row g-5 align-items-center">
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                <p class="section-title text-secondary">
-                    About Us<span></span>
-                </p>
-<h1 class="mb-4" style="white-space: nowrap;">왜 기프티콘을 제작해야 할까요?</h1>
-                <h2 class="subtitle">끊임없이 성장하는 시장</h2>
-                <p class="mb-4">기프티콘 시장은 연 평균 70%의 성장률을 보이며 끊임없이 성장하고 있어요.</p>
-                <img class="img-fluid wow zoomIn" data-wow-delay="0.5s" src="img/상승그래프.png">
-            </div>
-<div class="col-lg-6">
-    <img class="img-fluid wow zoomIn" data-wow-delay="0.5s" src="img/고객.png">
-    <h2 class="subtitle">확실한 매장 방문 유도 솔루션</h2>
-    <p class="mb-4">기프티콘은 배달과 달리, 손님이 매장을 찾아오게 해요.</p>
-</div>
-        </div>
-    </div>
-</div>
-<!-- About End -->
-<!-- Feature Start -->
-<div class="container-xxl py-5">
-<div class="container py-5 px-lg-5">
-    <div class="row g-4">
-        <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="feature-item bg-custom-color rounded text-center p-4">
-                <i class="fa fa-3x fa-mail-bulk text-primary mb-4"></i>
-                <h5 class="mb-3">이벤트 증정 상품</h5>
-                <p class="m-0">프랜차이즈 기프티콘이나 백화점 상품권이 아닌
-                우리 매장 기프티콘으로 이벤트 상품을 증정해요.</p>
-            </div>
-        </div>
-<div class="col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-    <div class="feature-item bg-custom-color rounded text-center p-4">
-        <i class="fa fa-3x fa-thumbs-up text-primary mb-4"></i>
-        <h5 class="mb-3">시즌 & 신메뉴 프로모션</h5>
-        <p class="m-0">기프티콘을 통해 시즌메뉴와 신메뉴를 홍보하고
-        매장 발걸음까지 이어지도록 해요.</p>
-    </div>
-</div>
-        <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-            <div class="feature-item bg-custom-color rounded text-center p-4">
-                <i class="fa fa-3x fa-heart text-primary mb-4"></i>
-                <h5 class="mb-3">재방문 유도하기</h5>
-                <p class="m-0">방문이 뜸했거나 기념할 일이 있는 고객에게
-                기프티콘을 보내 센스있게 재방문을 유도해요.</p>
-            </div>
-        </div>
-    </div>
-</div>
-		
-    <div class="container py-5 px-lg-5">
-        <div class="wow fadeInUp" data-wow-delay="0.1s">
-            <p class="section-title text-secondary justify-content-center"><span></span>이용 안내<span></span></p>
-            <h1 class="text-center mb-5">How To Use GiftHub?</h1>
-        </div>
-        <div class="row g-4">
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="service-item d-flex flex-column text-center rounded">
-                    <div class="service-icon">
-                        <img class="rounded-circle mb-4" src="img/store%202.jpg" alt="" style="width: 160px; height: 160px; ">
-                    </div>
-                    <h5 class="mb-3 " style="margin-top: 20px;">입점 신청</h5>
-                    <p class="m-0" style="margin-top: 20px;">입점 신청 버튼을 통해 <br>
-                    GiftHub 입점을 신청해요.</p>
-                    <a class="btn btn-square" href="" style="margin-top: 20px;"><i class="fa fa-arrow-right"></i></a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="service-item d-flex flex-column text-center rounded">
-                    <div class="service-icon">
-                        <img class=" rounded-circle mb-4" src="img/스크린샷%202023-08-30%20오후%205.01%201@2x.png" alt="" style="width: 160px; height: 160px;">
-                    </div>
-                    <h5 class="mb-3" style="margin-top: 20px;">가맹 계약</h5>
-                    <p class="m-0" style="margin-top: 20px;">승인 심사 후 <br>가맹을 계약하세요.</p>
-                    <a class="btn btn-square" href="" style="margin-top: 20px;"><i class="fa fa-arrow-right"></i></a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="service-item d-flex flex-column text-center rounded">
-                    <div class="service-icon">
-                        <img class="rounded-circle mb-4" src="img/image%2052.png" alt="" style="width: 160px; height: 160px;">
-                    </div>
-                    <h5 class="mb-3" style="margin-top: 20px;">가게 OPEN</h5>
-                    <p class="m-0" style="margin-top: 20px;">GiftHub에 사장님 <br>
-                    가게가 등록되어요.</p>
-                    <a class="btn btn-square" href="" style="margin-top: 20px;"><i class="fa fa-arrow-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Service End -->
-</div>
-<div class="container-xl py-5">
-    <!-- Facts Start -->
-    <div class="container-xxl bg-primary fact py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5 px-lg-5">
-<h1 class="text-center text-white mb-2">GiftHub 이용 가게의 도입 효과를 확인해보세요!</h1><br>
-            <div class="row g-4">
-					<div class="col-md-6 col-lg-3 text-center wow fadeIn"
-						data-wow-delay="0.1s">
-						<i class="fa fa-certificate fa-3x text-secondary mb-3"></i>
-						<h1 class="text-white mb-2" data-toggle="counter-up">13,000,000</h1>
-						<p class="text-white mb-0">월평균 매출 상승</p>
-					</div>
-					<div class="col-md-6 col-lg-3 text-center wow fadeIn"
-						data-wow-delay="0.3s">
-						<i class="fa fa-users-cog fa-3x text-secondary mb-3"></i>
-						<h1 class="text-white mb-2" data-toggle="counter-up">300</h1>
-						<p class="text-white mb-0">신규 가맹점 증가량</p>
-					</div>
-					<div class="col-md-6 col-lg-3 text-center wow fadeIn"
-						data-wow-delay="0.5s">
-						<i class="fa fa-users fa-3x text-secondary mb-3"></i>
-						<h1 class="text-white mb-2" data-toggle="counter-up">650</h1>
-						<p class="text-white mb-0">월간 방문자 증가량</p>
-					</div>
-					<div class="col-md-6 col-lg-3 text-center wow fadeIn"
-						data-wow-delay="0.7s">
-						<i class="fa fa-check fa-3x text-secondary mb-3"></i>
-						<h1 class="text-white mb-2" data-toggle="counter-up">100</h1>
-						<p class="text-white mb-0">기프티콘 재구매율</p>
-					</div>
-				</div>
+
+			<div class="container-xxl bg-primary hero-header" style="display: flex; justify-content: center; align-items: center; margin: 0; padding: 10rem 0;">
+			<img class="img-fluid animated zoomIn" src="/img/mainImg.png" alt="" style="width: 40%; margin: 0 50px;">
+			    <div class="container-xxl py-5">
+			        <div class="container py-5 px-lg-5">
+			            <div class="wow fadeInUp" data-wow-delay="0.1s">
+			                <h1 class="text-white mb-4 font-weight-bold" style="font-size: 2.5rem; margin-top: 70px;">우리 동네 맛집</h1>
+			                <h1 class="text-white mb-4 font-weight-bold" style="font-size: 2.5rem;">GIFTHUB에 있습니다.</h1>
+			                <p class="text-white pb-3 animated slideInDown" style="padding-bottom: 0 !important; padding-top: 15px; margin-bottom: 7px;">기프티콘이 없어서 아쉬웠던 동네 맛집이 있나요?</p>
+			                <p class="text-white pb-3 animated slideInDown" style="padding: 0 !important; margin-bottom: 7px;">GIFTHUB에서 찾아볼 수 있습니다!</p>
+			                <p class="text-white pb-3 animated slideInDown">GIFTHUB는 소상공인과 골목 상권, 우리 가게를 위한 기프티콘 서비스입니다.</p>
+			                <div class="btn-group mb-3" role="group">
+			                    <a href="/store/login" class="btn btn-secondary py-2 px-4 rounded-pill animated slideInLeft"
+			                    	style="width: 270px; height: 55px; font-weight: 700;">가맹점 로그인</a>
+			                    <a href="/member/login" class="btn btn-light py-2 px-4 rounded-pill mx-2 animated slideInRight"
+			                    	style="width: 270px; height: 55px; font-weight: 700;">일반회원 로그인</a>
+			                </div>
+			            </div>
+			        </div>
+			    </div>
 			</div>
-		</div>
-		<!-- Facts End -->
-        <!-- Testimonial Start -->
-        <div class="container-xxl py-5  wow fadeInUp" data-wow-delay="0.1s">
-``
-            <div class="container py-5 px-lg-5">
-                <p class="section-title text-secondary justify-content-center"><span></span>자주 하는 질문<span></span></p>
-                <h1 class="text-center mb-5">Q & A</h1>
-                <div class="owl-carousel testimonial-carousel">
-                    <div class="testimonial-item bg-light rounded my-4">
-                        <p class="fs-5"><i class="fa fa-quote-left fa-4x text-primary mt-n4 me-3"></i>프랜차이즈도 입점 가능한가요?</h3>
-                    <p>네 가능합니다. 본사와 협의 필요시 협의 후 신청서를 제출해주세요.</p>
-                        <div class="d-flex align-items-center">
-                        </div>
-                    </div>
-                    <div class="testimonial-item bg-light rounded my-4">
-                        <p class="fs-5"><i class="fa fa-quote-left fa-4x text-primary mt-n4 me-3"></i>수수료가 있나요?</h3>
-                    <p>서비스 중개수수료는 무료입니다. 결제 수수료는 결제 대행 카드 수수료 3.2%(VAT별도)가 부가됩니다.</p>
-                        <div class="d-flex align-items-center">
-                        </div>
-                    </div>
-                    <div class="testimonial-item bg-light rounded my-4">
-                        <p class="fs-5"><i class="fa fa-quote-left fa-4x text-primary mt-n4 me-3"></i>정산일과 정산주기는 언제인가요?</h3>
-                    <p>GiftHub 정산일은 매주 월요일, 목요일입니다.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Testimonial End -->
+			
+			<!-- About Start -->
+			<div class="container-xxl py-5">
+				<div class="container py-5 px-lg-5">
+					<div class="wow fadeInUp" data-wow-delay="0.1s">
+			            <h1 class="text-center mb-5">왜 기프티콘을 제작해야 할까요?</h1>
+			        </div>
+			        <div class="row">
+				        <div class="col-6 text-center">
+				        	<h4 class="subtitle">끊임없이 성장하는 시장</h4>
+				        	<p class="mb-4">연 평균 70%의 성장률을 보이며 끊임없이 성장하고 있어요.</p>
+						    <img class="img-fluid wow zoomIn" data-wow-delay="0.5s" src="img/상승그래프.png" style="height: 300px;">
+						</div>
+						<div class="col-6 text-center">
+						    <h4 class="subtitle">확실한 매장 방문 유도 솔루션</h4>
+						    <p class="mb-4">기프티콘은 배달과 달리, 손님이 매장을 찾아오게 해요.</p>
+						    <img class="img-fluid wow zoomIn" data-wow-delay="0.5s" src="img/고객.png" style="height: 300px;">
+						</div>
+					</div>
+			    </div>
+			</div>
+			<!-- About End -->
+			
+			<!-- Service Start -->
+			<div class="container-xxl py-5">
+				<div class="container py-5 px-lg-5">
+					<div class="wow fadeInUp" data-wow-delay="0.1s">
+			            <h1 class="text-center mb-5">HOW TO USE GIFTHUB ?</h1>
+			        </div>
+				    <div class="row g-4">
+				        <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+				            <div class="feature-item bg-custom-color rounded text-center p-4">
+				                <i class="fa fa-3x text-primary mb-4">
+				                	<img src="/img/number-1.png" style="width: 70px;">
+				                </i>
+				                <h4 class="mb-3">회원가입</h4>
+				                <p class="m-0">회원가입을 진행해주세요.</p>
+				            </div>
+				        </div>
+						<div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+				            <div class="feature-item bg-custom-color rounded text-center p-4">
+				                <i class="fa fa-3x text-primary mb-4">
+				                	<img src="/img/number-2.png" style="width: 70px;">
+				                </i>
+				                <h4 class="mb-3">상품등록</h4>
+				                <p class="m-0">상품을 등록해주세요.</p>
+				            </div>
+				        </div>
+				        <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+				            <div class="feature-item bg-custom-color rounded text-center p-4">
+				                <i class="fa fa-3x text-primary mb-4">
+				                	<img src="/img/number-3.png" style="width: 70px;">
+				                </i>
+				                <h4 class="mb-3">매출분석</h4>
+				                <p class="m-0">그래프로 한눈에 확인할 수 있어요.</p>
+				            </div>
+				        </div>
+				    </div>
+			    </div>
+			</div>
+			<!-- Service End -->
+			
+			<!-- Testimonial Start -->
+	        <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+	            <div class="container py-5 px-lg-5">
+	                <h1 class="text-center mb-5">Q & A</h1>
+	                <div class="owl-carousel testimonial-carousel">
+	                    <div class="testimonial-item rounded my-4" style="background: #E2EFFF;">                    
+	                        <h3 class="fs-5">
+	                        	<i class="fa fa-quote-left fa-4x text-primary mt-n4 me-3" style="color: #0058C6 !important;"></i>
+	                        	프랜차이즈도 입점 가능한가요?
+	                        </h3>
+	                    	<p>프랜차이즈는 입점 불가능합니다. <br> GIFTHUB는 소상공인과 골목상권을 위한 서비스입니다.</p>
+	                        <div class="d-flex align-items-center"></div>
+	                    </div>
+	                    <div class="testimonial-item rounded my-4" style="background: #E2EFFF;">                    
+	                        <h3 class="fs-5">
+	                        	<i class="fa fa-quote-left fa-4x text-primary mt-n4 me-3" style="color: #0058C6 !important;"></i>
+	                        	수수료가 있나요?
+	                        </h3>
+	                    	<p>서비스 중개 수수료는 무료입니다. <br> 무료로 기프티콘을 제작해보세요.</p>
+	                        <div class="d-flex align-items-center"></div>
+	                    </div>
+	                    <div class="testimonial-item rounded my-4" style="background: #E2EFFF;">                    
+	                        <h3 class="fs-5">
+	                        	<i class="fa fa-quote-left fa-4x text-primary mt-n4 me-3" style="color: #0058C6 !important;"></i>
+	                        	정산일은 언제인가요?
+	                        </h3>
+	                    	<p>고객이 기프티콘을 구매하면 점주님 포인트가 올라갑니다. <br> 원하는 시기에 포인트 환전이 가능합니다.</p>
+	                        <div class="d-flex align-items-center"></div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	        <!-- Testimonial End -->
 	<c:import url="./footer.jsp" />
 
 
