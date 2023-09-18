@@ -53,12 +53,6 @@
                                             <label for="email">답변 받을 이메일 주소</label>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
-                                            <input type="email" class="form-control" id="phone" placeholder="Your Phone">
-                                            <label for="phone">연락 받을 휴대폰 번호</label>
-                                        </div>
-                                    </div>
                                     <div class="col-12">
                                         <div class="form-floating">
                                             <input type="text" class="form-control" id="subject" placeholder="Subject">
@@ -72,7 +66,7 @@
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <button class="btn btn-primary w-100 py-3" type="submit">접수하기</button>
+                                        <button class="btn btn-primary w-100 py-3" type="submit" href="http://localhost:8080/">접수하기</button>
                                     </div>
                                 </div>
                             </form>

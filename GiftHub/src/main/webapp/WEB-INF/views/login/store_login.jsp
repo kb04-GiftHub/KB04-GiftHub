@@ -22,6 +22,7 @@
     
 	<!-- 회원가입 폼 Start -->
 	<div class="container-xxl py-5">
+	
 		<div class="container py-5 px-lg-5">
 			<div class="wow fadeInUp" data-wow-delay="0.1s">
 			<p class="section-title text-secondary justify-content-center"><span></span>가맹점 로그인<span></span></p>
