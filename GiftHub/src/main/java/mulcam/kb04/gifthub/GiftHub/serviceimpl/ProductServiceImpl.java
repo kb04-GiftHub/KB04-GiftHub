@@ -2,6 +2,7 @@ package mulcam.kb04.gifthub.GiftHub.serviceimpl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -152,7 +153,23 @@ public class ProductServiceImpl implements ProductService {
 		jdto=JjimDto.entityToDto(jjim);
 		return jdto;
 	}
-
+	
+	@Override
+	public void deleteByProductNo(int productNo) {
+		
+		 Optional<Product> productOptional = repository.findById(productNo);
+		    
+		    if (productOptional.isPresent()) {
+		        Product product = productOptional.get();
+		        
+		        // Product의 status를 0로 변경
+		        product.setStatus(1);
+		        
+		        // 변경 내용 저장
+		        repository.save(product);
+		    }
+	}
+	
 	@Override
 	public JjimDto findByProductNoCustomerId(int productNo, String customerId) {
 		Product product = repository.findByProductNo(productNo);

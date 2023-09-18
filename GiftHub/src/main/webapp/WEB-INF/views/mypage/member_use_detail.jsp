@@ -39,7 +39,8 @@
 						<div class="row g-3">
 							<div class="col-5">
 								<div class="form-floating">
-									<img alt="" src="/upload_images/gifticon/${object[2]}" style="margin: auto; display: block; width: 100%">
+									<img alt="" src="/resources/Gificon/${object[2]}" style="margin: auto; display: block; width: 100%">
+									<p class="mb-10" style="text-align: center; margin-top: 15px;">가맹점에 제시해주세요.</p>
 								</div>
 							</div>
 							<div class="col-7" style="padding-left: 50px;">

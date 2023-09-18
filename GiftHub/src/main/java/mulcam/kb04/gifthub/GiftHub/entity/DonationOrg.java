@@ -1,9 +1,12 @@
 package mulcam.kb04.gifthub.GiftHub.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 import lombok.AllArgsConstructor;
@@ -23,4 +26,8 @@ public class DonationOrg {
 	private String orgName, orgMemo, orgAccount, orgBank;
 
 	private int orgStatus;
+	
+
+    @OneToMany(mappedBy = "donationOrg")
+    private List<Donation> donations;
 }

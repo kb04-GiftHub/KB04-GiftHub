@@ -44,6 +44,9 @@ public interface ProductService {
 	public boolean checkJjim(int jjimNo);
 
 	public JjimDto findByJjimNo(int jjimNo);
+	
+	public void deleteByProductNo(int productNo);
+
 
 //	public Product getProductById(int productId);
 

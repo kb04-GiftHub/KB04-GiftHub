@@ -14,7 +14,7 @@ import mulcam.kb04.gifthub.GiftHub.entity.Store;
 @AllArgsConstructor
 @Builder
 public class ProductDto {
-	private int productNo, productPrice;
+	private int productNo, productPrice, status;
 	private String productName, productMemo, productImage, storeId;
 	private Date productExp;
 	
@@ -29,6 +29,7 @@ public class ProductDto {
 				.productImage(entity.getProductImage())
 				.storeId(entity.getStoreId().getStoreId())
 				.productExp(entity.getProductExp())
+				.status(entity.getStatus())
 				.build();
 	}
 	
