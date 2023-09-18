@@ -14,6 +14,17 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
 <style>
+	.page-link {
+		color: #0058C6 !important;
+	}
+	
+	.page-item.active .page-link {
+		background-color: #0058C6 !important;
+		border-color: #0058C6 !important;
+		color: white !important;
+	}
+}
+
 </style>
 </head>
 <body>
@@ -62,25 +73,20 @@
 								<thead>
 									<tr>
 										<th scope="col">순번</th>
-										<th scope="col">가맹점명</th>
 										<th scope="col">정산 계좌</th>
 										<th scope="col">정산 금액</th>
 										<th scope="col">정산 일자</th>
-										<th scope="col">정산 확인</th>
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach var="exchange" items="${exchangeDetailsList}"
+									<c:forEach var="exchange" items="${pagedStores}"
 										varStatus="iterStat">
 										<tr>
 											<th scope="row">${iterStat.index + 1}</th>
-
-											<td>${loggedStoreId}</td>
 											<td>${exchange.exchangeBank}-
 												${exchange.exchangeAccount}</td>
 											<td>${exchange.exchangeMoney}</td>
 											<td>${exchange.exchangeDate}</td>
-											<td>${exchange.exchangeNo}</td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -101,7 +107,7 @@
 										<li class="page-item ${i == currentPage ? 'active' : ''}"><a
 											class="page-link" id="ggg"
 											href="?page=${i}&storeId=${storeId}#tableSection"
-											style="background: #0058C6; border: 1px solid #0058C6">${i}</a></li>
+											>${i}</a></li>
 									</c:forEach>
 									<li
 										class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
