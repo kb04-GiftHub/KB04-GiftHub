@@ -11,6 +11,15 @@
 	src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=51d9fff62677f5402eca46f516b03148&libraries=services"></script>
+<script>	$(document).ready(function(){
+	  $("#sendGift").modal();
+	  $("#buyGift").modal();
+	if('${msg}'!==''){
+		  alert("${msg}")
+	}	
+});
+
+</script>
 <c:import url="../top_customer.jsp" />
 <div class="container-xxl py-5 bg-primary hero-header">
 	<div class="container my-5 py-5 px-lg-5">
@@ -35,7 +44,7 @@
 							<div class="form-floating" style="margin:auto auto;text-align:center;vertical-align: middle;">
 								<img alt="" class="align-middle"
 									src="/upload_images/product/${product.productImage}"
-									style="width: 100%;max-width:350px; smargin-bottom: 20px;">
+									style="width: 100%;max-height:300px;max-width:300px; smargin-bottom: 20px;">
 								<p class="mb-0"
 									style="text-align: center; letter-spacing: 4px; margin-top: 10px;"></p>
 							</div>
@@ -78,15 +87,19 @@
 												value="${product.productExp }" pattern="yyyy-MM-dd" /></td>
 									</tr>
 									<tr>
-										<td colspan="2" class="text-center"><br>
-										<span class="text-end col-3"> 
-										<a class="btn btn-danger" id="sendGifticon" type="submit" 
-										href="/product/gift">
-													선물하기</a></span> 
-										<span class="text-end col-3">
-										<a class="btn btn-primary" id="buyGifticon" type="submit"
-										href="/product/buy?productNo=${product.productNo}&customerId=${user.customerId}">
-													구매하기</a></span>
+										<td colspan="2" class="text-center">
+										<br>
+										<div style="margin-bottom:5px;">
+										<a type="button" style="width:99%;" class="btn btn-danger" data-toggle="modal" data-target="#sendGift">선물하기</a>
+										<!-- <a class="btn btn-danger" id="sendGifticon" type="submit" href="/product/gift">선물하기</a> -->
+										</div>
+										<div style="margin-bottom:5px;">
+										<a type="button" style="width:99%;" class="btn btn-primary" data-toggle="modal" data-target="#buyGift">구매하기</a>
+										</div>
+										
+										<div style="margin-bottom:5px;">
+										<a href="/product/list" type="button" style="width:99%;" class="btn btn-secondary" >목록으로가기</a>
+										</div>
 										</td>
 									</tr>
 								</table>
@@ -110,20 +123,136 @@
 							<div id="map"
 								style="width: 80%; height: 90%; margin: auto; border-radius: 20px;"></div>
 						</div>
-
-						<div class="col-4">
-							<button class="btn btn-primary w-100 py-3"
-								onclick="history.back()" style="margin-top: 50px;">이전으로
-								돌아가기</button>
-						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<!-- 상품 상세 End -->
 
+   <!-- 구매하기1 Modal -->
+   <div class="modal fade" id="buyGift" tabindex="-1">
+     <div class="modal-dialog modal-dialog-centered">
+       <div class="modal-content">
+         <div class="text-center modal-header">
+           <h4 class="modal-title">기프티콘 구매하기</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+         </div>
+         <div class="modal-body text-center">
+          	가게이름 : <a class="btn"> ${store.storeName }</a> <br>
+          	상품이름 : <a class="btn">${product.productName}</a> <br>
+          	상품가격 : <a class="btn">${product.productPrice }</a> <br>
+          	<div>------------------------------------------------------</div>
+          	현재 상품을 구매하시겠습니까?
+             </div>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">취소하기</button>      
+			   <button type="button" id="recharge-list" class="btn btn-primary"
+                                data-toggle="modal" data-target="#buyGiftTel" data-dismiss="modal">구매하기</button>   
+         </div>
+       </div>
+     </div>
+   </div><!-- End 구매하기1 Modal-->
+   
+   <!-- 구매하기2 Modal -->
+   <div class="modal fade" id="buyGiftTel" tabindex="-1">
+     <div class="modal-dialog modal-dialog-centered">
+       <div class="modal-content">
+         <div class="text-center modal-header">
+           <h4 class="modal-title">기프티콘 구매하기</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+         </div>
+        <form action="/gifticon/buy" method="post">
+         <div class="modal-body">
+         	 쿠폰을 받으실 전화번호를 입력하세요
+         	 <br>
+         	 [휴대폰 번호는 '-' 없이 번호로만 적어주세요 (예:010-xxxx-xxxx)]
+         	 <input type="text" name="sendTel" class="form-control" placeholder="예:010xxxxxxxxx" id="recharge-point" value="${user.customerTel }">
+         	 <input type="hidden" name="productNo" value="${product.productNo }">
+         	 <input type="hidden" name="customerId" value="${user.customerId }">
+             </div>
+             <div class="modal-footer">
+               <a type="button" class="btn btn-secondary" data-dismiss="modal">취소하기</a>   
+               <button type="submit" class="btn btn-primary">구매하기</button>   
+         	</div>
+  		</form>  
+       </div>
+     </div>
+   </div><!-- End 구매하기2 Modal-->
+   
+   <!-- 선물하기 Modal -->
+   <div class="modal fade" id="sendGift" tabindex="-1">
+     <div class="modal-dialog modal-dialog-centered">
+       <div class="modal-content">
+         <div class="text-center modal-header">
+           <h4 class="modal-title">기프티콘 선물하기</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+         </div>
+         <div class="modal-body text-center">
+          	 <button style="width: 49%;" type="button"  class="btn btn-danger" data-toggle="modal" data-target="#sendGiftTel2" data-dismiss="modal">ID로 선물하기</button> 
+          	 <button style="width: 49%;" type="button"  class="btn btn-danger" data-toggle="modal" data-target="#sendGiftTel" data-dismiss="modal">휴대폰번호로 선물하기</button> 
+         </div>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">취소하기</button>      
+			   <%-- <a class="btn btn-primary" id="buyGifticon" type="submit" href="/product/buy?productNo=${product.productNo}&customerId=${user.customerId}">구매하기</a> --%>
+         </div>
+       </div>
+     </div>
+   </div><!-- End 선물하기 Modal-->
+   
+   <!-- 선물하기 Modal -->
+   <div class="modal fade" id="sendGiftTel" tabindex="-1">
+     <div class="modal-dialog modal-dialog-centered">
+       <div class="modal-content">
+         <div class="text-center modal-header">
+           <h4 class="modal-title">기프티콘 선물하기</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+         </div>
+         <form action="/gifticon/buy" method="post">
+         <div class="modal-body">
+         	 선물하실 분의 휴대폰 번호를 입력하세요
+         	 <br>
+         	 [휴대폰 번호는 '-' 없이 번호로만 적어주세요 (예:010-xxxx-xxxx)]
+         	 <input type="text" name="sendTel" class="form-control" id="recharge-point" placeholder="예:01012341234">
+         	 <input type="hidden" name="productNo" value="${product.productNo }">
+         	 <input type="hidden" name="customerId" value="${user.customerId }">
+             </div>
+             <div class="modal-footer">
+               <a type="button" class="btn btn-secondary" data-dismiss="modal">취소하기</a>   
+               <button type="submit" class="btn btn-danger">선물하기</button>   
+         	</div>
+  		</form>  
+       </div>
+     </div>
+   </div><!-- End 선물하기 Modal-->
+   
+   <!-- 선물하기2 Modal -->
+   <div class="modal fade" id="sendGiftTel2" tabindex="-1">
+     <div class="modal-dialog modal-dialog-centered">
+       <div class="modal-content">
+         <div class="text-center modal-header">
+           <h4 class="modal-title">기프티콘 선물하기</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+         </div>
+         <form action="/gifticon/buy" method="post">
+         <div class="modal-body">
+         	 선물하실 분의 ID를 입력하세요
+         	 <br>
+         	 [휴대폰 번호는 '-' 없이 번호로만 적어주세요 (예:010-xxxx-xxxx)]
+         	 <input type="text" name="sendTel" class="form-control" id="recharge-point" placeholder="예:01012341234">
+         	 <input type="hidden" name="productNo" value="${product.productNo }">
+         	 <input type="hidden" name="customerId" value="${user.customerId }">
+             </div>
+             <div class="modal-footer">
+               <a type="button" class="btn btn-secondary" data-dismiss="modal">취소하기</a>   
+               <button type="submit" class="btn btn-danger">선물하기</button>   
+         	</div>
+  		</form>  
+       </div>
+     </div>
+   </div><!-- End 선물하기 Modal-->
+	
+<!-- 상품 상세 End -->
 <c:import url="../footer.jsp" />
 <script>
 var container = document.getElementById('map');

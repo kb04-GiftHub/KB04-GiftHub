@@ -10,10 +10,10 @@ public class HomeController {
 	public String home() {
 		return "index";
 	}
-	
+
 	@GetMapping("/store/home")
 	public String store_home() {
-		
+
 		return "store/home";
 	}
 
@@ -22,28 +22,14 @@ public class HomeController {
 		return "manual";
 	}
 
-	@GetMapping("/donate")
-	public String donate() {
-		return "donate";
-	}
-	@GetMapping("/donateboard")
-	public String donateboard() {
-		return "donateboard";
-	}
-	@GetMapping("/donation")
-	public String donation() {
-		return "donation";
-	}
-
-
 	@GetMapping("/team")
 	public String team() {
 		return "team";
 	}
-	
+
 	@GetMapping("/service")
 	public String service() {
 		return "service";
 	}
+	
 }
-

@@ -10,7 +10,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +24,6 @@ import mulcam.kb04.gifthub.GiftHub.dto.CustomerDto;
 import mulcam.kb04.gifthub.GiftHub.dto.GiftDto;
 import mulcam.kb04.gifthub.GiftHub.dto.ProductDto;
 import mulcam.kb04.gifthub.GiftHub.dto.StoreDto;
-import mulcam.kb04.gifthub.GiftHub.entity.Product;
 import mulcam.kb04.gifthub.GiftHub.project.GifticonGenerator;
 import mulcam.kb04.gifthub.GiftHub.project.UniqueCode;
 import mulcam.kb04.gifthub.GiftHub.service.ProductService;
@@ -46,6 +44,9 @@ public class ProductController {
 	
 	@GetMapping("/product")
 	public String gifticon_add() {
+//		ServletContext app=req.getServletContext();
+//		String projectRoot = app.getRealPath("/");
+		
 		return "product/add_form";
 	}
 
@@ -138,7 +139,7 @@ public class ProductController {
 		
 		List<Object[]> list = productService.allProducts();
 		model.addAttribute("productList", list);
-		
+		ses.removeAttribute("msg");
 		CustomerDto dto = (CustomerDto) ses.getAttribute("user");
 		ses.setAttribute("user",dto);
 		
@@ -184,8 +185,8 @@ public class ProductController {
 	}
 	
 	
-	@GetMapping("/product/detail/{productNo}")
-	public String product_detail(@PathVariable("productNo") int productNo , Model model, HttpSession ses) {
+	@GetMapping("/product/detail")
+	public String product_detail(@RequestParam("productNo") int productNo , Model model, HttpSession ses) {
 		if(ses.getAttribute("user") == null ) {
 			model.addAttribute("Msg","로그인이 필요한 기능입니다");
 			model.addAttribute("loc","member/login");
@@ -202,8 +203,10 @@ public class ProductController {
 		return "product/detail";
 	}
 	
-	@GetMapping("/product/buy")
-	public String product_duy(@RequestParam int productNo, @RequestParam String customerId, 
+	@PostMapping("/product/buy")
+	public String product_duy(@RequestParam int productNo, 
+			@RequestParam String customerId,
+			@RequestParam String sendTel,
 			Model model, HttpSession ses) throws Exception {
 		//회원객체와 상품객체 불러오기
 		CustomerDto customer = productService.findByCustomerId(customerId);

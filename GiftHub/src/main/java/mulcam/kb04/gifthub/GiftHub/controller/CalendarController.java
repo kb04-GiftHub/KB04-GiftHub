@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import mulcam.kb04.gifthub.GiftHub.dto.CustomerDto;
-import mulcam.kb04.gifthub.GiftHub.dto.GiftDto;
 import mulcam.kb04.gifthub.GiftHub.service.GiftService;
 
 @Controller
