@@ -66,7 +66,7 @@
     }
 </style>
 <body>
-     <c:import url="../top.jsp" />
+     <c:import url="../top_customer.jsp" />
 
 	<div class="container-xxl py-5 bg-primary hero-header">
 		<div class="container my-5 py-5 px-lg-5">
