@@ -10,7 +10,7 @@
 <title>내 상품</title>
 </head>
 <body>
-   <c:import url="../top_customer.jsp" />
+   <c:import url="../top.jsp" />
         <div class="container-xxl py-5 bg-primary hero-header">
             <div class="container my-5 py-5 px-lg-5">
                 <div class="row g-5 py-5">
@@ -49,36 +49,40 @@
                         <c:forEach items="${myList}" var="myList">
                         <%-- <c:set var="now" value="<fmt:formatDate value='${nowDate}' pattern='yyyy-MM-dd' />" /> --%>
                            <c:choose>
-                              <c:when test="${myList.productExp > now}">
-                                 <div class="col-lg-3 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s" onclick="window.location.href = '/product/myList/product_detail?productNo=${myList.productNo}'">
-                                          <div class="rounded overflow-hidden" style="border: 4px solid #E2EFFF">
-                                              <div class="position-relative overflow-hidden" style="height: 200px; display: flex; justify-content: center; align-items: center;">
-                                                  <img class="img-fluid" src="/upload_images/product/${myList.productImage}" alt="" id="img" onload="adjustImageSize(this)">
-                                              </div>
-                                              <div class="p-3" style="background: #E2EFFF; color: gray;">
-                                                  <%-- <p class="mb-0">${myList}</p> --%>
-                                                  <h5 class="lh-base mb-1">${myList.productName}</h5>
-                                                  <p class="mb-0" style="font-size: 10pt; text-align: right;">판매기간 : <fmt:formatDate value="${myList.productExp}" pattern="yyyy년 MM월 dd일"/></p>
-                                              </div>
-                                          </div>
-                                      </div>
-                              </c:when>
+                           	<c:when test="${myList.status eq 0}">
+                           		<c:choose>
+                           			<c:when test="${myList.productExp >= today}">
+		                                 <div class="col-lg-3 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s" onclick="window.location.href = '/product/myList/product_detail?productNo=${myList.productNo}'">
+		                                          <div class="rounded overflow-hidden" style="border: 4px solid #E2EFFF">
+		                                              <div class="position-relative overflow-hidden" style="height: 200px; display: flex; justify-content: center; align-items: center;">
+		                                                  <img class="img-fluid" src="/upload_images/product/${myList.productImage}" alt="" id="img" onload="adjustImageSize(this)">
+		                                              </div>
+		                                              <div class="p-3" style="background: #E2EFFF; color: gray;">
+		                                                  <%-- <p class="mb-0">${myList}</p> --%>
+		                                                  <h5 class="lh-base mb-1">${myList.productName}</h5>
+		                                                  <p class="mb-0" style="font-size: 10pt; text-align: right;">판매기간 : <fmt:formatDate value="${myList.productExp}" pattern="yyyy년 MM월 dd일"/></p>
+		                                              </div>
+		                                          </div>
+		                                      </div>
+		                              </c:when>
                               
-                              <c:when test="${myList.productExp < now}">
-                                 <div class="col-lg-3 col-md-6 portfolio-item second wow fadeInUp" data-wow-delay="0.1s" onclick="window.location.href = '/product/myList/product_detail?productNo=${myList.productNo}'">
-                                          <div class="rounded overflow-hidden" style="border: 4px solid #E2EFFF">
-                                              <div class="position-relative overflow-hidden" style="height: 200px; display: flex; justify-content: center; align-items: center;">
-                                                  <img class="img-fluid" src="/upload_images/product/${myList.productImage}" alt="" id="img" onload="adjustImageSize(this)">
-                                              </div>
-                                              <div class="p-3" style="background: #E2EFFF; color: gray;">
-                                                  <%-- <p class="mb-0">${myList}</p> --%>
-                                                  <h5 class="lh-base mb-1">${myList.productName}</h5>
-                                                  <p class="mb-0" style="font-size: 10pt; text-align: right;">판매기간 : <fmt:formatDate value="${myList.productExp}" pattern="yyyy년 MM월 dd일"/></p>
-                                              </div>
-                                          </div>
-                                      </div>
-                              </c:when>
-                              
+		                              <c:when test="${myList.productExp < today}">
+		                                 <div class="col-lg-3 col-md-6 portfolio-item second wow fadeInUp" data-wow-delay="0.1s" onclick="window.location.href = '/product/myList/product_detail?productNo=${myList.productNo}'">
+		                                          <div class="rounded overflow-hidden" style="border: 4px solid #E2EFFF">
+		                                              <div class="position-relative overflow-hidden" style="height: 200px; display: flex; justify-content: center; align-items: center;">
+		                                                  <img class="img-fluid" src="/upload_images/product/${myList.productImage}" alt="" id="img" onload="adjustImageSize(this)">
+		                                              </div>
+		                                              <div class="p-3" style="background: #E2EFFF; color: gray;">
+		                                                  <%-- <p class="mb-0">${myList}</p> --%>
+		                                                  <h5 class="lh-base mb-1">${myList.productName}</h5>
+		                                                  <p class="mb-0" style="font-size: 10pt; text-align: right;">판매기간 : <fmt:formatDate value="${myList.productExp}" pattern="yyyy년 MM월 dd일"/></p>
+		                                              </div>
+		                                          </div>
+		                                      </div>
+		                              </c:when>
+                           				
+                           		</c:choose>
+                           	</c:when>
                            </c:choose>
                            
                            
@@ -97,7 +101,8 @@
                   
 
 <!-- 끝 -->
-   
+
+<c:import url="../footer.jsp" />  
    
 <!-- Back to Top -->
 <a href="#" class="btn btn-lg btn-secondary btn-lg-square back-to-top"><i

@@ -7,13 +7,13 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -150,10 +150,10 @@ public class ProductController {
 	public String product_myList(Model model, HttpSession ses) {
 		
 		String loggedStoreId = (String) ses.getAttribute("loggedStoreId");
-		/*
-		 * if(loggedStoreId == null || ses.getAttribute("loggedStroeId") != null) {
-		 * return "redirect:/index"; }
-		 */
+		
+		if(loggedStoreId == null || ses.getAttribute("loggedStroeId") != null) {
+		 return "redirect:/index"; }
+		 
 		Date now = new Date();
 		List<ProductDto> myList = productService.findByStoreIdToList(loggedStoreId);
 		model.addAttribute("myList", myList);
@@ -166,10 +166,25 @@ public class ProductController {
 	
 	@GetMapping("/product/myList/product_detail")
 	public String myproduct_detail(
-			@RequestParam("productNo") int productNo) {
+			@RequestParam("productNo") int productNo,
+			HttpSession ses, Model model) {
+		
+		ProductDto dto = productService.findByProductNo(productNo);
+		model.addAttribute("dto", dto);
 		
 		return "product/myDetail";
 	}
+	
+	@PostMapping("/product/delete/{productNo}")
+    public String delete_product(@PathVariable("productNo") int productNo,
+    									Model model, HttpSession ses) {
+		
+		productService.deleteByProductNo(productNo);
+		System.out.println(">> " + productNo + " 삭제완료");
+		return "redirect:/product/myList"; // 삭제 후 목록 페이지로 이동
+	}
+	
+	
 	@GetMapping("/product/detail")
 	public String product_detail(@RequestParam("productNo") int productNo , Model model, HttpSession ses) {
 		if(ses.getAttribute("user") == null ) {
