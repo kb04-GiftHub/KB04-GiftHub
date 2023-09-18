@@ -88,7 +88,7 @@
 							<div class="dropdown-menu m-0">
 								<a href="/donation/donateboard" class="dropdown-item">기부게시판</a>
 								<a href="/donation/donate" class="dropdown-item">기부하기</a>
-								<a href="/donation/donation" class="dropdown-item">기부내역</a>
+								<a href="/donation/donation_list" class="dropdown-item">기부내역</a>
 							</div>
 						</div>
 						<a href="/promotion_member/promotionView_list" class="nav-item nav-link">커뮤니티</a>
