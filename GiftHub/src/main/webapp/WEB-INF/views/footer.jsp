@@ -12,20 +12,20 @@
                         <p><i class="fa fa-phone-alt me-3"></i>1544-9001</p>
                         <p><i class="fa fa-envelope me-3"></i>gifthub@kb.com</p>
                         <div class="d-flex pt-2">
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-instagram"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-outline-light btn-social"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light btn-social"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light btn-social"><i class="fab fa-instagram"></i></a>
+                            <a class="btn btn-outline-light btn-social"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3">
                         <p class="section-title text-white h5 mb-4">About Us<span></span></p>
-                        <a class="btn btn-link">대표 김은진</a>
-                        <a class="btn btn-link">부대표 이성준</a>
-                        <a class="btn btn-link">파트너 노유진</a>
-                        <a class="btn btn-link">파트너 이수민</a>
-                        <a class="btn btn-link">파트너 허동민</a>
-                        <a class="btn btn-link">파트너 황규빈</a>
+                        <a class="btn btn-link" style="text-align: left !important;">대표 김은진</a>
+                        <a class="btn btn-link" style="text-align: left !important;">부대표 이성준</a>
+                        <a class="btn btn-link" style="text-align: left !important;">파트너 노유진</a>
+                        <a class="btn btn-link" style="text-align: left !important;">파트너 이수민</a>
+                        <a class="btn btn-link" style="text-align: left !important;">파트너 허동민</a>
+                        <a class="btn btn-link" style="text-align: left !important;">파트너 황규빈</a>
                     </div>
                     <div class="col-md-6 col-lg-6">
                         <p class="section-title text-white h5 mb-4">Find<span></span></p>
