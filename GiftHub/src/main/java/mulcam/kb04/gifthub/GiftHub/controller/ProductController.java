@@ -24,7 +24,6 @@ import mulcam.kb04.gifthub.GiftHub.dto.CustomerDto;
 import mulcam.kb04.gifthub.GiftHub.dto.GiftDto;
 import mulcam.kb04.gifthub.GiftHub.dto.ProductDto;
 import mulcam.kb04.gifthub.GiftHub.dto.StoreDto;
-import mulcam.kb04.gifthub.GiftHub.entity.Product;
 import mulcam.kb04.gifthub.GiftHub.project.GifticonGenerator;
 import mulcam.kb04.gifthub.GiftHub.project.UniqueCode;
 import mulcam.kb04.gifthub.GiftHub.service.ProductService;
@@ -45,6 +44,9 @@ public class ProductController {
 	
 	@GetMapping("/product")
 	public String gifticon_add() {
+//		ServletContext app=req.getServletContext();
+//		String projectRoot = app.getRealPath("/");
+		
 		return "product/add_form";
 	}
 
@@ -137,7 +139,7 @@ public class ProductController {
 		
 		List<Object[]> list = productService.allProducts();
 		model.addAttribute("productList", list);
-		
+		ses.removeAttribute("msg");
 		CustomerDto dto = (CustomerDto) ses.getAttribute("user");
 		ses.setAttribute("user",dto);
 		
@@ -148,10 +150,10 @@ public class ProductController {
 	public String product_myList(Model model, HttpSession ses) {
 		
 		String loggedStoreId = (String) ses.getAttribute("loggedStoreId");
-		/*
-		 * if(loggedStoreId == null || ses.getAttribute("loggedStroeId") != null) {
-		 * return "redirect:/index"; }
-		 */
+		
+		if(loggedStoreId == null || ses.getAttribute("loggedStroeId") != null) {
+		 return "redirect:/index"; }
+		 
 		Date now = new Date();
 		List<ProductDto> myList = productService.findByStoreIdToList(loggedStoreId);
 		model.addAttribute("myList", myList);
@@ -164,15 +166,27 @@ public class ProductController {
 	
 	@GetMapping("/product/myList/product_detail")
 	public String myproduct_detail(
-			@RequestParam("productNo") int productNo) {
+			@RequestParam("productNo") int productNo,
+			HttpSession ses, Model model) {
 		
-		
-		
+		ProductDto dto = productService.findByProductNo(productNo);
+		model.addAttribute("dto", dto);
 		
 		return "product/myDetail";
 	}
-	@GetMapping("/product/detail/{productNo}")
-	public String product_detail(@PathVariable("productNo") int productNo , Model model, HttpSession ses) {
+	
+	@PostMapping("/product/delete/{productNo}")
+    public String delete_product(@PathVariable("productNo") int productNo,
+    									Model model, HttpSession ses) {
+		
+		productService.deleteByProductNo(productNo);
+		System.out.println(">> " + productNo + " 삭제완료");
+		return "redirect:/product/myList"; // 삭제 후 목록 페이지로 이동
+	}
+	
+	
+	@GetMapping("/product/detail")
+	public String product_detail(@RequestParam("productNo") int productNo , Model model, HttpSession ses) {
 		if(ses.getAttribute("user") == null ) {
 			model.addAttribute("Msg","로그인이 필요한 기능입니다");
 			model.addAttribute("loc","member/login");
@@ -189,8 +203,10 @@ public class ProductController {
 		return "product/detail";
 	}
 	
-	@GetMapping("/product/buy")
-	public String product_duy(@RequestParam int productNo, @RequestParam String customerId, 
+	@PostMapping("/product/buy")
+	public String product_duy(@RequestParam int productNo, 
+			@RequestParam String customerId,
+			@RequestParam String sendTel,
 			Model model, HttpSession ses) throws Exception {
 		//회원객체와 상품객체 불러오기
 		CustomerDto customer = productService.findByCustomerId(customerId);

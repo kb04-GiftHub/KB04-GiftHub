@@ -31,4 +31,5 @@ public class HomeController {
 	public String service() {
 		return "service";
 	}
+	
 }
