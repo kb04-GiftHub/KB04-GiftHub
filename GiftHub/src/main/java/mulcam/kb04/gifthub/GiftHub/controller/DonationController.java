@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import mulcam.kb04.gifthub.GiftHub.dto.ExchangeDto;
 import mulcam.kb04.gifthub.GiftHub.entity.Customer;
 import mulcam.kb04.gifthub.GiftHub.entity.Donation;
 import mulcam.kb04.gifthub.GiftHub.repository.CustomerRepository;
@@ -74,11 +75,27 @@ public class DonationController {
 	}
 
 	@GetMapping("/donation/donation_list")
-	public String donationList(HttpSession session, Model model) {
+	public String donationList(HttpSession session, Model model,
+			@RequestParam(value = "page", defaultValue = "1") int currentPage) {
 		String customerId = (String) session.getAttribute("loggedMemberId");
 		Customer customer = customerService.getCustomerById(customerId);
 		List<Donation> donationList = donationService.getDonationByCustomerId(customer);
+		int totalDataCount = donationList.size();
+		int dataPerPage = 10;
+		int totalPages = (int) Math.ceil((double) totalDataCount / dataPerPage);
+		int pagesPerGroup = 5;
+		int currentGroup = (int) Math.ceil((double) currentPage / pagesPerGroup);
+
+		// 현재 페이지에 따라서 데이터를 분할
+		int start = (currentPage - 1) * dataPerPage;
+		int end = Math.min(start + dataPerPage, totalDataCount);
+		List<Donation> pagedStores = donationList.subList(start, end);
+		model.addAttribute("totalPages", totalPages);
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("currentGroup", currentGroup);
+		model.addAttribute("pagesPerGroup", pagesPerGroup);
 		model.addAttribute("donations", donationList);
+		model.addAttribute("pagedStores", pagedStores);
 		return "/donation/donation_list";
 	}
 }

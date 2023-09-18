@@ -14,17 +14,15 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
 <style>
-	.page-link {
-		color: #0058C6 !important;
-	}
-	
-	.page-item.active .page-link {
-		background-color: #0058C6 !important;
-		border-color: #0058C6 !important;
-		color: white !important;
-	}
+.page-link {
+	color: #0058C6 !important;
 }
 
+.page-item.active .page-link {
+	background-color: #0058C6 !important;
+	border-color: #0058C6 !important;
+	color: white !important;
+}
 </style>
 </head>
 <body>
@@ -106,8 +104,7 @@
 									<c:forEach var="i" begin="${startPage}" end="${endPage}">
 										<li class="page-item ${i == currentPage ? 'active' : ''}"><a
 											class="page-link" id="ggg"
-											href="?page=${i}&storeId=${storeId}#tableSection"
-											>${i}</a></li>
+											href="?page=${i}&storeId=${storeId}#tableSection">${i}</a></li>
 									</c:forEach>
 									<li
 										class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
