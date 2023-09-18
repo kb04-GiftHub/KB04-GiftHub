@@ -95,8 +95,9 @@
 						<div class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">커뮤니티</a>
 							<div class="dropdown-menu m-0">
-								<a href="sale" class="dropdown-item">게시글 등록</a> <a
-									href="calculate" class="dropdown-item">게시글 조회</a>
+								<a href="/promotion_store/promotion_insert_form" class="dropdown-item">게시글 등록</a>
+								<a href="/promotion_store/promotion_list" class="dropdown-item">게시글 조회</a>
+								<a href="/promotion_store/promotionMarket_list" class="dropdown-item">전통시장 살리기</a>
 							</div>
 						</div>
 						<div class="nav-item dropdown">
