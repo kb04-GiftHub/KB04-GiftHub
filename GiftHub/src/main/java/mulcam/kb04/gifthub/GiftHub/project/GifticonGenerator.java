@@ -3,19 +3,20 @@ package mulcam.kb04.gifthub.GiftHub.project;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
 import javax.imageio.ImageIO;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import com.google.zxing.BarcodeFormat;
@@ -32,7 +33,7 @@ public class GifticonGenerator {
 	private static String productImageFile;
 	private static String expirationDate;
 	
-	public static String createGiftCard(HttpSession ses,ProductDto product,String barcodeData, StoreDto store, Date expDate) {
+	public static String createGiftCard(HttpSession ses,ProductDto product,String barcodeData, StoreDto store, Date expDate) throws FontFormatException, IOException {
 		int width = 350; // 이미지 너비
         int height = 650; // 이미지 높이
         BufferedImage giftCardImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -59,6 +60,13 @@ public class GifticonGenerator {
             e.printStackTrace();
         }
         
+        //폰트설정
+        String font=System.getProperty("user.dir");
+    	String fontDirectory = font+"/src/main/resources/static/font/IBMPlexSansKR-Medium.ttf";
+//    	String fontDirectory = font+"/src/main/resources/static/font/NanumPenScript-Regular.ttf";
+    	Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File(fontDirectory));
+    	
+    	
         // 상품 이미지 그리기
         try {
         	String upDir=System.getProperty("user.dir");
@@ -73,7 +81,8 @@ public class GifticonGenerator {
             g2d.drawImage(productImage, imageX, imageY, imageWidth, imageHeight, null);
             
             g2d.setColor(Color.BLACK); // 테두리의 색상 설정
-            g2d.setFont(new Font("함초롬돋움",Font.BOLD, 20));
+//            g2d.setFont(new Font("함초롬돋움",Font.BOLD, 20));
+            g2d.setFont(customFont.deriveFont(Font.BOLD, 20));
             FontMetrics fontMetrics = g2d.getFontMetrics();
             int titleDateWidth = fontMetrics.stringWidth(productTitle);
             int titleDateX = imageCenterX - (titleDateWidth / 2);
@@ -105,7 +114,8 @@ public class GifticonGenerator {
 
         // 코드 번호 텍스트 그리기 (가운데 정렬)
         g2d.setColor(Color.BLACK); // 테두리의 색상 설정
-        g2d.setFont(new Font("Digital-7",Font.BOLD, 15));
+//        g2d.setFont(new Font("Digital-7",Font.BOLD, 15));
+        g2d.setFont(customFont.deriveFont(Font.BOLD, 15));
         
         StringBuilder builder = new StringBuilder(barcodeData);
         builder.insert(4, "-");
@@ -131,20 +141,24 @@ public class GifticonGenerator {
         g2d.setColor(Color.GRAY);
         g2d.drawLine( 30, 525, 320,525);
         g2d.setColor(Color.GRAY); // 
-        g2d.setFont(new Font("나눔 고딕",Font.PLAIN, 14));
+//        g2d.setFont(new Font("나눔 고딕",Font.PLAIN, 14));
+        g2d.setFont(customFont.deriveFont(Font.PLAIN, 14));
         g2d.drawString("교 환 처", 30,548 );
         g2d.setColor(Color.BLACK);  
-        g2d.setFont(new Font("HYShortSamul 중간",Font.BOLD, 16));
+//        g2d.setFont(new Font("HYShortSamul 중간",Font.BOLD, 16));
+        g2d.setFont(customFont.deriveFont(Font.BOLD, 16));
         g2d.drawString(store.getStoreName(),200,545);
         
         // 
         g2d.setColor(Color.GRAY);
         g2d.drawLine( 30, 555, 320,555);
         g2d.setColor(Color.GRAY); // 
-        g2d.setFont(new Font("나눔 고딕",Font.PLAIN, 14));
+//        g2d.setFont(new Font("나눔 고딕",Font.PLAIN, 14));
+        g2d.setFont(customFont.deriveFont(Font.PLAIN, 14));
         g2d.drawString("유효기간", 30,583 );
         g2d.setColor(Color.BLACK);  
-        g2d.setFont(new Font("HYPost",Font.BOLD, 16));
+//        g2d.setFont(new Font("HYPost",Font.BOLD, 16));
+        g2d.setFont(customFont.deriveFont(Font.BOLD, 16));
         Date date = product.getProductExp();
         SimpleDateFormat form = new SimpleDateFormat("yyyy년 MM월 dd일");
         expirationDate=form.format(date);
@@ -159,15 +173,29 @@ public class GifticonGenerator {
         String gifticonName = null;
 		try {
 			UUID uuid = UUID.randomUUID();
-			gifticonName = uuid.toString()+"_gifticon.png";
-			String upDir=System.getProperty("user.dir");
-        	String rootDirectory = upDir+"/src/main/resources/static/upload_images/gifticon";
+			gifticonName = uuid.toString()+"_gifticon.jpg";
+			ServletContext app=ses.getServletContext();
+			String upDir=app.getRealPath("/resources/Gificon");
+			String rootDirectory = upDir;
 			String giftCardImageFile = rootDirectory+"/"+gifticonName; // 저장될 파일 이름
-			ImageIO.write(giftCardImage, "png", new File(giftCardImageFile));
+			ImageIO.write(giftCardImage, "jpg", new File(giftCardImageFile));
+			upDir=System.getProperty("user.dir");
+        	rootDirectory = upDir+"/src/main/resources/static/upload_images/gifticon";
+        	ImageIO.write(giftCardImage, "jpg", new File(giftCardImageFile));
 			System.out.println("Gift card image saved as: " + giftCardImageFile);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+//		ServletContext app=ses.getServletContext();
+//		String directory=app.getRealPath("/resources/Gificon");
+//        String filePath = directory + "/"+gifticonName;
+//        File outputFile = new File(filePath);
+//        File dir=new File(directory);
+//		if(!dir.exists()){
+//			dir.mkdirs();
+//		}
+//        ImageIO.write(barcodeImage, "jpg", outputFile);
 		
 		return gifticonName;
 	}
