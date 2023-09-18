@@ -50,7 +50,7 @@
         box-shadow: none !important;
     }
     
-
+  
 </style>
     
     
@@ -81,76 +81,81 @@
     <div class="container py-5 px-lg-5">
         <div class="wow fadeInUp" data-wow-delay="0.1s">
             <h4 class="section-title text-secondary justify-content-center"><span></span>기부게시판<span></span></h4>
-            <h1 class="text-center mb-5">군포시 기부 단체</h1>
+            <h1 class="text-center mb-5">우리 동네를 위한<br>기부 프로젝트</h1>
+            <h3 class="text-center mb-5">군포시</h3>
         </div>
         <div class="row g-4">
+        <h3>진행 중인 기부 프로젝트</h3>
             <!-- Service 1 -->
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="service-item d-flex flex-column text-center rounded">
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" >
+                <div class="service-item d-flex flex-column text-center rounded" style="background-color: #D0E5FF;">
                     <div class="service-image flex-shrink-0 flex-shrink-0 rounded-circle mx-auto" style="width: 250px; height: 250px; overflow: hidden;">
                         <img src="/img/donation/장애인.png" alt="" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <h5 class="mb-3">군포시 장애인종합복지관</h5>
                     <p class="m-0">장애가 있는 모든 사람들이 삶, 학습, 일 및 지역사회에 완전히 참여한다는 목표를 실현하기 위해 최선을 다하고 있습니다.</p>
-                    <a class="btn btn-square" href="http://localhost:8080/donate"></a>
+                    <a class="btn btn-square" href="http://localhost:8080/donation/donate"></a>
                 </div>
             </div>
+            <hr> 
+           <h3>진행 종료한 기부 프로젝트</h3>
+           
          <!-- Service 2 -->
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="service-item d-flex flex-column text-center rounded">
+            <div class="col-lg-4 col-md-6 fadeInUp" data-wow-delay="0.3s">
+                <div class="service-item d-flex flex-column text-center rounded"  style="background-color: lightgrey;">
                     <div class="service-image flex-shrink-0 flex-shrink-0 rounded-circle mx-auto" style="width: 250px; height: 250px; overflow: hidden;">
                         <img src="/img/donation/노인.png" alt="" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <h5 class="mb-3">군포시늘푸른노인복지관</h5>
                     <p class="m-0">지역사회와 함께 신노년문화를 만들어가는 늘푸른노인복지관</p>
-                    <a class="btn btn-square" href="http://localhost:8080/donate"></a>
+                    <a class="btn btn-square" href="http://localhost:8080/donation/donate"></a>
                 </div>
             </div>
                   <!-- Service 3 -->
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="service-item d-flex flex-column text-center rounded">
+                <div class="service-item d-flex flex-column text-center rounded"  style="background-color: lightgrey;">
                     <div class="service-image flex-shrink-0 flex-shrink-0 rounded-circle mx-auto" style="width: 250px; height: 250px; overflow: hidden;">
                         <img src="/img/donation/청소년.png" alt="" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <h5 class="mb-3">군포시학교밖청소년지원센터</h5>
                     <p class="m-0">군포시청소년지원센터 꿈드림은 학교 밖 청소년의 특성을 고려한 맞춤형 서비스를 제공하여, 학교를 벗어난 청소년들이 당당하게 미래를 설계할 수 있도록 지원하는 학교 밖 청소년 지원센터입니다.</p>
-                    <a class="btn btn-square" href="http://localhost:8080/donate"></a>
+                    <a class="btn btn-square" href="http://localhost:8080/donation/donate"></a>
                 </div>
             </div>
 
             <!-- Service 4 -->
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="service-item d-flex flex-column text-center rounded">
+                <div class="service-item d-flex flex-column text-center rounded"  style="background-color: lightgrey;">
                     <div class="service-image flex-shrink-0 flex-shrink-0 rounded-circle mx-auto" style="width: 250px; height: 250px; overflow: hidden;">
                         <img src="/img/donation/돌봄.png" alt="" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <h5 class="mb-3">군포시다함께돌봄센터</h5>
                     <p class="m-0">소규모 복지시설 지원을 통해 시설과 수혜자 간의 복지서비스 격차를 완화하고, 공공의 영역과 복지기관에서 행.재정적으로 수용하지 못하는 사각지대의 이웃들, 그리고 지역사회에서 필요로 하는 복지욕구에 귀기울이며 따뜻한 나눔을 성실하게 실천하겠습니다.</p>
-                    <a class="btn btn-square" href="http://localhost:8080/donate"></a>
+                    <a class="btn btn-square" href="http://localhost:8080/donation/donate"></a>
                 </div>
             </div>
 
         <!-- Service 5 (한국 컴패션) -->
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="service-item d-flex flex-column text-center rounded">
+                <div class="service-item d-flex flex-column text-center rounded"  style="background-color: lightgrey;">
                     <div class="service-image flex-shrink-0 flex-shrink-0 rounded-circle mx-auto" style="width: 250px; height: 250px; overflow: hidden;">
                         <img src="/img/donation/환경.png" alt="" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <h5 class="mb-3 mt-4">안양군포의왕환경운동연합</h5>
                     <p class="m-0">우리를 위협하는 환경 파괴를 감시하고 우리의 생명을 지켜내겠습니다.</p>
-                    <a class="btn btn-square" href="http://localhost:8080/donate"></a>
+                    <a class="btn btn-square" href="http://localhost:8080/donation/donate"></a>
                 </div>
             </div>
 
             <!-- Service 6 -->
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="service-item d-flex flex-column text-center rounded">
+                <div class="service-item d-flex flex-column text-center rounded"  style="background-color: lightgrey;">
                     <div class="service-image flex-shrink-0 flex-shrink-0 rounded-circle mx-auto" style="width: 250px; height: 250px; overflow: hidden;">
                         <img src="/img/donation/고용.png" alt="" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <h5 class="mb-3">군포고용복지센터</h5>
                     <p class="m-0">우리 고용복지+센터는 주민 여러분께서 한 곳만 방문하면 다양한 고용과 복지서비스를 한 번에 제공받을 수 있도록 고용센터와 안양시 일자리센터, 안양시 복지지원, 안양 여성새로일하기센터, 서민금융지원센터가 함께 모여 서비스를 제공하고 있습니다.</p>
-                    <a class="btn btn-square" href="http://localhost:8080/donate"></a>
+                    <a class="btn btn-square" href="http://localhost:8080/donation/donate"></a>
                 </div>
             </div>
         </div>

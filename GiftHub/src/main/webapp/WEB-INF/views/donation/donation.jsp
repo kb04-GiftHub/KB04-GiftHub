@@ -106,7 +106,7 @@
             <div class="col-lg-4 col-md-6 portfolio-item" data-date="2023-09-10">
                 <div class="rounded overflow-hidden">
                     <div class="position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="img/donation/장애인.png" alt="">
+                        <img class="img-fluid w-100" src="/img/donation/장애인.png" alt="">
                         <div class="portfolio-overlay">
                             <a class="btn btn-square btn-outline-light mx-1" href="img/기부증서.png" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                             <a class="btn btn-square btn-outline-light mx-1" href="https://chest.or.kr/base.do"><i class="fa fa-link"></i></a>
@@ -121,7 +121,7 @@
                    <div class="col-lg-4 col-md-6 portfolio-item" data-date="2023-09-09">
                         <div class="rounded overflow-hidden">
                             <div class="position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="img/donation/노인.png" alt="">
+                                <img class="img-fluid w-100" src="/img/donation/노인.png" alt="">
                                 <div class="portfolio-overlay">
                                     <a class="btn btn-square btn-outline-light mx-1" href="img/기부증서.png" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                                     <a class="btn btn-square btn-outline-light mx-1" href="https://www.unicef.or.kr/?trackcode=g_kad&utm_source=google&utm_medium=cpc&utm_term=%EC%9C%A0%EB%8B%88%EC%84%B8%ED%94%84&utm_campaign=brand&mac_ad_key=2011231204&gad=1&gclid=Cj0KCQjw0vWnBhC6ARIsAJpJM6cK4zRMdLhLoKwKpbTY1XMq0jzhbdAzvaYbuYeKIZ7gPIKTrGpEHPUaApBjEALw_wcB"><i class="fa fa-link"></i></a>
@@ -136,7 +136,7 @@
                     <div class="col-lg-4 col-md-6 portfolio-item" data-date="2022-11-10">
                         <div class="rounded overflow-hidden">
                             <div class="position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="img/donation/청소년.png" alt="">
+                                <img class="img-fluid w-100" src="/img/donation/청소년.png" alt="">
                                 <div class="portfolio-overlay">
                                     <a class="btn btn-square btn-outline-light mx-1" href="img/기부증서.png" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                                     <a class="btn btn-square btn-outline-light mx-1" href="https://www.redcross.or.kr/main/main.do"><i class="fa fa-link"></i></a>
@@ -151,7 +151,7 @@
                     <div class="col-lg-4 col-md-6 portfolio-item" data-date="2023-08-29">
                         <div class="rounded overflow-hidden">
                             <div class="position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="img/donation/돌봄.png" alt="">
+                                <img class="img-fluid w-100" src="/img/donation/돌봄.png" alt="">
                                 <div class="portfolio-overlay">
                                     <a class="btn btn-square btn-outline-light mx-1" href="img/기부증서.png" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                                     <a class="btn btn-square btn-outline-light mx-1" href="https://www.worldvision.or.kr/campaign/2023/yongil/index.asp?&utm_source=google&utm_medium=searchad&utm_campaign=searchad&utm_term=%EC%9B%94%EB%93%9C%EB%B9%84%EC%A0%84&mcode=2836&gclid=Cj0KCQjw0vWnBhC6ARIsAJpJM6cKzLlWsTkjMNUybL2150Gls4C743CKhFWNs1bR3hrZnTrl2ePf3b8aAq_yEALw_wcB"><i class="fa fa-link"></i></a>
@@ -167,7 +167,7 @@
                    <div class="col-lg-4 col-md-6 portfolio-item" data-date="2022-03-03">
                         <div class="rounded overflow-hidden">
                             <div class="position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="img/donation/환경.png" alt="">
+                                <img class="img-fluid w-100" src="/img/donation/환경.png" alt="">
                                 <div class="portfolio-overlay">
                                     <a class="btn btn-square btn-outline-light mx-1" href="img/기부증서.png" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                                     <a class="btn btn-square btn-outline-light mx-1" href="https://www.sc.or.kr/"><i class="fa fa-link"></i></a>
@@ -183,7 +183,7 @@
                     <div class="col-lg-4 col-md-6 portfolio-item" data-date="2023-07-30">
                         <div class="rounded overflow-hidden">
                             <div class="position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="img/donation/고용.png" alt="">
+                                <img class="img-fluid w-100" src="/img/donation/고용.png" alt="">
                                 <div class="portfolio-overlay">
                                     <a class="btn btn-square btn-outline-light mx-1" href="img/기부증서.png" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                                     <a class="btn btn-square btn-outline-light mx-1" href="https://www.compassion.or.kr/"><i class="fa fa-link"></i></a>
