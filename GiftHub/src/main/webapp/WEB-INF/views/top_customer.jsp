@@ -91,9 +91,9 @@
 						<div class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">기부관리</a>
 							<div class="dropdown-menu m-0">
-								<a href="/donateboard" class="dropdown-item">기부게시판</a>
-								<a href="/donate" class="dropdown-item">기부하기</a>
-								<a href="/donation" class="dropdown-item">기부내역</a>
+								<a href="/donation/donateboard" class="dropdown-item">기부게시판</a>
+								<a href="/donation/donate" class="dropdown-item">기부하기</a>
+								<a href="/donation/donation" class="dropdown-item">기부내역</a>
 							</div>
 						</div>
 						<a href="/promotion_list" class="nav-item nav-link">커뮤니티</a>
