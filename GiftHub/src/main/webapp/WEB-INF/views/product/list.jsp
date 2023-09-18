@@ -11,7 +11,7 @@
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=51d9fff62677f5402eca46f516b03148&libraries=services"></script>
 <!-- body -->
-<c:import url="../top.jsp" />
+<c:import url="../top_customer.jsp" />
 <div class="container-xxl py-5 bg-primary hero-header">
 	<div class="container my-5 py-5 px-lg-5">
 		<div class="wow fadeInUp" data-wow-delay="0.1s">
@@ -64,7 +64,9 @@
 		4 productExp
 		5 productImage
 		6 storeId
-		7 categoryNo -->
+		7 categoryNo \
+		8 storeName
+		-->
 	<!-- Projects Start -->
 	<div class="container-xl py-1">
 		<!-- 게시물 나열 -->
@@ -109,7 +111,7 @@
 									href="/product/detail?productNo=${product[0]}" data-lightbox="portfolio">
 								<i class="fa fa-eye"></i></a> 
 								<a class="btn btn-square btn-outline-light mx-1" 
-									href="/promotionView_detail?promotionNo=">
+									href="https://m.place.naver.com/rest/v1/search?query=${product[8] }" target="_blank">
 								<i class="fa fa-link"></i></a>
 							</div>
 						</div>

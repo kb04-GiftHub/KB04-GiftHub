@@ -77,8 +77,6 @@ public class SmsService {
 		
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
-//		headers.set("Content-Type","application/x-www-form-urlencoded; charset=utf-8");
-//		headers.set("Content-Type","application/json; charset=utf-8");
 		headers.set("x-ncp-apigw-timestamp", time.toString());
 		headers.set("x-ncp-iam-access-key", accessKey);
 		headers.set("x-ncp-apigw-signature-v2", makeSignature(time));
@@ -87,12 +85,8 @@ public class SmsService {
 		messages.add(messageDto);
 		FileIdDto fdto=new FileIdDto();
 		fdto.setFileId(mresDto.getFileId());
-//		fdto.setFileId("0c86117f-9350-4b69-a522-1ea5ea87838f");
 		List<FileIdDto> filedList = new ArrayList<>();
 		filedList.add(fdto);
-//		String str[] = new String[1];
-//		str[1] = mresDto.getFileId();
-//		filedList.add(str);
 		SmsRequestDto request = SmsRequestDto.builder()
 				.type("MMS")
 				.contentType("COMM")
@@ -100,7 +94,6 @@ public class SmsService {
 				.subject(messageDto.getSubject())
 				.content(messageDto.getContent())
 				.messages(messages)
-//				.files("0c86117f-9350-4b69-a522-1ea5ea87838f")
 				.files(filedList)
 				.build();
 		

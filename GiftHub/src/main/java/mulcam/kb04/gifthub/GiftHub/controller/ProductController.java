@@ -3,7 +3,9 @@ package mulcam.kb04.gifthub.GiftHub.controller;
 import java.io.File;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
@@ -19,15 +21,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import lombok.extern.slf4j.Slf4j;
 import mulcam.kb04.gifthub.GiftHub.dto.BuyDto;
 import mulcam.kb04.gifthub.GiftHub.dto.CustomerDto;
 import mulcam.kb04.gifthub.GiftHub.dto.GiftDto;
+import mulcam.kb04.gifthub.GiftHub.dto.JjimDto;
 import mulcam.kb04.gifthub.GiftHub.dto.ProductDto;
 import mulcam.kb04.gifthub.GiftHub.dto.StoreDto;
 import mulcam.kb04.gifthub.GiftHub.project.GifticonGenerator;
 import mulcam.kb04.gifthub.GiftHub.project.UniqueCode;
 import mulcam.kb04.gifthub.GiftHub.service.ProductService;
 
+@Slf4j
 @Controller
 public class ProductController {
 	
@@ -198,10 +203,21 @@ public class ProductController {
 		
 		ProductDto dto = productService.findByProductNo(productNo);
 		model.addAttribute("product",dto);
-		
+		CustomerDto cdto=(CustomerDto) ses.getAttribute("user");
+		cdto=productService.findByCustomerId(cdto.getCustomerId());
+		ses.setAttribute("user",cdto);
 		StoreDto storeDto = productService.findByStoreId(dto.getStoreId());
 		model.addAttribute("store", storeDto);
 		
+				
+		JjimDto jdto = productService.findByProductNoCustomerId(productNo, cdto.getCustomerId());
+		if(jdto == null) {
+			jdto=new JjimDto();
+			jdto.setJjimStatus(3);
+			model.addAttribute("jdto",jdto);
+		}else {
+			model.addAttribute("jdto",jdto);
+		}
 		return "product/detail";
 	}
 	
@@ -254,4 +270,58 @@ public class ProductController {
 		
 		return "redirect:/product/list";
 	}
+	
+	@GetMapping("/product/idCheck")
+	@ResponseBody
+	public Map<String, String> idCheck(@RequestParam String customerId,@RequestParam String giftId, Model model, HttpSession ses){
+		Map<String, String> map = new HashMap<>();
+		CustomerDto dto = productService.findByCustomerId(giftId);
+		CustomerDto cDto = productService.findByCustomerId(customerId);
+		if(dto == null) {
+			map.put("msg", "실패");
+		}else if(cDto == dto) {
+			map.put("msg", "실패");
+		}else {
+			map.put("msg", "성공");
+		}
+		return map;
+	}
+	
+	@GetMapping("/product/jjimPlus")
+	@ResponseBody
+	public Map<String, Object> jjimPlus(
+			@RequestParam("customerId") String customerId, 
+			@RequestParam("productNo") int productNo,
+			@RequestParam("jjimStatus") int jjimStatus,
+			Model model, HttpSession ses){
+		Map<String, Object> map = new HashMap<>();
+			
+		JjimDto jdto = new JjimDto();	
+		
+		if(jjimStatus == 3) {
+			jdto = new JjimDto();
+			jdto.setCustomerId(customerId);
+			jdto.setProductNo(productNo);
+			jdto.setJjimStatus(1);
+			jdto = productService.jjimSave(jdto);
+			
+		}else if(jjimStatus == 2){
+			jdto = productService.findByProductNoCustomerId(productNo, customerId);
+			jdto.setJjimStatus(1);
+			jdto = productService.jjimSave(jdto);
+		}else if(jjimStatus == 1) {
+			jdto = productService.findByProductNoCustomerId(productNo, customerId);
+			jdto.setJjimStatus(2);
+			jdto = productService.jjimSave(jdto);
+		}
+		map.put("jjimStatus", jdto.getJjimStatus());
+		map.put("jdto", jdto);
+		map.put("msg","성공");
+		return map;
+	}
+	
+	
+	
+	
+	
 }
