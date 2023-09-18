@@ -55,7 +55,8 @@
 		                                 <div class="col-lg-3 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s" onclick="window.location.href = '/product/myList/product_detail?productNo=${myList.productNo}'">
 		                                          <div class="rounded overflow-hidden" style="border: 4px solid #E2EFFF">
 		                                              <div class="position-relative overflow-hidden" style="height: 200px; display: flex; justify-content: center; align-items: center;">
-		                                                  <img class="img-fluid" src="/upload_images/product/${myList.productImage}" alt="" id="img" onload="adjustImageSize(this)">
+		                                                  <img class="img-fluid" src="/resources/products/${myList.productImage}" alt="" id="img" onload="adjustImageSize(this)">
+<%-- 		                                              <img class="img-fluid" src="/upload_images/product/${myList.productImage}" alt="" id="img" onload="adjustImageSize(this)"> --%>
 		                                              </div>
 		                                              <div class="p-3" style="background: #E2EFFF; color: gray;">
 		                                                  <%-- <p class="mb-0">${myList}</p> --%>
