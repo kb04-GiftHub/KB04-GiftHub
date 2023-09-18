@@ -39,7 +39,9 @@
    <c:set var="imagePath" value="${pageContext.request.contextPath}/upload_images/product/${list[10]}" />
    <div class="container-xxl py-5 bg-primary hero-header">
       <div class="container my-5 py-5 px-lg-5">
-         <div class="wow fadeInUp" data-wow-delay="0.1s"></div>
+         <div class="wow fadeInUp" data-wow-delay="0.1s">
+         	<h1 class="text-center mb-5">MY GIFTICON</h1>
+         </div>
 
       </div>
    </div>
