@@ -101,31 +101,8 @@
 									placeholder="Your Name"> <label for="name">성명</label><br>
 							</div>
 
-							<div class="col-md-6">
-								<select id="promotionType" name="promotionType">
-									<option value="1">정기</option>
-									<option value="2">일시</option>
-								</select>
-							</div>
-							<div class="row">
-								<!-- 포인트 정보 표시 -->
-								<div class="col-4 d-flex align-items-center">
-									<h5>
-										보유 포인트: <span id="pointBalance">로딩 중...</span> 포인트
-									</h5>
-								</div>
-
-
-								<!-- 포인트 사용 입력 필드 -->
-								<div class="col-8 text-center">
-									<div class="form-floating">
-										<input type="number" class="form-control" id="pointToUse"
-											placeholder="사용할 포인트">
-									</div>
-								</div>
-							</div>
-							<br>
-
+							
+							
 							<script>
     // 서버에서 포인트 정보 가져오기
     fetch('get_points.php') // get_points.php 파일은 위에서 작성한 PHP 파일이어야 합니다.
@@ -179,6 +156,29 @@ document.getElementById("donationButton").addEventListener("click", function () 
 								id="message" style="height: 150px"></textarea>
 							<label for="message">내용</label>
 						</div>
+						
+						<br>
+						<div class="row">
+								<!-- 포인트 정보 표시 -->
+								<div class="col-4 d-flex align-items-center">
+									<h5>
+										보유 포인트: <span id="pointBalance">로딩 중...</span> 포인트
+									</h5>
+								</div>
+
+
+								<!-- 포인트 사용 입력 필드 -->
+							
+								<div class="col-8 text-center">
+									<div class="form-floating">
+										<input type="number" class="form-control" id="pointToUse"
+											placeholder="사용할 포인트">
+									</div>
+								</div>
+							</div>
+							<br>
+						
+						
 						<div class="form-group">
 							<div class="form-check">
 								<input type="checkbox" class="form-check-input"

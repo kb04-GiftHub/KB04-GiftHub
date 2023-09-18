@@ -106,90 +106,92 @@
             <div class="col-lg-4 col-md-6 portfolio-item" data-date="2023-09-10">
                 <div class="rounded overflow-hidden">
                     <div class="position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="img/사랑의 열매.png" alt="">
+                        <img class="img-fluid w-100" src="img/donation/장애인.png" alt="">
                         <div class="portfolio-overlay">
                             <a class="btn btn-square btn-outline-light mx-1" href="img/기부증서.png" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                             <a class="btn btn-square btn-outline-light mx-1" href="https://chest.or.kr/base.do"><i class="fa fa-link"></i></a>
                         </div>
                     </div>
                     <div class="bg-light p-4">
-                        <p class="text-primary fw-medium mb-2">사랑의 열매</p>
-                        <h5 class="lh-base mb-0 custom-h5">사랑의 열매는 나와 가족을 사랑하는 마음으로 이웃에게 사랑을 전하자는 나눔의 의미를 담고 있습니다.</h5>
+                        <p class="text-primary fw-medium mb-2">군포시 장애인종합복지관</p>
+                        <h5 class="lh-base mb-0 custom-h5">장애가 있는 모든 사람들이 삶, 학습, 일 및 지역사회에 완전히 참여한다는 목표를 실현하기 위해 최선을 다하고 있습니다.</h5>
                     </div>
                 </div>
             </div>
                    <div class="col-lg-4 col-md-6 portfolio-item" data-date="2023-09-09">
                         <div class="rounded overflow-hidden">
                             <div class="position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="img/유니세프.png" alt="">
+                                <img class="img-fluid w-100" src="img/donation/노인.png" alt="">
                                 <div class="portfolio-overlay">
                                     <a class="btn btn-square btn-outline-light mx-1" href="img/기부증서.png" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                                     <a class="btn btn-square btn-outline-light mx-1" href="https://www.unicef.or.kr/?trackcode=g_kad&utm_source=google&utm_medium=cpc&utm_term=%EC%9C%A0%EB%8B%88%EC%84%B8%ED%94%84&utm_campaign=brand&mac_ad_key=2011231204&gad=1&gclid=Cj0KCQjw0vWnBhC6ARIsAJpJM6cK4zRMdLhLoKwKpbTY1XMq0jzhbdAzvaYbuYeKIZ7gPIKTrGpEHPUaApBjEALw_wcB"><i class="fa fa-link"></i></a>
                                 </div>
                             </div>
                             <div class="bg-light p-4">
-                                <p class="text-primary fw-medium mb-2">유니세프</p>
-                                <h5 class="lh-base mb-0 custom-h5">월 30,000원 이면, 전 세계 어린이를 위해 연필 7,200 자루를 지원할 수 있습니다.</a>
+                                <p class="text-primary fw-medium mb-2">군포시늘푸른노인복지관</p>
+                                <h5 class="lh-base mb-0 custom-h5">지역사회와 함께 신노년문화를 만들어가는 늘푸른노인복지관</h5>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 portfolio-item" data-date="2022-11-10">
                         <div class="rounded overflow-hidden">
                             <div class="position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="img/적십자.png" alt="">
+                                <img class="img-fluid w-100" src="img/donation/청소년.png" alt="">
                                 <div class="portfolio-overlay">
                                     <a class="btn btn-square btn-outline-light mx-1" href="img/기부증서.png" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                                     <a class="btn btn-square btn-outline-light mx-1" href="https://www.redcross.or.kr/main/main.do"><i class="fa fa-link"></i></a>
                                 </div>
                             </div>
                             <div class="bg-light p-4">
-                                <p class="text-primary fw-medium mb-2">대한 적십자사</p>
-                                <h5 class="lh-base mb-0 custom-h5">모든 활동을 투명하게 공개합니다.</a>
+                                <p class="text-primary fw-medium mb-2">군포시학교밖청소년지원센터</p>
+                                <h5 class="lh-base mb-0 custom-h5">군포시청소년지원센터 꿈드림은 학교 밖 청소년의 특성을 고려한 맞춤형 서비스를 제공하여, 학교를 벗어난 청소년들이 당당하게 미래를 설계할 수 있도록 지원하는 학교 밖 청소년 지원센터입니다.</h5>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 portfolio-item" data-date="2023-08-29">
                         <div class="rounded overflow-hidden">
                             <div class="position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="img/월드비전.png" alt="">
+                                <img class="img-fluid w-100" src="img/donation/돌봄.png" alt="">
                                 <div class="portfolio-overlay">
                                     <a class="btn btn-square btn-outline-light mx-1" href="img/기부증서.png" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                                     <a class="btn btn-square btn-outline-light mx-1" href="https://www.worldvision.or.kr/campaign/2023/yongil/index.asp?&utm_source=google&utm_medium=searchad&utm_campaign=searchad&utm_term=%EC%9B%94%EB%93%9C%EB%B9%84%EC%A0%84&mcode=2836&gclid=Cj0KCQjw0vWnBhC6ARIsAJpJM6cKzLlWsTkjMNUybL2150Gls4C743CKhFWNs1bR3hrZnTrl2ePf3b8aAq_yEALw_wcB"><i class="fa fa-link"></i></a>
                                 </div>
                             </div>
                             <div class="bg-light p-4">
-                                <p class="text-primary fw-medium mb-2">월드비전</p>
-                                <h5 class="lh-base mb-0 custom-h5">오늘도 아픈 가족을 돌보기 위해 택배를 나르는 16살 용일이에게 따뜻한 관심을 가져주세요.</a>
+                                <p class="text-primary fw-medium mb-2">군포시다함께돌봄센터</p>
+                                <h5 class="lh-base mb-0 custom-h5">소규모 복지시설 지원을 통해 시설과 수혜자 간의 복지서비스 격차를 완화하고, 공공의 영역과 복지기관에서 행.재정적으로 수용하지 못하는 사각지대의 이웃들, 그리고 지역사회에서 필요로 하는 복지욕구에 귀기울이며 따뜻한 나눔을 성실하게 실천하겠습니다.</h5>
                             </div>
                         </div>
                     </div>
-                   <div class="col-lg-4 col-md-6 portfolio-item" data-date="2023-07-30">
-                        <div class="rounded overflow-hidden">
-                            <div class="position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="img/한국컴패션.png" alt="">
-                                <div class="portfolio-overlay">
-                                    <a class="btn btn-square btn-outline-light mx-1" href="img/기부증서.png" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                    <a class="btn btn-square btn-outline-light mx-1" href="https://www.compassion.or.kr/"><i class="fa fa-link"></i></a>
-                                </div>
-                            </div>
-                            <div class="bg-light p-4">
-                                <p class="text-primary fw-medium mb-2">한국 컴패션</p>
-                                <h5 class="lh-base mb-0 custom-h5">정직하고 효율적인 후원금 사용으로 어린이 양육에 집중합니다</a>
-                            </div>
-                        </div>
-                    </div>
+                   
                    <div class="col-lg-4 col-md-6 portfolio-item" data-date="2022-03-03">
                         <div class="rounded overflow-hidden">
                             <div class="position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="img/세이브더칠드런.png" alt="">
+                                <img class="img-fluid w-100" src="img/donation/환경.png" alt="">
                                 <div class="portfolio-overlay">
                                     <a class="btn btn-square btn-outline-light mx-1" href="img/기부증서.png" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                                     <a class="btn btn-square btn-outline-light mx-1" href="https://www.sc.or.kr/"><i class="fa fa-link"></i></a>
                                 </div>
                             </div>
                             <div class="bg-light p-4">
-                                <p class="text-primary fw-medium mb-2">세이브더칠드런</p>
-                                <h5 class="lh-base mb-0 custom-h5">오직 아동만을 위해 100년간 활동 중인 투명한 국제NGO. SAVEONE 긴급구호 팔찌. 저소득가정 반찬 지원. 아동 정기후원.</a>
+                                <p class="text-primary fw-medium mb-2">안양군포의왕환경운동연합</p>
+                                <h5 class="lh-base mb-0 custom-h5">우리를 위협하는 환경 파괴를 감시하고 우리의 생명을 지켜내겠습니다.</h5>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 portfolio-item" data-date="2023-07-30">
+                        <div class="rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <img class="img-fluid w-100" src="img/donation/고용.png" alt="">
+                                <div class="portfolio-overlay">
+                                    <a class="btn btn-square btn-outline-light mx-1" href="img/기부증서.png" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                                    <a class="btn btn-square btn-outline-light mx-1" href="https://www.compassion.or.kr/"><i class="fa fa-link"></i></a>
+                                </div>
+                            </div>
+                            <div class="bg-light p-4">
+                                <p class="text-primary fw-medium mb-2">군포고용복지센터</p>
+                                <h5 class="lh-base mb-0 custom-h5">우리 고용복지+센터는 주민 여러분께서 한 곳만 방문하면 다양한 고용과 복지서비스를 한 번에 제공받을 수 있도록 고용센터와 안양시 일자리센터, 안양시 복지지원, 안양 여성새로일하기센터, 서민금융지원센터가 함께 모여 서비스를 제공하고 있습니다.</h5>
                             </div>
                         </div>
                     </div>
