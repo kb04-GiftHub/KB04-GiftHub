@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import mulcam.kb04.gifthub.GiftHub.dto.BuyDto;
 import mulcam.kb04.gifthub.GiftHub.dto.CustomerDto;
 import mulcam.kb04.gifthub.GiftHub.dto.GiftDto;
+import mulcam.kb04.gifthub.GiftHub.dto.JjimDto;
 import mulcam.kb04.gifthub.GiftHub.dto.ProductDto;
 import mulcam.kb04.gifthub.GiftHub.dto.StoreDto;
 import mulcam.kb04.gifthub.GiftHub.entity.Product;
@@ -35,6 +36,14 @@ public interface ProductService {
 	public GiftDto createGifticon(GiftDto gift);
 
 	public List<ProductDto> findByStoreIdToList(String id);
+
+	public JjimDto jjimSave(JjimDto dto);
+
+	public JjimDto findByProductNoCustomerId(int productNo, String customerId);
+
+	public boolean checkJjim(int jjimNo);
+
+	public JjimDto findByJjimNo(int jjimNo);
 
 //	public Product getProductById(int productId);
 

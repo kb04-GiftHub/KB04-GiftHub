@@ -1,5 +1,6 @@
 package mulcam.kb04.gifthub.GiftHub.controller;
 
+import java.awt.FontFormatException;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -71,6 +72,83 @@ public class GifticonController {
 		return "gifticon/use";
 	}
 	
+	@PostMapping("/gifticon/buyId")
+	public String product_buyId(@RequestParam("productNo") int productNo, 
+			@RequestParam("customerId") String customerId,
+			@RequestParam("sendId") String sendId, Model model, HttpSession ses
+			,RedirectAttributes redirect) throws FontFormatException, IOException {
+		
+		//회원객체와 상품객체 불러오기
+		CustomerDto customer = productService.findByCustomerId(customerId);
+		ProductDto product = productService.findByProductNo(productNo);
+		StoreDto store = productService.findByStoreId(product.getStoreId());
+		
+		//포인트 유무(부족하면 msg보내기)
+		if(customer.getPoint() < product.getProductPrice()) {
+			model.addAttribute("Msg","포인트가 부족합니다");
+			model.addAttribute("loc","product/detail?productNo="+productNo);
+			return "msg";
+		}
+		//포인트 차감
+		customer.setPoint(customer.getPoint()-product.getProductPrice());
+		productService.payPoint(customer);
+		ses.setAttribute("user", customer);
+		
+		//구매내역 생성
+		BuyDto buy = new BuyDto();
+		buy.setStoreId(store.getStoreId());
+		buy.setProductNo(productNo);
+		buy.setBuyPrice(product.getProductPrice());
+		buy.setBuyerId(customerId);
+		buy.setBuyDate(new Date());
+		buy = productService.buyProduct(buy);
+		
+		//기프티콘 생성
+		String unique=UniqueCode.generateUniqueBarcode();//기프티콘 고유번호
+		Long giftNo = Long.parseLong(unique);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(product.getProductExp());
+        calendar.add(Calendar.MONTH, 1);
+        Date expDate = calendar.getTime();
+		String barcodeName = GifticonGenerator.createGiftCard(ses,product,unique,store,expDate);
+		
+		GiftDto gift = new GiftDto();
+		gift.setGiftNo(giftNo);
+		gift.setCustomerId(sendId);
+		gift.setBuyNo(buy.getBuyNo());
+		gift.setGiftBarcode(barcodeName);
+		gift.setGiftExp(expDate);
+		gift.setGiftStatus(1);
+		gift = productService.createGifticon(gift);
+		
+		ServletContext app=ses.getServletContext();
+		String directory=app.getRealPath("/resources/Gifticon");
+        String upDir = directory + "/"+barcodeName;
+		
+//				String upDir=System.getProperty("user.dir"); // 프로젝트 루트 디렉토리
+//				upDir+="/src/main/resources/static/upload_images/gifticon/"+barcodeName;
+        
+		String imagePath = upDir;
+		
+		File imageFile = new File(imagePath);
+    	FileInputStream inputStream = new FileInputStream(imageFile);
+    	byte[] imageBytes = new byte[(int) imageFile.length()];
+		inputStream.read(imageBytes);
+		inputStream.close();
+		String base64Image = Base64.encodeBase64String(imageBytes);
+		
+		FilesDto dto = new FilesDto("GIFTHUB_gifticon.jpg",base64Image);
+		
+//		MessageDto messageDto = new MessageDto(sendTel,"GiftHub","구매하신 기프티콘이 발송되었습니다. 이용 문의가 필요하시면 010-xxxx-xxxx으로 연락주시기 바랍니다.");
+//		
+//		MmsResponseDto mmsResponse = mmsService.sendSms(dto);
+//		SmsResponseDto response = smsService.sendSms(messageDto, mmsResponse);
+//		
+		redirect.addFlashAttribute("msg", "성공적으로 기프티콘을 선물하였습니다.");
+		
+		return "redirect:/product/detail?productNo="+productNo;
+	}
+	
 	@PostMapping("/gifticon/buy")
 	public String product_duy(@RequestParam("productNo") int productNo, 
 			@RequestParam("customerId") String customerId,
@@ -116,11 +194,11 @@ public class GifticonController {
 		gift.setBuyNo(buy.getBuyNo());
 		gift.setGiftBarcode(barcodeName);
 		gift.setGiftExp(expDate);
-		gift.setGiftStatus(0);
+		gift.setGiftStatus(1);
 		gift = productService.createGifticon(gift);
 		
 		ServletContext app=ses.getServletContext();
-		String directory=app.getRealPath("/resources/Gificon");
+		String directory=app.getRealPath("/resources/Gifticon");
         String upDir = directory + "/"+barcodeName;
 		
 //		String upDir=System.getProperty("user.dir"); // 프로젝트 루트 디렉토리

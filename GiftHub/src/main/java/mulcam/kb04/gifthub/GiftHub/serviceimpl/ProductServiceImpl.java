@@ -9,16 +9,19 @@ import org.springframework.stereotype.Component;
 import mulcam.kb04.gifthub.GiftHub.dto.BuyDto;
 import mulcam.kb04.gifthub.GiftHub.dto.CustomerDto;
 import mulcam.kb04.gifthub.GiftHub.dto.GiftDto;
+import mulcam.kb04.gifthub.GiftHub.dto.JjimDto;
 import mulcam.kb04.gifthub.GiftHub.dto.ProductDto;
 import mulcam.kb04.gifthub.GiftHub.dto.StoreDto;
 import mulcam.kb04.gifthub.GiftHub.entity.Buy;
 import mulcam.kb04.gifthub.GiftHub.entity.Customer;
 import mulcam.kb04.gifthub.GiftHub.entity.Gift;
+import mulcam.kb04.gifthub.GiftHub.entity.Jjim;
 import mulcam.kb04.gifthub.GiftHub.entity.Product;
 import mulcam.kb04.gifthub.GiftHub.entity.Store;
 import mulcam.kb04.gifthub.GiftHub.repository.BuyRepository;
 import mulcam.kb04.gifthub.GiftHub.repository.CustomerRepository;
 import mulcam.kb04.gifthub.GiftHub.repository.GiftRepository;
+import mulcam.kb04.gifthub.GiftHub.repository.JjimRepository;
 import mulcam.kb04.gifthub.GiftHub.repository.ProductRepository;
 import mulcam.kb04.gifthub.GiftHub.repository.StoreRepository;
 import mulcam.kb04.gifthub.GiftHub.service.ProductService;
@@ -40,6 +43,9 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Autowired
 	private GiftRepository giftRepo;
+	
+	@Autowired
+	private JjimRepository jjimRepo;
 	
 	
 	@Override
@@ -107,9 +113,12 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public CustomerDto findByCustomerId(String customerId) {
 		Customer customer = customerRepo.findByCustomerId(customerId);
-		CustomerDto dto = CustomerDto.entityToDto(customer);
-		
-		return dto;
+		if(customer != null) {
+			CustomerDto dto = CustomerDto.entityToDto(customer);
+			return dto;
+		}else {
+			return null;
+		}
 	}
 
 	@Override
@@ -135,12 +144,41 @@ public class ProductServiceImpl implements ProductService {
 		return gift;
 	}
 
-	
+	@Override
+	public JjimDto jjimSave(JjimDto jdto) {
+		
+		Jjim jjim = Jjim.dtoToEntity(jdto);
+		jjim=jjimRepo.save(jjim);
+		jdto=JjimDto.entityToDto(jjim);
+		return jdto;
+	}
 
+	@Override
+	public JjimDto findByProductNoCustomerId(int productNo, String customerId) {
+		Product product = repository.findByProductNo(productNo);
+		Customer customer = customerRepo.findByCustomerId(customerId);
+		Jjim jjim = jjimRepo.findByProductNoAndCustomerId(product, customer);
+		if(jjim == null) {
+			return null;
+		}
+		JjimDto jdto = JjimDto.entityToDto(jjim);
+		
+		return jdto;
+	}
 
-	
-	
+	@Override
+	public boolean checkJjim(int jjimNo) {
+		Jjim jjim = jjimRepo.findByJjimNo(jjimNo);
+		if(jjim == null) {
+			return false;
+		}
+		return true;
+	}
 
-
-
+	@Override
+	public JjimDto findByJjimNo(int jjimNo) {
+		Jjim jjim = jjimRepo.findByJjimNo(jjimNo);
+		JjimDto jdto = JjimDto.entityToDto(jjim);
+		return jdto;
+	}
 }
