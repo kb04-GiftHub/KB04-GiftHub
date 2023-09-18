@@ -89,7 +89,7 @@
 						<a href="/" class="nav-item nav-link">구매하기</a>
 						<a href="/showMap" class="nav-item nav-link">가맹점찾기</a>
 						<div class="nav-item dropdown">
-							<a href="/donate" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">기부관리</a>
+							<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">기부관리</a>
 							<div class="dropdown-menu m-0">
 								<a href="/donateboard" class="dropdown-item">기부게시판</a>
 								<a href="/donate" class="dropdown-item">기부하기</a>
@@ -98,7 +98,7 @@
 						</div>
 						<a href="/promotion_list" class="nav-item nav-link">커뮤니티</a>
 						<div class="nav-item dropdown">
-							<a href="/member/mypage/check_pwd" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">마이페이지</a>
+							<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">마이페이지</a>
 							<div class="dropdown-menu m-0">
 								<a href="/member/mypage/check_pwd" class="dropdown-item">정보수정</a>
 								<a href="/member/mypage/use_list" class="dropdown-item">나의 기프티콘</a>
@@ -108,9 +108,9 @@
 					</div>
 					<div class="navbar-nav py-0" id="loginInfo" style="visibility: hidden;">
 						<div class="nav-item dropdown">
-							<a href="list" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="margin-right: 0 !important;">
+							<p class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="margin: 0 !important; padding: 0;">
 								<img src="/img/user.png" style="width: 50px; margin-right: 15px;">${user.customerNickname}
-							</a>
+							</p>
 							<div class="dropdown-menu m-0">
 								<a class="dropdown-item">
 									<img src="/img/coin.png" style="width: 30px;"> ${user.point} Point
