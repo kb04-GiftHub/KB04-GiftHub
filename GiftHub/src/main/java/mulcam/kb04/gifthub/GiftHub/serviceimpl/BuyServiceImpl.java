@@ -9,7 +9,6 @@ import java.util.stream.IntStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import mulcam.kb04.gifthub.GiftHub.entity.Buy;
 import mulcam.kb04.gifthub.GiftHub.entity.Store;
 import mulcam.kb04.gifthub.GiftHub.repository.BuyRepository;
 import mulcam.kb04.gifthub.GiftHub.service.BuyService;
@@ -33,7 +32,7 @@ public class BuyServiceImpl implements BuyService {
 	}
 
 	@Override
-	public List<Object[]> findByStoreId(String storeId) {
+	public List<Object[]> findByStoreId(Store storeId) {
 		return buyRepository.findStoreDetailsByStoreId(storeId);
 	}
 
