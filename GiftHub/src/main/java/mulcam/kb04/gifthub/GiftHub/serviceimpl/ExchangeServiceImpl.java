@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import mulcam.kb04.gifthub.GiftHub.dto.ExchangeDto;
+import mulcam.kb04.gifthub.GiftHub.entity.Store;
 import mulcam.kb04.gifthub.GiftHub.repository.ExchangeRepository;
 import mulcam.kb04.gifthub.GiftHub.service.ExchangeService;
 
@@ -25,8 +26,8 @@ public class ExchangeServiceImpl implements ExchangeService {
 	}
 
 	@Override
-	public Map<Integer, Long> getCountByMonth() {
-		List<Object[]> counts = exchangeRepository.sumExchangeMoneyByMonth();
+	public Map<Integer, Long> getCountByMonth(Store storeId) {
+		List<Object[]> counts = exchangeRepository.sumExchangeMoneyByMonth(storeId);
 
 		Map<Integer, Long> countMap = IntStream.rangeClosed(1, 12).boxed()
 				.collect(Collectors.toMap(Function.identity(), v -> 0L));
