@@ -9,26 +9,20 @@ import java.util.stream.IntStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import mulcam.kb04.gifthub.GiftHub.dto.ExchangeDto;
+import mulcam.kb04.gifthub.GiftHub.entity.Buy;
 import mulcam.kb04.gifthub.GiftHub.entity.Store;
-import mulcam.kb04.gifthub.GiftHub.repository.ExchangeRepository;
-import mulcam.kb04.gifthub.GiftHub.service.ExchangeService;
+import mulcam.kb04.gifthub.GiftHub.repository.BuyRepository;
+import mulcam.kb04.gifthub.GiftHub.service.BuyService;
 
 @Service
-public class ExchangeServiceImpl implements ExchangeService {
-
+public class BuyServiceImpl implements BuyService {
 	@Autowired
-	private ExchangeRepository exchangeRepository;
+	BuyRepository buyRepository;
 
 	@Override
-	public List<ExchangeDto> findExchangeDetailsByStoreId(String storeId) {
-		return exchangeRepository.findExchangeDetailsByStoreId(storeId);
-	}
-
-	@Override
-	public Map<Integer, Long> getCountByMonth(Store storeId) {
-		List<Object[]> counts = exchangeRepository.sumExchangeMoneyByMonth(storeId);
-
+	public Map<Integer, Long> getCountByMonth(Store store) {
+		List<Object[]> counts = buyRepository.countByMonth(store);
+		System.out.println(counts);
 		Map<Integer, Long> countMap = IntStream.rangeClosed(1, 12).boxed()
 				.collect(Collectors.toMap(Function.identity(), v -> 0L));
 
@@ -36,6 +30,11 @@ public class ExchangeServiceImpl implements ExchangeService {
 			countMap.put((Integer) count[0], (Long) count[1]);
 		}
 		return countMap;
+	}
+
+	@Override
+	public List<Object[]> findByStoreId(String storeId) {
+		return buyRepository.findStoreDetailsByStoreId(storeId);
 	}
 
 }
