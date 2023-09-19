@@ -81,14 +81,14 @@
 				<div class="collapse navbar-collapse text-center" id="navbarCollapse">
 					<div class="navbar-nav mx-auto py-0">
 						<a href="/member/main" class="nav-item nav-link active">HOME</a> 
-						<a href="/" class="nav-item nav-link">구매하기</a>
+						<a href="/product/list" class="nav-item nav-link">구매하기</a>
 						<a href="/showMap" class="nav-item nav-link">가맹점찾기</a>
 						<div class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">기부관리</a>
 							<div class="dropdown-menu m-0">
 								<a href="/donation/donateboard" class="dropdown-item">기부게시판</a>
 								<a href="/donation/donate" class="dropdown-item">기부하기</a>
-								<a href="/donation/donation" class="dropdown-item">기부내역</a>
+								<a href="/donation/donation_list" class="dropdown-item">기부내역</a>
 							</div>
 						</div>
 						<a href="/promotion_member/promotionView_list" class="nav-item nav-link">커뮤니티</a>

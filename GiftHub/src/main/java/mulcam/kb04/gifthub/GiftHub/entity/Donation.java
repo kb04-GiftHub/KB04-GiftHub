@@ -34,5 +34,5 @@ public class Donation {
 
 	@ManyToOne
 	@JoinColumn(name = "orgNo")
-	private DonationOrg orgNo;
+	private DonationOrg donationOrg;
 }

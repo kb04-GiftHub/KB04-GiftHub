@@ -175,7 +175,7 @@ public class GifticonGenerator {
 			UUID uuid = UUID.randomUUID();
 			gifticonName = uuid.toString()+"_gifticon.jpg";
 			ServletContext app=ses.getServletContext();
-			String upDir=app.getRealPath("/resources/Gificon");
+			String upDir=app.getRealPath("/resources/Gifticon");
 			String rootDirectory = upDir;
 			String giftCardImageFile = rootDirectory+"/"+gifticonName; // 저장될 파일 이름
 			ImageIO.write(giftCardImage, "jpg", new File(giftCardImageFile));
