@@ -9,6 +9,7 @@ import java.util.stream.IntStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import mulcam.kb04.gifthub.GiftHub.repository.CombinedViewRepository;
 import mulcam.kb04.gifthub.GiftHub.repository.GiftUsedRepository;
 import mulcam.kb04.gifthub.GiftHub.service.GiftUsedService;
 
@@ -18,9 +19,12 @@ public class GiftUsedServiceImpl implements GiftUsedService {
 	@Autowired
 	private GiftUsedRepository giftUsedRepository;
 
+	@Autowired
+	private CombinedViewRepository combinedViewRepository;
+
 	@Override
-	public Map<Integer, Long> getCountByMonth() {
-		List<Object[]> counts = giftUsedRepository.countByMonth();
+	public Map<Integer, Long> getCountByMonth(String storeId) {
+		List<Object[]> counts = combinedViewRepository.countByMonth(storeId);
 
 		// Initialize a map with all months set to 0
 		Map<Integer, Long> countMap = IntStream.rangeClosed(1, 12).boxed()
