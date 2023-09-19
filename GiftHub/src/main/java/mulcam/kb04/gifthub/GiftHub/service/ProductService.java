@@ -47,6 +47,8 @@ public interface ProductService {
 	
 	public void deleteByProductNo(int productNo);
 
+	public List<StoreDto> allStoresByCategoryNo(int categoryNum);
+
 
 //	public Product getProductById(int productId);
 
