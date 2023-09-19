@@ -41,7 +41,7 @@ public class GifticonGenerator {
 	    
         productImageFile = product.getProductImage();
         
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy년 MM월 dd일");
         expirationDate= format.format(expDate);
         String productTitle = product.getProductName();
         
@@ -159,9 +159,9 @@ public class GifticonGenerator {
         g2d.setColor(Color.BLACK);  
 //        g2d.setFont(new Font("HYPost",Font.BOLD, 16));
         g2d.setFont(customFont.deriveFont(Font.BOLD, 16));
-        Date date = product.getProductExp();
-        SimpleDateFormat form = new SimpleDateFormat("yyyy년 MM월 dd일");
-        expirationDate=form.format(date);
+//        Date date = product.getProductExp();
+//        SimpleDateFormat form = new SimpleDateFormat("yyyy년 MM월 dd일");
+//        expirationDate=form.format(date);
         g2d.drawString(expirationDate,170,580);
         
         g2d.setColor(Color.GRAY);
