@@ -6,5 +6,5 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface GiftUsedService {
-	Map<Integer, Long> getCountByMonth();
+	Map<Integer, Long> getCountByMonth(String storeId);
 }

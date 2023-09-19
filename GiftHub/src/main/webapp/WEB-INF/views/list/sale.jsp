@@ -72,7 +72,7 @@
 										<th scope="col">상품명</th>
 										<th scope="col">쿠폰번호</th>
 										<th scope="col">금액</th>
-										<th scope="col">사용일자</th>
+										<th scope="col">판매일자</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -80,10 +80,10 @@
 										varStatus="iterStat">
 										<tr>
 											<th scope="row">${iterStat.index + 1}</th>
-											<td>${data.productname}</td>
-											<td>${data.giftno}</td>
-											<td>${data.buyprice}</td>
-											<td>${data.useddate}</td>
+											<td>${data[0]}</td>
+											<td>${data[1]}</td>
+											<td>${data[2]}</td>
+											<td>${data[3]}</td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -155,9 +155,9 @@
                             },
                             y: {
                             	min: 0, // y축의 최소값 설정
-                                max: 10, // y축의 최대값 설정
+                                max: 50, // y축의 최대값 설정
                                 ticks: {
-                                    stepSize: 1, // 눈금 간격 설정
+                                    stepSize: 5, // 눈금 간격 설정
                                 },
                                 title: {
                                     display: true,

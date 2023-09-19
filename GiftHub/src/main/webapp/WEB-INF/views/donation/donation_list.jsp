@@ -37,6 +37,7 @@
 			</div>
 		</div>
 	</div>
+	</div>
 	<div class="container-xxl py-5">
 		<div class="container py-5 px-lg-5">
 			<div class="wow fadeInUp" data-wow-delay="0.1s">
