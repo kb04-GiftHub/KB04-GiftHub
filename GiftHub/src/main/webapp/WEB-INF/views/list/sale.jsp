@@ -72,7 +72,7 @@
 										<th scope="col">상품명</th>
 										<th scope="col">쿠폰번호</th>
 										<th scope="col">금액</th>
-										<th scope="col">사용일자</th>
+										<th scope="col">판매일자</th>
 									</tr>
 								</thead>
 								<tbody>
