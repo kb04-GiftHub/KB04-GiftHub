@@ -1,6 +1,7 @@
 package mulcam.kb04.gifthub.GiftHub.controller;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -40,10 +41,15 @@ public class ProductController {
 	ProductService productService;
 	
 	//모든 물품 정보 가져오기
-	@GetMapping("/allProduct")
+	@GetMapping("/allStores")
 	@ResponseBody
-	public List<StoreDto> allStores() {
-		List<StoreDto> list = productService.allStores(); 
+	public List<StoreDto> allStores(@RequestParam int categoryNum) {
+		List<StoreDto> list = new ArrayList<>(); 
+		if(categoryNum == 0) {
+			list = productService.allStores();
+		}else {
+			list = productService.allStoresByCategoryNo(categoryNum);
+		}
 		return list;
 	}
 	
@@ -320,6 +326,19 @@ public class ProductController {
 		return map;
 	}
 	
+	@GetMapping("/product/checkId")
+	@ResponseBody
+	public Map<String, Object> checkId(@RequestParam String customerId){
+		Map<String, Object> map = new HashMap<>();
+		CustomerDto dto = productService.findByCustomerId(customerId);
+		
+		if(dto == null) {
+			map.put("res", "실패");
+		}else {
+			map.put("res", "성공");
+		}
+		return map;
+	}
 	
 	
 	

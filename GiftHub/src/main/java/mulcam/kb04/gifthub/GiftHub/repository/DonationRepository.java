@@ -10,5 +10,5 @@ import mulcam.kb04.gifthub.GiftHub.entity.Donation;
 
 @Repository
 public interface DonationRepository extends JpaRepository<Donation, Integer> {
-	List<Donation> findByCustomerId(Customer customer);
+	List<Donation> findByCustomerIdOrderByDonationDateDesc(Customer customer);
 }

@@ -198,7 +198,7 @@ $(document).ready(function(){
 										</td>
 									</tr>
 									<tr>
-										<td style="padding-right: 3%;">유효기간</td>
+										<td style="padding-right: 3%;">판매기간</td>
 										<td class="d-flex justify-content-end"
 											style="color: black; vertical-align: middle;"><fmt:formatDate
 												value="${product.productExp }" pattern="yyyy-MM-dd" /></td>
@@ -226,8 +226,11 @@ $(document).ready(function(){
 						<div class="col-12">
 							<hr style="margin: 30px 0;">
 							<div class="form-floating">
-								<p class="mb-10" style="font-size: 18px; text-align: center;">
+								<p class="mb-2" style="font-size: 18px; text-align: center;">
 									<strong>상품정보</strong>
+								</p>
+								<p class="mb-2"style="color:gray;font-size: 10px; text-align: center;">
+								*** 상품은 구매한 뒤 한 달의 유효기간을 가지고 사용 가능합니다. ***
 								</p>
 								<p class="mb-0" style="color: black;">${product.productMemo}</p>
 							</div>
