@@ -10,18 +10,10 @@
 <meta content="" name="keywords">
 <meta content="" name="description">
 
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
 
 <style>
 .container-xxl {
-	margin-bottom: -20px; /* 하단 마진을 줄입니다 */
+	margin-bottom: -20px; 
 }
 
 .form-group {
