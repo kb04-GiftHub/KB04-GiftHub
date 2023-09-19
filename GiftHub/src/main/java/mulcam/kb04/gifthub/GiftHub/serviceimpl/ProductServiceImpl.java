@@ -14,6 +14,7 @@ import mulcam.kb04.gifthub.GiftHub.dto.JjimDto;
 import mulcam.kb04.gifthub.GiftHub.dto.ProductDto;
 import mulcam.kb04.gifthub.GiftHub.dto.StoreDto;
 import mulcam.kb04.gifthub.GiftHub.entity.Buy;
+import mulcam.kb04.gifthub.GiftHub.entity.Category;
 import mulcam.kb04.gifthub.GiftHub.entity.Customer;
 import mulcam.kb04.gifthub.GiftHub.entity.Gift;
 import mulcam.kb04.gifthub.GiftHub.entity.Jjim;
@@ -197,5 +198,23 @@ public class ProductServiceImpl implements ProductService {
 		Jjim jjim = jjimRepo.findByJjimNo(jjimNo);
 		JjimDto jdto = JjimDto.entityToDto(jjim);
 		return jdto;
+	}
+
+	@Override
+	public List<StoreDto> allStoresByCategoryNo(int categoryNum) {
+		Category cat = new Category();
+		cat.setCategoryNo(categoryNum);
+		List<Store> storeList = storeRepo.findAll();
+		if(storeList==null) {
+			return null;
+		}
+		List<StoreDto> dtoList	= new ArrayList<>();
+		for(Store store : storeList) {
+			StoreDto dto = StoreDto.entityToDto(store);
+			if(dto.getCategoryNo()==categoryNum) {
+				dtoList.add(dto);
+			}
+		}
+		return dtoList;
 	}
 }

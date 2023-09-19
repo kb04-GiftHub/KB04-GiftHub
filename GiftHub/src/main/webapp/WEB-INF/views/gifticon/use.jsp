@@ -70,17 +70,26 @@
 	                        <div class="wow">
 	                            <form action="image_use" method="post" enctype="multipart/form-data">
 	                                <div class="row g-3">
-	                                    	 <div class="col-12 text-center" id="image_container"></div>
+	                                    <div class="col-12 text-center" id="image_container"></div>
 	                                    <div class="col-12">
 	                                        <div class="form-floating">
-	                                            <input type="file" class="form-control" name="image" id="imageInput" placeholder="이미지">
+	                                            <input type="file" class="form-control mb-1" name="image" id="imageInput">
+	                                            <input type="hidden" name="storeId" value="${storeUser.storeId}">
+	                                        </div>
+	                                        <div class="form-floating text-end">
+												   <input type="checkbox" id="nonMemberImage"> 비회원
+											</div>
+											<div class="form-floating text-center">
+												<label for="idImageForm">아이디 입력 : </label>
+	                                            <input type="text" class="form-control text-center" name="customerId" id="idImageForm" placeholder="ID를 입력하세요">
+	                                            <div id="msgImg" class="mt-1"></div> 
+	                                            <div class="text-end">
+               									<button class="mt-1 btn-sm btn-primary" id="btnCheckImg" type="button">ID검사</button>
+               									</div>
 	                                        </div>
 	                                    </div>
 	                                    <div class="col-12">
-	                                        <button class="btn btn-primary w-100 py-3" type="submit">쿠폰 사용하기</button>
-	                                    </div>
-	                                    <div class="col-12">
-	                                        <a href="barcode_generate?userId=123123123" class="btn btn-primary w-100 py-3">바코드</a>
+	                                        <button id="useBtnImg" disabled class="btn btn-primary w-100 py-3" type="submit">쿠폰 사용하기</button>
 	                                    </div>
 	                                </div>
 	                            </form>
@@ -88,7 +97,80 @@
 	                    </div>
 	                </div>
 	            </div>
-            
+            <script>
+            	$(function(){
+            		$('#nonMemberImage').change(function(){
+            			if ($(this).is(":checked")) {
+                            // 체크되었을 때 실행할 코드를 여기에 추가
+                            $('#idImageForm').val('비회원')
+                            $('#idImageForm').prop("readonly",true);
+                            $('#btnCheckImg').css("visibility","hidden")
+                            $('#useBtnImg').prop("disabled",false);
+                        } else {
+                            // 체크가 해제되었을 때 실행할 코드를 여기에 추가
+                            $('#idImageForm').val('')
+                            $('#idImageForm').prop("readonly",false);
+                            $('#btnCheckImg').css("visibility","visible")
+                        }
+            		})
+            		$('#nonMemberCode').change(function(){
+            			if ($(this).is(":checked")) {
+                            $('#idCodeForm').val('비회원')
+                            $('#idCodeForm').prop("readonly",true);
+                            $('#useBtnCode').prop("disabled",false);
+                        } else {
+                            $('#idCodeForm').val('')
+                            $('#idCodeForm').prop("readonly",false);
+                        }
+            		})
+            		
+            		$('#idImageForm').focus(function(){
+            			$('#useBtnImg').prop("disabled",true);
+            			$('#msgImg').html('')
+            		})
+            		$('#idCodeForm').focus(function(){
+            			$('#useBtnCode').prop("disabled",true);
+            			$('#msgCode').html('')
+            		})
+            		
+            		$('#btnCheckImg').click(function(){
+            			var imgIdValue = $('#idImageForm').val()
+            			$.ajax({
+            				type:'get',
+            				url:'/product/checkId?customerId='+imgIdValue,
+            				dataType:'json',
+            				success:function(res){
+            					if(res.res === '실패'){
+            						$('#msgImg').html('<div class="text-danger">ID가 존재하지 않습니다.</div>')
+            						$('#useBtnImg').prop("disabled",true);
+            					}else{
+            						$('#msgImg').html('<div class="text" style="color:green;">ID를 사용 가능합니다.</div>')
+            						$('#useBtnImg').prop("disabled",false);
+            					}
+            				}
+            			})
+            		})
+            		$('#btnCheckCode').click(function(){
+            			var imgIdValue = $('#idCodeForm').val()
+            			$.ajax({
+            				type:'get',
+            				url:'/product/checkId?customerId='+imgIdValue,
+            				dataType:'json',
+            				success:function(res){
+            					if(res.res === '실패'){
+            						$('#msgCode').html('<div class="text-danger">ID가 존재하지 않습니다.</div>')
+            						$('#useBtnCode').prop("disabled",true);
+            					}else{
+            						$('#msgCode').html('<div class="text" style="color:green;">ID를 사용 가능합니다.</div>')
+            						$('#useBtnCode').prop("disabled",false);
+            					}
+            				}
+            			})
+            		})
+            		
+            		
+            	})
+            </script>
             <!-- 쿠폰번호로 쿠폰사용 -->
             <div class="tab-pane fade container show py-5 px-lg-5" id="code_used">
                 <div class="row justify-content-center">
@@ -98,11 +180,24 @@
                                 <div class="row g-3">
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <input type="number" class="form-control" name="gifticonNo" id="gifticonNoInput" placeholder="쿠폰번호">
+                                            <input type="number" class="form-control" name="gifticonNo" id="gifticonNoInput" placeholder="쿠폰 번호">
+                                            <label for="gifticonNoInput">쿠폰 번호</label>
+                                         	<input type="hidden" name="storeId" value="${storeUser.storeId}">
                                         </div>
+                                        <div class="form-floating text-end">
+												   <input type="checkbox" id="nonMemberCode"> 비회원
+											</div>
+											<div class="form-floating text-center">
+												<label for="idCodeForm">아이디 입력 : </label>
+	                                            <input type="text" class="form-control text-center" name="customerId" id="idCodeForm" placeholder="ID를 입력하세요">
+	                                            <div id="msgCode" class="mt-1"></div> 
+	                                            <div class="text-end">
+               									<button class="mt-1 btn-sm btn-primary" id="btnCheckCode" type="button">ID검사</button>
+               									</div>
+	                                        </div>
                                     </div>
                                     <div class="col-12">
-                                        <button class="btn btn-primary w-100 py-3" type="submit">쿠폰 사용하기</button>
+                                        <button id="useBtnCode" disabled class="btn btn-primary w-100 py-3" type="submit">쿠폰 사용하기</button>
                                     </div>
                                 </div>
                             </form>
