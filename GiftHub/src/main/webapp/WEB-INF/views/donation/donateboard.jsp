@@ -85,7 +85,6 @@
             <h3 class="text-center mb-5">군포시</h3>
         </div>
         <div class="row g-4">
-        <h3>진행 중인 기부 프로젝트</h3>
             <!-- Service 1 -->
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" >
                 <div class="service-item d-flex flex-column text-center rounded" style="background-color: #D0E5FF;">
@@ -97,12 +96,11 @@
                     <a class="btn btn-square" href="http://localhost:8080/donation/donate"></a>
                 </div>
             </div>
-            <hr> 
-           <h3>진행 종료한 기부 프로젝트</h3>
+           
            
          <!-- Service 2 -->
             <div class="col-lg-4 col-md-6 fadeInUp" data-wow-delay="0.3s">
-                <div class="service-item d-flex flex-column text-center rounded"  style="background-color: lightgrey;">
+                <div class="service-item d-flex flex-column text-center rounded"  style="background-color: #D0E5FF;">
                     <div class="service-image flex-shrink-0 flex-shrink-0 rounded-circle mx-auto" style="width: 250px; height: 250px; overflow: hidden;">
                         <img src="/img/donation/노인.png" alt="" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
@@ -113,7 +111,7 @@
             </div>
                   <!-- Service 3 -->
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="service-item d-flex flex-column text-center rounded"  style="background-color: lightgrey;">
+                <div class="service-item d-flex flex-column text-center rounded"  style="background-color: #D0E5FF;">
                     <div class="service-image flex-shrink-0 flex-shrink-0 rounded-circle mx-auto" style="width: 250px; height: 250px; overflow: hidden;">
                         <img src="/img/donation/청소년.png" alt="" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
@@ -125,7 +123,7 @@
 
             <!-- Service 4 -->
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="service-item d-flex flex-column text-center rounded"  style="background-color: lightgrey;">
+                <div class="service-item d-flex flex-column text-center rounded"  style="background-color: #D0E5FF;">
                     <div class="service-image flex-shrink-0 flex-shrink-0 rounded-circle mx-auto" style="width: 250px; height: 250px; overflow: hidden;">
                         <img src="/img/donation/돌봄.png" alt="" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
@@ -137,7 +135,7 @@
 
         <!-- Service 5 (한국 컴패션) -->
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="service-item d-flex flex-column text-center rounded"  style="background-color: lightgrey;">
+                <div class="service-item d-flex flex-column text-center rounded"  style="background-color: #D0E5FF;">
                     <div class="service-image flex-shrink-0 flex-shrink-0 rounded-circle mx-auto" style="width: 250px; height: 250px; overflow: hidden;">
                         <img src="/img/donation/환경.png" alt="" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
@@ -149,7 +147,7 @@
 
             <!-- Service 6 -->
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="service-item d-flex flex-column text-center rounded"  style="background-color: lightgrey;">
+                <div class="service-item d-flex flex-column text-center rounded"  style="background-color: #D0E5FF;">
                     <div class="service-image flex-shrink-0 flex-shrink-0 rounded-circle mx-auto" style="width: 250px; height: 250px; overflow: hidden;">
                         <img src="/img/donation/고용.png" alt="" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>

@@ -5,10 +5,10 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>로그인</title>
 </head>
 <body>
-	<c:import url="top.jsp" />
+	<c:import url="../top.jsp" />
 	<div class="container-xxl py-5 bg-primary hero-header">
 		<div class="container my-5 py-5 px-lg-5">
 			<div class="row g-5 py-5">
@@ -39,7 +39,7 @@
 	</div>
 	<!-- register_complete End -->
 
-	<c:import url="footer.jsp" />
+	<c:import url="../footer.jsp" />
 
 	<!-- JavaScript Libraries -->
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

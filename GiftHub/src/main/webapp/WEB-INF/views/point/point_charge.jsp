@@ -62,58 +62,81 @@
 							<div class="col-12">
 								<hr style="margin-top: 3rem;">
 								<!-- 포인트 내역 테이블 -->
-								<div class="container mt-5" id="tableSection" style="padding: 0;">
-								    <table class="table table-striped" style="text-align: center; margin-bottom: 3rem;">
-								        <thead>
-								            <tr>
-								                <th scope="col">순번</th>
-								                <th scope="col">결제번호</th>
-								                <th scope="col">충전금액</th>
-								                <th scope="col">충전일시</th>
-								            </tr>
-								        </thead>
-								        <tbody>
-								            <c:forEach var="charge" items="${chargeList}" varStatus="iterStat">
-											    <tr>
-											        <th scope="row">${iterStat.index + 1 + (pageSize * (pageNo - 1))}</th>
-											        <td>${charge.merchantUid}</td>
-											        <td>
-											            <fmt:formatNumber value="${charge.chargeAmount}" type="currency" currencySymbol=""/>원
-											        </td>
-											        <td>
-											            <fmt:formatDate value="${charge.chargeDate}" pattern="yyyy년 MM월 dd일 HH시 mm분 ss초"/>
-											        </td>
-											    </tr>
-											</c:forEach>
-								        </tbody>
-								    </table>
-								</div>
-								<!-- 페이징 -->
-								<div class="container mt-4">
-								    <nav aria-label="Page navigation example">
-								        <ul class="pagination justify-content-center">
-								            <c:if test="${not chargePage.first}">
-								                <li class="page-item">
-								                    <a class="page-link" href="?page=1" aria-label="Previous">
-								                        <span aria-hidden="true">&laquo;</span>
-								                    </a>
-								                </li>
-								            </c:if>
-								            <c:forEach var="i" begin="1" end="${chargePage.totalPages}">
-								                <li class="page-item <c:if test="${i == chargePage.number + 1}">active</c:if>">
-								                    <a class="page-link" href="?page=${i}">${i}</a>
-								                </li>
-								            </c:forEach>
-								            <c:if test="${not chargePage.last}">
-								                <li class="page-item">
-								                    <a class="page-link" href="?page=${chargePage.totalPages}" aria-label="Next">
-								                        <span aria-hidden="true">&raquo;</span>
-								                    </a>
-								                </li>
-								            </c:if>
-								        </ul>
-								    </nav>
-								</div>
+								<c:choose>
+									<c:when test="${chargeList.size() > 0}">
+										<div class="container mt-5" id="tableSection" style="padding: 0;">
+										    <table class="table table-striped" style="text-align: center; margin-bottom: 3rem;">
+										        <thead>
+										            <tr>
+										                <th scope="col">순번</th>
+										                <th scope="col">결제번호</th>
+										                <th scope="col">충전금액</th>
+										                <th scope="col">충전일시</th>
+										            </tr>
+										        </thead>
+										        <tbody>
+										            <c:forEach var="charge" items="${chargeList}" varStatus="iterStat">
+													    <tr>
+													        <th scope="row">${iterStat.index + 1 + (pageSize * (pageNo - 1))}</th>
+													        <td>${charge.merchantUid}</td>
+													        <td>
+													            <fmt:formatNumber value="${charge.chargeAmount}" type="currency" currencySymbol=""/>원
+													        </td>
+													        <td>
+													            <fmt:formatDate value="${charge.chargeDate}" pattern="yyyy년 MM월 dd일 HH시 mm분 ss초"/>
+													        </td>
+													    </tr>
+													</c:forEach>
+										        </tbody>
+										    </table>
+										</div>
+										<!-- 페이징 -->
+										<div class="container mt-4">
+										    <nav aria-label="Page navigation example">
+										        <ul class="pagination justify-content-center">
+										            <c:if test="${not chargePage.first}">
+										                <li class="page-item">
+										                    <a class="page-link" href="?page=1" aria-label="Previous">
+										                        <span aria-hidden="true">&laquo;</span>
+										                    </a>
+										                </li>
+										            </c:if>
+										            <c:forEach var="i" begin="1" end="${chargePage.totalPages}">
+										                <li class="page-item <c:if test="${i == chargePage.number + 1}">active</c:if>">
+										                    <a class="page-link" href="?page=${i}">${i}</a>
+										                </li>
+										            </c:forEach>
+										            <c:if test="${not chargePage.last}">
+										                <li class="page-item">
+										                    <a class="page-link" href="?page=${chargePage.totalPages}" aria-label="Next">
+										                        <span aria-hidden="true">&raquo;</span>
+										                    </a>
+										                </li>
+										            </c:if>
+										        </ul>
+										    </nav>
+										</div>
+									</c:when>
+									<c:otherwise>
+										<div class="container mt-5" id="tableSection" style="padding: 0;">
+										    <table class="table table-striped" style="text-align: center; margin-bottom: 3rem;">
+										        <thead>
+										            <tr>
+										                <th scope="col">순번</th>
+										                <th scope="col">결제번호</th>
+										                <th scope="col">충전금액</th>
+										                <th scope="col">충전일시</th>
+										            </tr>
+										        </thead>
+										        <tbody>
+										            <tr>
+										                <th colspan="4">내역이 존재하지 않습니다.</th>
+										            </tr>
+										        </tbody>
+										    </table>
+										</div>
+									</c:otherwise>
+								</c:choose>
 							</div>
 						</div>
 					</div>
