@@ -68,10 +68,46 @@ public class GifticonController {
 	MmsService mmsService;
 	
 	@GetMapping("/gifticon/use")
-	public String gifticon_use(HttpSession ses) {
+	public String gifticon_use(@RequestParam String storeId, Model model, HttpSession ses) {
 		StoreDto dto=(StoreDto)ses.getAttribute("storeUser");
 		ses.setAttribute("storeUser", dto);
+		ses.setAttribute("loggedStoreId", storeId);
 		return "gifticon/use";
+	}
+	
+	@GetMapping("/gifticon/useList")
+	public String gifticon_useList(
+			@RequestParam(defaultValue="1") int cpage,
+			@RequestParam String storeId, Model model,HttpSession ses) {
+		StoreDto dto=(StoreDto)ses.getAttribute("storeUser");
+		ses.setAttribute("storeUser", dto);
+		ses.setAttribute("loggedStoreId", storeId);
+		
+//		//현재 페이지가 0보다 작거나 같을 경우 1로 지정
+//		if(cpage<=0) {
+//			cpage=1;
+//		}
+//		int totalNotice=gifticonService.totalCountGiftUsed(storeId);//전체 공지사항 수
+//		int pageSize=10;//한 페이지당 보여줄 공지사항 수
+//		int pageCount=(totalNotice-1)/pageSize+1;//총 페이지 수
+//		//현재 페이지가 총 페이지 수 보다 클 경우
+//		if(cpage>pageCount) {
+//			cpage=pageCount;
+//		}
+//		//페이지에 가져올 공지사항 시작,끝
+//		int end=cpage*pageSize;
+//		int start=end-(pageSize-1);
+//		//Map에 담아서 전달
+//		Map<String,Integer> map=new HashMap<>();
+//		map.put("start", start);
+//		map.put("end",end);
+//		model.addAttribute("cpage",cpage);
+//		model.addAttribute("pageCount",pageCount);
+		
+		
+		List<Object[]> list = gifticonService.listByStoreId(storeId);
+		model.addAttribute("gifticonUsedList", list);
+		return "gifticon/useList";
 	}
 	
 	@PostMapping("/gifticon/buyId")
@@ -131,8 +167,8 @@ public class GifticonController {
 		String directory=app.getRealPath("/resources/Gifticon");
         String upDir = directory + "/"+barcodeName;
 		
-//				String upDir=System.getProperty("user.dir"); // 프로젝트 루트 디렉토리
-//				upDir+="/src/main/resources/static/upload_images/gifticon/"+barcodeName;
+//		String upDir=System.getProperty("user.dir"); // 프로젝트 루트 디렉토리
+//		upDir+="/src/main/resources/static/upload_images/gifticon/"+barcodeName;
         
 		String imagePath = upDir;
 		

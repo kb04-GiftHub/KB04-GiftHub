@@ -88,8 +88,8 @@
 							<div class="dropdown-menu m-0">
 								<a href="/product" class="dropdown-item">상품등록</a> 
 								<a href="/product/myList" class="dropdown-item">내 상품</a> 
-								<a href="/gifticon/use" class="dropdown-item">기프티콘 사용</a>
-								<a href="/gifticon/useList" class="dropdown-item">기프티콘 사용내역</a>
+								<a href="/gifticon/use?storeId=${loggedStoreId}" class="dropdown-item">기프티콘 사용</a>
+								<a href="/gifticon/useList?storeId=${loggedStoreId}" class="dropdown-item">기프티콘 사용내역</a>
 							</div>
 						</div>
 						<div class="nav-item dropdown">

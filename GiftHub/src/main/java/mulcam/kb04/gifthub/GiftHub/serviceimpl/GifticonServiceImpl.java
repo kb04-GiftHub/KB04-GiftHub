@@ -1,5 +1,6 @@
 package mulcam.kb04.gifthub.GiftHub.serviceimpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,20 +29,24 @@ public class GifticonServiceImpl implements GifticonService {
 	@Autowired
 	StoreRepository storeRepository;
 	
-	/*
-	 * @Override public List<GiftUsedDto> listByStoreId(String storeId) { Store
-	 * store = storeRepository.findByStoreId(storeId); System.out.println(storeId);
-	 * System.out.println(store); List<Object[]> glist =
-	 * giftUsedRepository.findByStoreId(store); List<GiftUsedDto> gudList = new
-	 * ArrayList<GiftUsedDto>(); for(GiftUsed gu : glist) { GiftUsedDto dto =
-	 * GiftUsedDto.entityToDto(gu); gudList.add(dto); } return gudList; }
-	 */
+//	@Override public List<GiftUsedDto> listByStoreId(String storeId) { 
+//		Store store = storeRepository.findByStoreId(storeId); 
+//		System.out.println(storeId);
+//		System.out.println(store); 
+//		List<Object[]> glist = giftUsedRepository.findByStoreId(store); 
+//		List<GiftUsedDto> gudList = new ArrayList<GiftUsedDto>(); 
+//		for(GiftUsed gu : glist) { 
+//			GiftUsedDto dto = GiftUsedDto.entityToDto(gu); gudList.add(dto); } 
+//		return gudList; 
+//	}
+	 
 	
 	@Override
 	public List<Object[]> listByStoreId(String storeId) {
 		Store store = storeRepository.findByStoreId(storeId);
-		System.out.println(storeId);
-		System.out.println(store);
+		if(store == null) {
+			return null;
+		}
 		List<Object[]> glist = giftUsedRepository.findByStoreId(store);
 		return glist;
 	}
@@ -93,6 +98,12 @@ public class GifticonServiceImpl implements GifticonService {
 		gu = giftUsedRepository.save(gu);
 		guDto=GiftUsedDto.entityToDto(gu);
 		return guDto;
+	}
+
+	@Override
+	public int totalCountGiftUsed(String storeId) {
+		int count = giftUsedRepository.countByStoreId(storeId);
+		return count;
 	}
 
 }

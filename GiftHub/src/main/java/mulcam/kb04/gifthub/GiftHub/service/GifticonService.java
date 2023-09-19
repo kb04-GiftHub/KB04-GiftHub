@@ -12,8 +12,8 @@ import mulcam.kb04.gifthub.GiftHub.dto.StoreDto;
 public interface GifticonService {
 	
 	public List<Object[]> listByStoreId(String storeId);
-//  List<GiftUsedDto> listByStoreIdAndPage(String storeId, int page, int itemsPerPage);
-//    List<Object[]> listByStoreIdAndPage(String storeId, int page, int itemsPerPage);
+//	public List<GiftUsedDto> listByStoreId(String storeId, int page, int itemsPerPage);
+//  List<Object[]> listByStoreIdAndPage(String storeId, int page, int itemsPerPage);
     int getTotalItemsByStoreId(String storeId);
     
 	public GiftDto findGiftBygiftNo(long giftNo);
@@ -22,6 +22,7 @@ public interface GifticonService {
 	public StoreDto updatePoint(StoreDto storeDto);
 	public StoreDto findByStoreId(String storeId);
 	public GiftUsedDto saveGiftUsed(GiftUsedDto guDto);
+	public int totalCountGiftUsed(String storeId);
 	
 	
 }

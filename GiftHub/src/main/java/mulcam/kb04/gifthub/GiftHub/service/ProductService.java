@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 import mulcam.kb04.gifthub.GiftHub.dto.BuyDto;
 import mulcam.kb04.gifthub.GiftHub.dto.CustomerDto;
 import mulcam.kb04.gifthub.GiftHub.dto.GiftDto;
+import mulcam.kb04.gifthub.GiftHub.dto.GiftUsedDto;
 import mulcam.kb04.gifthub.GiftHub.dto.JjimDto;
 import mulcam.kb04.gifthub.GiftHub.dto.ProductDto;
 import mulcam.kb04.gifthub.GiftHub.dto.StoreDto;
-import mulcam.kb04.gifthub.GiftHub.entity.Product;
 
 @Service
 public interface ProductService {
@@ -49,6 +49,9 @@ public interface ProductService {
 
 	public List<StoreDto> allStoresByCategoryNo(int categoryNum);
 
+	public List<StoreDto> findStores(String storeName);
+	
+//	public List<GiftUsedDto> listByStoreId(String storeId);
 
 //	public Product getProductById(int productId);
 
