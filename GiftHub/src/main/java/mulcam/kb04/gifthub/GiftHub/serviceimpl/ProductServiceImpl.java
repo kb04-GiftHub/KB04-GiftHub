@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import mulcam.kb04.gifthub.GiftHub.dto.BuyDto;
 import mulcam.kb04.gifthub.GiftHub.dto.CustomerDto;
 import mulcam.kb04.gifthub.GiftHub.dto.GiftDto;
+import mulcam.kb04.gifthub.GiftHub.dto.GiftUsedDto;
 import mulcam.kb04.gifthub.GiftHub.dto.JjimDto;
 import mulcam.kb04.gifthub.GiftHub.dto.ProductDto;
 import mulcam.kb04.gifthub.GiftHub.dto.StoreDto;
@@ -214,6 +215,20 @@ public class ProductServiceImpl implements ProductService {
 			if(dto.getCategoryNo()==categoryNum) {
 				dtoList.add(dto);
 			}
+		}
+		return dtoList;
+	}
+
+	@Override
+	public List<StoreDto> findStores(String storeName) {
+		List<Store> storeList = storeRepo.findByStoreName(storeName);
+		List<StoreDto> dtoList	= new ArrayList<>();
+		if(storeList==null) {
+			return null;
+		}
+		for(Store store : storeList) {
+			StoreDto dto = StoreDto.entityToDto(store);
+			dtoList.add(dto);
 		}
 		return dtoList;
 	}

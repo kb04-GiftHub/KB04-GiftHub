@@ -20,4 +20,7 @@ public interface GiftUsedRepository extends JpaRepository<GiftUsed, Integer> {
 			+ "WHERE p.storeId = :storeId" , nativeQuery = true)
 	List<Object[]> findByStoreId(Store storeId);
 	
+	@Query(value="SELECT count(gu.usedNo) from giftUsed gu JOIN Gift g ON(gu.giftNo = g.giftNo) JOIN BUY b ON (b.buyNo = g.buyNo) where b.storeId = :storeId", nativeQuery=true)
+	int countByStoreId(String storeId);
+	
 }
