@@ -20,6 +20,6 @@ public interface GiftRepository extends JpaRepository<Gift, Long> {
 	
 	List<Gift> findByCustomerId(Customer customer);
 	
-	@Query(value = "SELECT giftNo, giftStatus, buyNo, giftBarcode, customerId, giftExp FROM GIFT WHERE giftNo = :no", nativeQuery=true)
+	@Query(value = "SELECT giftNo, giftStatus, buyNo, giftBarcode, customerId, giftExp FROM GIFT WHERE giftNo = :no AND giftStatus = 1", nativeQuery=true)
 	Gift getByGiftNo(long no);
 }

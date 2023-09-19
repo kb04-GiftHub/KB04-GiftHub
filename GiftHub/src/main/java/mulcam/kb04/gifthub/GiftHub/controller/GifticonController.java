@@ -11,7 +11,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
@@ -38,6 +37,7 @@ import com.google.zxing.common.HybridBinarizer;
 import mulcam.kb04.gifthub.GiftHub.dto.BuyDto;
 import mulcam.kb04.gifthub.GiftHub.dto.CustomerDto;
 import mulcam.kb04.gifthub.GiftHub.dto.GiftDto;
+import mulcam.kb04.gifthub.GiftHub.dto.GiftUsedDto;
 import mulcam.kb04.gifthub.GiftHub.dto.ProductDto;
 import mulcam.kb04.gifthub.GiftHub.dto.StoreDto;
 import mulcam.kb04.gifthub.GiftHub.message.FilesDto;
@@ -68,7 +68,9 @@ public class GifticonController {
 	MmsService mmsService;
 	
 	@GetMapping("/gifticon/use")
-	public String gifticon_use() {
+	public String gifticon_use(HttpSession ses) {
+		StoreDto dto=(StoreDto)ses.getAttribute("storeUser");
+		ses.setAttribute("storeUser", dto);
 		return "gifticon/use";
 	}
 	
@@ -93,6 +95,10 @@ public class GifticonController {
 		customer.setPoint(customer.getPoint()-product.getProductPrice());
 		productService.payPoint(customer);
 		ses.setAttribute("user", customer);
+		
+		//스토어 포인트 추가
+		store.setStorePoint(store.getStorePoint()+product.getProductPrice());
+		store=gifticonService.updatePoint(store);
 		
 		//구매내역 생성
 		BuyDto buy = new BuyDto();
@@ -139,18 +145,13 @@ public class GifticonController {
 		
 		FilesDto dto = new FilesDto("GIFTHUB_gifticon.jpg",base64Image);
 		
-//		MessageDto messageDto = new MessageDto(sendTel,"GiftHub","구매하신 기프티콘이 발송되었습니다. 이용 문의가 필요하시면 010-xxxx-xxxx으로 연락주시기 바랍니다.");
-//		
-//		MmsResponseDto mmsResponse = mmsService.sendSms(dto);
-//		SmsResponseDto response = smsService.sendSms(messageDto, mmsResponse);
-//		
 		redirect.addFlashAttribute("msg", "성공적으로 기프티콘을 선물하였습니다.");
 		
 		return "redirect:/product/detail?productNo="+productNo;
 	}
 	
 	@PostMapping("/gifticon/buy")
-	public String product_duy(@RequestParam("productNo") int productNo, 
+	public String product_buy(@RequestParam("productNo") int productNo, 
 			@RequestParam("customerId") String customerId,
 			@RequestParam("sendTel") String sendTel,
 			Model model, HttpSession ses,
@@ -159,6 +160,7 @@ public class GifticonController {
 		CustomerDto customer = productService.findByCustomerId(customerId);
 		ProductDto product = productService.findByProductNo(productNo);
 		StoreDto store = productService.findByStoreId(product.getStoreId());
+		
 		//포인트 유무(부족하면 msg보내기)
 		if(customer.getPoint() < product.getProductPrice()) {
 			model.addAttribute("Msg","포인트가 부족합니다");
@@ -169,6 +171,10 @@ public class GifticonController {
 		customer.setPoint(customer.getPoint()-product.getProductPrice());
 		productService.payPoint(customer);
 		ses.setAttribute("user", customer);
+		
+		//스토어 포인트 추가
+		store.setStorePoint(store.getStorePoint()+product.getProductPrice());
+		store=gifticonService.updatePoint(store);
 		
 		//구매내역 생성
 		BuyDto buy = new BuyDto();
@@ -215,7 +221,7 @@ public class GifticonController {
 		
 		FilesDto dto = new FilesDto("GIFTHUB_gifticon.jpg",base64Image);
 		
-		MessageDto messageDto = new MessageDto(sendTel,"GiftHub","구매하신 기프티콘이 발송되었습니다. 이용 문의가 필요하시면 010-xxxx-xxxx으로 연락주시기 바랍니다.");
+		MessageDto messageDto = new MessageDto(sendTel,"GiftHub","[TEST]구매하신 기프티콘이 발송되었습니다.\n 이용 문의가 필요하시면 1544-9001으로 연락주세요.");
 		
 		MmsResponseDto mmsResponse = mmsService.sendSms(dto);
 		SmsResponseDto response = smsService.sendSms(messageDto, mmsResponse);
@@ -228,157 +234,112 @@ public class GifticonController {
 		return "redirect:/product/detail?productNo="+productNo;
 	}
 	
-	@PostMapping("/gifticon/use_action")
-	public String gifticon_use_action(
-			@RequestParam("image") MultipartFile file, 
-			HttpSession ses, Model m) {
-		ServletContext app=ses.getServletContext();
-//		String upDir=app.getRealPath("/resources/User_Image");
-		String upDir=System.getProperty("user.dir"); // 프로젝트 루트 디렉토리
-		upDir+="/src/main/resources/static/upload_images/gifticon";
-		File dir=new File(upDir);
-		if(!dir.exists()){
-			dir.mkdirs();
-		}
-		if(file != null) {
-			
-			String originFname=file.getOriginalFilename();
-			UUID uuid=UUID.randomUUID();
-			String newfilename=uuid.toString()+"_"+originFname;
-			
-			//새로운 이미지 업로드
-			try {
-				file.transferTo(new File(upDir,newfilename));
-			}catch(Exception e) {
-			}
-		}
-		
-		return "redirect:/gifticon/use";
-	}
+	/*
+	 * @PostMapping("/gifticon/use_action") public String gifticon_use_action(
+	 * 
+	 * @RequestParam("image") MultipartFile file, HttpSession ses, Model m) {
+	 * ServletContext app=ses.getServletContext(); // String
+	 * upDir=app.getRealPath("/resources/User_Image"); String
+	 * upDir=System.getProperty("user.dir"); // 프로젝트 루트 디렉토리
+	 * upDir+="/src/main/resources/static/upload_images/gifticon"; File dir=new
+	 * File(upDir); if(!dir.exists()){ dir.mkdirs(); } if(file != null) {
+	 * 
+	 * String originFname=file.getOriginalFilename(); UUID uuid=UUID.randomUUID();
+	 * String newfilename=uuid.toString()+"_"+originFname;
+	 * 
+	 * //새로운 이미지 업로드 try { file.transferTo(new File(upDir,newfilename));
+	 * }catch(Exception e) { } }
+	 * 
+	 * return "redirect:/gifticon/use";
+	 
+	}*/
 	
 	@PostMapping("/gifticon/image_use")
-	public String image_use(@RequestParam MultipartFile image, Model model, HttpSession ses) throws IOException, NotFoundException {
+	public String image_use(@RequestParam MultipartFile image,
+			@RequestParam String storeId,
+			@RequestParam("customerId") String userId,
+			Model model, HttpSession ses) throws IOException, NotFoundException {
 		
-		String giftNoStr;
-		try {
-			Map<DecodeHintType, Object> hints = new HashMap<>();
-			hints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
-			
-			byte[] bytes = image.getBytes();
-			ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes);
-			BufferedImage image1 = ImageIO.read(byteArrayInputStream);
-			
-			BinaryBitmap binaryBitmap = new BinaryBitmap(new HybridBinarizer(new BufferedImageLuminanceSource(image1)));
-			Result result = new MultiFormatReader().decode(binaryBitmap, hints);
-			
-			giftNoStr = result.getText();
-			long giftNo = Long.parseLong(giftNoStr);
-			
-			GiftDto giftDto = gifticonService.findGiftBygiftNo(giftNo);
-			if(giftDto == null) {
-				model.addAttribute("Msg","해당 번호는 유효하지않습니다");
-				model.addAttribute("loc","gifticon/use");
-				return "msg";
-			}
-			
-			System.out.println(giftNo);
-			
-			return "redirect:/gifticon/use";
-		} catch (NotFoundException e) {
-			e.printStackTrace();
-			model.addAttribute("Msg","해당 이미지는 유효하지않습니다");
-			model.addAttribute("loc","gifticon/use");
-			return "msg";
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-			model.addAttribute("Msg","해당 이미지는 유효하지않습니다");
-			model.addAttribute("loc","gifticon/use");
-			return "msg";
-		}catch (NumberFormatException e) {
-			e.printStackTrace();
-			model.addAttribute("Msg","해당 바코드는 유효하지않습니다");
-			model.addAttribute("loc","gifticon/use");
-			return "msg";
-		}catch (NullPointerException e) {
-			e.printStackTrace();
-			model.addAttribute("Msg","해당 기프티콘번호가 없습니다.");
+		String giftNoStr = "1";
+		Map<DecodeHintType, Object> hints = new HashMap<>();
+		hints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
+		
+		byte[] bytes = image.getBytes();
+		ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes);
+		BufferedImage image1 = ImageIO.read(byteArrayInputStream);
+		
+		if (image1 != null) {
+            BinaryBitmap binaryBitmap = new BinaryBitmap(
+            new HybridBinarizer(new BufferedImageLuminanceSource(image1)));
+            Result result = new MultiFormatReader().decode(binaryBitmap, hints);
+            giftNoStr = result.getText();
+        }
+		
+//		BinaryBitmap binaryBitmap = new BinaryBitmap(new HybridBinarizer(new BufferedImageLuminanceSource(image1)));
+//		Result result = new MultiFormatReader().decode(binaryBitmap, hints);
+//		giftNoStr = result.getText();
+		
+		StoreDto sdto = gifticonService.findByStoreId(storeId);
+		ses.setAttribute("storeUser", sdto);
+		
+		if(giftNoStr.equals(1)) {
+			model.addAttribute("Msg","이미지가 없습니다.");
 			model.addAttribute("loc","gifticon/use");
 			return "msg";
 		}
+		
+		System.out.println(giftNoStr);
+		long giftNo = Long.parseLong(giftNoStr);
+		
+		GiftDto giftDto = gifticonService.findGiftBygiftNo(giftNo);
+		if(giftDto == null) {
+			model.addAttribute("Msg","해당 쿠폰은 유효하지않습니다");
+			model.addAttribute("loc","gifticon/use");
+			return "msg";
+		}else {
+			giftDto.setGiftStatus(2);
+			giftDto = gifticonService.updateStatus(giftDto);
+			GiftUsedDto guDto = new GiftUsedDto();
+//			guDto.setCustomerId();
+			guDto.setGiftNo(giftNo);
+			guDto.setUsedDate(new Date());
+			guDto.setCustomerId(userId);
+			model.addAttribute("Msg","쿠폰이 사용되었습니다.");
+			model.addAttribute("loc","gifticon/use");
+		}
+		System.out.println(giftNo);
+		return "msg";
 	}
 	
 	@PostMapping("/gifticon/code_use")
-	public String code_use(@RequestParam int gifticonNo, Model model, HttpSession ses) {
-		System.out.println(gifticonNo);
-		return "redirect:/gifticon/use";
-	}
-	
-//	@GetMapping("/gifticon/barcode_generate")
-//	public String barcode_generate(@RequestParam String userId, Model model, HttpSession ses) {
-//		
-//		// 바코드 생성을 위한 설정
-//        int width = 400; // 이미지 너비
-//        int height = 100; // 이미지 높이
-//        String format = "png"; // 이미지 형식
-//
-//        Map<EncodeHintType, Object> hints = new HashMap<EncodeHintType, Object>();
-//        hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
-//        
-//        // 바코드 생성을 위한 코드(날짜와시간+시퀀스)
-//        String unique=UniqueCode.generateUniqueBarcode();
-//        String barcodeData = unique;
-//        
-//        // 바코드 생성
-//        BitMatrix bitMatrix;
-//		try {
-//			bitMatrix = new MultiFormatWriter().encode(
-//			        barcodeData,
-//			        BarcodeFormat.CODE_128, // 바코드 형식 선택
-//			        width,
-//			        height,
-//			        hints
-//			);
-//
-//	        // BitMatrix를 BufferedImage로 변환
-//	        BufferedImage barcodeImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-//	        for (int x = 0; x < width; x++) {
-//	            for (int y = 0; y < height; y++) {
-//	                barcodeImage.setRGB(x, y, bitMatrix.get(x, y) ? 0x000000 : 0xFFFFFF);
-//	            }
-//	        }
-//	        
-//	        // 바코드 이미지를 루트 디렉토리에 저장
-//	        ServletContext app=ses.getServletContext();
-//			String rootDirectory=app.getRealPath("/resources/Gificon");
-//	        String filePath = rootDirectory + "/bar"+unique+"." + format;
-//	        File outputFile = new File(filePath);
-//	        File dir=new File(rootDirectory);
-//			if(!dir.exists()){
-//				dir.mkdirs();
-//			}
-//	        ImageIO.write(barcodeImage, format, outputFile);
-//	        System.out.println("등록완료");
-//		} catch (WriterException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-////		GiftoconGenerator.createGiftCard(ses);
-//		return "redirect:/gifticon/use";
-//	}
-	
-	@GetMapping("/gifticon/useList")
-	public String useList(Model model) {
-		String storeId = "store01";
-		List<Object[]> list = gifticonService.listByStoreId(storeId);
+	public String code_use(@RequestParam long gifticonNo,
+			@RequestParam("customerId") String userId,
+			@RequestParam String storeId,
+			Model model, HttpSession ses) {
 		
-        
-		model.addAttribute("gifticonUsedList", list);
-		return "gifticon/useList";
+		StoreDto sdto = gifticonService.findByStoreId(storeId);
+		ses.setAttribute("storeUser", sdto);
+		
+		long giftNo = gifticonNo;
+		GiftDto giftDto = gifticonService.findGiftBygiftNo(giftNo);
+		if(giftDto == null) {
+			model.addAttribute("Msg","해당 쿠폰은 유효하지않습니다");
+			model.addAttribute("loc","gifticon/use");
+			return "msg";
+		}else {
+			giftDto.setGiftStatus(2);
+			giftDto = gifticonService.updateStatus(giftDto);
+			GiftUsedDto guDto = new GiftUsedDto();
+//			guDto.setCustomerId();
+			guDto.setGiftNo(giftNo);
+			guDto.setUsedDate(new Date());
+			guDto.setCustomerId(userId);
+			guDto=gifticonService.saveGiftUsed(guDto);
+			model.addAttribute("Msg","쿠폰이 사용되었습니다.");
+			model.addAttribute("loc","gifticon/use");
+		}
+		System.out.println(giftNo);
+		return "msg";
 	}
 	
 }
