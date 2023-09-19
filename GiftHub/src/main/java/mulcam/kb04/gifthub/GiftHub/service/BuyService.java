@@ -8,5 +8,5 @@ import mulcam.kb04.gifthub.GiftHub.entity.Store;
 public interface BuyService {
 	public Map<Integer, Long> getCountByMonth(Store storeId);
 
-	public List<Object[]> findByStoreId(String storeId);
+	public List<Object[]> findByStoreId(Store storeId);
 }
