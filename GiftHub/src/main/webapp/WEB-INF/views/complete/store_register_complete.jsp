@@ -70,13 +70,10 @@
 		<div class="container px-lg-5 text-center">
 			<div class="row justify-content-center">
 				<div class="col-lg-6">
-					<img alt="가맹점 회원가입 완료" src="/img/check.png"
-						style="width: 20%; margin-bottom: 20px;">
-					<h1 class="mb-4">${subTitle}</h1>
+					<img src="/img/check.png" style="width: 20%; margin-bottom: 20px;">
+					<h1 class="mb-4" style="margin-top: 30px;">${subTitle}</h1>
 					<p class="mb-4">${msg}</p>
-					<a class="btn btn-primary rounded-pill py-3 px-5"
-						href="<c:url value='/store/login' />">Go To Home</a>
-
+					<a class="btn btn-primary rounded-pill py-3 px-5" href="/store/login" style="margin-top: 30px;">LOGIN</a>
 				</div>
 			</div>
 		</div>
