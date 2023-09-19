@@ -1,5 +1,7 @@
 package mulcam.kb04.gifthub.GiftHub.controller;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -11,11 +13,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import mulcam.kb04.gifthub.GiftHub.dto.ExchangeDto;
-import mulcam.kb04.gifthub.GiftHub.entity.Customer;
+import mulcam.kb04.gifthub.GiftHub.dto.CustomerDto;
+import mulcam.kb04.gifthub.GiftHub.dto.DonationDto;
+import mulcam.kb04.gifthub.GiftHub.dto.DonationOrgDto;
 import mulcam.kb04.gifthub.GiftHub.entity.Donation;
 import mulcam.kb04.gifthub.GiftHub.repository.CustomerRepository;
-import mulcam.kb04.gifthub.GiftHub.service.CustomerService;
 import mulcam.kb04.gifthub.GiftHub.service.DonationService;
 
 @Controller
@@ -23,9 +25,6 @@ public class DonationController {
 
 	@Autowired
 	CustomerRepository customerRepository;
-
-	@Autowired
-	CustomerService customerService;
 
 	@Autowired
 	DonationService donationService;
@@ -38,29 +37,46 @@ public class DonationController {
 			String loggedStoreId = (String) session.getAttribute("loggedStoreId");
 			return "redirect:/sale?storeId=" + loggedStoreId;
 		} else if (session.getAttribute("loggedStoreId") == null && session.getAttribute("loggedMemberId") != null) {
-			Customer customer = new Customer();
-			customer = customerRepository.findByCustomerId((String) session.getAttribute("loggedMemberId"));
-			int point = customer.getPoint();
-			model.addAttribute("point", point);
+			String id = (String) session.getAttribute("loggedMemberId");
+			CustomerDto customerDto = donationService.findByCustomerId(id);
+			model.addAttribute("point", customerDto.getPoint());
+			
 			return "donation/donate";
 		}
 		return "donation/donate";
 	}
 
 	@PostMapping("/donation/donate_done")
-	public String updateCustomerPoint(@RequestParam int pointToUse, HttpSession session, Model model) {
+	public String updateCustomerPoint(@RequestParam("pointToUse") int pointToUse, @RequestParam("org") int orgNo,
+			HttpSession session, Model model) {
 		String customerId = (String) session.getAttribute("loggedMemberId");
-		customerService.updateCustomerPoint(customerId, pointToUse);
-		int point = customerService.getCustomerById(customerId).getPoint();
-		session.setAttribute("point", point); // 세션에 데이터 저장
-		return "redirect:/donation/donate_done";
+		CustomerDto customerDto = donationService.updateCustomerPoint(customerId, pointToUse);
+		donationService.updateOrgTotal(orgNo, pointToUse);
+		
+		DonationDto donationDto = new DonationDto();
+		donationDto.setDonationAmount(pointToUse);
+		donationDto.setCustomerId(customerId);
+		donationDto.setOrgNo(orgNo);
+		
+		Calendar calendar = Calendar.getInstance();
+	    Date currentDate = calendar.getTime();
+		donationDto.setDonationDate(currentDate);
+		
+		donationService.updateList(donationDto);
+		
+		session.setAttribute("user", customerDto);
+		
+		return "redirect:/donation/donate_done?orgNo=" + orgNo;
 	}
 
 	@GetMapping("/donation/donate_done")
-	public String showCompletionPage(HttpSession session, Model model) {
-		String customerId = (String) session.getAttribute("loggedMemberId");
-		int point = customerService.getCustomerById(customerId).getPoint();
-		model.addAttribute("point", point);
+	public String showCompletionPage(HttpSession session, Model model, @RequestParam("orgNo") int orgNo) {
+		String id = (String) session.getAttribute("loggedMemberId");
+		CustomerDto customerDto = donationService.findByCustomerId(id);
+		DonationOrgDto donationOrgDto = donationService.findByOrgNo(orgNo);
+		model.addAttribute("point", customerDto.getPoint());
+		model.addAttribute("orgDto", donationOrgDto);
+		
 		return "donation/donate_done";
 	}
 
@@ -78,8 +94,8 @@ public class DonationController {
 	public String donationList(HttpSession session, Model model,
 			@RequestParam(value = "page", defaultValue = "1") int currentPage) {
 		String customerId = (String) session.getAttribute("loggedMemberId");
-		Customer customer = customerService.getCustomerById(customerId);
-		List<Donation> donationList = donationService.getDonationByCustomerId(customer);
+		CustomerDto customerDto = donationService.findByCustomerId(customerId);
+		List<Donation> donationList = donationService.getDonationByCustomerId(customerDto);
 		int totalDataCount = donationList.size();
 		int dataPerPage = 10;
 		int totalPages = (int) Math.ceil((double) totalDataCount / dataPerPage);

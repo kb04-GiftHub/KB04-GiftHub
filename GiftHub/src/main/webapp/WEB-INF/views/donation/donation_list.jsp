@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,11 +29,6 @@
 			<div class="row g-5 py-5">
 				<div class="col-12 text-center">
 					<h1 class="text-white animated slideInDown">이만큼 기부하셨어요!</h1>
-					<hr class="bg-white mx-auto mt-0" style="width: 90px;">
-					<nav aria-label="breadcrumb">
-						<ol class="breadcrumb justify-content-center">
-						</ol>
-					</nav>
 				</div>
 			</div>
 		</div>
@@ -41,13 +37,12 @@
 	<div class="container-xxl py-5">
 		<div class="container py-5 px-lg-5">
 			<div class="wow fadeInUp" data-wow-delay="0.1s">
-				<h1 class="text-center mb-5">CHECK YOUR SALE</h1>
+				<h1 class="text-center mb-5">CHECK YOUR DONATION</h1>
 			</div>
 			<div class="row justify-content-center">
 				<div class="col-lg-10">
 					<div class="wow fadeInUp" data-wow-delay="0.3s">
 						<p class="text-center mb-4"></p>
-						<hr style="margin-top: 3rem;">
 						<div class="container mt-5" id="tableSection">
 							<table class="table table-striped"
 								style="text-align: center; margin-bottom: 3rem;">
@@ -65,8 +60,8 @@
 										<tr>
 											<td scope="row" class="text-center">${status.index + 1}</td>
 											<td class="text-center">${pagedStores.donationOrg.orgName}</td>
-											<td class="text-center">${pagedStores.donationAmount}</td>
-											<td class="text-center">${pagedStores.donationDate}</td>
+											<td class="text-center"><fmt:formatNumber value="${pagedStores.donationAmount}" type="currency" currencySymbol=""/>원</td>
+											<td class="text-center"><fmt:formatDate value="${pagedStores.donationDate}" pattern="yyyy년 MM월 dd일"/></td>
 										</tr>
 									</c:forEach>
 								</tbody>

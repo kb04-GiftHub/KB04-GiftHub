@@ -154,7 +154,7 @@
 				                	<img src="/img/number-2.png" style="width: 70px;">
 				                </i>
 				                <h4 class="mb-3">상품등록</h4>
-				                <p class="m-0">상품을 등록해주세요.</p>
+				                <p class="m-0">기프티콘을 발행하고 싶은  <br> 상품을 등록해주세요.</p>
 				            </div>
 				        </div>
 				        <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
@@ -163,7 +163,7 @@
 				                	<img src="/img/number-3.png" style="width: 70px;">
 				                </i>
 				                <h4 class="mb-3">매출분석</h4>
-				                <p class="m-0">그래프로 한눈에 확인할 수 있어요.</p>
+				                <p class="m-0">가게의 월별 매출 그래프를 <br> 한눈에 확인할 수 있어요.</p>
 				            </div>
 				        </div>
 				    </div>
