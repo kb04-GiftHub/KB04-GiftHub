@@ -36,7 +36,7 @@
 <body>
    <%-- <c:import url="../top.jsp" /> --%>
    <c:import url="../top_customer.jsp" />
-   <c:set var="imagePath" value="${pageContext.request.contextPath}/upload_images/product/${list[10]}" />
+   <c:set var="imagePath" value="${pageContext.request.contextPath}/resources/products/${list[10]}" />
    <div class="container-xxl py-5 bg-primary hero-header">
       <div class="container my-5 py-5 px-lg-5">
          <div class="wow fadeInUp" data-wow-delay="0.1s">
@@ -63,7 +63,7 @@
 
    <!-- end -->
    <div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel" aria-hidden="true">
-   <div class="modal-dialog" role="document">
+   <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
          <div class="modal-header">
             <h5 class="modal-title" id="eventModalLabel">기프티콘 상세 정보</h5>
@@ -72,13 +72,14 @@
             </button> -->
          </div>
          <!-- modal 폼 -->
-         <div class="modal-body">
+         <div class="modal-body text-center">
             <p><strong>제목:</strong> <span id="eventTitle"></span></p>
             <!-- <p><strong>시작 시간:</strong> <span id="eventStart"></span></p>
             <p><strong>종료 시간:</strong> <span id="eventEnd"></span></p> -->
             <p><strong>상태:</strong> <span id="eventStatus"></span></p>
-            <p><strong>기프티콘 번호:</strong> <span id="eventGiftNo"></span></p>
-            <p><strong>바코드 번호:</strong> <span id="eventBarcode"></span></p>
+            <!-- <p><strong>기프티콘 번호:</strong> <span id="eventGiftNo"></span></p>
+            <img src="" id="eventImage" alt="이미지" /> -->
+            <!-- <p><strong>바코드 번호:</strong> <span id="eventBarcode"></span></p> 실제 기프티콘 이미지 -->
             <img src="" id="eventImage" alt="이미지" />
             
          </div>
@@ -126,9 +127,8 @@
                     start: '<c:out value="${formattedStart}" />',
                     end: '<c:out value="${formattedEnd}" />',
                     giftStatus: ${gift[3]}, // giftStatus 값을 이벤트 객체에 저장
-                    giftNo: ${gift[0]}, // giftNo
                     giftBarcode: '${gift[2]}',
-                    productImage: '${gift[10]}'
+                    //giftNo: ${gift[0]}, // giftNo
                 },
             </c:forEach>
             ],
@@ -175,9 +175,11 @@
              /* document.getElementById('eventStatus').textContent = info.event.extendedProps.giftStatus; */
              document.getElementById('eventStatus').textContent = statusText;
              
-          document.getElementById('eventGiftNo').textContent = info.event.extendedProps.giftNo;
-          document.getElementById('eventBarcode').textContent = info.event.extendedProps.giftBarcode;
-          document.getElementById('eventImage').src = "/upload_images/gifticon/" + info.event.extendedProps.giftBarcode;
+ //         document.getElementById('eventGiftNo').textContent = info.event.extendedProps.giftNo;
+ //         document.getElementById('eventBarcode').textContent = info.event.extendedProps.giftBarcode;
+//        document.getElementById('eventImage').src = "/upload_images/gifticon/" + info.event.extendedProps.giftBarcode;
+          document.getElementById('eventImage').src = "/resources/Gifticon/" + info.event.extendedProps.giftBarcode;
+          //document.getElementById('eventImage').src = "/resources/Gifticon/2d16ac91-fcfa-41a1-9f5c-a936b7818bc8_gifticon.jpg";
              // 모달을 열기 위한 Bootstrap 모달 메서드 호출
              
              /* console.log('이벤트를 클릭했습니다.');

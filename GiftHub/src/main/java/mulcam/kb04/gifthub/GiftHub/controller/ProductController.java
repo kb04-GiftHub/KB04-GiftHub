@@ -147,8 +147,8 @@ public class ProductController {
 		List<Object[]> list = productService.allProducts();
 		model.addAttribute("productList", list);
 		ses.removeAttribute("msg");
-		CustomerDto dto = (CustomerDto) ses.getAttribute("user");
-		ses.setAttribute("user",dto);
+		//CustomerDto dto = (CustomerDto) ses.getAttribute("user");
+		//ses.setAttribute("user",dto);
 		
 		return "product/list";
 	}
@@ -197,7 +197,7 @@ public class ProductController {
 		if(ses.getAttribute("user") == null ) {
 			model.addAttribute("Msg","로그인이 필요한 기능입니다");
 			model.addAttribute("loc","member/login");
-			ses.invalidate();
+			//ses.invalidate();
 			return "msg";
 		}
 		

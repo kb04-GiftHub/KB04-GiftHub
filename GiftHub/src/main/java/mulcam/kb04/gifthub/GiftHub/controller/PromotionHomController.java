@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.List;
 import java.util.UUID;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,8 +46,10 @@ public class PromotionHomController {
 		
 		String loggedId = (String)ses.getAttribute("loggedStoreId");
 		//이미지 저장 
-		String upDir=System.getProperty("user.dir"); // 프로젝트 루트 디렉토리
-		upDir+="/src/main/resources/static/upload_images/promotion";
+//		String upDir=System.getProperty("user.dir"); // 프로젝트 루트 디렉토리
+//		upDir+="/src/main/resources/static/upload_images/promotion";
+		ServletContext app=ses.getServletContext();
+		String upDir = app.getRealPath("/resources/promotion_img");
 		
 		File dir=new File(upDir);
 		if(!dir.exists()){

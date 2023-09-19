@@ -183,7 +183,7 @@ public class GifticonController {
 		String unique=UniqueCode.generateUniqueBarcode();//기프티콘 고유번호
 		Long giftNo = Long.parseLong(unique);
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(product.getProductExp());
+        calendar.setTime(new Date());
         calendar.add(Calendar.MONTH, 1);
         Date expDate = calendar.getTime();
 		String barcodeName = GifticonGenerator.createGiftCard(ses,product,unique,store,expDate);

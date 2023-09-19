@@ -24,16 +24,28 @@ public class CalendarController {
 		if(loggedMemberId == null || ses.getAttribute("loggedStroeId") != null) {
 			return "redirect:/index";
 		}
-		
 		CustomerDto customerDto =  giftService.findByCustomerId(loggedMemberId);
+		System.out.println(customerDto);
 		List<Object[]> list = giftService.findByCustomerIdToList(loggedMemberId);
 		
 		model.addAttribute("list", list);
 		
 		for (Object[] objects : list) {
 			System.out.println(objects[1]);
+			System.out.println("리스트>> 1" + objects[1]);
+			System.out.println("리스트>> 2" + objects[2]);
+			System.out.println("리스트>> 0" + objects[0]);
+			System.out.println("리스트>> 3" + objects[3]);
+			System.out.println("리스트>> 4" + objects[4]);
+			System.out.println("리스트>> 5" + objects[5]);
+			System.out.println("리스트>> 6" + objects[6]);
+			System.out.println("리스트>> 7" + objects[7]);
+			System.out.println("리스트>> 8" + objects[8]);
+			System.out.println("리스트>> 9" + objects[9]);
+			System.out.println("리스트>> 10" + objects[10]);
+			System.out.println("리스트>> 11" + objects[11]);
 		}
-		//System.out.println("리스트>> " + list);
+		System.out.println("리스트>> " + list);
 
 		return "member/main";
 	}
