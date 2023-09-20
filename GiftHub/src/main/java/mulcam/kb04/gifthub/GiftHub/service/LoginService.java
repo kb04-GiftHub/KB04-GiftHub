@@ -12,4 +12,6 @@ public interface LoginService {
 	
 	public int countByStoreId(String id);
 	public int countByCustomerId(String id);
+	
+	public void updateStauts(String id);
 }
