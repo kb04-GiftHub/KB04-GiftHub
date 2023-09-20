@@ -52,6 +52,14 @@
 			padding-top: 4rem !important;
 			padding-bottom: 4rem !important;
 		}
+		
+		a {
+			text-align: center !important;
+		}
+		
+		.dropdown-item:active{
+			background-color:#0058C6 !important;
+		}	
     </style>
 </head>
 
