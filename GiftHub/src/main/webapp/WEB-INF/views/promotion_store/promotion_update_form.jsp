@@ -89,7 +89,7 @@
 								<div class="form-floating">
                              	현재 이미지<br>
                              	<img id="promotionImage"
-                                  src="${pageContext.request.contextPath}/upload_images/promotion/${promotion.promotionImage}"
+                                  src="/resources/promotion_img/${promotion.promotionImage}"
                                   onclick="window.open(this.src)"><br>
                              이미지 첨부<input type="file"
                                             id="promotionImage"
