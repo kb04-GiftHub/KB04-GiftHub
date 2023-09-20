@@ -159,12 +159,17 @@ public class ProductController {
 	
 	@GetMapping("/product/list")
 	public String product_list(Model model, HttpSession ses) {
-		
 		List<Object[]> list = productService.allProducts();
 		model.addAttribute("productList", list);
 		ses.removeAttribute("msg");
-		//CustomerDto dto = (CustomerDto) ses.getAttribute("user");
-		//ses.setAttribute("user",dto);
+		CustomerDto dto = (CustomerDto) ses.getAttribute("user");
+		if(dto==null) {
+			model.addAttribute("Msg","로그인이 필요한 기능입니다");
+			model.addAttribute("loc","member/login");
+			//ses.invalidate();
+			return "msg";
+		}
+		ses.setAttribute("user",dto);
 		
 		return "product/list";
 	}
@@ -176,7 +181,7 @@ public class ProductController {
 		
 		if(loggedStoreId == null || ses.getAttribute("loggedStroeId") != null) {
 		 return "redirect:/index"; }
-		 
+		
 		Date now = new Date();
 		List<ProductDto> myList = productService.findByStoreIdToList(loggedStoreId);
 		model.addAttribute("myList", myList);
