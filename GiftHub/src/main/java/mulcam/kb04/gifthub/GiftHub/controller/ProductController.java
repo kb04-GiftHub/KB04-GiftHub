@@ -144,7 +144,8 @@ public class ProductController {
 		productDto.setProductMemo(productMemo);
 		productDto.setProductExp(expiryDate);
 		productDto.setProductImage(newfilename);
-		productDto.setStoreId(loggedId);			// 수정할 부분
+		productDto.setStoreId(loggedId);
+		productDto.setStatus(0);// 수정할 부분 
 		
 		ProductDto dto = productService.save(productDto);
 		System.out.println("등록완료");
