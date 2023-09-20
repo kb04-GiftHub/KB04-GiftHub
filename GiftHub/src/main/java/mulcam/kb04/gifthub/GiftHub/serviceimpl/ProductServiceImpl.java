@@ -91,6 +91,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<Object[]> allProducts() {
 		List<Object[]> list = repository.findAllProductAndCategory();
+		
 		return list;
 	}
 
@@ -231,5 +232,19 @@ public class ProductServiceImpl implements ProductService {
 			dtoList.add(dto);
 		}
 		return dtoList;
+	}
+
+	@Override
+	public List<JjimDto> getJjimByCustomerId(String customerId) {
+		List<Jjim> jjimList = jjimRepo.findByCustomer(customerId);
+		List<JjimDto> dList = new ArrayList<>();
+		if(jjimList == null) {
+			return null;
+		}
+		for(Jjim jjim : jjimList) {
+			JjimDto jdto = JjimDto.entityToDto(jjim);
+			dList.add(jdto);
+		}
+		return dList;
 	}
 }
