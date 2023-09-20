@@ -69,8 +69,12 @@ public class GifticonGenerator {
     	
         // 상품 이미지 그리기
         try {
-        	String upDir=System.getProperty("user.dir");
-        	String rootDirectory = upDir+"/src/main/resources/static/upload_images/product";
+        	ServletContext app =ses.getServletContext();
+        	String rootDirectory = app.getRealPath("/resources/products");
+			/*
+			 * String upDir=System.getProperty("user.dir"); String rootDirectory =
+			 * upDir+"/src/main/resources/static/upload_images/product";
+			 */
         	String productImagePath = rootDirectory+"/"+productImageFile;
             BufferedImage productImage = ImageIO.read(new File(productImagePath));
             int imageWidth = 300;
