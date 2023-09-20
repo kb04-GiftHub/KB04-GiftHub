@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>DGital - Digital Agency HTML Template</title>
+    <title>커뮤니티</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -85,7 +85,7 @@
                             <p class="text-center mb-4">상세보기에서 게시물을 삭제, 수정할 수 있습니다.</p>
                             <form>
                                 <div class="row g-3">
-                                    <table class="table" style="border: 1px solid #CFCBCB; border-collapse: collapse; ">
+                                    <table class="table text-center" style="border-collapse: collapse;border: 1px solid #CFCBCB;">
 										<tr style="background-color:#D0E5FF" class="text-center">
 											<th>번호</th>
 											<th>게시물 종류</th>											

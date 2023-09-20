@@ -52,18 +52,20 @@
 			padding-top: 4rem !important;
 			padding-bottom: 4rem !important;
 		}
+		
+		a {
+			text-align: center !important;
+		}
+		
+		.dropdown-item:active{
+			background-color:#0058C6 !important;
+		}	
     </style>
 </head>
 
 <body>
     <div class="container-xxl bg-white p-0">
-        <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div>
-        <!-- Spinner End -->
+    
         <!-- Navbar & Hero Start -->
         <div class="container-xxl position-relative p-0">
             <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0" style="height: 80px">
@@ -72,11 +74,6 @@
                 </a>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav mx-auto py-0">
-                    	<!-- 테스트 -->
-	                    <div class="navbar-nav py-0" style="color: white; font-weight: 500; font-size: 15pt;">
-	                    	<c:if test="${not empty loggedStoreId}">${loggedStoreId}/STORE 로그인 -ing</c:if>
-	                    	<c:if test="${not empty loggedMemberId}">${loggedMemberId}/MEMBER 로그인 -ing</c:if>
-	                    </div>
                     </div>
                     <div class="nav-item dropdown" >
                     	<a href="" class="nav-link dropdown-toggle"
@@ -223,15 +220,6 @@
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="lib/isotope/isotope.pkgd.min.js"></script>
     <script src="lib/lightbox/js/lightbox.min.js"></script>
-
-	<!-- Check JavaScript -->
-	<script>
-		window.onload = function() {
-		    if ('${msg}' != '') {
-		        alert('${msg}');
-		    }
-		};
-	</script>
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>

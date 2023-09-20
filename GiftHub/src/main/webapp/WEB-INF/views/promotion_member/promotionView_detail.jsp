@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>DGital - Digital Agency HTML Template</title>
+    <title>커뮤니티</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -102,7 +102,7 @@
     <div class="row">
         <!-- 첫 번째 열에 promotionImage 배치 -->
         <div class="col-md-6 wow fadeInUp text-center" data-wow-delay="0.3s">
-            <img src="${pageContext.request.contextPath}/upload_images/promotion/${promotion[3]}" width="100%" height="auto">
+            <img src="/resources/promotion_img/${promotion[3]}" width="100%" height="auto">
             <br>
             <br>
         </div>

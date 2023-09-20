@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>DGital - Digital Agency HTML Template</title>
+    <title>커뮤니티</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -105,7 +105,7 @@
                                     
 									<table class="text-center table" style="border: 1px solid #CFCBCB; border-collapse: collapse;">
 										<colgroup>
-										<col style="width:20%; border-right: 1px solid #CFCBCB;background-color:#F4F2F2;">
+										<col style="width:20%; border-right: 1px solid #D0E5FF;background-color:#D0E5FF;">
 										<col style="width:*">
 										</colgroup>
 										<tr>
@@ -139,7 +139,7 @@
 										</tr>
 										<tr>
 											<th>이미지</th>
-											<td><img src="${pageContext.request.contextPath}/upload_images/promotion/${promotion.promotionImage}" width="300" height="200">
+											<td><img src="/resources/promotion_img/${promotion.promotionImage}" width="300" height="200">
 											</td>
 										</tr>
 										  

@@ -6,7 +6,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <head>
 <meta charset="utf-8">
-<title>DGital - Digital Agency HTML Template</title>
+<title>커뮤니티</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="" name="keywords">
 <meta content="" name="description">
@@ -90,33 +90,36 @@
 				<div class="col-lg-7">
 					<div class="wow fadeInUp" data-wow-delay="0.3s">
 						<p class="text-center mb-4">가게 홍보 및 이벤트 게시물을 작성해주세요.</p>
-						<form action="/promotion_store/promotion_insert" method="post"
-							modelAttribute="promotionDto" enctype="multipart/form-data">
-							<label>게시글 종류</label> <select id="promotionType"
-								name="promotionType">
-								<option value="1">홍보</option>
-								<option value="2">이벤트</option>
-							</select>
-								<div class="col-12">
-									<div class="form-floating">
-										제목<input type="text" class="form-control"
-											name="promotionTitle" id="promotionTitle"
-											placeholder="Subject">
-									</div>
-								</div>
-								<div class="col-12">
-									<div class="form-floating">
-										내용
-										<textarea class="form-control" name="promotionContent"
-											placeholder="Leave a message here" id="promotionContent"
-											style="height: 150px"></textarea>
-									</div>
-								</div>
-
+						<form action="/promotion_store/promotion_insert" method="post" modelAttribute="promotionDto" enctype="multipart/form-data">
 							<div class="row g-3">
+								<div class="col-12">
+									<div class="form-floating">
+										<select name="promotionType" id="promotionType" class="form-control">
+											<option value="1">홍보</option>
+											<option value="2">이벤트</option>
+										</select>
+										<label for="category">게시글 종류</label>
+									</div>
+								</div>
+								<div class="col-12">
+									<div class="form-floating">
+										<input type="text" class="form-control" id="promotionTitle" name="promotionTitle" placeholder="제목">
+										<label for="promotionTitle">제목</label>
+									</div>
+								</div>
+								<div class="col-12">
+									<div class="form-floating">
+										<textarea class="form-control" id="promotionContent" name="promotionContent" style="resize: vertical; overflow-y: scroll; height: 150px;"></textarea>
+										<label for="promotionContent">내용</label>
+									</div>
+								</div>
 								<div class="col-12 text-center" id=image_container class="pt-2 text-center"></div>
 								<div class="col-12">
-									<div class="form-floating"><input type="file" class="form-control"	name="promotionImage" id="imageInput" placeholder="이미지"></div>
+									<div class="form-floating">
+										<input type="file" class="form-control"	name="promotionImage" id="imageInput" placeholder="이미지">
+										<label for="promotionImage">이미지 파일</label>
+									</div>
+									
 								</div>
 								<div class="col-12">
 									<button class="btn btn-primary w-100 py-3" type="submit">등록하기</button>
