@@ -40,7 +40,16 @@ public class ProductController {
 	@Autowired
 	ProductService productService;
 	
-	//모든 물품 정보 가져오기
+	//검색 가게 정보 가져오기
+	@GetMapping("/findStores")
+	@ResponseBody
+	public List<StoreDto> findStores(@RequestParam String storeName){
+		List<StoreDto> list = new ArrayList<>();
+		list = productService.findStores(storeName);
+		return list;
+	}
+	
+	//모든 가게 정보 가져오기
 	@GetMapping("/allStores")
 	@ResponseBody
 	public List<StoreDto> allStores(@RequestParam int categoryNum) {

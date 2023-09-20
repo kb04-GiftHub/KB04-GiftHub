@@ -8,6 +8,16 @@
 <head>
 <meta charset="UTF-8">
 <title>기프티콘 사용내역</title>
+<style>
+	#wrap2{
+	height:38px;
+	display:flex;
+	flex-direction:row;
+	flex-wrap: nowrap;
+	justify-content:center;
+	align-items: stretch;
+	}
+</style>
 <!-- jQuery -->
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -44,13 +54,24 @@
 									<td>${usage[2]}</td>
 									<td>${usage[4]}</td>
 									<td>${usage[3]}</td>
-									<fmt:formatDate value="${usage[1]}" pattern="yyyy-MM-dd" var="dateFormat"/>
-									<td>${formattedDate}</td>
+									<fmt:formatDate value="${usage[1]}" pattern="yyyy년 MM월 dd일 HH시 mm분" var="dateFormat"/>
+									<td>${dateFormat}</td>
 								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
 				</div>
+				<%-- <div id="wrap2">
+					<ul id="paging" class="pagination">
+						<li class="page-item"><a class="page-link" href="noticeList?cpage=${cpage-1}">«</a></li>
+						<c:forEach var="i" begin="1" end="${pageCount}">
+							<li class="page-item">
+								<a style="<c:if test="${i eq cpage}">background-color:gainsboro;</c:if>" class="page-link" href="useList?cpage=${i}">${i}</a>
+							</li>
+						</c:forEach>
+						<li class="page-item"><a class="page-link" href="useList?cpage=${cpage+1}">»</a></li>
+					</ul>
+				<div> --%>
 			</div>
 		</div>
 	</div>

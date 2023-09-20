@@ -78,89 +78,38 @@
 						</ul>
 					</div>
 				</div>
-				<!-- <div class="col-lg-10">
-					<div class="wow fadeInUp" data-wow-delay="0.3s">
-						<div id="map"
-							style="width: 100%; height: 500px; margin-top: 20px; margin-bottom: 50px;"></div>
-						<hr style="margin-bottom: 40px;">
-					</div>
-				</div> -->
 				<div class="col-lg-10">
 				<div class="search">
 					<div class="text-end input-group" >
 						<input class="form-control" type="text" id="searchInput" placeholder="검색어를 입력하세요">
-						<button class="btn btn-primary" onclick="searchFunction()">검색</button>
 					</div>
 				</div>
 					<table class="table table-striped"
 						style="text-align: center; margin-bottom: 3rem;">
 						<thead>
 							<tr>
-								<!-- <th scope="col">순번</th> -->
+								<th scope="col">순번</th>
 								<th scope="col">매장명</th>
 								<th scope="col">주소</th>
 								<th scope="col">업종</th>
 							</tr>
 						</thead>
-						<tbody>
-							<c:forEach var="pagedStore" items="${pagedStores}"
-								varStatus="iterStat">
-								<tr class="categoryRow" data-category="${pagedStore.categoryNo.categoryNo}">
-									<%-- <th scope="row">${iterStat.index + 1}</th> --%>
-									<td>${pagedStore.storeName}</td>
-									<td>${pagedStore.storeAdd2}${pagedStore.storeAdd3}</td>
-									<td><c:choose>
-											<c:when test="${pagedStore.categoryNo.categoryNo == 1}">한식</c:when>
-											<c:when test="${pagedStore.categoryNo.categoryNo == 2}">중식</c:when>
-											<c:when test="${pagedStore.categoryNo.categoryNo == 3}">일식</c:when>
-											<c:when test="${pagedStore.categoryNo.categoryNo == 4}">양식</c:when>
-											<c:when test="${pagedStore.categoryNo.categoryNo == 5}">카페/베이커리</c:when>
-											<c:otherwise>기타</c:otherwise>
-										</c:choose></td>
-								</tr>
-							</c:forEach>
+						<tbody id="categoryRow">
 						</tbody>
 					</table>
-					<nav aria-label="Page navigation example">
-						<ul class="pagination pagination-primary justify-content-center">
-							<li class="page-item ${currentPage == 1 ? 'disabled' : ''}">
-								<a class="page-link" href="?page=1"><<</a>
-							</li>
-							<li class="page-item ${currentPage == 1 ? 'disabled' : ''}">
-								<a class="page-link" href="?page=${currentPage - 1}"><</a>
-							</li>
-							<c:set var="startPage"
-								value="${(currentGroup - 1) * pagesPerGroup + 1}" />
-							<c:set var="endPage"
-								value="${currentGroup * pagesPerGroup > totalPages ? totalPages : currentGroup * pagesPerGroup}" />
-							<c:forEach var="i" begin="${startPage}" end="${endPage}">
-								<li class="page-item ${i == currentPage ? 'active' : ''}">
-									<a class="page-link" id="ggg" href="?page=${i}#tableSection">${i}</a>
-								</li>
-							</c:forEach>
-							<li
-								class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
-								<a class="page-link" href="?page=${currentPage + 1}">></a>
-							</li>
-							<li
-								class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
-								<a class="page-link" href="?page=${totalPages}">>></a>
-							</li>
-						</ul>
-					</nav>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<c:import url="../footer.jsp" />
-	<script>
+	<!-- <script>
 		function searchFunction() {
 			var searchText = document.getElementById('searchInput').value;
 			console.log('검색어:', searchText);
 			// 여기에 검색 기능을 구현하세요
 		}
-	</script>
+	</script> -->
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=14b45607c24e81b779e6418cf489de08&libraries=services"></script>
 		
@@ -180,7 +129,8 @@
 			    navigator.geolocation.getCurrentPosition(function(position) {
 			        var lat = position.coords.latitude; // 위도
 			        var lon = position.coords.longitude; // 경도
-			        var locPosition = new kakao.maps.LatLng(lat, lon); // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+			        var locPosition = new kakao.maps.LatLng(lat, lon);
+			        //마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
 			    	 // 지도 중심좌표를 접속위치로 변경합니다
 				    map.setCenter(locPosition);
 			    });
@@ -221,82 +171,138 @@
 		}
 		
 		$(function(){
-			allProduct('0');
-			$('#koreaC').click(function(){
-				allProduct('1');
-				$(this).attr("class","mx-2 active")
-				$('#allC').attr("class","mx-2")
-				$('#chinaC').attr("class","mx-2")
-				$('#japnaC').attr("class","mx-2")
-				$('#chinaC').attr("class","mx-2")
-				$('#westernC').attr("class","mx-2")
-				$('#cafeC').attr("class","mx-2")
-				$('#etcC').attr("class","mx-2")
-			})
+			allStores('0');
 			$('#allC').click(function(){
-				allProduct('0');
-				$(this).attr("class","mx-2 active")
-				$('#koreaC').attr("class","mx-2")
-				$('#chinaC').attr("class","mx-2")
-				$('#japnaC').attr("class","mx-2")
-				$('#chinaC').attr("class","mx-2")
-				$('#westernC').attr("class","mx-2")
-				$('#cafeC').attr("class","mx-2")
-				$('#etcC').attr("class","mx-2")
+				allStores('0');
+				$(this).attr("class","mx-2 active");
+				$('#koreaC').attr("class","mx-2");
+				$('#chinaC').attr("class","mx-2");
+				$('#japanC').attr("class","mx-2");
+				$('#chinaC').attr("class","mx-2");
+				$('#westernC').attr("class","mx-2");
+				$('#cafeC').attr("class","mx-2");
+				$('#etcC').attr("class","mx-2");
 			})
+			$('#koreaC').click(function(){
+				allStores('1');
+				$(this).attr("class","mx-2 active");
+				$('#allC').attr("class","mx-2");
+				$('#chinaC').attr("class","mx-2");
+				$('#japanC').attr("class","mx-2");
+				$('#chinaC').attr("class","mx-2");
+				$('#westernC').attr("class","mx-2");
+				$('#cafeC').attr("class","mx-2");
+				$('#etcC').attr("class","mx-2");
+			});
 			$('#chinaC').click(function(){
-				allProduct('2');
-				$(this).attr("class","mx-2 active")
-				$('#allC').attr("class","mx-2")
-				$('#koreaC').attr("class","mx-2")
-				$('#japnaC').attr("class","mx-2")
-				$('#westernC').attr("class","mx-2")
-				$('#cafeC').attr("class","mx-2")
-				$('#etcC').attr("class","mx-2")
+				allStores('2');
+				$(this).attr("class","mx-2 active");
+				$('#allC').attr("class","mx-2");
+				$('#koreaC').attr("class","mx-2");
+				$('#japanC').attr("class","mx-2");
+				$('#westernC').attr("class","mx-2");
+				$('#cafeC').attr("class","mx-2");
+				$('#etcC').attr("class","mx-2");
 			})
 			$('#japanC').click(function(){
-				allProduct('3');
-				$(this).attr("class","mx-2 active")
-				$('#allC').attr("class","mx-2")
-				$('#chinaC').attr("class","mx-2")
-				$('#koreaC').attr("class","mx-2")
-				$('#westernC').attr("class","mx-2")
-				$('#cafeC').attr("class","mx-2")
-				$('#etcC').attr("class","mx-2")
+				allStores('3');
+				$(this).attr("class","mx-2 active");
+				$('#chinaC').attr("class","mx-2");
+				$('#westernC').attr("class","mx-2");
+				$('#koreaC').attr("class","mx-2");
+				$('#cafeC').attr("class","mx-2");
+				$('#etcC').attr("class","mx-2");
 			})
 			$('#westernC').click(function(){
-				allProduct('4');
-				$(this).attr("class","mx-2 active")
-				$('#allC').attr("class","mx-2")
-				$('#chinaC').attr("class","mx-2")
-				$('#japnaC').attr("class","mx-2")
-				$('#koreaC').attr("class","mx-2")
-				$('#cafeC').attr("class","mx-2")
-				$('#etcC').attr("class","mx-2")
+				allStores('4');
+				$(this).attr("class","mx-2 active");
+				$('#allC').attr("class","mx-2");
+				$('#chinaC').attr("class","mx-2");
+				$('#japanC').attr("class","mx-2");
+				$('#koreaC').attr("class","mx-2");
+				$('#cafeC').attr("class","mx-2");
+				$('#etcC').attr("class","mx-2");
 			})
 			$('#cafeC').click(function(){
-				allProduct('5');
-				$(this).attr("class","mx-2 active")
-				$('#allC').attr("class","mx-2")
-				$('#chinaC').attr("class","mx-2")
-				$('#japnaC').attr("class","mx-2")
-				$('#westernC').attr("class","mx-2")
-				$('#koreaC').attr("class","mx-2")
-				$('#etcC').attr("class","mx-2")
+				allStores('5');
+				$(this).attr("class","mx-2 active");
+				$('#allC').attr("class","mx-2");
+				$('#chinaC').attr("class","mx-2");
+				$('#japanC').attr("class","mx-2");
+				$('#westernC').attr("class","mx-2");
+				$('#koreaC').attr("class","mx-2");
+				$('#etcC').attr("class","mx-2");
 			})
 			$('#etcC').click(function(){
-				allProduct('6');
-				$(this).attr("class","mx-2 active")
-				$('#allC').attr("class","mx-2")
-				$('#chinaC').attr("class","mx-2")
-				$('#japnaC').attr("class","mx-2")
-				$('#westernC').attr("class","mx-2")
-				$('#koreaC').attr("class","mx-2")
-				$('#cafeC').attr("class","mx-2")
+				allStores('6');
+				$(this).attr("class","mx-2 active");
+				$('#allC').attr("class","mx-2");
+				$('#chinaC').attr("class","mx-2");
+				$('#japanC').attr("class","mx-2");
+				$('#westernC').attr("class","mx-2");
+				$('#koreaC').attr("class","mx-2");
+				$('#cafeC').attr("class","mx-2");
 			})
 			
 		})
-		function allProduct(num){
+		
+		$('#searchInput').on('keyup', function(){
+			var inputValue = $(this).val();
+			findStores(inputValue);
+		})
+		
+		function findStores(value){
+			$('#allC').click();
+			if(value != ''){
+				$.ajax({
+					url:'/findStores?storeName='+value,
+					type:'get',
+					dataType:'json',
+					async:false,
+					cache:false,
+					success:function(res){
+						$('#categoryRow').html('');
+						var str = '';
+						$.each(res,function(i,data){
+							str += '<tr>'
+						 	str += '<th scope="row">'
+						 	str += i+1
+							str += '</th>'
+							str += '<td>'
+							str+=data.storeName
+							str+='</td>'
+							str += '<td>'
+							str+=data.storeAdd2
+							str+=data.storeAdd3
+							str+='</td>'
+							str += '<td>'
+							if(data.categoryNo === 1){
+								str+='한식';
+							}else if(data.categoryNo === 2){
+								str+='중식';
+							}else if(data.categoryNo === 3){
+								str+='일식';
+							}else if(data.categoryNo === 4){
+								str+='양식';
+							}else if(data.categoryNo === 5){
+								str+='카페 / 디저트';
+							}else if(data.categoryNo === 6){
+								str+='기타';
+							}
+							str+='</td>'
+							str += '</tr>'
+						});
+						$('#categoryRow').html(str);
+					},
+					error:function(err){
+						alert('error : '+err.status);
+					}
+				})
+			}else if(value==""){
+				allStores('0');
+			}
+		}
+		function allStores(num){
 			deleteMarkers(map);
 			markers = []
 			$.ajax({
@@ -306,15 +312,42 @@
 				async:false,
 				cache:false,
 				success:function(res){
+					$('#categoryRow').html('');
+					var str = '';
 					$.each(res,function(i,data){
+							str += '<tr>'
+						 	str += '<th scope="row">'
+						 	str += i+1
+							str += '</th>'
+							str += '<td>'
+							str+=data.storeName
+							str+='</td>'
+							str += '<td>'
+							str+=data.storeAdd2
+							str+=data.storeAdd3
+							str+='</td>'
+							str += '<td>'
+							if(data.categoryNo === 1){
+								str+='한식';
+							}else if(data.categoryNo === 2){
+								str+='중식';
+							}else if(data.categoryNo === 3){
+								str+='일식';
+							}else if(data.categoryNo === 4){
+								str+='양식';
+							}else if(data.categoryNo === 5){
+								str+='카페 / 디저트';
+							}else if(data.categoryNo === 6){
+								str+='기타';
+							}
+							str+='</td>'
+							str += '</tr>'
 						//주소 -> 좌표 변환
 						geocoder.addressSearch(data.storeAdd2, function(result, status) {
 							// 정상적으로 검색이 완료됐으면 
 							if (status === kakao.maps.services.Status.OK) {
-								
 								// 마커 이미지의 이미지 주소입니다
 								var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
-								
 								if(data.categoryNo == 1){
 									imageSrc = "/img/store_korea.png";
 								}else if(data.categoryNo == 2){
@@ -328,13 +361,10 @@
 								}else if(data.categoryNo == 6){
 									imageSrc = "/img/store_etc.png";
 								}
-								
 								// 마커 이미지의 이미지 크기 입니다
 								var imageSize = new kakao.maps.Size(30, 30); 
-									    
 								// 마커 이미지를 생성합니다    
 								var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
-									    
 								// 마커를 생성합니다
 								var marker = new kakao.maps.Marker({
 								        map: map, // 마커를 표시할 지도
@@ -344,7 +374,8 @@
 								});
 								markers.push(marker);
 							}
-						});			
+						});
+						$('#categoryRow').html(str);
 					}); 
 				},
 				error:function(err){
