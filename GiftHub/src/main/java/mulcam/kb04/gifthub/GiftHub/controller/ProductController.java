@@ -319,19 +319,20 @@ public class ProductController {
 			jdto.setProductNo(productNo);
 			jdto.setJjimStatus(1);
 			jdto = productService.jjimSave(jdto);
-			
+			map.put("msg","성공");
 		}else if(jjimStatus == 2){
 			jdto = productService.findByProductNoCustomerId(productNo, customerId);
 			jdto.setJjimStatus(1);
 			jdto = productService.jjimSave(jdto);
+			map.put("msg","성공");
 		}else if(jjimStatus == 1) {
 			jdto = productService.findByProductNoCustomerId(productNo, customerId);
 			jdto.setJjimStatus(2);
 			jdto = productService.jjimSave(jdto);
+			map.put("msg","성공");
 		}
 		map.put("jjimStatus", jdto.getJjimStatus());
 		map.put("jdto", jdto);
-		map.put("msg","성공");
 		return map;
 	}
 	

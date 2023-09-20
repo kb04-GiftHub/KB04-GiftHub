@@ -48,7 +48,7 @@
 					<div class="row justify-content-center align-items-center mt-5">
 						<div class="col-md-6 text-center">
 							<!-- 이미지 -->
-							<img src="${imagePath}" alt="Product Image">
+							<img style="width:50%;height:auto;" src="${imagePath}" alt="Product Image">
 
 						</div>
 					</div>
