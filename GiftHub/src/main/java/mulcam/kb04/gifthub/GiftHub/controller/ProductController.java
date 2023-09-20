@@ -144,7 +144,8 @@ public class ProductController {
 		productDto.setProductMemo(productMemo);
 		productDto.setProductExp(expiryDate);
 		productDto.setProductImage(newfilename);
-		productDto.setStoreId(loggedId);			// 수정할 부분
+		productDto.setStoreId(loggedId);
+		productDto.setStatus(0);// 수정할 부분 
 		
 		ProductDto dto = productService.save(productDto);
 		System.out.println("등록완료");
@@ -319,19 +320,20 @@ public class ProductController {
 			jdto.setProductNo(productNo);
 			jdto.setJjimStatus(1);
 			jdto = productService.jjimSave(jdto);
-			
+			map.put("msg","성공");
 		}else if(jjimStatus == 2){
 			jdto = productService.findByProductNoCustomerId(productNo, customerId);
 			jdto.setJjimStatus(1);
 			jdto = productService.jjimSave(jdto);
+			map.put("msg","성공");
 		}else if(jjimStatus == 1) {
 			jdto = productService.findByProductNoCustomerId(productNo, customerId);
 			jdto.setJjimStatus(2);
 			jdto = productService.jjimSave(jdto);
+			map.put("msg","성공");
 		}
 		map.put("jjimStatus", jdto.getJjimStatus());
 		map.put("jdto", jdto);
-		map.put("msg","성공");
 		return map;
 	}
 	

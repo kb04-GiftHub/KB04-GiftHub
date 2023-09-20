@@ -105,7 +105,7 @@
 					<div class="rounded overflow-hidden">
 						<div class="position-relative overflow-hidden text-center">
 							<img class="img-fluid" style="height: 200px;"
-								src="/upload_images/product/${product[5]}" alt="">
+								src="/resources/products/${product[5]}" alt="">
 							<div class="portfolio-overlay">
 								<a class="btn btn-square btn-outline-light mx-1"
 									href="/product/detail?productNo=${product[0]}" data-lightbox="portfolio">

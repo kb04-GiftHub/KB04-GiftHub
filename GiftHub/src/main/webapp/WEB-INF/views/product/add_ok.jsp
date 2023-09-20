@@ -46,7 +46,6 @@
 						<div class="col-md-6 text-center">
 							<!-- 이미지 -->
 							<img src="${imagePath}" alt="Product Image" style="width: 100%; margin-bottom: 50px;">
-
 						</div>
 					</div>
 
