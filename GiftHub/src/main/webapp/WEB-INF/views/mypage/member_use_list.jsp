@@ -63,6 +63,7 @@
 									<li class="mx-2 active" data-filter="*">전체</li>
 									<li class="mx-2" data-filter=".first">사용가능</li>
 									<li class="mx-2" data-filter=".second">사용완료</li>
+									<li class="mx-2" data-filter=".third">기간만료</li>
 								</ul>
 							</div>
 						</div>
@@ -83,8 +84,22 @@
 					                        </div>
 					                    </div>
 									</c:when>
-									<c:when test="${list[3] eq 2 || list[3] eq 3}">
+									<c:when test="${list[3] eq 2}">
 										<div class="col-lg-3 col-md-6 portfolio-item second wow fadeInUp" data-wow-delay="0.1s" onclick="window.location.href = '/member/mypage/use_detail?giftNo=${list[0]}'">
+					                        <div class="rounded overflow-hidden" style="border: 4px solid #EEEEEE">
+					                            <div class="position-relative overflow-hidden" style="height: 200px; display: flex; justify-content: center; align-items: center;">
+					                                <img class="img-fluid" src="/resources/products/${list[10]}" alt="" id="img" onload="adjustImageSize(this)">
+					                            </div>
+					                            <div class="p-3" style="background: #EEEEEE; color: gray;">
+					                                <p class="mb-0">${list[11]}</p>
+					                                <h5 class="lh-base mb-1">${list[8]}</h5>
+					                                <p class="mb-0" style="font-size: 10pt; text-align: right;">유효기간 : <fmt:formatDate value="${list[1]}" pattern="yyyy년 MM월 dd일"/></p>
+					                            </div>
+					                        </div>
+					                    </div>
+									</c:when>
+									<c:when test="${list[3] eq 3}">
+										<div class="col-lg-3 col-md-6 portfolio-item third wow fadeInUp" data-wow-delay="0.1s" onclick="window.location.href = '/member/mypage/use_detail?giftNo=${list[0]}'">
 					                        <div class="rounded overflow-hidden" style="border: 4px solid #EEEEEE">
 					                            <div class="position-relative overflow-hidden" style="height: 200px; display: flex; justify-content: center; align-items: center;">
 					                                <img class="img-fluid" src="/resources/products/${list[10]}" alt="" id="img" onload="adjustImageSize(this)">

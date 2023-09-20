@@ -85,6 +85,9 @@ public class LoginController {
 				model.addAttribute("title", "로그인");
 				model.addAttribute("subTitle", "WELCOME");
 				model.addAttribute("msg", customerDto.getCustomerNickname() + "님 환영합니다. 메인페이지로 이동하여 서비스를 이용하세요.");
+				
+				loginService.updateStauts(id);
+				
 				return "complete/member_login_complete";
 			} else {
 				redirect.addFlashAttribute("msg", " ✖️ 비밀번호가 일치하지 않습니다.");
