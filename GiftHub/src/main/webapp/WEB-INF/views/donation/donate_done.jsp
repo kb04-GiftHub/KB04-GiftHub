@@ -7,6 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>기부 완료</title>
+<style>
+	.py-3 {padding-top: 3rem !important; padding-bottom: 1rem !important}
+</style>
 </head>
 <body>
 	<c:import url="../top_customer.jsp" />

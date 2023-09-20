@@ -10,6 +10,7 @@
 .btn-primary{background-color:#0058C6 !important; border-color:#0058C6 !important}
 .form-control:focus{color:#726D7B;background-color:#fff;border-color:#add2ff;outline:0;box-shadow:0 0 0 .25rem rgba(173, 210, 255, 1)}
 .btn-primary:focus{color:#fff;background-color:#0058C6;border-color:#0058C6;box-shadow:0 0 0 .25rem rgba(173, 210, 255, 1)}
+}
 
 /*** Spinner ***/
 #spinner {
@@ -237,32 +238,6 @@ h6,
         padding: 6rem 0 9rem 0;
     }
 }
-
-/*** Index Header ***/
-.index-header {
-    padding: 18rem 0;
-    background:
-        url(../img/blob-top-left.png),
-        url(../img/blob-top-right.png),
-        url(../img/blob-bottom-left.png),
-        url(../img/blob-bottom-right.png),
-        url(../img/blob-center.png);
-    background-position:
-        left 0px top 0px,
-        right 0px top 0px,
-        left 0px bottom 0px,
-        right 0px bottom 0px,
-        center center,
-        center bottom;
-    background-repeat: no-repeat;
-}
-
-@media (max-width: 991.98px) {
-    .hero-header {
-        padding: 6rem 0 9rem 0;
-    }
-}
-
 
 /*** Section Title ***/
 .section-title {

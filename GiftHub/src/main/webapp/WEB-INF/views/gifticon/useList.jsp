@@ -18,9 +18,12 @@
 	align-items: stretch;
 	}
 </style>
+
 <!-- jQuery -->
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+</head>
+
+<body>
 <c:import url="../top.jsp" />
 
 <div class="container-xxl py-5 bg-primary hero-header">
@@ -32,62 +35,71 @@
 		</div>
 	</div>
 </div>
-<!-- Contact Start -->
+
 <div class="container-xxl py-5">
-	<h1 class="text-center text-black animated slideInDown">기프티콘 사용내역</h1>
-	<div class="container py-5 px-lg-5" id="image_used">
-		<div class="row justify-content-center">
-			<div class="col-lg-7">
-				<div class="wow">
-					<table class="table table-bordered">
-						<thead>
-							<tr>
-								<th>기프티콘 번호</th>
-								<th>기프티콘 이름</th>
-								<th>사용자 ID</th>
-								<th>사용 날짜</th>
-							</tr>
-						</thead>
-						<tbody id="gifticonUsedList">
-							<c:forEach var="usage" items="${gifticonUsedList}">
-								<tr>
-									<td>${usage[2]}</td>
-									<td>${usage[4]}</td>
-									<td>${usage[3]}</td>
-									<fmt:formatDate value="${usage[1]}" pattern="yyyy년 MM월 dd일 HH시 mm분" var="dateFormat"/>
-									<td>${dateFormat}</td>
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
+		<div class="container py-5 px-lg-5">
+			<div class="wow fadeInUp" data-wow-delay="0.1s">
+				<h1 class="text-center mb-5">기프티콘 사용내역</h1>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-lg-10">
+					<div class="wow fadeInUp" data-wow-delay="0.3s">
+					<p class="text-center mb-4"></p>
+						<div class="row g-3">
+							<div class="col-12">
+								<table class="table table-striped" style="text-align: center;">
+									<thead>
+										<tr>
+											<th>기프티콘 번호</th>
+											<th>기프티콘 이름</th>
+											<th>사용자 ID</th>
+											<th>사용 날짜</th>
+										</tr>
+									</thead>
+									<tbody id="gifticonUsedList">
+										<c:forEach var="usage" items="${gifticonUsedList}">
+											<tr>
+												<td>${usage[2]}</td>
+												<td>${usage[4]}</td>
+												<td>${usage[3]}</td>
+												<fmt:formatDate value="${usage[1]}" pattern="yyyy년 MM월 dd일 HH시 mm분" var="dateFormat"/>
+												<td>${dateFormat}</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</div>
+							<div class="col-lg-12 text-center">
+								<hr style="margin: 50px 0;">
+								<p class="mb-4">판매내역을 그래프로 한눈에 확인 가능합니다!</p>
+								<a class="btn btn-primary rounded-pill py-3 px-5" href="/sale?storeId=${loggedStoreId}">판매내역 확인하기</a>
+							</div>
+							<%-- <div id="wrap2">
+								<ul id="paging" class="pagination">
+									<li class="page-item"><a class="page-link" href="noticeList?cpage=${cpage-1}">«</a></li>
+									<c:forEach var="i" begin="1" end="${pageCount}">
+										<li class="page-item">
+											<a style="<c:if test="${i eq cpage}">background-color:gainsboro;</c:if>" class="page-link" href="useList?cpage=${i}">${i}</a>
+										</li>
+									</c:forEach>
+									<li class="page-item"><a class="page-link" href="useList?cpage=${cpage+1}">»</a></li>
+								</ul>
+							<div> --%>
+						</div>
+					</div>
 				</div>
-				<%-- <div id="wrap2">
-					<ul id="paging" class="pagination">
-						<li class="page-item"><a class="page-link" href="noticeList?cpage=${cpage-1}">«</a></li>
-						<c:forEach var="i" begin="1" end="${pageCount}">
-							<li class="page-item">
-								<a style="<c:if test="${i eq cpage}">background-color:gainsboro;</c:if>" class="page-link" href="useList?cpage=${i}">${i}</a>
-							</li>
-						</c:forEach>
-						<li class="page-item"><a class="page-link" href="useList?cpage=${cpage+1}">»</a></li>
-					</ul>
-				<div> --%>
 			</div>
 		</div>
 	</div>
-	<!-- Contact End -->
-
+	
 	<c:import url="../footer.jsp" />
 
 	<!-- Back to Top -->
-	<a href="#" class="btn btn-lg btn-secondary btn-lg-square back-to-top"><i
-		class="bi bi-arrow-up"></i></a>
-</div>
+	<a href="#" class="btn btn-lg btn-secondary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
 <!-- JavaScript Libraries -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="/lib/wow/wow.min.js"></script>
 <script src="/lib/easing/easing.min.js"></script>
 <script src="/lib/waypoints/waypoints.min.js"></script>

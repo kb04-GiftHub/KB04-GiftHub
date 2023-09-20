@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>DGital - Digital Agency HTML Template</title>
+    <title>커뮤니티</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -89,7 +89,7 @@
 								<div class="form-floating">
                              	현재 이미지<br>
                              	<img id="promotionImage"
-                                  src="${pageContext.request.contextPath}/upload_images/promotion/${promotion.promotionImage}"
+                                  src="/resources/promotion_img/${promotion.promotionImage}"
                                   onclick="window.open(this.src)"><br>
                              이미지 첨부<input type="file"
                                             id="promotionImage"

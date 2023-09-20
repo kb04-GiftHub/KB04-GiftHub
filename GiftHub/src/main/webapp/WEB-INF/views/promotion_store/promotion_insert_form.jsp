@@ -6,7 +6,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <head>
 <meta charset="utf-8">
-<title>DGital - Digital Agency HTML Template</title>
+<title>커뮤니티</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="" name="keywords">
 <meta content="" name="description">
