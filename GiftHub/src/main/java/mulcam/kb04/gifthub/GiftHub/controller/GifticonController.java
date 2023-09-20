@@ -264,7 +264,6 @@ public class GifticonController {
 		
 		redirect.addFlashAttribute("msg", "성공적으로 기프티콘을 구입하였습니다.");
 		
-		
 //		File file = new File(upDir);
 //		file.delete();
 		return "redirect:/product/detail?productNo="+productNo;
@@ -320,7 +319,7 @@ public class GifticonController {
 		
 		if(giftNoStr.equals(1)) {
 			model.addAttribute("Msg","이미지가 없습니다.");
-			model.addAttribute("loc","gifticon/use");
+			model.addAttribute("loc","gifticon/use?storeId="+storeId);
 			return "msg";
 		}
 		
@@ -330,7 +329,7 @@ public class GifticonController {
 		GiftDto giftDto = gifticonService.findGiftBygiftNo(giftNo);
 		if(giftDto == null) {
 			model.addAttribute("Msg","해당 쿠폰은 유효하지않습니다");
-			model.addAttribute("loc","gifticon/use");
+			model.addAttribute("loc","gifticon/use?storeId="+storeId);
 			return "msg";
 		}else {
 			giftDto.setGiftStatus(2);
@@ -340,8 +339,9 @@ public class GifticonController {
 			guDto.setGiftNo(giftNo);
 			guDto.setUsedDate(new Date());
 			guDto.setCustomerId(userId);
+			guDto=gifticonService.saveGiftUsed(guDto);
 			model.addAttribute("Msg","쿠폰이 사용되었습니다.");
-			model.addAttribute("loc","gifticon/use");
+			model.addAttribute("loc","gifticon/use?storeId="+storeId);
 		}
 		System.out.println(giftNo);
 		return "msg";
@@ -360,7 +360,7 @@ public class GifticonController {
 		GiftDto giftDto = gifticonService.findGiftBygiftNo(giftNo);
 		if(giftDto == null) {
 			model.addAttribute("Msg","해당 쿠폰은 유효하지않습니다");
-			model.addAttribute("loc","gifticon/use");
+			model.addAttribute("loc","gifticon/use?storeId="+storeId);
 			return "msg";
 		}else {
 			giftDto.setGiftStatus(2);
@@ -372,7 +372,7 @@ public class GifticonController {
 			guDto.setCustomerId(userId);
 			guDto=gifticonService.saveGiftUsed(guDto);
 			model.addAttribute("Msg","쿠폰이 사용되었습니다.");
-			model.addAttribute("loc","gifticon/use");
+			model.addAttribute("loc","gifticon/use?storeId="+storeId);
 		}
 		System.out.println(giftNo);
 		return "msg";

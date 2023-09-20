@@ -37,29 +37,27 @@
    <%-- <c:import url="../top.jsp" /> --%>
    <c:import url="../top_customer.jsp" />
    <c:set var="imagePath" value="${pageContext.request.contextPath}/resources/products/${list[10]}" />
-   <div class="container-xxl py-5 bg-primary hero-header">
-      <div class="container my-5 py-5 px-lg-5">
-         <div class="wow fadeInUp" data-wow-delay="0.1s">
-         	<h1 class="text-center mb-5">MY GIFTICON</h1>
-         </div>
 
-      </div>
-   </div>
-   <div class="row">
+	<div class="container-xxl py-5 bg-primary hero-header">
+		<div class="container my-5 py-5 px-lg-5">
+			<div class="row g-5 py-5">
+				<div class="col-12 text-center">
+					<h1 class="text-white animated slideInDown">MY GIFTICON</h1>
+				</div>
+			</div>
+		</div>
+	</div>
 
-
-      <!-- start -->
-      <div class="container-xxl py-5">
-         <div class="container py-5 px-lg-5">
-            <div class="row justify-content-center">
-               <div class="col-lg-10">
-                  <div id="calendar"></div>
-               </div>
-            </div>
-         </div>
-      </div>
-
-   </div>
+	<!-- start -->
+	<div class="container-xxl py-5">
+		<div class="container py-5 px-lg-5">
+			<div class="row justify-content-center">
+				<div class="col-lg-10">
+					<div id="calendar"></div>
+				</div>
+			</div>
+		</div>
+	</div>
 
    <!-- end -->
    <div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel" aria-hidden="true">

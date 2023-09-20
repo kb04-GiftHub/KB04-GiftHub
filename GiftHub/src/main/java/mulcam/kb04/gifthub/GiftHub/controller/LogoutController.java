@@ -25,7 +25,7 @@ public class LogoutController {
 			return "redirect:/index";
 		}
 		
-		return "404";
+		return "logout404";
 	}
 
 }

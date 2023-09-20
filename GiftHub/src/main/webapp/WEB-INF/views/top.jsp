@@ -55,34 +55,18 @@
 
 <body>
 	<div class="container-xxl bg-white p-0">
-		<!-- Spinner Start -->
-		<!-- <div id="spinner"
-			class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-			<div class="spinner-grow text-primary"
-				style="width: 3rem; height: 3rem;" role="status">
-				<span class="sr-only">Loading...</span>
-			</div>
-		</div> -->
-		<!-- Spinner End -->
-
-		<!-- Navbar & Hero Start -->
+	<!-- Navbar & Hero Start -->
 		<div class="container-xxl position-relative p-0">
-			<nav
-				class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+			<nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
 				<a href='/sale?storeId=${loggedStoreId}' class="navbar-brand p-0">
-					<h1 class="m-0">
-						<img src="/img/icon.png" alt="Logo"> GiftHub
-					</h1>
+					<h1 class="m-0"> <img src="/img/icon.png" alt="Logo"> GiftHub </h1>
 				</a>
-				<button class="navbar-toggler" type="button"
-					data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
 					<span class="fa fa-bars"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbarCollapse">
 					<div class="navbar-nav mx-auto py-0">
-
 						<a href="/sale?storeId=${loggedStoreId}" class="nav-item nav-link active">HOME</a> 
-
 						<div class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">기프티콘관리</a>
 							<div class="dropdown-menu m-0">
@@ -125,5 +109,4 @@
 					</div>
 				</div>
 			</nav>
-
 			<!-- Navbar & Hero End -->
