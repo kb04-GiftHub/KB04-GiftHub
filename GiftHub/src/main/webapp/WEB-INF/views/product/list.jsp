@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -115,10 +116,31 @@
 								<i class="fa fa-link"></i></a>
 							</div>
 						</div>
-						<div class="bg-light p-4">
-							<!-- promotionType을 Promotion의 실제 타입으로 표시 -->
-							<p class="text-primary fw-medium mb-2">${productTypeName}</p>
-							<h5 class="lh-base mb-0">${product[2]}</h5>
+						<div class="bg-light p-3">
+							<table style="width: 100%;">
+								<tr>
+									<td style="width: 70%; font-size: 10pt;"><p class="mb-0">${productTypeName}</p></td>
+									<td rowspan="2" style="text-align: right;">
+										<%-- <c:if test="${product[9] eq 1 }">
+											<img id="${product[0] }" class="imgHeart" src="/img/jjimheartred.png" style="width: 35px;">
+										</c:if>
+										<c:if test="${product[9] eq 2 }">
+											<img id="${product[0]}" class="imgHeart" src="/img/jjimheartgray.png" style="width: 35px;">
+										</c:if>
+										<c:if test="${product[9] eq 0}">
+											<img id="${product[0]}" class="imgHeart" src="/img/jjimheartgray1.png" style="width: 35px;">
+										</c:if> --%>
+									</td>
+								</tr>
+								<tr>
+									<td><h5 class="lh-base mb-1">${product[2]}</h5></td>
+								</tr>
+								<tr>
+									<td colspan="2" style="text-align: right;">
+										<p class="mb-0" style="font-size: 10pt; text-align: right;">판매종료 : <fmt:formatDate value="${product[4]}" pattern="yyyy년 MM월 dd일"/></p>
+									</td>
+								</tr>
+							</table>
 						</div>
 					</div>
 				</div>
@@ -127,8 +149,60 @@
 	</div>
 </div>
 <!-- Projects End -->
+
 <script>
-		var container = document.getElementById('map');
+
+function change_gray(id){
+	$.ajax({
+		type:'get',
+		url:'/product/jjimPlus?productNo='+id+'&customerId=${user.customerId}&jjimStatus=1',
+		dataType:'json',
+		success:function(res){
+			
+		}
+	})
+}
+
+function change_red(id){
+	$.ajax({
+		type:'get',
+		url:'/product/jjimPlus?productNo='+id+'&customerId=${user.customerId}&jjimStatus=2',
+		dataType:'json',
+		success:function(res){
+			
+		}
+	})
+}
+function change_red2(id){
+	$.ajax({
+		type:'get',
+		url:'/product/jjimPlus?productNo='+id+'&customerId=${user.customerId}&jjimStatus=3',
+		dataType:'json',
+		success:function(res){
+			
+		}
+	})
+}
+
+
+$(document).ready(function(){
+	$('.imgHeart').click(function(){
+		var id = $(this).attr("id");
+        var src = $(this).attr("src");
+        if (src === "/img/jjimheartgray.png") {
+        	$(this).attr("src", "/img/jjimheartred.png");
+        	change_red(id)
+        } else if(src === "/img/jjimheartgray1.png"){
+        	$(this).attr("src", "/img/jjimheartred.png");
+        	change_red2(id)
+        } else {
+        	$(this).attr("src", "/img/jjimheartgray.png");
+        	change_gray(id)
+        }
+	})
+})
+
+		/* var container = document.getElementById('map');
 		var options = {
 			center : new kakao.maps.LatLng(37.5666805, 126.9784147),
 			level : 3
@@ -269,7 +343,7 @@
 				}
 			})
 		})
-		
+		 */
 </script>
 
 

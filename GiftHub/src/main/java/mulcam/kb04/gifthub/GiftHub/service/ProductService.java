@@ -50,6 +50,8 @@ public interface ProductService {
 	public List<StoreDto> allStoresByCategoryNo(int categoryNum);
 
 	public List<StoreDto> findStores(String storeName);
+
+	public List<JjimDto> getJjimByCustomerId(String customerId);
 	
 //	public List<GiftUsedDto> listByStoreId(String storeId);
 

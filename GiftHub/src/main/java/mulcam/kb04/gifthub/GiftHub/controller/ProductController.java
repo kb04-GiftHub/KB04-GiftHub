@@ -159,18 +159,56 @@ public class ProductController {
 	
 	@GetMapping("/product/list")
 	public String product_list(Model model, HttpSession ses) {
-		List<Object[]> list = productService.allProducts();
-		model.addAttribute("productList", list);
 		ses.removeAttribute("msg");
 		CustomerDto dto = (CustomerDto) ses.getAttribute("user");
 		if(dto==null) {
 			model.addAttribute("Msg","로그인이 필요한 기능입니다");
 			model.addAttribute("loc","member/login");
-			//ses.invalidate();
 			return "msg";
 		}
-		ses.setAttribute("user",dto);
-		
+		List<Object[]> list = productService.allProducts();
+//		List<JjimDto> jList = productService.getJjimByCustomerId(dto.getCustomerId());
+//		List<Integer> pList = new ArrayList<>();
+//		List<Object[]> rList = new ArrayList<>(); 
+//		Object[] oj = new Object[9];
+//		for(JjimDto jdto : jList) {
+//			pList.add(jdto.getProductNo());
+//		}
+//		if(jList == null) {
+//			for(Object[] obj : list) {
+//				oj[0] = obj[0];
+//				oj[1] = obj[1];
+//				oj[2] = obj[2];
+//				oj[3] = obj[3];
+//				oj[4] = obj[4];
+//				oj[5] = obj[5];
+//				oj[6] = obj[6];
+//				oj[7] = obj[7];
+//				oj[8] = obj[8];
+//				oj[9] = 0;
+//				rList.add(oj);
+//			}
+//			model.addAttribute("productList", rList);
+//			return "product/list";
+//		}
+//		for(Object[] obj : list) {
+//			oj[0] = obj[0];
+//			oj[1] = obj[1];
+//			oj[2] = obj[2];
+//			oj[3] = obj[3];
+//			oj[4] = obj[4];
+//			oj[5] = obj[5];
+//			oj[6] = obj[6];
+//			oj[7] = obj[7];
+//			oj[8] = obj[8];
+//			if(pList.contains(obj[0])){
+//				oj[9] = 1;
+//			}else {
+//				oj[9] = 0;
+//			}
+//			rList.add(oj);
+//		}
+		model.addAttribute("productList", list);
 		return "product/list";
 	}
 	

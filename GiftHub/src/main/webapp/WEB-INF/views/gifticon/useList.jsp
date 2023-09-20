@@ -46,28 +46,55 @@
 					<div class="wow fadeInUp" data-wow-delay="0.3s">
 					<p class="text-center mb-4"></p>
 						<div class="row g-3">
-							<div class="col-12">
+							<div class="col-12" id="tableSection">
 								<table class="table table-striped" style="text-align: center;">
 									<thead>
 										<tr>
-											<th>기프티콘 번호</th>
-											<th>기프티콘 이름</th>
-											<th>사용자 ID</th>
-											<th>사용 날짜</th>
+											<th scope="col">순번</th>
+											<th scope="col">기프티콘 번호</th>
+											<th scope="col">기프티콘 이름</th>
+											<th scope="col">사용자 ID</th>
+											<th scope="col">사용 날짜</th>
 										</tr>
 									</thead>
 									<tbody id="gifticonUsedList">
-										<c:forEach var="usage" items="${gifticonUsedList}">
+										<c:forEach var="usage" items="${pagedList}" varStatus="status">
 											<tr>
-												<td>${usage[2]}</td>
-												<td>${usage[4]}</td>
-												<td>${usage[3]}</td>
+												<td scope="row" class="text-center">${(currentPage*10)+status.index -9}</td>
+												<td class="text-center">${usage[2]}</td>
+												<td class="text-center">${usage[4]}</td>
+												<td class="text-center">${usage[3]}</td>
 												<fmt:formatDate value="${usage[1]}" pattern="yyyy년 MM월 dd일 HH시 mm분" var="dateFormat"/>
-												<td>${dateFormat}</td>
+												<td class="text-center">${dateFormat}</td>
 											</tr>
 										</c:forEach>
 									</tbody>
 								</table>
+								<nav aria-label="Page navigation example">
+								<ul class="pagination justify-content-center">
+									<li class="page-item ${currentPage == 1 ? 'disabled' : ''}"><a
+										class="page-link" href="?page=1&storeId=${storeId}"><< </a></li>
+									<li class="page-item ${currentPage == 1 ? 'disabled' : ''}"><a
+										class="page-link" href="?page=${currentPage - 1}&storeId=${storeId}"><</a></li>
+
+									<c:set var="startPage"
+										value="${(currentGroup - 1) * pagesPerGroup + 1}" />
+									<c:set var="endPage"
+										value="${currentGroup * pagesPerGroup > totalPages ? totalPages : currentGroup * pagesPerGroup}" />
+									<c:forEach var="i" begin="${startPage}" end="${endPage}">
+										<li class="page-item ${i == currentPage ? 'active' : ''}"><a
+											class="page-link" id="ggg" href="?page=${i}&storeId=${storeId}&#tableSection">${i}</a></li>
+									</c:forEach>
+									<li
+										class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
+										<a class="page-link" href="?page=${currentPage + 1}&storeId=${storeId}">></a>
+									</li>
+									<li
+										class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
+										<a class="page-link" href="?page=${totalPages}&storeId=${storeId}">>></a>
+									</li>
+								</ul>
+							</nav>
 							</div>
 							<div class="col-lg-12 text-center">
 								<hr style="margin: 50px 0;">
