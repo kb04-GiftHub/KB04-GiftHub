@@ -6,7 +6,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>포인트환전</title>
+<title>정산하기</title>
 </head>
 <body>
 	<c:import url="../top.jsp" />
@@ -14,7 +14,7 @@
             <div class="container my-5 py-5 px-lg-5">
                 <div class="row g-5 py-5">
                     <div class="col-12 text-center">
-                        <h1 class="text-white animated slideInDown">환전하기</h1>
+                        <h1 class="text-white animated slideInDown">정산하기</h1>
                     </div>
                 </div>
             </div>

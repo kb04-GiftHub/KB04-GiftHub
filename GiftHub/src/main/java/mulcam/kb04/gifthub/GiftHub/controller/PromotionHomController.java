@@ -85,7 +85,7 @@ public class PromotionHomController {
 	@GetMapping("/promotion_store/promotion_list") //내가 주소창에 치는거
 	public String promotionList(Model model, HttpSession ses) {
 //	String storeIdString = "store1234";
-	String storeIdString = (String) ses.getAttribute("loggedStroeId");
+	String storeIdString = (String) ses.getAttribute("loggedStoreId");
 	List<PromotionDto> promotionList = promotionService.findByStoreId(storeIdString);
 	model.addAttribute("promotion_list", promotionList);
 

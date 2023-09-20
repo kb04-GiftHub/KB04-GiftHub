@@ -17,17 +17,14 @@
 	<c:import url="../top.jsp" />
 	<c:set var="imagePath" value="/resources/products/${dto.productImage}" />
  	<%-- <c:set var="imagePath" value="${pageContext.request.contextPath}/upload_images/product/${dto.productImage}" /> --%>
+
 	<div class="container-xxl py-5 bg-primary hero-header">
 		<div class="container my-5 py-5 px-lg-5">
-
-
-			<div class="wow fadeInUp" data-wow-delay="0.1s">
-				<p class="section-title text-secondary justify-content-center">
-					<span></span>등록 확인<span></span>
-				</p>
-				<h1 class="text-center mb-5" style="color: white;">상품 등록 완료</h1>
+			<div class="row g-5 py-5">
+				<div class="col-12 text-center">
+					<h1 class="text-white animated slideInDown">상품 등록 완료</h1>
+				</div>
 			</div>
-
 		</div>
 	</div>
 
@@ -45,10 +42,10 @@
 				<div class="wow fadeInUp" data-wow-delay="0.3s">
 					<!-- start -->
 					
-					<div class="row justify-content-center align-items-center mt-5">
+					<div class="row justify-content-center align-items-center">
 						<div class="col-md-6 text-center">
 							<!-- 이미지 -->
-							<img src="${imagePath}" alt="Product Image">
+							<img src="${imagePath}" alt="Product Image" style="width: 100%; margin-bottom: 50px;">
 
 						</div>
 					</div>
@@ -100,7 +97,6 @@
 						<div class="col-12" mx-auto>
 							<a href="/" class="btn btn-primary w-100 py-3">확인</a>
 						</div>
-
 					</div>
 					<!-- end -->
 				</div>
