@@ -84,11 +84,11 @@
                               
 		                              <c:when test="${myList.productExp < today}">
 		                                 <div class="col-lg-3 col-md-6 portfolio-item second wow fadeInUp" data-wow-delay="0.1s" onclick="window.location.href = '/product/myList/product_detail?productNo=${myList.productNo}'">
-		                                          <div class="rounded overflow-hidden" style="border: 4px solid #E2EFFF">
+		                                          <div class="rounded overflow-hidden" style="border: 4px solid #EEEEEE">
 		                                              <div class="position-relative overflow-hidden" style="height: 200px; display: flex; justify-content: center; align-items: center;">
 		                                                  <img class="img-fluid" src="/upload_images/product/${myList.productImage}" alt="" id="img" onload="adjustImageSize(this)">
 		                                              </div>
-		                                              <div class="p-3" style="background: #E2EFFF; color: gray;">
+		                                              <div class="p-3" style="background: #EEEEEE; color: gray;">
 		                                                  <%-- <p class="mb-0">${myList}</p> --%>
 		                                                  <h5 class="lh-base mb-1">${myList.productName}</h5>
 		                                                  <p class="mb-0" style="font-size: 10pt; text-align: right;">판매기간 : <fmt:formatDate value="${myList.productExp}" pattern="yyyy년 MM월 dd일"/></p>
@@ -96,26 +96,16 @@
 		                                          </div>
 		                                      </div>
 		                              </c:when>
-                           				
                            		</c:choose>
                            	</c:when>
                            </c:choose>
-                           
-                           
-                           
                         </c:forEach>
                      </div>
-                        
-                  
-                  
                   <!-- 여기까지 상품목록 -->
-                  
                </div>
               </div>
             </c:when>
          </c:choose>
-                  
-
 <!-- 끝 -->
 
 <c:import url="../footer.jsp" />  

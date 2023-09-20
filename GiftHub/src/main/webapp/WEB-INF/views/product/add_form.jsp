@@ -53,17 +53,14 @@
 	<c:import url="../top.jsp" />
 	<div class="container-xxl py-5 bg-primary hero-header">
 		<div class="container my-5 py-5 px-lg-5">
-
-
-			<div class="wow fadeInUp" data-wow-delay="0.1s">
-				<p class="section-title text-secondary justify-content-center">
-					<span></span>상품등록<span></span>
-				</p>
-				<h1 class="text-center mb-5" style="color: white;">기프티콘 등록</h1>
+			<div class="row g-5 py-5">
+				<div class="col-12 text-center">
+					<h1 class="text-white animated slideInDown">기프티콘 등록</h1>
+				</div>
 			</div>
-
 		</div>
 	</div>
+	
 	<!-- Contact Start -->
 	<div class="container-xxl py-5">
 		<div class="container py-5 px-lg-5">
@@ -84,32 +81,24 @@
 								style="display: none; max-width: 100%; height: auto;">
 							<input type="file" id="chooseFile" name="chooseFile" onchange="previewImage()"> 
 							 -->
-							<div class="col-12 text-center" id="image_container"></div>
-							<div class="row justify-content-center align-items-center mt-5">
-								<div class="col-md-6 text-center">
-									<!-- <div class="mb-3 text-center" style="margin-bottom: 10px;">
-										<img id="preview" src="#" alt="Image Preview"
-											style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
-									</div> -->
-									<div class="mb-3">
-										<input type="file" class="text-center form-control" id="chooseFile" name="chooseFile">
-											<!-- onchange="previewImage()"> -->
+							<div class="col-12 text-center" id="image_container" style="margin-bottom: 50px;"></div>
+							<div class="row g-3">
+								<div class="col-12">
+									<div class="form-floating">
+										<input type="file" class="form-control" id="chooseFile" name="chooseFile">
+										<label for="chooseFile">이미지 파일</label>
 									</div>
 								</div>
-							</div>
-
-							<div class="row g-3">
-								<div class="col-md-12" style="margin-top: 10px;"></div>
 								<div class="col-md-12">
 									<div class="form-floating">
-										<input type="text" class="text-center form-control" id="name" name="name"
+										<input type="text" class="form-control" id="name" name="name"
 											placeholder="Your Name"> <label for="name">상품명</label>
 									</div>
 								</div>
 
 								<div class="col-12">
 									<div class="form-floating">
-										<input type="text" class="text-center form-control" id="sellingPrice"
+										<input type="text" class="form-control" id="sellingPrice"
 											name="sellingPrice" placeholder="Subject"> <label
 											for="sellingPrice">판매금액</label>
 									</div>
