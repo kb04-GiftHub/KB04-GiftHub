@@ -135,7 +135,7 @@ public class PromotionHomController {
 	    		) {
 		 
 			String upDir=System.getProperty("user.dir"); // 프로젝트 루트 디렉토리
-			upDir+="/src/main/resources/static/upload_images/promotion";
+			upDir+="/src/main/webapp/resources/promotion_img";
 			File dir=new File(upDir);
 			if(!dir.exists()){
 				dir.mkdirs();

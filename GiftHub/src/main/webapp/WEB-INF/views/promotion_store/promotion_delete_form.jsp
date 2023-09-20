@@ -117,7 +117,7 @@
             					<tr>
                 					<th>게시물 이미지</th>
                 					<td>
-                					<img src="${pageContext.request.contextPath}/upload_images/promotion/${param.promotionImage}" width="300" height="200">
+                					<img src="/resources/promotion_img/${param.promotionImage}" width="300" height="200">
                 					</td>
             					</tr>
 						    </table>
