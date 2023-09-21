@@ -111,7 +111,7 @@
         제목과 내용 하나의 열에 배치 -->
         <div class="col-md-6">
                 <div class="text-center col-md-12" style="color: white; position: relative; display: inline-block;">
-                    <span style="background-color:#0058C6; padding: 10px;border-radius: 30px;font-size: 25px;">
+                    <span style="background-color:#0058C6; padding: 10px;border-radius: 30px;font-size: 15px;">
                         ${promotion[6]}
                     </span><br><br>
                 </div>
