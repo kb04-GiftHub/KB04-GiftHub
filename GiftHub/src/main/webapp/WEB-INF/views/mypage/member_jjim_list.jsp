@@ -89,8 +89,8 @@
 							</div>
 							<div class="col-lg-12 text-center">
 								<hr style="margin: 50px 0;">
-								<p class="mb-4">더 많은 기프티콘을 보고싶으신가요?</p>
-								<a class="btn btn-primary rounded-pill py-3 px-5" href="/product/list">기프티콘 구경하기</a>
+								<p class="mb-4">더 많은 상품을 보고싶으신가요?</p>
+								<a class="btn btn-primary rounded-pill py-3 px-5" href="/product/list">상품 구경하기</a>
 							</div>
 						</div>
 					</div>
