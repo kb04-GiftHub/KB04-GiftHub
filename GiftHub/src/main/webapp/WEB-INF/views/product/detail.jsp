@@ -149,7 +149,7 @@ $(document).ready(function(){
 						<div class="col-6 align-middle" style="margin:auto auto;">
 							<div class="form-floating" style="margin:auto auto;text-align:center;vertical-align: middle;">
 								<img alt="" class="align-middle"
-									src="/upload_images/product/${product.productImage}"
+									src="/resources/products/${product.productImage}"
 									style="width: 100%;max-height:300px;max-width:300px; smargin-bottom: 20px;">
 								<p class="mb-0"
 									style="text-align: center; letter-spacing: 4px; margin-top: 10px;"></p>

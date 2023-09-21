@@ -31,9 +31,6 @@
 
 	<div class="container-xxl py-5">
 		<div class="container py-5 px-lg-5">
-			<div class="wow fadeInUp" data-wow-delay="0.1s">
-				<h1 class="text-center mb-5">FIND STORE</h1>
-			</div>
 			<div class="row justify-content-center">
 				<!-- <div class="col-lg-5">
 					<div class="wow fadeInUp" data-wow-delay="0.3s">
@@ -53,7 +50,7 @@
 				<section class="prod-main-section-top">
 					<div class="prod-main-top">
 						<div class="prod-main-desc" style="margin-left: 5%">
-							<h1 class="text-center prod-main-title">상품 목록</h1>
+							<h1 class="text-center prod-main-title">FIND STORE</h1>
 							<p class="text-center text-m">
 								내 주변의 상품을 찾을 수 있습니다. <br> 지도를 움직이며 관심있는 상품을 둘러보세요!
 							</p>
@@ -81,7 +78,7 @@
 				<div class="col-lg-10">
 				<div class="search">
 					<div class="text-end input-group" >
-						<input class="form-control" type="text" id="searchInput" placeholder="검색어를 입력하세요">
+						<input class="form-control" type="text" id="searchInput" placeholder="매장명을 입력하세요">
 					</div>
 				</div>
 					<table class="table table-striped"
@@ -324,7 +321,6 @@
 							str+='</td>'
 							str += '<td>'
 							str+=data.storeAdd2
-							str+=data.storeAdd3
 							str+='</td>'
 							str += '<td>'
 							if(data.categoryNo === 1){
@@ -371,6 +367,61 @@
 								        position:new kakao.maps.LatLng(result[0].y, result[0].x),// 마커를 표시할 위치
 								        title : data.storeName, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
 								        image : markerImage // 마커 이미지 
+								});
+								// 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
+								var iwContent = '<div style="width:150px;padding:5px; height:200px; text-align:center; font-size:0.5em; overflow-x:hidden; overflow-y:auto;">';
+									iwContent += '<br><span style="font-size:17px;font-weight:bold;">'+data.storeName+'</span><br>';
+									iwContent += '<div><table class="table" style="text-align:center;">';
+									iwContent += '<tr>';
+									iwContent += '<th style="width:15px">';
+									iwContent += '업종';
+									iwContent += '</th>';
+									iwContent += '<td style="width:30px">';
+									if(data.categoryNo == 1){
+										iwContent += '한식';
+									}else if(data.categoryNo == 2){
+										iwContent += '중식';
+									}else if(data.categoryNo == 3){
+										iwContent += '일식';
+									}else if(data.categoryNo == 4){
+										iwContent += '양식';
+									}else if(data.categoryNo == 5){
+										iwContent += '카페/디저트';
+									}else if(data.categoryNo == 6){
+										iwContent += '기타';
+									}
+									iwContent += '</td>';
+									iwContent += '</tr>';
+									iwContent += '<tr>';
+									iwContent += '<th>';
+									iwContent += '위치';
+									iwContent += '</th>';
+									iwContent += '<td>';
+									iwContent += data.storeAdd2;
+									iwContent += '</td>';
+									iwContent += '</tr>';
+									iwContent += '<tr>';
+									iwContent += '<th>';
+									iwContent += '연락처';
+									iwContent += '</th>';
+									iwContent += '<td>';
+									iwContent += data.storeTel;
+									iwContent += '</td>';
+									iwContent += '</tr>';
+									iwContent += '</table>';
+									iwContent += "</div>", // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+								    iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+
+								// 인포윈도우를 생성합니다
+								var infowindow = new kakao.maps.InfoWindow({
+								    content : iwContent,
+								    removable : iwRemoveable
+								});
+
+								// 마커에 클릭이벤트를 등록합니다
+								kakao.maps.event.addListener(marker, 'click', function() {
+								      // 마커 위에 인포윈도우를 표시합니다
+								      infowindow.open(map, marker);  
 								});
 								markers.push(marker);
 							}

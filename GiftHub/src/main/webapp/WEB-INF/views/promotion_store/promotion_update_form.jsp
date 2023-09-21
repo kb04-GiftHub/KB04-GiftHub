@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
-
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <head>
     <meta charset="utf-8">
     <title>커뮤니티</title>
@@ -46,6 +46,7 @@
     cursor: pointer; /* 커서 모양을 포인터로 변경하여 클릭 가능한 버튼임을 나타냅니다. */
 }
 </style>
+
 <body>
     <c:import url="../top.jsp" />
 
@@ -58,50 +59,82 @@
 			</div>
 		</div>
 	</div>
+	
+	<script>
+	$(function() {
+	    $('#imageInput').change(function() {
+	        var file = this.files[0];
+	        var reg = /(.*?)\/(jpg|jpeg|png|bmp)$/;
+	        if (!file.type.match(reg)) {
+	            alert("확장자는 이미지 확장자만 가능합니다.");
+	            return;
+	        }
+	        document.querySelector('div#image_container').innerHTML = "";
+	        var reader = new FileReader();
+	        reader.onload = function(event) {
+	            var img = document.createElement("img");
+	            img.setAttribute("src", event.target.result);
+	            img.setAttribute("style", "width:50%;height:auto;");
+	            img.setAttribute("class", "rectangular");
+	            document.querySelector('#image_container').appendChild(img);
+	        };
+	        reader.readAsDataURL(this.files[0]);
+	    });
+	});
+	</script>
    
 
         <!-- Contact Start -->
         <div class="container-xxl py-5">
             <div class="container py-5 px-lg-5">
                 <div class="wow fadeInUp" data-wow-delay="0.1s">
-                    <p class="section-title text-secondary justify-content-center"><span></span>커뮤니티<span></span></p>
-                    <h1 class="text-center mb-5">게시물 관리</h1>
+                    <h1 class="text-center mb-5">게시물 수정</h1>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-lg-7">
                         <div class="wow fadeInUp" data-wow-delay="0.3s">
-                            <h3>게시물 수정</h3>
-							<form action="/promotion_store/update_promotion_submit" method="post" enctype="multipart/form-data">
-							  <input type="hidden" name="promotionNo" value="${promotion.promotionNo}">
-							  
-							  <label for="promotionType">게시물 종류</label><br>
-								<select id="promotionType" name="promotionType">
-								  <option value="1" ${promotion.promotionType == '1' ? 'selected' : ''}>홍보</option>
-								  <option value="2" ${promotion.promotionType == '2' ? 'selected' : ''}>이벤트</option>
-								</select><br>
-
-							  게시물 제목<br>
-							  <input type="text" id="promotionTitle" name="promotionTitle" value="${promotion.promotionTitle}" style="width: 60%"><br>
-							  
-							  <label for="promotionContent">게시물 내용</label><br>
-							  <textarea id="promotionContent" name="promotionContent" rows="10" cols="100">${promotion.promotionContent}</textarea><br>
-
-								<div class="form-floating">
-                             	현재 이미지<br>
-                             	<img id="promotionImage"
-                                  src="/resources/promotion_img/${promotion.promotionImage}"
-                                  onclick="window.open(this.src)"><br>
-                             이미지 첨부<input type="file"
-                                            id="promotionImage"
-                                            name="promotionImage"
-                                            accept=".jpg,.jpeg,.png"><br>
-                         </div>
-                         <div class="col-12 text-center" >
-							    <button class="btn btn-primary " type="submit">수정 완료</button> 
-							    <a class="btn btn-primary" href="/promotion_store/promotion_list">수정 취소</a>
-							</div>
-							</form>	
-                                </div>
+                            <form action="/promotion_store/update_promotion_submit" method="post" enctype="multipart/form-data">
+								<input type="hidden" name="promotionNo" value="${promotion.promotionNo}">
+								<div class="row g-3">
+									<div class="col-12">
+										<div class="form-floating">
+											<select name="promotionType" id="promotionType" class="form-control">
+												<option value="1" ${promotion.promotionType == '1' ? 'selected' : ''}>홍보</option>
+									  			<option value="2" ${promotion.promotionType == '2' ? 'selected' : ''}>이벤트</option>
+											</select>
+											<label for="category">게시글 종류</label>
+										</div>
+									</div>
+									<div class="col-12">
+										<div class="form-floating">
+											<input type="text" class="form-control" id="promotionTitle" name="promotionTitle" placeholder="제목" value="${promotion.promotionTitle}">
+											<label for="promotionTitle">제목</label>
+										</div>
+									</div>
+									<div class="col-12">
+										<div class="form-floating">
+											<textarea class="form-control" id="promotionContent" name="promotionContent" style="resize: vertical; overflow-y: scroll; height: 150px;">
+${promotion.promotionContent}</textarea>
+											<label for="promotionContent">내용</label>
+										</div>
+									</div>
+									<div class="col-12 text-center" id=image_container>
+										<img id="promotionImage" src="/resources/promotion_img/${promotion.promotionImage}">
+									</div>
+									<div class="col-12">
+										<div class="form-floating">
+											<input type="file" class="form-control"	name="promotionImage" id="imageInput" placeholder="이미지">
+											<label for="promotionImage">이미지 파일</label>
+										</div>
+									</div>
+									<div class="col-12">
+										<button class="btn btn-primary w-100 py-3" type="submit">수정 완료</button> 
+									</div>
+									<div class="col-12">
+										<a class="btn btn-primary w-100 py-3" href="/promotion_store/promotion_list">수정 취소</a>
+									</div>
+								</div>
+							</form>
                         </div>
                     </div>
                 </div>

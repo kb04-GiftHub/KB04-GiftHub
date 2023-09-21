@@ -40,6 +40,7 @@ import mulcam.kb04.gifthub.GiftHub.dto.GiftDto;
 import mulcam.kb04.gifthub.GiftHub.dto.GiftUsedDto;
 import mulcam.kb04.gifthub.GiftHub.dto.ProductDto;
 import mulcam.kb04.gifthub.GiftHub.dto.StoreDto;
+import mulcam.kb04.gifthub.GiftHub.entity.Donation;
 import mulcam.kb04.gifthub.GiftHub.message.FilesDto;
 import mulcam.kb04.gifthub.GiftHub.message.MessageDto;
 import mulcam.kb04.gifthub.GiftHub.message.MmsResponseDto;
@@ -77,36 +78,28 @@ public class GifticonController {
 	
 	@GetMapping("/gifticon/useList")
 	public String gifticon_useList(
-			@RequestParam(defaultValue="1") int cpage,
+			@RequestParam(value = "page", defaultValue = "1") int currentPage,
 			@RequestParam String storeId, Model model,HttpSession ses) {
 		StoreDto dto=(StoreDto)ses.getAttribute("storeUser");
 		ses.setAttribute("storeUser", dto);
-		ses.setAttribute("loggedStoreId", storeId);
-		
-//		//현재 페이지가 0보다 작거나 같을 경우 1로 지정
-//		if(cpage<=0) {
-//			cpage=1;
-//		}
-//		int totalNotice=gifticonService.totalCountGiftUsed(storeId);//전체 공지사항 수
-//		int pageSize=10;//한 페이지당 보여줄 공지사항 수
-//		int pageCount=(totalNotice-1)/pageSize+1;//총 페이지 수
-//		//현재 페이지가 총 페이지 수 보다 클 경우
-//		if(cpage>pageCount) {
-//			cpage=pageCount;
-//		}
-//		//페이지에 가져올 공지사항 시작,끝
-//		int end=cpage*pageSize;
-//		int start=end-(pageSize-1);
-//		//Map에 담아서 전달
-//		Map<String,Integer> map=new HashMap<>();
-//		map.put("start", start);
-//		map.put("end",end);
-//		model.addAttribute("cpage",cpage);
-//		model.addAttribute("pageCount",pageCount);
-		
-		
+		ses.setAttribute("storeId", storeId);
 		List<Object[]> list = gifticonService.listByStoreId(storeId);
+		int totalDataCount = list.size();
+		int dataPerPage = 10;
+		int totalPages = (int) Math.ceil((double) totalDataCount / dataPerPage);
+		int pagesPerGroup = 5;
+		int currentGroup = (int) Math.ceil((double) currentPage / pagesPerGroup);
+		// 현재 페이지에 따라서 데이터를 분할
+		int start = (currentPage - 1) * dataPerPage;
+		int end = Math.min(start + dataPerPage, totalDataCount);
+		List<Object[]> pagedList = list.subList(start, end);
+		model.addAttribute("totalPages", totalPages);
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("currentGroup", currentGroup);
+		model.addAttribute("pagesPerGroup", pagesPerGroup);
 		model.addAttribute("gifticonUsedList", list);
+		model.addAttribute("pagedList", pagedList);
+		
 		return "gifticon/useList";
 	}
 	
