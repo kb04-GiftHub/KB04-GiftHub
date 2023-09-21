@@ -66,7 +66,7 @@
 												<img class="img-fluid" src="/resources/products/${list[6]}" alt="" id="img" onload="adjustImageSize(this)">
 											</div>
 											<div class="p-3" style="background: #FFEBEA; color: gray;">
-												<table style="width: 100%;">
+												<table style="width: 100%; height: 110px;">
 													<tr>
 														<td style="width: 70%; font-size: 10pt;"><p class="mb-0">${list[7]}</p></td>
 														<td rowspan="2" style="text-align: right;">

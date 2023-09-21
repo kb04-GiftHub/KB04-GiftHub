@@ -97,33 +97,50 @@
 			</div>
 		</div>
 	</div>
-	<%-- 	<hr style="margin-top: 1rem;">
-	<h1 class="text-center mb-5">CHECK YOUR DONATION LIST</h1>
-	<hr style="margin-top: 3rem;">
-	<div class="container mt-5" id="tableSection">
-		<table class="table table-striped table-hover">
-			<thead>
-				<tr>
-					<th scope="col" class="text-center">순번</th>
-					<th scope="col" class="text-center">기부단체명</th>
-					<th scope="col" class="text-center">기부금액</th>
-					<th scope="col" class="text-center">기부날짜</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="donation" items="${donations}" varStatus="status">
-					<tr>
-						<td scope="row" class="text-center">${status.index + 1}</td>
-						<td class="text-center">${donation.donationOrg.orgName}</td>
-						<td class="text-center">${donation.donationAmount}</td>
-						<td class="text-center">${donation.donationDate}</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-	</div> --%>
+
+	<!-- 모달창 -->
+	<div id="modalImage" class="modal fade" tabindex="-1">
+	    <div class="modal-dialog modal-dialog-centered" style="width: 50%;">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <h5 id="title" class="modal-title"></h5>
+	                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+	            </div>
+	            <div class="modal-body">
+	                <img src="/img/donation_certificate.png" style="width: 100%;">
+	            </div>
+	        </div>
+	    </div>
+	</div>
+
 	<c:import url="../footer.jsp" />
+
+	<!-- JavaScript Libraries -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="/lib/wow/wow.min.js"></script>
+	<script src="/lib/easing/easing.min.js"></script>
+	<script src="/lib/waypoints/waypoints.min.js"></script>
+	<script src="/lib/counterup/counterup.min.js"></script>
+	<script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+	<script src="/lib/isotope/isotope.pkgd.min.js"></script>
+	<script src="/lib/lightbox/js/lightbox.min.js"></script>
+	
+	<!-- Template Javascript -->
+	<script src="/js/main.js"></script>
+	
+	<script>
+	document.addEventListener("DOMContentLoaded", function() {
+	    var tableRows = document.querySelectorAll("tbody tr");
+	    var modal = new bootstrap.Modal(document.getElementById("modalImage"));
+	
+	    tableRows.forEach(function(row) {
+	        row.addEventListener("click", function() {
+	            modal.show();
+	        });
+	    });
+	});
+	</script>
 </body>
 </html>

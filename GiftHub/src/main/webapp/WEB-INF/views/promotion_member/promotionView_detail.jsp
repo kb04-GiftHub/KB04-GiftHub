@@ -130,7 +130,7 @@
             <div class="row" style="justify-content: center;">
                 <div class="col-md-12 text-center" style="background-color: #D6E8FF; width:90%;height: 250px; display: flex; align-items: center; justify-content: center;border-radius: 15px">
                     <div class="wow fadeInUp" data-wow-delay="0.3s">
-                        <p class="text-center" style="color: #434242; white-space: pre-line;font-size:30px;">
+                        <p class="text-center" style="color: #434242; white-space: pre-line;font-size:13pt;">
                             ${promotion[2]}
                         </p>
                         <br>

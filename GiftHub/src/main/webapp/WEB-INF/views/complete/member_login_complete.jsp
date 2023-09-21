@@ -5,7 +5,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>로그인</title>
+<title>완료</title>
 </head>
 <body>
 	<c:import url="../top_customer.jsp" />
@@ -16,8 +16,8 @@
 					<h1 class="text-white animated slideInDown">${title}</h1>
 				</div>
 			</div>
-		</div>
 	</div>
+		</div>
 
 		<!-- register_complete Start -->
         <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s" style="margin: 100px 0;">

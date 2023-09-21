@@ -6,23 +6,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>상품 목록</title>
+<title>구매하기</title>
 <script
 	src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=51d9fff62677f5402eca46f516b03148&libraries=services"></script>
 <!-- body -->
 <c:import url="../top_customer.jsp" />
-<div class="container-xxl py-5 bg-primary hero-header">
-	<div class="container my-5 py-5 px-lg-5">
-		<div class="wow fadeInUp" data-wow-delay="0.1s">
-			<h1 class="text-center mb-5" style="color: white;">상품 목록</h1>
-			<!-- <p class="text-center text-m text-white">
-					내 주변의 상품을 찾을 수 있습니다. <br> 지도를 움직이며 관심있는 상품을 둘러보세요!
-				</p> -->
+	<div class="container-xxl py-5 bg-primary hero-header">
+		<div class="container my-5 py-5 px-lg-5">
+			<div class="row g-5 py-5">
+				<div class="col-12 text-center">
+					<h1 class="text-white animated slideInDown">구매하기</h1>
+				</div>
+			</div>
 		</div>
 	</div>
-</div>
 <!-- Contact Start -->
 <div class="container-xxl py-5">
 <!-- 	<section class="prod-main-section-top">
@@ -103,7 +102,7 @@
 				<div
 					class="col-lg-4 col-md-6 portfolio-item ${productTypeClass} wow fadeInUp"
 					data-wow-delay="0.1s">
-					<div class="rounded overflow-hidden">
+					<div class="rounded overflow-hidden" style="border: 4px solid #E2EFFF">
 						<div class="position-relative overflow-hidden text-center">
 							<img class="img-fluid" style="height: 200px;"
 								src="/resources/products/${product[5]}" alt="">
@@ -116,7 +115,7 @@
 								<i class="fa fa-link"></i></a>
 							</div>
 						</div>
-						<div class="bg-light p-3">
+						<div class="bg-light p-3" style="background: #E2EFFF !important;">
 							<table style="width: 100%;">
 								<tr>
 									<td style="width: 70%; font-size: 10pt;"><p class="mb-0">${productTypeName}</p></td>
@@ -148,6 +147,8 @@
 		</div>
 	</div>
 </div>
+
+	<c:import url="../footer.jsp" />
 <!-- Projects End -->
 
 <script>
