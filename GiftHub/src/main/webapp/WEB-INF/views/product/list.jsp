@@ -88,15 +88,15 @@
 						<c:set var="productTypeName" value="일식" />
 					</c:when>
 					<c:when test="${product[7] eq 4}">
-						<c:set var="productTypeClass" value="product-type-3" />
+						<c:set var="productTypeClass" value="product-type-4" />
 						<c:set var="productTypeName" value="양식" />
 					</c:when>
 					<c:when test="${product[7] eq 5}">
-						<c:set var="productTypeClass" value="product-type-3" />
+						<c:set var="productTypeClass" value="product-type-5" />
 						<c:set var="productTypeName" value="카페/디저트" />
 					</c:when>
 					<c:when test="${product[7] eq 6}">
-						<c:set var="productTypeClass" value="product-type-3" />
+						<c:set var="productTypeClass" value="product-type-6" />
 						<c:set var="productTypeName" value="기타" />
 					</c:when>
 				</c:choose>
