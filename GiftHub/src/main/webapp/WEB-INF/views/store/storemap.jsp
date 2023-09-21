@@ -59,7 +59,7 @@
 				</section>
 				<!-- 카카오맵 지도 위치 -->
 				<div class="map-box" class="d-flex jutify-content-center"
-					style="height: 350px;border-radius:20px;">
+					style="height: 500px;border-radius:20px;">
 					<div id="map" style="width: 80%;height: 100%; margin: auto;border-radius:20px;"></div>
 				</div>
 				<div class="row mt-4 mb-4 wow fadeInUp" data-wow-delay="0.3s">
@@ -240,7 +240,6 @@
 				$('#koreaC').attr("class","mx-2");
 				$('#cafeC').attr("class","mx-2");
 			})
-			
 		})
 		
 		$('#searchInput').on('keyup', function(){
@@ -249,7 +248,6 @@
 		})
 		
 		function findStores(value){
-			$('#allC').click();
 			if(value != ''){
 				$.ajax({
 					url:'/findStores?storeName='+value,
@@ -275,17 +273,66 @@
 							str += '<td>'
 							if(data.categoryNo === 1){
 								str+='한식';
+								$('#allC').attr("class","mx-2 active");
+								$('#koreaC').attr("class","mx-2");
+								$('#chinaC').attr("class","mx-2");
+								$('#japanC').attr("class","mx-2");
+								$('#chinaC').attr("class","mx-2");
+								$('#westernC').attr("class","mx-2");
+								$('#cafeC').attr("class","mx-2");
+								$('#etcC').attr("class","mx-2");
 							}else if(data.categoryNo === 2){
 								str+='중식';
+								$('#allC').attr("class","mx-2 active");
+								$('#koreaC').attr("class","mx-2");
+								$('#chinaC').attr("class","mx-2");
+								$('#japanC').attr("class","mx-2");
+								$('#chinaC').attr("class","mx-2");
+								$('#westernC').attr("class","mx-2");
+								$('#cafeC').attr("class","mx-2");
+								$('#etcC').attr("class","mx-2");
 							}else if(data.categoryNo === 3){
 								str+='일식';
+								$('#allC').attr("class","mx-2 active");
+								$('#koreaC').attr("class","mx-2");
+								$('#chinaC').attr("class","mx-2");
+								$('#japanC').attr("class","mx-2");
+								$('#chinaC').attr("class","mx-2");
+								$('#westernC').attr("class","mx-2");
+								$('#cafeC').attr("class","mx-2");
+								$('#etcC').attr("class","mx-2");
 							}else if(data.categoryNo === 4){
 								str+='양식';
+								$('#allC').attr("class","mx-2 active");
+								$('#koreaC').attr("class","mx-2");
+								$('#chinaC').attr("class","mx-2");
+								$('#japanC').attr("class","mx-2");
+								$('#chinaC').attr("class","mx-2");
+								$('#westernC').attr("class","mx-2");
+								$('#cafeC').attr("class","mx-2");
+								$('#etcC').attr("class","mx-2");
 							}else if(data.categoryNo === 5){
 								str+='카페 / 디저트';
+								$('#allC').attr("class","mx-2 active");
+								$('#koreaC').attr("class","mx-2");
+								$('#chinaC').attr("class","mx-2");
+								$('#japanC').attr("class","mx-2");
+								$('#chinaC').attr("class","mx-2");
+								$('#westernC').attr("class","mx-2");
+								$('#cafeC').attr("class","mx-2");
+								$('#etcC').attr("class","mx-2");
 							}else if(data.categoryNo === 6){
 								str+='기타';
+								$('#allC').attr("class","mx-2 active");
+								$('#koreaC').attr("class","mx-2");
+								$('#chinaC').attr("class","mx-2");
+								$('#japanC').attr("class","mx-2");
+								$('#chinaC').attr("class","mx-2");
+								$('#westernC').attr("class","mx-2");
+								$('#cafeC').attr("class","mx-2");
+								$('#etcC').attr("class","mx-2");
 							}
+							store(data);
 							str+='</td>'
 							str += '</tr>'
 						});
@@ -296,12 +343,13 @@
 					}
 				})
 			}else if(value==""){
+				deleteMarkers(map);
 				allStores('0');
 			}
 		}
 		function allStores(num){
 			deleteMarkers(map);
-			markers = []
+			markers = [];
 			$.ajax({
 				url:'/allStores?categoryNum='+num,
 				type:'get',
@@ -434,6 +482,33 @@
 				}
 			})
 		}
+		
+		function store(data){
+			console.log(data);
+			deleteMarkers(map);
+			var address = data.storeAdd2;
+			geocoder.addressSearch(address, function(result, status) {
+				// 정상적으로 검색이 완료됐으면
+				if (status === kakao.maps.services.Status.OK) {
+					var imageSrc = '/img/shop.png'; // 마커이미지의 주소입니다    
+				    var imageSize = new kakao.maps.Size(40, 40); // 마커이미지의 크기입니다
+				    var imageOption = {offset: new kakao.maps.Point(20, 40)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+				    
+				    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+					
+					var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+					// 결과값으로 받은 위치를 마커로 표시합니다
+					var marker = new kakao.maps.Marker({
+						map : map,
+						position : coords,
+						image:markerImage
+					});
+					map.setCenter(coords);
+					markers.push(marker);
+				}
+			});
+		}
+		
 		// 지도에 표시된 마커 객체를 가지고 있을 배열입니다
 		var markers = [];
 
@@ -441,9 +516,8 @@
 		function deleteMarkers(map) {
 		    for (var i = 0; i < markers.length; i++) {
 		        markers[i].setMap(null);
-		    }            
+		    }    
 		}
 </script>
 </body>
 </html>
-

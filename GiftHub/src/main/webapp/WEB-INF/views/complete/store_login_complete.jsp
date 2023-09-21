@@ -5,7 +5,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>로그인</title>
+<title>완료</title>
 </head>
 <body>
 	<c:import url="../top.jsp" />
