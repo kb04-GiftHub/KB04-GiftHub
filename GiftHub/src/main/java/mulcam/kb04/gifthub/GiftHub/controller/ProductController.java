@@ -167,6 +167,7 @@ public class ProductController {
 			return "msg";
 		}
 		List<Object[]> list = productService.allProducts();
+		
 //		List<JjimDto> jList = productService.getJjimByCustomerId(dto.getCustomerId());
 //		List<Integer> pList = new ArrayList<>();
 //		List<Object[]> rList = new ArrayList<>(); 
