@@ -70,8 +70,6 @@
 													<option selected>여자</option>
 												</c:when>
 											</c:choose>
-										    <option>남자</option>
-										    <option>여자</option>
 									  	</select>
 									  	<label for="gender">성별</label>
 									</div>
