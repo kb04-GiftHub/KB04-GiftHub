@@ -139,6 +139,8 @@
 		</div>
 	</div>
 	<!-- Contact End -->
+	
+	<c:import url="../footer.jsp" />
 
 	<!-- Back to Top -->
 	<a href="#" class="btn btn-lg btn-secondary btn-lg-square back-to-top"><i

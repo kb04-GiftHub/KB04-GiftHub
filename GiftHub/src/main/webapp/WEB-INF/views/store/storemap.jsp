@@ -59,7 +59,7 @@
 				</section>
 				<!-- 카카오맵 지도 위치 -->
 				<div class="map-box" class="d-flex jutify-content-center"
-					style="height: 350px;border-radius:20px;">
+					style="height: 500px;border-radius:20px;">
 					<div id="map" style="width: 80%;height: 100%; margin: auto;border-radius:20px;"></div>
 				</div>
 				<div class="row mt-4 mb-4 wow fadeInUp" data-wow-delay="0.3s">
@@ -114,7 +114,7 @@
 		var container = document.getElementById('map');
 		var options = {
 			center : new kakao.maps.LatLng(37.5666805, 126.9784147),
-			level : 3
+			level : 5
 		};
 		
 		var map = new kakao.maps.Map(container, options);
@@ -240,7 +240,6 @@
 				$('#koreaC').attr("class","mx-2");
 				$('#cafeC').attr("class","mx-2");
 			})
-			
 		})
 		
 		$('#searchInput').on('keyup', function(){
@@ -249,7 +248,6 @@
 		})
 		
 		function findStores(value){
-			$('#allC').click();
 			if(value != ''){
 				$.ajax({
 					url:'/findStores?storeName='+value,
@@ -275,17 +273,66 @@
 							str += '<td>'
 							if(data.categoryNo === 1){
 								str+='한식';
+								$('#allC').attr("class","mx-2 active");
+								$('#koreaC').attr("class","mx-2");
+								$('#chinaC').attr("class","mx-2");
+								$('#japanC').attr("class","mx-2");
+								$('#chinaC').attr("class","mx-2");
+								$('#westernC').attr("class","mx-2");
+								$('#cafeC').attr("class","mx-2");
+								$('#etcC').attr("class","mx-2");
 							}else if(data.categoryNo === 2){
 								str+='중식';
+								$('#allC').attr("class","mx-2 active");
+								$('#koreaC').attr("class","mx-2");
+								$('#chinaC').attr("class","mx-2");
+								$('#japanC').attr("class","mx-2");
+								$('#chinaC').attr("class","mx-2");
+								$('#westernC').attr("class","mx-2");
+								$('#cafeC').attr("class","mx-2");
+								$('#etcC').attr("class","mx-2");
 							}else if(data.categoryNo === 3){
 								str+='일식';
+								$('#allC').attr("class","mx-2 active");
+								$('#koreaC').attr("class","mx-2");
+								$('#chinaC').attr("class","mx-2");
+								$('#japanC').attr("class","mx-2");
+								$('#chinaC').attr("class","mx-2");
+								$('#westernC').attr("class","mx-2");
+								$('#cafeC').attr("class","mx-2");
+								$('#etcC').attr("class","mx-2");
 							}else if(data.categoryNo === 4){
 								str+='양식';
+								$('#allC').attr("class","mx-2 active");
+								$('#koreaC').attr("class","mx-2");
+								$('#chinaC').attr("class","mx-2");
+								$('#japanC').attr("class","mx-2");
+								$('#chinaC').attr("class","mx-2");
+								$('#westernC').attr("class","mx-2");
+								$('#cafeC').attr("class","mx-2");
+								$('#etcC').attr("class","mx-2");
 							}else if(data.categoryNo === 5){
 								str+='카페 / 디저트';
+								$('#allC').attr("class","mx-2 active");
+								$('#koreaC').attr("class","mx-2");
+								$('#chinaC').attr("class","mx-2");
+								$('#japanC').attr("class","mx-2");
+								$('#chinaC').attr("class","mx-2");
+								$('#westernC').attr("class","mx-2");
+								$('#cafeC').attr("class","mx-2");
+								$('#etcC').attr("class","mx-2");
 							}else if(data.categoryNo === 6){
 								str+='기타';
+								$('#allC').attr("class","mx-2 active");
+								$('#koreaC').attr("class","mx-2");
+								$('#chinaC').attr("class","mx-2");
+								$('#japanC').attr("class","mx-2");
+								$('#chinaC').attr("class","mx-2");
+								$('#westernC').attr("class","mx-2");
+								$('#cafeC').attr("class","mx-2");
+								$('#etcC').attr("class","mx-2");
 							}
+							store(data);
 							str+='</td>'
 							str += '</tr>'
 						});
@@ -296,12 +343,13 @@
 					}
 				})
 			}else if(value==""){
+				deleteMarkers(map);
 				allStores('0');
 			}
 		}
 		function allStores(num){
 			deleteMarkers(map);
-			markers = []
+			markers = [];
 			$.ajax({
 				url:'/allStores?categoryNum='+num,
 				type:'get',
@@ -321,7 +369,6 @@
 							str+='</td>'
 							str += '<td>'
 							str+=data.storeAdd2
-							str+=data.storeAdd3
 							str+='</td>'
 							str += '<td>'
 							if(data.categoryNo === 1){
@@ -369,6 +416,61 @@
 								        title : data.storeName, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
 								        image : markerImage // 마커 이미지 
 								});
+								// 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
+								var iwContent = '<div style="width:150px;padding:5px; height:200px; text-align:center; font-size:0.5em; overflow-x:hidden; overflow-y:auto;">';
+									iwContent += '<br><span style="font-size:17px;font-weight:bold;">'+data.storeName+'</span><br>';
+									iwContent += '<div><table class="table" style="text-align:center;">';
+									iwContent += '<tr>';
+									iwContent += '<th style="width:15px">';
+									iwContent += '업종';
+									iwContent += '</th>';
+									iwContent += '<td style="width:30px">';
+									if(data.categoryNo == 1){
+										iwContent += '한식';
+									}else if(data.categoryNo == 2){
+										iwContent += '중식';
+									}else if(data.categoryNo == 3){
+										iwContent += '일식';
+									}else if(data.categoryNo == 4){
+										iwContent += '양식';
+									}else if(data.categoryNo == 5){
+										iwContent += '카페/디저트';
+									}else if(data.categoryNo == 6){
+										iwContent += '기타';
+									}
+									iwContent += '</td>';
+									iwContent += '</tr>';
+									iwContent += '<tr>';
+									iwContent += '<th>';
+									iwContent += '위치';
+									iwContent += '</th>';
+									iwContent += '<td>';
+									iwContent += data.storeAdd2;
+									iwContent += '</td>';
+									iwContent += '</tr>';
+									iwContent += '<tr>';
+									iwContent += '<th>';
+									iwContent += '연락처';
+									iwContent += '</th>';
+									iwContent += '<td>';
+									iwContent += data.storeTel;
+									iwContent += '</td>';
+									iwContent += '</tr>';
+									iwContent += '</table>';
+									iwContent += "</div>", // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+								    iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+
+								// 인포윈도우를 생성합니다
+								var infowindow = new kakao.maps.InfoWindow({
+								    content : iwContent,
+								    removable : iwRemoveable
+								});
+
+								// 마커에 클릭이벤트를 등록합니다
+								kakao.maps.event.addListener(marker, 'click', function() {
+								      // 마커 위에 인포윈도우를 표시합니다
+								      infowindow.open(map, marker);  
+								});
 								markers.push(marker);
 							}
 						});
@@ -380,6 +482,33 @@
 				}
 			})
 		}
+		
+		function store(data){
+			console.log(data);
+			deleteMarkers(map);
+			var address = data.storeAdd2;
+			geocoder.addressSearch(address, function(result, status) {
+				// 정상적으로 검색이 완료됐으면
+				if (status === kakao.maps.services.Status.OK) {
+					var imageSrc = '/img/shop.png'; // 마커이미지의 주소입니다    
+				    var imageSize = new kakao.maps.Size(40, 40); // 마커이미지의 크기입니다
+				    var imageOption = {offset: new kakao.maps.Point(20, 40)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+				    
+				    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+					
+					var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+					// 결과값으로 받은 위치를 마커로 표시합니다
+					var marker = new kakao.maps.Marker({
+						map : map,
+						position : coords,
+						image:markerImage
+					});
+					map.setCenter(coords);
+					markers.push(marker);
+				}
+			});
+		}
+		
 		// 지도에 표시된 마커 객체를 가지고 있을 배열입니다
 		var markers = [];
 
@@ -387,9 +516,8 @@
 		function deleteMarkers(map) {
 		    for (var i = 0; i < markers.length; i++) {
 		        markers[i].setMap(null);
-		    }            
+		    }    
 		}
 </script>
 </body>
 </html>
-

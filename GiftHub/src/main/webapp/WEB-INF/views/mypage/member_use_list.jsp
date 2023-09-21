@@ -45,7 +45,7 @@
 							<div class="col-lg-6">
 								<h1 class="mb-4">MY GIFTICONS</h1>
 								<p class="mb-4">${msg}</p>
-								<a class="btn btn-primary rounded-pill py-3 px-5" href="/">기프티콘 구경하기</a>
+								<a class="btn btn-primary rounded-pill py-3 px-5" href="/product/list">기프티콘 구경하기</a>
 							</div>
 						</div>
 					</div>

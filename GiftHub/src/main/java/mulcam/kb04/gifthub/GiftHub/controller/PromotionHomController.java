@@ -1,6 +1,7 @@
 package mulcam.kb04.gifthub.GiftHub.controller;
 
 import java.io.File;
+import java.util.Base64;
 import java.util.List;
 import java.util.UUID;
 
@@ -183,12 +184,15 @@ public class PromotionHomController {
 	@GetMapping("/promotion_member/promotionView_detail")
 	public String promotionView_detail(@RequestParam("promotionNo") int promotionNo, Model model) {
         Object list = promotionService.findPromotionAndStore(promotionNo);
+        System.out.println(list);
         model.addAttribute("promotion", list);
         
         //지도
         Gson gson = new Gson();
         String jsonStores = gson.toJson(list);
-        model.addAttribute("stores", jsonStores);
+        String encodedJsonStr = Base64.getEncoder().encodeToString(jsonStores.getBytes());
+        model.addAttribute("stores", encodedJsonStr);
+        
         System.out.println(jsonStores);
 		return "promotion_member/promotionView_detail";
 }
