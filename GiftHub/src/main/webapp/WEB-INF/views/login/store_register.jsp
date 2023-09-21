@@ -211,31 +211,6 @@
 			</div>
 		</div>
 		<!-- 회원가입 폼 End -->
-	
-	<style>
-    /* 버튼 크기를 2배로 키우기 */
-    .btn-square {
-        font-size: 2rem;
-        width: 4rem;
-        height: 4rem;
-    }
-
-    /* 로고 색상을 파란색으로 변경하기 */
-    .fab.fa-facebook-f,
-    .fab.fa-twitter,
-    .fab.fa-instagram,
-    .fab.fa-linkedin-in {
-        color: blue; /* 파란색으로 변경할 색상 지정 */
-    }
-</style>
-<!-- 소셜 회원가입 버튼 Start -->
-<div class="d-flex justify-content-center p-4">
-    <a class="btn btn-square mx-1" href="https://m.facebook.com/login/?locale=ko_KR&refsrc=deprecated" target="_blank"><i class="fab fa-facebook-f"></i></a>
-    <a class="btn btn-square mx-1" href="https://www.instagram.com/accounts/emailsignup/" target="_blank"><i class="fab fa-twitter"></i></a>
-    <a class="btn btn-square mx-1" href="https://accounts.google.com/InteractiveLogin/signinchooser?hl=ko&ifkv=AXo7B7Wo2fe2rRbChk-vQ6SF8_75Rd0n0aC4ymayLs-yq1PGJhqlg3jbzACwLn1GNCAaGYMeBWeS&theme=glif&flowName=GlifWebSignIn&flowEntry=ServiceLogin" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a class="btn btn-square mx-1" href="https://nid.naver.com/nidlogin.login?mode=form&url=https://www.naver.com/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-</div>
-<!-- 소셜 회원가입 버튼 End -->
 
 	<c:import url="../footer.jsp" />
 	</div>

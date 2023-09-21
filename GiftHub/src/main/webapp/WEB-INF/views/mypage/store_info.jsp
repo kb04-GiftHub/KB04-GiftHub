@@ -149,13 +149,10 @@
 									<button class="btn btn-primary w-100 py-3" id="submitBtn" type="submit">수정하기</button>
 								</div>
 								<div class="col-12">
-									<hr style="margin-top: 30px; margin-bottom: 0px;">
+									<hr style="margin-top: 30px; margin-bottom: 30px;">
 								</div>
 								<div class="col-12">
-									<p style="margin: 0; text-align: center; margin-top: 30px;">수정할 정보가 없으신가요?</p>
-								</div>
-								<div class="col-12">
-									<button class="btn btn-primary w-100 py-3" id="idexBtn">메인페이지로 돌아가기</button>
+									<a class="btn btn-primary w-100 py-3" href="/sale?storeId=${loggedStoreId}">메인페이지로 돌아가기</a>
 								</div>
 							</div>
 						</form>
@@ -335,12 +332,6 @@
 	            } else {
 	                $("#submitBtn").prop("disabled", true);
 	            }
-	        });
-	        
-	        $("#idexBtn").click(function(e) {
-	        	e.preventDefault();
-	            var url = "/sale?storeId='${loggedStoreId}'";
-	            window.location.href = url;
 	        });
 	    });
 	</script>

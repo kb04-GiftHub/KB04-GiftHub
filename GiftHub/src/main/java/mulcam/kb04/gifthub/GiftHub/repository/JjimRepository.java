@@ -22,4 +22,7 @@ public interface JjimRepository extends JpaRepository<Jjim, Integer> {
 	Jjim findByProductNoAndCustomerId(Product product, Customer customer);
 	
 	Jjim findByJjimNo(int jjimNo);
+	
+	@Query(value = "SELECT jjimNo, jjimStatus, productNo, customerId FROM JJIM WHERE customerId = :customerId",nativeQuery=true)
+	List<Jjim> findByCustomer(String customerId);
 }

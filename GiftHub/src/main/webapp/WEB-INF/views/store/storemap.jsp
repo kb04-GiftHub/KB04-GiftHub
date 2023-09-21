@@ -31,9 +31,6 @@
 
 	<div class="container-xxl py-5">
 		<div class="container py-5 px-lg-5">
-			<div class="wow fadeInUp" data-wow-delay="0.1s">
-				<h1 class="text-center mb-5">FIND STORE</h1>
-			</div>
 			<div class="row justify-content-center">
 				<!-- <div class="col-lg-5">
 					<div class="wow fadeInUp" data-wow-delay="0.3s">
@@ -53,7 +50,7 @@
 				<section class="prod-main-section-top">
 					<div class="prod-main-top">
 						<div class="prod-main-desc" style="margin-left: 5%">
-							<h1 class="text-center prod-main-title">상품 목록</h1>
+							<h1 class="text-center prod-main-title">FIND STORE</h1>
 							<p class="text-center text-m">
 								내 주변의 상품을 찾을 수 있습니다. <br> 지도를 움직이며 관심있는 상품을 둘러보세요!
 							</p>
@@ -81,7 +78,7 @@
 				<div class="col-lg-10">
 				<div class="search">
 					<div class="text-end input-group" >
-						<input class="form-control" type="text" id="searchInput" placeholder="검색어를 입력하세요">
+						<input class="form-control" type="text" id="searchInput" placeholder="매장명을 입력하세요">
 					</div>
 				</div>
 					<table class="table table-striped"
