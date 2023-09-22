@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -83,7 +83,7 @@
 											<td>${data[0]}</td>
 											<td>${data[1]}</td>
 											<td>${data[2]}</td>
-											<td>${data[3]}</td>
+											<td><fmt:formatDate value="${data[3]}" pattern="yyyy년 MM월 dd일"/></td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -155,9 +155,9 @@
                             },
                             y: {
                             	min: 0, // y축의 최소값 설정
-                                max: 50, // y축의 최대값 설정
+                                max: 20, // y축의 최대값 설정
                                 ticks: {
-                                    stepSize: 5, // 눈금 간격 설정
+                                    stepSize: 2, // 눈금 간격 설정
                                 },
                                 title: {
                                     display: true,

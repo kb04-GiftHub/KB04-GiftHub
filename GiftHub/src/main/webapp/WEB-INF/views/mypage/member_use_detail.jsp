@@ -149,11 +149,16 @@
 		geocoder.addressSearch(address, function(result, status) {
 			// 정상적으로 검색이 완료됐으면
 			if (status === kakao.maps.services.Status.OK) {
+				var imageSrc = '/img/shop.png'; // 마커이미지의 주소입니다    
+				var imageSize = new kakao.maps.Size(40, 40); // 마커이미지의 크기입니다
+				var imageOption = {offset: new kakao.maps.Point(20, 40)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+				var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption); 
 				var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 				// 결과값으로 받은 위치를 마커로 표시합니다
 				var marker = new kakao.maps.Marker({
 					map : map,
-					position : coords
+					position : coords,
+					image : markerImage
 				});
 				/* // 인포윈도우로 장소에 대한 설명을 표시합니다
 				var infowindow = new kakao.maps.InfoWindow(
