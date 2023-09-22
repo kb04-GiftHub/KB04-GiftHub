@@ -71,8 +71,8 @@
 							<c:forEach items="${list}" var="list">
 								<c:choose>
 									<c:when test="${list[3] eq 1}">
-										<div class="col-lg-3 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s" onclick="window.location.href = '/member/mypage/use_detail?giftNo=${list[0]}'">
-					                        <div class="rounded overflow-hidden" style="border: 4px solid #E2EFFF">
+										<div class="col-lg-3 col-md-6 portfolio-item first" data-wow-delay="0.1s" onclick="window.location.href = '/member/mypage/use_detail?giftNo=${list[0]}'">
+					                        <div class="rounded" style="border: 4px solid #E2EFFF">
 					                            <div class="position-relative overflow-hidden" style="height: 200px; display: flex; justify-content: center; align-items: center;">
 					                                <img class="img-fluid" src="/resources/products/${list[10]}" alt="" id="img" onload="adjustImageSize(this)">
 					                            </div>
@@ -85,8 +85,8 @@
 					                    </div>
 									</c:when>
 									<c:when test="${list[3] eq 2}">
-										<div class="col-lg-3 col-md-6 portfolio-item second wow fadeInUp" data-wow-delay="0.1s" onclick="window.location.href = '/member/mypage/use_detail?giftNo=${list[0]}'">
-					                        <div class="rounded overflow-hidden" style="border: 4px solid #EEEEEE">
+										<div class="col-lg-3 col-md-6 portfolio-item second" data-wow-delay="0.1s" onclick="window.location.href = '/member/mypage/use_detail?giftNo=${list[0]}'">
+					                        <div class="rounded" style="border: 4px solid #EEEEEE">
 					                            <div class="position-relative overflow-hidden" style="height: 200px; display: flex; justify-content: center; align-items: center;">
 					                                <img class="img-fluid" src="/resources/products/${list[10]}" alt="" id="img" onload="adjustImageSize(this)">
 					                            </div>
@@ -99,8 +99,8 @@
 					                    </div>
 									</c:when>
 									<c:when test="${list[3] eq 3}">
-										<div class="col-lg-3 col-md-6 portfolio-item third wow fadeInUp" data-wow-delay="0.1s" onclick="window.location.href = '/member/mypage/use_detail?giftNo=${list[0]}'">
-					                        <div class="rounded overflow-hidden" style="border: 4px solid #EEEEEE">
+										<div class="col-lg-3 col-md-6 portfolio-item third" data-wow-delay="0.1s" onclick="window.location.href = '/member/mypage/use_detail?giftNo=${list[0]}'">
+					                        <div class="rounded" style="border: 4px solid #EEEEEE">
 					                            <div class="position-relative overflow-hidden" style="height: 200px; display: flex; justify-content: center; align-items: center;">
 					                                <img class="img-fluid" src="/resources/products/${list[10]}" alt="" id="img" onload="adjustImageSize(this)">
 					                            </div>

@@ -75,8 +75,8 @@ public class ProductServiceImpl implements ProductService {
 		
 		Store store = new Store();
 		store.setStoreId(id);
-
-		List<Product> listEntity = repository.findByStoreId(store);
+//
+		List<Product> listEntity = repository.findByStoreIdOrderByProductExpDesc(store);
 		List<ProductDto> myList = new ArrayList<ProductDto>();
 		
 		for(Product product : listEntity) {

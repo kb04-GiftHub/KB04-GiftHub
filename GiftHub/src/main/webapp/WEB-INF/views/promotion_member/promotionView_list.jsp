@@ -83,8 +83,8 @@
             </c:when>
         </c:choose>
        <!--   -->
-        <div class="col-lg-4 col-md-6 portfolio-item ${promotionTypeClass} wow fadeInUp" data-wow-delay="0.1s">
-            <div class="rounded overflow-hidden">
+        <div class="col-lg-4 col-md-6 portfolio-item ${promotionTypeClass}" data-wow-delay="0.1s">
+            <div class="rounded">
                 <div class="position-relative overflow-hidden">
                     <img class="img-fluid w-100" style="width: 100%; height: 300px;"  src="/resources/promotion_img/${promotion.promotionImage}" alt="" >
                    

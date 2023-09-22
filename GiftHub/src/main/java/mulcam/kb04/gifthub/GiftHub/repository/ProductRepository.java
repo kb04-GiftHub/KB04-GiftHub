@@ -24,6 +24,6 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
 	Product findByProductNo(int productNo);
 	
-	List<Product> findByStoreId(Store store);
+	List<Product> findByStoreIdOrderByProductExpDesc(Store store);
 	
 }

@@ -86,7 +86,7 @@ public class GifticonGenerator {
             
             g2d.setColor(Color.BLACK); // 테두리의 색상 설정
 //            g2d.setFont(new Font("함초롬돋움",Font.BOLD, 20));
-            g2d.setFont(customFont.deriveFont(Font.BOLD, 20));
+            g2d.setFont(customFont.deriveFont(Font.PLAIN, 20));
             FontMetrics fontMetrics = g2d.getFontMetrics();
             int titleDateWidth = fontMetrics.stringWidth(productTitle);
             int titleDateX = imageCenterX - (titleDateWidth / 2);
@@ -119,7 +119,7 @@ public class GifticonGenerator {
         // 코드 번호 텍스트 그리기 (가운데 정렬)
         g2d.setColor(Color.BLACK); // 테두리의 색상 설정
 //        g2d.setFont(new Font("Digital-7",Font.BOLD, 15));
-        g2d.setFont(customFont.deriveFont(Font.BOLD, 15));
+        g2d.setFont(customFont.deriveFont(Font.PLAIN, 15));
         
         StringBuilder builder = new StringBuilder(barcodeData);
         builder.insert(4, "-");
@@ -150,7 +150,7 @@ public class GifticonGenerator {
         g2d.drawString("교 환 처", 30,548 );
         g2d.setColor(Color.BLACK);  
 //        g2d.setFont(new Font("HYShortSamul 중간",Font.BOLD, 16));
-        g2d.setFont(customFont.deriveFont(Font.BOLD, 16));
+        g2d.setFont(customFont.deriveFont(Font.PLAIN, 16));
         g2d.drawString(store.getStoreName(),200,545);
         
         // 
@@ -162,7 +162,7 @@ public class GifticonGenerator {
         g2d.drawString("유효기간", 30,583 );
         g2d.setColor(Color.BLACK);  
 //        g2d.setFont(new Font("HYPost",Font.BOLD, 16));
-        g2d.setFont(customFont.deriveFont(Font.BOLD, 16));
+        g2d.setFont(customFont.deriveFont(Font.PLAIN, 16));
 //        Date date = product.getProductExp();
 //        SimpleDateFormat form = new SimpleDateFormat("yyyy년 MM월 dd일");
 //        expirationDate=form.format(date);

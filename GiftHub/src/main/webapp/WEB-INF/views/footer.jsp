@@ -36,7 +36,7 @@
                         <p class="section-title text-white h5 mb-4">Find<span></span></p>
                         
                         <p>GIFTHUB와 함께 성장할 <br>우리 동네 가게를 찾습니다!</p>
-                        <a href="/store/register" style="color:black;background-color: white; border-radius: 20px;white; border: 1px; padding: 8px">입점 문의 신청</a>
+                        <a href="/store/login" style="color:black;background-color: white; border-radius: 20px;white; border: 1px; padding: 8px">입점 문의 신청</a>
                         <!-- <div class="position-relative w-100 mt-3">
                             <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text" placeholder="" style="height: 48px;">
                             <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2">

@@ -49,7 +49,7 @@
 				</div> -->
 				<section class="prod-main-section-top">
 					<div class="prod-main-top">
-						<div class="prod-main-desc" style="margin-left: 5%">
+						<div class="col-12">
 							<h1 class="text-center prod-main-title">FIND STORE</h1>
 							<p class="text-center text-m">
 								내 주변의 상품을 찾을 수 있습니다. <br> 지도를 움직이며 관심있는 상품을 둘러보세요!
@@ -66,12 +66,12 @@
 					<div class="col-12 text-center">
 						<ul class="list-inline mb-2" id="portfolio-flters">
 							<li id="allC" class="mx-2 active"data-filter="*"><img src="/img/all.png" style="width:30px"> 전체</li>
-							<li id="koreaC" class="mx-2" data-filter=".product-type-1"><img src="/img/store_korea.png" style="width:30px"> 한식</li>
-							<li id="chinaC" class="mx-2" data-filter=".product-type-2"><img src="/img/store_china.png" style="width:30px"> 중식</li>
-							<li id="japanC" class="mx-2" data-filter=".product-type-3"><img src="/img/store_japan.png" style="width:30px"> 일식</li>
-							<li id="westernC" class="mx-2" data-filter=".product-type-4"><img src="/img/store_western.png" style="width:30px"> 양식</li>
-							<li id="cafeC" class="mx-2" data-filter=".product-type-5"><img src="/img/store_cafe.png" style="width:30px"> 카페/디저트</li>
-							<li id="etcC" class="mx-2" data-filter=".product-type-6"><img src="/img/store_etc.png" style="width:30px"> 기타</li>
+							<li id="koreaC" class="mx-2" data-filter=".product-type-1"><img src="/img/location_korea.png" style="width:30px"> 한식</li>
+							<li id="chinaC" class="mx-2" data-filter=".product-type-2"><img src="/img/location_china.png" style="width:30px"> 중식</li>
+							<li id="japanC" class="mx-2" data-filter=".product-type-3"><img src="/img/location_japan.png" style="width:30px"> 일식</li>
+							<li id="westernC" class="mx-2" data-filter=".product-type-4"><img src="/img/location_western.png" style="width:30px"> 양식</li>
+							<li id="cafeC" class="mx-2" data-filter=".product-type-5"><img src="/img/location_cafe.png" style="width:30px"> 카페/디저트</li>
+							<li id="etcC" class="mx-2" data-filter=".product-type-6"><img src="/img/location_etc.png" style="width:30px"> 기타</li>
 						</ul>
 					</div>
 				</div>
@@ -258,6 +258,10 @@
 					success:function(res){
 						$('#categoryRow').html('');
 						var str = '';
+						if (res.length === 0) {
+		                    deleteMarkers(map);
+		                    return; // 함수 종료
+		                }
 						$.each(res,function(i,data){
 							str += '<tr>'
 						 	str += '<th scope="row">'
@@ -332,6 +336,7 @@
 								$('#cafeC').attr("class","mx-2");
 								$('#etcC').attr("class","mx-2");
 							}
+							
 							store(data);
 							str+='</td>'
 							str += '</tr>'
@@ -393,17 +398,17 @@
 								// 마커 이미지의 이미지 주소입니다
 								var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
 								if(data.categoryNo == 1){
-									imageSrc = "/img/store_korea.png";
+									imageSrc = "/img/location_korea.png";
 								}else if(data.categoryNo == 2){
-									imageSrc = "/img/store_china.png";
+									imageSrc = "/img/location_china.png";
 								}else if(data.categoryNo == 3){
-									imageSrc = "/img/store_japan.png";
+									imageSrc = "/img/location_japan.png";
 								}else if(data.categoryNo == 4){
-									imageSrc = "/img/store_western.png";
+									imageSrc = "/img/location_western.png";
 								}else if(data.categoryNo == 5){
-									imageSrc = "/img/store_cafe.png";
+									imageSrc = "/img/location_cafe.png";
 								}else if(data.categoryNo == 6){
-									imageSrc = "/img/store_etc.png";
+									imageSrc = "/img/location_etc.png";
 								}
 								// 마커 이미지의 이미지 크기 입니다
 								var imageSize = new kakao.maps.Size(30, 30); 
@@ -504,6 +509,61 @@
 						image:markerImage
 					});
 					map.setCenter(coords);
+					// 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
+					var iwContent = '<div style="width:150px;padding:5px; height:200px; text-align:center; font-size:0.5em; overflow-x:hidden; overflow-y:auto;">';
+						iwContent += '<br><span style="font-size:17px;font-weight:bold;">'+data.storeName+'</span><br>';
+						iwContent += '<div><table class="table" style="text-align:center;">';
+						iwContent += '<tr>';
+						iwContent += '<th style="width:15px">';
+						iwContent += '업종';
+						iwContent += '</th>';
+						iwContent += '<td style="width:30px">';
+						if(data.categoryNo == 1){
+							iwContent += '한식';
+						}else if(data.categoryNo == 2){
+							iwContent += '중식';
+						}else if(data.categoryNo == 3){
+							iwContent += '일식';
+						}else if(data.categoryNo == 4){
+							iwContent += '양식';
+						}else if(data.categoryNo == 5){
+							iwContent += '카페/디저트';
+						}else if(data.categoryNo == 6){
+							iwContent += '기타';
+						}
+						iwContent += '</td>';
+						iwContent += '</tr>';
+						iwContent += '<tr>';
+						iwContent += '<th>';
+						iwContent += '위치';
+						iwContent += '</th>';
+						iwContent += '<td>';
+						iwContent += data.storeAdd2;
+						iwContent += '</td>';
+						iwContent += '</tr>';
+						iwContent += '<tr>';
+						iwContent += '<th>';
+						iwContent += '연락처';
+						iwContent += '</th>';
+						iwContent += '<td>';
+						iwContent += data.storeTel;
+						iwContent += '</td>';
+						iwContent += '</tr>';
+						iwContent += '</table>';
+						iwContent += "</div>", // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+					    iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+
+					// 인포윈도우를 생성합니다
+					var infowindow = new kakao.maps.InfoWindow({
+					    content : iwContent,
+					    removable : iwRemoveable
+					});
+
+					// 마커에 클릭이벤트를 등록합니다
+					kakao.maps.event.addListener(marker, 'click', function() {
+					      // 마커 위에 인포윈도우를 표시합니다
+					      infowindow.open(map, marker);  
+					});
 					markers.push(marker);
 				}
 			});

@@ -15,7 +15,7 @@ public interface BuyRepository extends JpaRepository<Buy, Integer> {
 	@Query("SELECT FUNCTION('MONTH', b.buyDate) as month, COUNT(b) as count FROM Buy b WHERE b.storeId = :storeId GROUP BY FUNCTION('MONTH', b.buyDate)")
 	List<Object[]> countByMonth(@Param("storeId") Store storeId);
 
-	@Query("SELECT p.productName, g.giftNo, b.buyPrice, b.buyDate FROM Product p JOIN Buy b ON p.productNo = b.productNo JOIN Gift g ON b.buyNo = g.buyNo WHERE b.storeId = :storeId")
+	@Query("SELECT p.productName, g.giftNo, b.buyPrice, b.buyDate FROM Product p JOIN Buy b ON p.productNo = b.productNo JOIN Gift g ON b.buyNo = g.buyNo WHERE b.storeId = :storeId order by b.buyDate desc")
 	List<Object[]> findStoreDetailsByStoreId(@Param("storeId") Store storeId);
 
 }

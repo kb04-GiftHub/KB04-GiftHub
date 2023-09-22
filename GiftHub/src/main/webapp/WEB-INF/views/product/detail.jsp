@@ -448,21 +448,7 @@ var container = document.getElementById('map');
 			// 정상적으로 검색이 완료됐으면 
 			if (status === kakao.maps.services.Status.OK) {
 				
-				var imageSrc = '/img/myLoc.png'; // 마커이미지의 주소입니다
-				
-				if(${store.categoryNo} == 1){
-					imageSrc = "/img/store_korea.png";
-				}else if(${store.categoryNo} == 2){
-					imageSrc = "/img/store_china.png";
-				}else if(${store.categoryNo} == 3){
-					imageSrc = "/img/store_japan.png";
-				}else if(${store.categoryNo} == 4){
-					imageSrc = "/img/store_western.png";
-				}else if(${store.categoryNo} == 5){
-					imageSrc = "/img/store_cafe.png";
-				}else if(${store.categoryNo} == 6){
-					imageSrc = "/img/store_etc.png";
-				}
+				var imageSrc = '/img/shop.png'; // 마커이미지의 주소입니다
 				
 			    var imageSize = new kakao.maps.Size(40, 40); // 마커이미지의 크기입니다
 			    var imageOption = {offset: new kakao.maps.Point(20, 40)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.

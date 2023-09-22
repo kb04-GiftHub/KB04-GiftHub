@@ -77,7 +77,7 @@
                     </div>
                     <div class="nav-item dropdown" >
                     	<a href="" class="nav-link dropdown-toggle"
-                    		data-bs-toggle="dropdown" style="color: white; font-weight: 500; font-size: 15pt;">Get Started</a>
+                    		data-bs-toggle="dropdown" style="color: white; font-weight: 500; font-size: 15pt;">SIGN UP</a>
 						<div class="dropdown-menu m-0">
 							<a href="store/register" class="dropdown-item">점주님 회원가입</a>
 							<a href="member/register" class="dropdown-item">일반회원 회원가입</a>
