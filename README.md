@@ -1,21 +1,21 @@
-# 국민대학교를 위한 네트워크 이상탐지 기술 개발 및 서비스화
+# KB 국민은행 IT's Your Life 최종 프로젝트
 ```
-네트워크 트래픽 분석을 통한 국민대학교 공격 탐지 플랫폼 
+소상공인을 위한
+개인사업자 기프티콘 발행 플랫폼
+GiftHub 
 ```
 
 ## 팀원 소개
-**🪐 이윤호 (팀장)**
+**🪐 김은진 (조장)**
 ```
-Student ID: ****1645
-E-mail: yhya0904@kookmin.ac.kr
-Role: Data Processing & Analysis
+GitHub ID : dolssun
+E-mail:
 ```
 
-**🌎 이상민**
+**🌎 이성준 (코딩팀장)**
 ```
-Student ID: ****2797
-E-mail: sangminlee@kookmin.ac.kr
-Role: AI Modeling
+GitHub ID : dolssun
+E-mail: 
 ```
 
 **🌍 이종식**
