@@ -1,91 +1,49 @@
 # KB 국민은행 IT's Your Life 최종 프로젝트
 ```
-소상공인을 위한
-개인사업자 기프티콘 발행 플랫폼
-GiftHub 
+소상공인을 위한 개인사업자 기프티콘 발행 플랫폼 GiftHub 
 ```
 
-## 팀원 소개
+## 조원 소개
 **🪐 김은진 (조장)**
 ```
 GitHub ID : dolssun
 E-mail:
 ```
 
-**🌎 이성준 (코딩팀장)**
+**🌎 이성준 (코딩 팀장)**
 ```
 GitHub ID : dolssun
 E-mail: 
 ```
 
-**🌍 이종식**
+**🌍 이수민(코딩 부팀장)**
 ```
-Student ID: ****1673
-E-mail: identity230c@kookmin.ac.kr
-Role: AI Modeling
-```
-
-**🌏 신재혁**
-```
-Student ID: ****1636
-E-mail: wogur6767@kookmin.ac.kr
-Role: AI Modeling
+GitHub ID : dolssun
+E-mail: 
 ```
 
-**🌖 한윤석**
+**🌏 노유진**
 ```
-Student ID: ****3159
-E-mail: gtavexir@kookmin.ac.kr
-Role: AI Modeling
-```
-
-**🌗 최유나**
-```
-Student ID: ****2831
-E-mail: xcv904@kookmin.ac.kr
-Role: Data Processing & Analysis
+GitHub ID : dolssun
+E-mail: 
 ```
 
-**🌘 박보서**
+**🌖 허동민**
 ```
-Student ID: ****5286
-E-mail: boseo@kookmin.ac.kr
-Role: Data Processing & Analysis
-```
-
-**🌑 정찬진**
-```
-Student ID: ****1692
-E-mail: chanjin@kookmin.ac.kr
-Role: Frontend
+GitHub ID : dolssun
+E-mail: 
 ```
 
-**🌒 이다은**
+**🌗 황규빈**
 ```
-Student ID: ****3112
-E-mail: ekdms7273@kookmin.ac.kr
-Role: Frontend
-```
-
-**🌓 이주원**
-```
-Student ID: ****1334
-E-mail: jwlee51@kookmin.ac.kr
-Role: Backend
-```
-
-**🌔 양민주**
-```
-Student ID: ****2175
-E-mail: alswn0558@gmail.com
-Role: Backend
+GitHub ID : dolssun
+E-mail: 
 ```
 <br>
 
 
 ## 프로젝트 소개
-**국민대학교 내부 정보통신처**를 클라이언트로 설정하여 국민대학교 외부로부터 들어오는 ip의 행동 패턴을 분석하여 공격을 탐지하는 기술을 개발하려한다. 해당 기술은 개발 단계에서 끝나는 것이 아닌, 실제 국민대학교 정보통신처 관계자들이 **국민대학교의 네트워크 트래픽과 외부로부터 들어오는 ip들에 대한 이상탐지 결과**를
-쉽게 활용하고 접근 할 수 있도록 서비스화하는 것을 목표로 한다. 더불어 해당 서비스 외에도 다양한 기능들을 추가하여 국민대학교 관계자에게 보안에 대한 관심을 높이고 중요성을 부각시키려고 한다.
+프랜차이즈가  아닌 소상공인들이 기프티콘을 발행하고, 소비자들이 기프티콘을 거래하고 사용할 수 있는 플랫폼
 <br>
 <br>
 
