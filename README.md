@@ -1,3 +1,4 @@
+![header](https://capsule-render.vercel.app/api?type=slice&color=87CEFA&height=200&section=header&text=HurDong's%20Github&fontSize=70&animation=twinkling)
 # KB 국민은행 IT's Your Life 최종 프로젝트
 ```
 소상공인을 위한 개인사업자 기프티콘 발행 플랫폼 GiftHub 
