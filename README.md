@@ -4,37 +4,37 @@
 ```
 
 ## 조원 소개
-**🪐 김은진 (조장)**
+**🐻 김은진 (조장)**
 ```
 GitHub ID : dolssun
 E-mail: 903ejkim@naver.com
 ```
 
-**🌎 이성준 (코딩 팀장)**
+**⌨️ 이성준 (코딩 팀장)**
 ```
 GitHub ID : SamGentlee
 E-mail: ekdma3259@gmail.com
 ```
 
-**🌍 이수민(코딩 부팀장)**
+**🔍 이수민(코딩 부팀장)**
 ```
 GitHub ID : ISMINMIN
 E-mail: summmm.224@gmail.com
 ```
 
-**🌏 노유진**
+**🎤 노유진**
 ```
 GitHub ID : Youjin-Roh
 E-mail: nnn734877@gmail.com
 ```
 
-**🌖 허동민**
+**😄 허동민**
 ```
 GitHub ID : HurDong
 E-mail: gjehdals456@gmail.com
 ```
 
-**🌗 황규빈**
+**🎨 황규빈**
 ```
 GitHub ID : gyu6012
 E-mail: gyu6012@gmail.com
