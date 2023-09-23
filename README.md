@@ -12,31 +12,31 @@ E-mail: 903ejkim@naver.com
 
 **🌎 이성준 (코딩 팀장)**
 ```
-GitHub ID : dolssun
+GitHub ID : SamGentlee
 E-mail: ekdma3259@gmail.com
 ```
 
 **🌍 이수민(코딩 부팀장)**
 ```
-GitHub ID : dolssun
+GitHub ID : ISMINMIN
 E-mail: summmm.224@gmail.com
 ```
 
 **🌏 노유진**
 ```
-GitHub ID : dolssun
+GitHub ID : Youjin-Roh
 E-mail: nnn734877@gmail.com
 ```
 
 **🌖 허동민**
 ```
-GitHub ID : dolssun
+GitHub ID : HurDong
 E-mail: gjehdals456@gmail.com
 ```
 
 **🌗 황규빈**
 ```
-GitHub ID : dolssun
+GitHub ID : gyu6012
 E-mail: gyu6012@gmail.com
 ```
 <br>
