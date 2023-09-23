@@ -3,6 +3,9 @@
 소상공인을 위한 개인사업자 기프티콘 발행 플랫폼 GiftHub 
 ```
 
+## 깃허브 페이지
+https://github.com/kb04-GiftHub/KB04-GiftHub
+
 ## 조원 소개
 **🐻 김은진 (조장)**
 ```
@@ -72,9 +75,6 @@ E-mail: gyu6012@gmail.com
 * CTI를 제공해주는 서비스는 주로 해외 서비스가 많기 때문에, 국민대학교를 타겟으로 하는 위협정보를 확장하여 네트워크 보안을 강화함
 <br>
 
-## 프로젝트 구조도 
-
-
 ## 메인 페이지 
 
 <img width="1377" alt="스크린샷 2023-05-24 오전 11 35 28" src="https://github.com/kb04-GiftHub/KB04-GiftHub/blob/main/assets/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A51_%EA%B0%80%EB%A7%B9%EC%A0%90%EC%B0%BE%EA%B8%B0.PNG">
@@ -86,17 +86,6 @@ E-mail: gyu6012@gmail.com
 <img width="1377" alt="스크린샷 2023-05-24 오전 11 35 28" src="https://github.com/kb04-GiftHub/KB04-GiftHub/blob/main/assets/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A57_%ED%8C%90%EB%A7%A4%EC%B0%A8%ED%8A%B8.PNG">
 <img width="1377" alt="스크린샷 2023-05-24 오전 11 35 28" src="https://github.com/kb04-GiftHub/KB04-GiftHub/blob/main/assets/%EC%84%A4%EB%AC%B8%EC%A1%B0%EC%82%AC.PNG">
 
-네트워크 트래픽을 분석하여 나타낼 통계 정보는 다음과 같다
-* 시간별 플로우 통계화
-* 정상, 공격 플로우 통계화
-* 공격 플로우의 공격 방식 통계
-* 지도, 비지도 학습 모델의 예측 IP 통계화
-* 외부 접근 IP 위치 시각화 
-<br>
-
-## 깃허브 페이지
-https://github.com/kb04-GiftHub/KB04-GiftHub
-
 ## 기술 스택 
 ### Frontend
 <img alt="HTML" src="https://img.shields.io/badge/HTML-E34F26.svg?&style=for-the-badge&logo=HTML5&logoColor=white"/> <img alt="CSS" src="https://img.shields.io/badge/CSS-1572B6.svg?&style=for-the-badge&logo=CSS3&logoColor=white"/> <img alt="JavaScript" src="https://img.shields.io/badge/JAVASCRIPT-F7DF1E.svg?&style=for-the-badge&logo=JavaScript&logoColor=white"/> <img alt="Bootstrap" src="https://img.shields.io/badge/BOOTSTRAP-7952B3.svg?&style=for-the-badge&logo=Bootstrap&logoColor=white"/> <img alt="jQuery" src="https://img.shields.io/badge/JQUERY-0769AD.svg?&style=for-the-badge&logo=jQuery&logoColor=white"/> <img alt="JSP" src="https://img.shields.io/badge/JSP-007396.svg?&style=for-the-badge&logo=Java&logoColor=white"/>
@@ -104,7 +93,7 @@ https://github.com/kb04-GiftHub/KB04-GiftHub
 ### Backend
 <img alt="Spring Boot" src="https://img.shields.io/badge/SPRING%20BOOT-6DB33F.svg?&style=for-the-badge&logo=Spring&logoColor=white"/> <img alt="Spring Data" src="https://img.shields.io/badge/SPRING%20DATA-6DB33F.svg?&style=for-the-badge&logo=Spring&logoColor=white"/> <img alt="Oracle" src="https://img.shields.io/badge/ORACLE-F80000.svg?&style=for-the-badge&logo=Oracle&logoColor=white"/>
 
-## common
+## Tools & Platforms Used
 |역할|종류|
 |-|-|
 |Idea Memo|<img alt="RED" src ="https://img.shields.io/badge/Notion-000000.svg?&style=for-the-badge&logo=Notion&logoColor=white"/> |
