@@ -11,14 +11,14 @@
   <img alt="jQuery" src="https://img.shields.io/badge/JQUERY-0769AD.svg?&style=for-the-badge&logo=jQuery&logoColor=white"/>
   <img alt="JSP" src="https://img.shields.io/badge/JSP-007396.svg?&style=for-the-badge&logo=Java&logoColor=white"/>
 </p>
-
+---
 ### <p align="center">Backend</p>
 <p align="center">
   <img alt="Spring Boot" src="https://img.shields.io/badge/SPRING%20BOOT-6DB33F.svg?&style=for-the-badge&logo=Spring&logoColor=white"/>
   <img alt="Spring Data" src="https://img.shields.io/badge/SPRING%20DATA-6DB33F.svg?&style=for-the-badge&logo=Spring&logoColor=white"/>
   <img alt="Oracle" src="https://img.shields.io/badge/ORACLE-F80000.svg?&style=for-the-badge&logo=Oracle&logoColor=white"/>
 </p>
-
+---
 ### <p align="center">Tools & Platforms Used</p>
 <p align="center">
   <table align="center">
@@ -40,7 +40,7 @@
     </tr>
   </table>
 </p>
-
+---
 
 ## 조원 소개
 **🐻 김은진 (조장)**
