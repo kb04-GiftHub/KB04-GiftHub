@@ -98,15 +98,12 @@ https://github.com/kb04-GiftHub/KB04-GiftHub
 
 ## 기술 스택 
 ### Frontend
-<img alt="RED" src ="https://img.shields.io/badge/REACT-61DAFB.svg?&style=for-the-badge&logo=React&logoColor=white"/>  <img alt="RED" src ="https://img.shields.io/badge/JAVASCRIPT-F7DF1E.svg?&style=for-the-badge&logo=JavaScript&logoColor=white"/>  <img alt="RED" src ="https://img.shields.io/badge/KIBANA-005571.svg?&style=for-the-badge&logo=Kibana&logoColor=white"/>  <img alt="RED" src ="https://img.shields.io/badge/ELASTICSEARCH-005571.svg?&style=for-the-badge&logo=Elasticsearch&logoColor=white"/>
+<img alt="HTML" src="https://img.shields.io/badge/HTML-E34F26.svg?&style=for-the-badge&logo=HTML5&logoColor=white"/> <img alt="CSS" src="https://img.shields.io/badge/CSS-1572B6.svg?&style=for-the-badge&logo=CSS3&logoColor=white"/> <img alt="JavaScript" src="https://img.shields.io/badge/JAVASCRIPT-F7DF1E.svg?&style=for-the-badge&logo=JavaScript&logoColor=white"/> <img alt="Bootstrap" src="https://img.shields.io/badge/BOOTSTRAP-7952B3.svg?&style=for-the-badge&logo=Bootstrap&logoColor=white"/> <img alt="jQuery" src="https://img.shields.io/badge/JQUERY-0769AD.svg?&style=for-the-badge&logo=jQuery&logoColor=white"/> <img alt="JSP" src="https://img.shields.io/badge/JSP-007396.svg?&style=for-the-badge&logo=Java&logoColor=white"/>
 
 ### Backend
 <img alt="RED" src ="https://img.shields.io/badge/NESTJS-E0234E.svg?&style=for-the-badge&logo=NestJS&logoColor=white"/>  <img alt="RED" src ="https://img.shields.io/badge/ELASTICSEARCH-3399BB.svg?&style=for-the-badge&logo=Elasticsearch&logoColor=white"/>  <img alt="RED" src ="https://img.shields.io/badge/LOGSTASH-BBBB00.svg?&style=for-the-badge&logo=Logstash&logoColor=white"/>  <img alt="RED" src ="https://img.shields.io/badge/KIBANA-BB2277.svg?&style=for-the-badge&logo=Kibana&logoColor=white"/>
 <br>
 <img alt="RED" src ="https://img.shields.io/badge/TYPESCRIPT-3178C6.svg?&style=for-the-badge&logo=TypeScript&logoColor=white"/>  <img alt="RED" src ="https://img.shields.io/badge/SWAGGER-85EA2D.svg?&style=for-the-badge&logo=Swagger&logoColor=white"/>
-
-### AI Modeling & Data Processing & Analysis
-<img alt="RED" src ="https://img.shields.io/badge/C++-00599C.svg?&style=for-the-badge&logo=C++&logoColor=white"/>  <img alt="RED" src ="https://img.shields.io/badge/Python-3776AB.svg?&style=for-the-badge&logo=Python&logoColor=white"/>  <img alt="RED" src ="https://img.shields.io/badge/PYTORCH-EE4C2C.svg?&style=for-the-badge&logo=Pytorch&logoColor=white"/>  <img alt="RED" src ="https://img.shields.io/badge/SCIKIT-LEARN-F7931E.svg?&style=for-the-badge&logo=scikit-learn&logoColor=white"/>
 <br>
 
 ## common
