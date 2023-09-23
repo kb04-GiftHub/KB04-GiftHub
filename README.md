@@ -84,6 +84,7 @@ E-mail: gyu6012@gmail.com
 <img width="1377" alt="스크린샷 2023-05-24 오전 11 35 28" src="https://github.com/kb04-GiftHub/KB04-GiftHub/blob/main/assets/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A55_sms%EC%A0%84%EC%86%A1.PNG">
 <img width="1377" alt="스크린샷 2023-05-24 오전 11 35 28" src="https://github.com/kb04-GiftHub/KB04-GiftHub/blob/main/assets/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A56_%EA%B8%B0%ED%94%84%ED%8B%B0%EC%BD%98%EC%BA%98%EB%A6%B0%EB%8D%94.PNG">
 <img width="1377" alt="스크린샷 2023-05-24 오전 11 35 28" src="https://github.com/kb04-GiftHub/KB04-GiftHub/blob/main/assets/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A57_%ED%8C%90%EB%A7%A4%EC%B0%A8%ED%8A%B8.PNG">
+<img width="1377" alt="스크린샷 2023-05-24 오전 11 35 28" src="https://github.com/kb04-GiftHub/KB04-GiftHub/blob/main/assets/%EC%84%A4%EB%AC%B8%EC%A1%B0%EC%82%AC.PNG">
 
 네트워크 트래픽을 분석하여 나타낼 통계 정보는 다음과 같다
 * 시간별 플로우 통계화
