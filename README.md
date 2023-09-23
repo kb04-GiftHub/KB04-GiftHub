@@ -113,7 +113,7 @@ E-mail: gyu6012@gmail.com
 -->
 
 ## 메인 페이지 
-<img width="1377" alt="스크린샷 2023-05-24 오전 11 35 28" src="https://github.com/kb04-GiftHub/KB04-GiftHub/blob/main/assets/%EC%84%A4%EB%AC%B8%EC%A1%B0%EC%82%AC.PNG">
+<!--<img width="1377" alt="스크린샷 2023-05-24 오전 11 35 28" src="https://github.com/kb04-GiftHub/KB04-GiftHub/blob/main/assets/%EC%84%A4%EB%AC%B8%EC%A1%B0%EC%82%AC.PNG">-->
 <img width="1377" alt="스크린샷 2023-05-24 오전 11 35 28" src="https://github.com/kb04-GiftHub/KB04-GiftHub/blob/main/assets/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A51_%EA%B0%80%EB%A7%B9%EC%A0%90%EC%B0%BE%EA%B8%B0.PNG">
 <img width="1377" alt="스크린샷 2023-05-24 오전 11 35 28" src="https://github.com/kb04-GiftHub/KB04-GiftHub/blob/main/assets/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A52_%ED%8F%AC%EC%9D%B8%ED%8A%B8%EC%B6%A9%EC%A0%84.PNG">
 <img width="1377" alt="스크린샷 2023-05-24 오전 11 35 28" src="https://github.com/kb04-GiftHub/KB04-GiftHub/blob/main/assets/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A53_%EA%B8%B0%ED%94%84%ED%8B%B0%EC%BD%98%EC%83%9D%EC%84%B1.PNG">
