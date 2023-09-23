@@ -11,13 +11,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import mulcam.kb04.gifthub.GiftHub.dto.DonationDto;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Builder
 public class Donation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "DONATION_SEQ")
@@ -34,5 +37,21 @@ public class Donation {
 
 	@ManyToOne
 	@JoinColumn(name = "orgNo")
-	private DonationOrg orgNo;
+	private DonationOrg donationOrg;
+	
+	public static Donation dtoToEntity(DonationDto dto) {
+		Customer customer = new Customer();
+		customer.setCustomerId(dto.getCustomerId());
+		
+		DonationOrg donationOrg = new DonationOrg();
+		donationOrg.setOrgNo(dto.getOrgNo());
+
+		return Donation.builder()
+				.donationNo(dto.getDonationNo())
+				.donationAmount(dto.getDonationAmount())
+				.donationDate(dto.getDonationDate())
+				.customerId(customer)
+				.donationOrg(donationOrg)
+				.build();
+	}
 }

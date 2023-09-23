@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  
+
 <meta charset="utf-8">
 <title>GiftHub</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -18,7 +18,9 @@
 <!-- Google Web Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Jost:wght@500;600;700&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Jost:wght@500;600;700&display=swap"
+	rel="stylesheet">
 
 <!-- Icon Font Stylesheet -->
 <link
@@ -39,72 +41,72 @@
 
 <!-- Template Stylesheet -->
 <link href="/css/style.css" rel="stylesheet">
+
+<style>
+	a {
+		text-align: center !important;
+	}
+	
+	.dropdown-item:active{
+		background-color:#0058C6 !important;
+	}
+</style>
 </head>
 
 <body>
 	<div class="container-xxl bg-white p-0">
-		<!-- Spinner Start -->
-		<!-- <div id="spinner"
-			class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-			<div class="spinner-grow text-primary"
-				style="width: 3rem; height: 3rem;" role="status">
-				<span class="sr-only">Loading...</span>
-			</div>
-		</div> -->
-
-
-		<!-- Spinner End -->
-
-	
-          
-		<!-- Navbar & Hero Start -->
+	<!-- Navbar & Hero Start -->
 		<div class="container-xxl position-relative p-0">
-			<nav
-				class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-				<a href="/" class="navbar-brand p-0">
-					<h1 class="m-0">
-						<img src="/img/icon.png" alt="Logo"> GiftHub
-					</h1>
-
+			<nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+				<a href='/sale?storeId=${loggedStoreId}' class="navbar-brand p-0">
+					<h1 class="m-0"> <img src="/img/icon.png" alt="Logo"> GiftHub </h1>
 				</a>
-				<button class="navbar-toggler" type="button"
-					data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
 					<span class="fa fa-bars"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbarCollapse">
 					<div class="navbar-nav mx-auto py-0">
-						<a href="/" class="nav-item nav-link active">Home</a> 
+						<a href="/sale?storeId=${loggedStoreId}" class="nav-item nav-link active">HOME</a> 
 						<div class="nav-item dropdown">
-							<a href="about" class="nav-link dropdown-toggle"
-								data-bs-toggle="dropdown">기프티콘 관리</a>
+							<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">기프티콘관리</a>
 							<div class="dropdown-menu m-0">
-								<a href="/product" class="dropdown-item">상품등록</a> <a
-									href="calculate" class="dropdown-item">기프티콘 사용</a>
+								<a href="/product" class="dropdown-item">상품등록</a> 
+								<a href="/product/myList" class="dropdown-item">내 상품</a> 
+								<a href="/gifticon/use?storeId=${loggedStoreId}" class="dropdown-item">기프티콘 사용</a>
+								<a href="/gifticon/useList?storeId=${loggedStoreId}" class="dropdown-item">기프티콘 사용내역</a>
 							</div>
 						</div>
 						<div class="nav-item dropdown">
-							<a href="service" class="nav-link dropdown-toggle"
-								data-bs-toggle="dropdown">커뮤니티 관리</a>
+							<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">커뮤니티</a>
 							<div class="dropdown-menu m-0">
-								<a href="sale" class="dropdown-item">게시글 등록</a> 
-								<a href="calculate" class="dropdown-item">게시글 조회</a>
+								<a href="/promotion_store/promotion_insert_form" class="dropdown-item">게시글 등록</a>
+								<a href="/promotion_store/promotion_list" class="dropdown-item">게시글 조회</a>
+								<a href="/promotion_store/promotionMarket_list" class="dropdown-item">전통시장 살리기</a>
 							</div>
 						</div>
 						<div class="nav-item dropdown">
-							<a href="list" class="nav-link dropdown-toggle"
-								data-bs-toggle="dropdown">내역 관리</a>
+							<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">내역조회</a>
 							<div class="dropdown-menu m-0">
-								<a href="sale" class="dropdown-item">판매 내역</a> <a
-									href="exchange" class="dropdown-item">정산 내역</a>
+								<a href="/sale?storeId=${loggedStoreId}" class="dropdown-item">판매내역</a>
+								<a href="/exchange?storeId=${loggedStoreId}" class="dropdown-item">정산내역</a>
 							</div>
 						</div>
-						<a href="/contact/contact" class="nav-item nav-link">문의하기</a>
+						<a href="/store/mypage/check_pwd" class="nav-item nav-link">마이페이지</a>
 					</div>
-					<a href=""
-						class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Get
-						Started</a>
+					<div class="navbar-nav py-0" id="loginInfo">
+						<div class="nav-item dropdown">
+							<img src="/img/user.png" style="width: 45px; border-radius: 50%; border: 3px solid #0058C6; margin-right: 10px;">
+							<p class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="margin: 0 !important;
+								padding: 0; display: inline;">${storeUser.storeName}</p>
+							<div class="dropdown-menu m-0">
+								<a class="dropdown-item" href="/store/point_exchange">
+									<img src="/img/coin.png" style="width: 30px;">
+									 <fmt:formatNumber value="${storeUser.storePoint}" type="currency" currencySymbol=""/> Point
+								</a>
+								<a href="/logout" class="dropdown-item">로그아웃</a>
+							</div>
+						</div>
+					</div>
 				</div>
 			</nav>
-
-
 			<!-- Navbar & Hero End -->

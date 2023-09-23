@@ -7,9 +7,10 @@
     
 }
 .bg-primary{background-color:#0058C6 !important}
-.btn-primary{background-color:#0058C6 !important}
-.form-control:focus{color:#726D7B;background-color:#fff;border-color:#0058C6;outline:0;box-shadow:0 0 0 .25rem rgba(173, 210, 255, 1)}
-.btn-primary:focus{color:#fff;background-color:#0058C6;border-color:#0058C6;box-shadow:0 0 0 .25rem rgba(173, 210, 255, 1) !important}
+.btn-primary{background-color:#0058C6 !important; border-color:#0058C6 !important}
+.form-control:focus{color:#726D7B;background-color:#fff;border-color:#add2ff;outline:0;box-shadow:0 0 0 .25rem rgba(173, 210, 255, 1)}
+.btn-primary:focus{color:#fff;background-color:#0058C6;border-color:#0058C6;box-shadow:0 0 0 .25rem rgba(173, 210, 255, 1)}
+}
 
 /*** Spinner ***/
 #spinner {
@@ -214,7 +215,6 @@ h6,
 
 /*** Hero Header ***/
 .hero-header {
-    margin-bottom: 6rem;
     padding: 18rem 0;
     background:
         url(../img/blob-top-left.png),
@@ -238,7 +238,6 @@ h6,
         padding: 6rem 0 9rem 0;
     }
 }
-
 
 /*** Section Title ***/
 .section-title {
@@ -515,7 +514,6 @@ h6,
 
 /*** Footer ***/
 .footer {
-    margin-top: 6rem;
     padding-top: 9rem;
     background:
         url(../img/bg-top.png),
