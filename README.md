@@ -7,7 +7,7 @@
 **🪐 김은진 (조장)**
 ```
 GitHub ID : dolssun
-E-mail: ejkim903@g.hongik.ac.kr
+E-mail: 903ejkim@naver.com
 ```
 
 **🌎 이성준 (코딩 팀장)**
