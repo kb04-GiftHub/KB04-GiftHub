@@ -2,14 +2,7 @@
 ```
 소상공인을 위한 개인사업자 기프티콘 발행 플랫폼 GiftHub 
 ```
-<p align="center">
-  <h2>기술 스택</h2>
-</p>
-
-<p align="center">
-  <h3>Frontend</h3>
-</p>
-
+### <p align="center">Frontend</p>
 <p align="center">
   <img alt="HTML" src="https://img.shields.io/badge/HTML-E34F26.svg?&style=for-the-badge&logo=HTML5&logoColor=white"/>
   <img alt="CSS" src="https://img.shields.io/badge/CSS-1572B6.svg?&style=for-the-badge&logo=CSS3&logoColor=white"/>
@@ -19,18 +12,14 @@
   <img alt="JSP" src="https://img.shields.io/badge/JSP-007396.svg?&style=for-the-badge&logo=Java&logoColor=white"/>
 </p>
 
-<p align="center">
-  <h3>Backend</h3>
-</p>
-
+### <p align="center">Backend</p>
 <p align="center">
   <img alt="Spring Boot" src="https://img.shields.io/badge/SPRING%20BOOT-6DB33F.svg?&style=for-the-badge&logo=Spring&logoColor=white"/>
   <img alt="Spring Data" src="https://img.shields.io/badge/SPRING%20DATA-6DB33F.svg?&style=for-the-badge&logo=Spring&logoColor=white"/>
   <img alt="Oracle" src="https://img.shields.io/badge/ORACLE-F80000.svg?&style=for-the-badge&logo=Oracle&logoColor=white"/>
 </p>
 
-## Tools & Platforms Used
-
+### <p align="center">Tools & Platforms Used</p>
 <p align="center">
   <table align="center">
     <tr>
