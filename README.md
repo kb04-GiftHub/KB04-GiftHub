@@ -18,7 +18,7 @@
   <img alt="Spring Data" src="https://img.shields.io/badge/SPRING%20DATA-6DB33F.svg?&style=for-the-badge&logo=Spring&logoColor=white"/>
   <img alt="Oracle" src="https://img.shields.io/badge/ORACLE-F80000.svg?&style=for-the-badge&logo=Oracle&logoColor=white"/>
 </p>
----
+
 ### <p align="center">Tools & Platforms Used</p>
 <p align="center">
   <table align="center">
