@@ -2,23 +2,47 @@
 ```
 소상공인을 위한 개인사업자 기프티콘 발행 플랫폼 GiftHub 
 ```
-## 프로젝트 소개
-프랜차이즈가  아닌 소상공인들이 기프티콘을 발행하고, 소비자들이 기프티콘을 거래하고 사용할 수 있는 플랫폼
-<br>
-
 ## 기술 스택 
 ### Frontend
-<img alt="HTML" src="https://img.shields.io/badge/HTML-E34F26.svg?&style=for-the-badge&logo=HTML5&logoColor=white"/> <img alt="CSS" src="https://img.shields.io/badge/CSS-1572B6.svg?&style=for-the-badge&logo=CSS3&logoColor=white"/> <img alt="JavaScript" src="https://img.shields.io/badge/JAVASCRIPT-F7DF1E.svg?&style=for-the-badge&logo=JavaScript&logoColor=white"/> <img alt="Bootstrap" src="https://img.shields.io/badge/BOOTSTRAP-7952B3.svg?&style=for-the-badge&logo=Bootstrap&logoColor=white"/> <img alt="jQuery" src="https://img.shields.io/badge/JQUERY-0769AD.svg?&style=for-the-badge&logo=jQuery&logoColor=white"/> <img alt="JSP" src="https://img.shields.io/badge/JSP-007396.svg?&style=for-the-badge&logo=Java&logoColor=white"/>
+<p align="center">
+  <img alt="HTML" src="https://img.shields.io/badge/HTML-E34F26.svg?&style=for-the-badge&logo=HTML5&logoColor=white"/>
+  <img alt="CSS" src="https://img.shields.io/badge/CSS-1572B6.svg?&style=for-the-badge&logo=CSS3&logoColor=white"/>
+  <img alt="JavaScript" src="https://img.shields.io/badge/JAVASCRIPT-F7DF1E.svg?&style=for-the-badge&logo=JavaScript&logoColor=white"/>
+  <img alt="Bootstrap" src="https://img.shields.io/badge/BOOTSTRAP-7952B3.svg?&style=for-the-badge&logo=Bootstrap&logoColor=white"/>
+  <img alt="jQuery" src="https://img.shields.io/badge/JQUERY-0769AD.svg?&style=for-the-badge&logo=jQuery&logoColor=white"/>
+  <img alt="JSP" src="https://img.shields.io/badge/JSP-007396.svg?&style=for-the-badge&logo=Java&logoColor=white"/>
+</p>
 
 ### Backend
-<img alt="Spring Boot" src="https://img.shields.io/badge/SPRING%20BOOT-6DB33F.svg?&style=for-the-badge&logo=Spring&logoColor=white"/> <img alt="Spring Data" src="https://img.shields.io/badge/SPRING%20DATA-6DB33F.svg?&style=for-the-badge&logo=Spring&logoColor=white"/> <img alt="Oracle" src="https://img.shields.io/badge/ORACLE-F80000.svg?&style=for-the-badge&logo=Oracle&logoColor=white"/>
+<p align="center">
+  <img alt="Spring Boot" src="https://img.shields.io/badge/SPRING%20BOOT-6DB33F.svg?&style=for-the-badge&logo=Spring&logoColor=white"/>
+  <img alt="Spring Data" src="https://img.shields.io/badge/SPRING%20DATA-6DB33F.svg?&style=for-the-badge&logo=Spring&logoColor=white"/>
+  <img alt="Oracle" src="https://img.shields.io/badge/ORACLE-F80000.svg?&style=for-the-badge&logo=Oracle&logoColor=white"/>
+</p>
 
 ## Tools & Platforms Used
-|역할|종류|
-|-|-|
-|Idea Memo|<img alt="RED" src ="https://img.shields.io/badge/Notion-000000.svg?&style=for-the-badge&logo=Notion&logoColor=white"/> |
-|Frontend Design|<img alt="RED" src ="https://img.shields.io/badge/Figma-F24E1E.svg?&style=for-the-badge&logo=Figma&logoColor=white"/>|
-|Version Control|![Git](https://img.shields.io/badge/git-E6484F.svg?style=for-the-badge&logo=git&logoColor=white) ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white) |
+
+<p align="center">
+  <table align="center">
+    <tr>
+      <th>역할</th>
+      <th>종류</th>
+    </tr>
+    <tr>
+      <td>Idea Memo</td>
+      <td><img alt="RED" src ="https://img.shields.io/badge/Notion-000000.svg?&style=for-the-badge&logo=Notion&logoColor=white"/></td>
+    </tr>
+    <tr>
+      <td>Frontend Design</td>
+      <td><img alt="RED" src ="https://img.shields.io/badge/Figma-F24E1E.svg?&style=for-the-badge&logo=Figma&logoColor=white"/></td>
+    </tr>
+    <tr>
+      <td>Version Control</td>
+      <td><img alt="Git" src="https://img.shields.io/badge/git-E6484F.svg?style=for-the-badge&logo=git&logoColor=white"/> <img alt="GitHub" src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white"/></td>
+    </tr>
+  </table>
+</p>
+
 
 ## 조원 소개
 **🐻 김은진 (조장)**
