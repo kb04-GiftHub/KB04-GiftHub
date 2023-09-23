@@ -77,7 +77,7 @@ E-mail:
 
 ## 메인 페이지 
 
-<img width="1377" alt="스크린샷 2023-05-24 오전 11 35 28" src="https://github.com/kb04-GiftHub/KB04-GiftHub/blob/main/assets/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A51_%EA%B0%80%EB%A7%B9%EC%A0%90%EC%B0%BE%EA%B8%B0.PNG">
+<img width="1377" src="https://github.com/kb04-GiftHub/KB04-GiftHub/blob/main/assets/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A51_%EA%B0%80%EB%A7%B9%EC%A0%90%EC%B0%BE%EA%B8%B0.PNG">
 <img width="1369" alt="스크린샷 2023-05-24 오전 11 35 46" src="https://github.com/kookmin-sw/capstone-2023-39/assets/70675133/ae81e92b-141f-4337-990e-6258fb1e2c9d">
 <img width="1366" alt="스크린샷 2023-05-24 오전 11 36 41" src="https://github.com/kookmin-sw/capstone-2023-39/assets/70675133/08d22911-0eb6-444d-9774-be5f24ddd8c2">
 <img width="1356" alt="스크린샷 2023-05-24 오전 11 37 18" src="https://github.com/kookmin-sw/capstone-2023-39/assets/70675133/82af0d7e-494e-4ef6-9103-df7db0d4116a">
