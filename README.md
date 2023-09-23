@@ -1,4 +1,3 @@
-![header](https://capsule-render.vercel.app/api?type=slice&color=87CEFA&height=200&section=header&text=HurDong's%20Github&fontSize=70&animation=twinkling)
 # KB 국민은행 IT's Your Life 최종 프로젝트
 ```
 소상공인을 위한 개인사업자 기프티콘 발행 플랫폼 GiftHub 
@@ -12,7 +11,9 @@
   <img alt="jQuery" src="https://img.shields.io/badge/JQUERY-0769AD.svg?&style=for-the-badge&logo=jQuery&logoColor=white"/>
   <img alt="JSP" src="https://img.shields.io/badge/JSP-007396.svg?&style=for-the-badge&logo=Java&logoColor=white"/>
 </p>
+
 ---
+
 ### <p align="center">Backend</p>
 <p align="center">
   <img alt="Spring Boot" src="https://img.shields.io/badge/SPRING%20BOOT-6DB33F.svg?&style=for-the-badge&logo=Spring&logoColor=white"/>
@@ -41,6 +42,7 @@
     </tr>
   </table>
 </p>
+
 ---
 
 ## 조원 소개
