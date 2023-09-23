@@ -33,7 +33,7 @@ GitHub ID : SamGentlee
 E-mail: ekdma3259@gmail.com
 ```
 
-**🔍 이수민(코딩 부팀장)**
+**🔍 이수민 (코딩 부팀장)**
 ```
 GitHub ID : ISMINMIN
 E-mail: summmm.224@gmail.com
@@ -84,8 +84,9 @@ E-mail: gyu6012@gmail.com
 * CTI를 제공해주는 서비스는 주로 해외 서비스가 많기 때문에, 국민대학교를 타겟으로 하는 위협정보를 확장하여 네트워크 보안을 강화함
 <br>
 -->
-## 메인 페이지 
 
+## 메인 페이지 
+<img width="1377" alt="스크린샷 2023-05-24 오전 11 35 28" src="https://github.com/kb04-GiftHub/KB04-GiftHub/blob/main/assets/%EC%84%A4%EB%AC%B8%EC%A1%B0%EC%82%AC.PNG">
 <img width="1377" alt="스크린샷 2023-05-24 오전 11 35 28" src="https://github.com/kb04-GiftHub/KB04-GiftHub/blob/main/assets/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A51_%EA%B0%80%EB%A7%B9%EC%A0%90%EC%B0%BE%EA%B8%B0.PNG">
 <img width="1377" alt="스크린샷 2023-05-24 오전 11 35 28" src="https://github.com/kb04-GiftHub/KB04-GiftHub/blob/main/assets/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A52_%ED%8F%AC%EC%9D%B8%ED%8A%B8%EC%B6%A9%EC%A0%84.PNG">
 <img width="1377" alt="스크린샷 2023-05-24 오전 11 35 28" src="https://github.com/kb04-GiftHub/KB04-GiftHub/blob/main/assets/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A53_%EA%B8%B0%ED%94%84%ED%8B%B0%EC%BD%98%EC%83%9D%EC%84%B1.PNG">
@@ -93,8 +94,6 @@ E-mail: gyu6012@gmail.com
 <img width="1377" alt="스크린샷 2023-05-24 오전 11 35 28" src="https://github.com/kb04-GiftHub/KB04-GiftHub/blob/main/assets/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A55_sms%EC%A0%84%EC%86%A1.PNG">
 <img width="1377" alt="스크린샷 2023-05-24 오전 11 35 28" src="https://github.com/kb04-GiftHub/KB04-GiftHub/blob/main/assets/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A56_%EA%B8%B0%ED%94%84%ED%8B%B0%EC%BD%98%EC%BA%98%EB%A6%B0%EB%8D%94.PNG">
 <img width="1377" alt="스크린샷 2023-05-24 오전 11 35 28" src="https://github.com/kb04-GiftHub/KB04-GiftHub/blob/main/assets/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A57_%ED%8C%90%EB%A7%A4%EC%B0%A8%ED%8A%B8.PNG">
-<img width="1377" alt="스크린샷 2023-05-24 오전 11 35 28" src="https://github.com/kb04-GiftHub/KB04-GiftHub/blob/main/assets/%EC%84%A4%EB%AC%B8%EC%A1%B0%EC%82%AC.PNG">
-
 
 ## 깃허브 페이지
 https://github.com/kb04-GiftHub/KB04-GiftHub
