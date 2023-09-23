@@ -7,37 +7,37 @@
 **🪐 김은진 (조장)**
 ```
 GitHub ID : dolssun
-E-mail:
+E-mail: ejkim903@g.hongik.ac.kr
 ```
 
 **🌎 이성준 (코딩 팀장)**
 ```
 GitHub ID : dolssun
-E-mail: 
+E-mail: ekdma3259@gmail.com
 ```
 
 **🌍 이수민(코딩 부팀장)**
 ```
 GitHub ID : dolssun
-E-mail: 
+E-mail: summmm.224@gmail.com
 ```
 
 **🌏 노유진**
 ```
 GitHub ID : dolssun
-E-mail: 
+E-mail: nnn734877@gmail.com
 ```
 
 **🌖 허동민**
 ```
 GitHub ID : dolssun
-E-mail: 
+E-mail: gjehdals456@gmail.com
 ```
 
 **🌗 황규빈**
 ```
 GitHub ID : dolssun
-E-mail: 
+E-mail: gyu6012@gmail.com
 ```
 <br>
 
